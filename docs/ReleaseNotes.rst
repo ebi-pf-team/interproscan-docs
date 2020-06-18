@@ -1,8 +1,8 @@
-Release notes: InterProScan 5.44-79.0
+Release notes: InterProScan 5.45-80.0
 =====================================
 
-**23rd April 2020**. We are pleased to announce the release of
-InterProScan 5 (**version 5.44-79.0**).
+**18th June 2020**. We are pleased to announce the release of
+InterProScan 5 (**version 5.45-80.0**).
 
 This release of InterProScan 5 includes a data update (using InterPro
 version **79.0** data).
@@ -14,10 +14,10 @@ Data update
 ^^^^^^^^^^^
 
 -  Synchronized with `InterPro version 
-   79.0 <http://www.ebi.ac.uk/interpro/release_notes.html>`__.
--  The addition of 128 InterPro entries.
--  An update to PIRSF [3.10].
--  Integration of 151 new methods from the SUPERFAMILY (4), CATH-Gene3D (6), PIRSF (9), PANTHER (106), CDD (26) databases.
+   80.0 <http://www.ebi.ac.uk/interpro/release_notes.html>`__.
+-  The addition of 91 InterPro entries.
+-  An update to Pfam [33.1].
+-  Integration of 127 new methods from the Pfam (41), PIRSF (15), PANTHER (67), CDD (4) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^

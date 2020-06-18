@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# interproscan5-docs documentation build configuration file, created by
+# interproscan-docs documentation build configuration file, created by
 # sphinx-quickstart on Wed Oct 10 15:05:56 2018.
 #
 # This file is execfile()d with the current directory set to its
@@ -49,8 +49,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'interproscan5-docs'
-copyright = '2018, EMBL-EBI'
+project = 'interproscan-docs'
+copyright = '2020, EMBL-EBI'
 author = 'EMBL-EBI'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -105,7 +105,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'interproscan5-docsdoc'
+htmlhelp_basename = 'interproscan-docsdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -132,7 +132,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'interproscan5-docs.tex', 'interproscan5-docs Documentation',
+    (master_doc, 'interproscan-docs.tex', 'interproscan-docs Documentation',
      'EMBL-EBI', 'manual'),
 ]
 
@@ -142,7 +142,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'interproscan5-docs', 'interproscan5-docs Documentation',
+    (master_doc, 'interproscan-docs', 'interproscan-docs Documentation',
      [author], 1)
 ]
 
@@ -153,8 +153,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'interproscan5-docs', 'interproscan5-docs Documentation',
-     author, 'interproscan5-docs', 'One line description of project.',
+    (master_doc, 'interproscan-docs', 'interproscan-docs Documentation',
+     author, 'interproscan-docs', 'One line description of project.',
      'Miscellaneous'),
 ]
 
