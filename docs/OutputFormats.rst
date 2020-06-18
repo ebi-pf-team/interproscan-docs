@@ -161,8 +161,8 @@ The XML Schema Definition (XSD) is available
 
 Listed below are the XSD files for the InterProScan 5 XML output format (with the InterProScan release versions they apply to noted in brackets afterwards).
 
-- `interproscan-model-4.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.0.xsd>`__ (as produced by InterProScan 5 from version 5.45-80.0 onwards)
-- `interproscan-model-3.1.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.1.xsd>` __ (as produced by InterProScan 5 from version 5.37-76.0 onwards)
+- `interproscan-model-4.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.0.xsd>` _ (as produced by InterProScan 5 from version 5.45-80.0 onwards)
+- `interproscan-model-3.1.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.1.xsd>` _ (as produced by InterProScan 5 from version 5.37-76.0 onwards)
 - interproscan-model-3.0.xsd (as produced by InterProScan 5 from version 5.31-70.0 onwards)
 - interproscan-model-2.2.xsd (as produced by InterProScan 5 from version 5.28-67.0 to 5.30-69.0)
 - interproscan-model-2.1.xsd (as produced by InterProScan 5 from version 5.26-65.0 to 5.27-66.0)
