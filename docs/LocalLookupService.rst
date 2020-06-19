@@ -59,8 +59,7 @@ requirements:
 -  Recommended minimum 2 cores (processors).
 -  4GB RAM (of which > 2GB will consumed by the service when you run
    it).
--  The lookup service version 5.17-56.0 onwards requires Java 8
-   (previous versions required Java 6 or 7).
+-  The lookup service version 5.37-76.0 onwards requires Java 11 (previous versions required Java 8.
 
 Obtaining the lookup service
 ----------------------------
