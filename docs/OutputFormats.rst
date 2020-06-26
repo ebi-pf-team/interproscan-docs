@@ -161,16 +161,16 @@ The XML Schema Definition (XSD) is available
 
 Listed below are the XSD files for the InterProScan 5 XML output format (with the InterProScan release versions they apply to noted in brackets afterwards).
 
-- `interproscan-model-4.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.0.xsd>`_ (as produced by InterProScan 5 from version 5.45-80.0 onwards)
-- interproscan-model-3.0.xsd (as produced by InterProScan 5 from version 5.31-70.0 onwards)
-- interproscan-model-2.2.xsd (as produced by InterProScan 5 from version 5.28-67.0 to 5.30-69.0)
-- interproscan-model-2.1.xsd (as produced by InterProScan 5 from version 5.26-65.0 to 5.27-66.0)
-- interproscan-model-2.0.xsd (as produced by InterProScan 5 from version 5.21-60.0 to 5.25-64.0)
-- interproscan-model-1.4.xsd (as produced by InterProScan 5 in version 5.20-59.0 only)
-- interproscan-model-1.3.xsd (as produced by InterProScan 5 in version 5.19-58.0 only)
-- interproscan-model-1.2.xsd (as produced by InterProScan 5 from version 5.17-56.0 to 5.18-57.0)
-- interproscan-model-1.1.xsd (as produced by InterProScan 5 from version RC7 to 5.16-55.0)
-- interproscan-model-1.0.xsd (InterProScan 5 version RC1 to RC6)
+- `interproscan-model-4.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.0.xsd>`__ (as produced by InterProScan 5 from version 5.45-80.0 onwards)
+- interproscan-model-3.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.0.xsd>`__ (as produced by InterProScan 5 from version 5.31-70.0 onwards)
+- interproscan-model-2.2.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.2.xsd>`__ (as produced by InterProScan 5 from version 5.28-67.0 to 5.30-69.0)
+- interproscan-model-2.1.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.1.xsd>`__ (as produced by InterProScan 5 from version 5.26-65.0 to 5.27-66.0)
+- interproscan-model-2.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.0.xsd>`__ (as produced by InterProScan 5 from version 5.21-60.0 to 5.25-64.0)
+- interproscan-model-1.4.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.4.xsd>`__ (as produced by InterProScan 5 in version 5.20-59.0 only)
+- interproscan-model-1.3.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.3.xsd>`__ (as produced by InterProScan 5 in version 5.19-58.0 only)
+- interproscan-model-1.2.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.2.xsd>`__ (as produced by InterProScan 5 from version 5.17-56.0 to 5.18-57.0)
+- interproscan-model-1.1.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.1.xsd>`__ (as produced by InterProScan 5 from version RC7 to 5.16-55.0)
+- interproscan-model-1.0.xsd <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.0.xsd>`__ (InterProScan 5 version RC1 to RC6)
 
 
 JavaScript Object Notation (JSON)
