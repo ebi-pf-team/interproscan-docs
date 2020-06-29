@@ -77,8 +77,7 @@ Extensible Markup Language (XML)
 --------------------------------
 
 XML representation of the matches - this is the richest form of the
-data. The XML Schema Definition (XSD) is available
-`here <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/>`__.
+data. The XML Schema Definition (XSD) file links are below the example output. 
 
 
 Example output
