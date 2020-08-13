@@ -1,4 +1,4 @@
-What is the InterProScan 5 Lookup Service?
+The InterProScan  Lookup Match Service?
 ==========================================
 
 The InterProScan match lookup service stores pre-calculated InterProScan
