@@ -53,7 +53,7 @@ Before you run interproscan for the first time, you should run the commanad:
 ::
     python3 initial_setup.py
 
-This command will  press and index the hmm models to prepare them into a format used by hmmscan. 
+This command will  press and index the hmm models to prepare them into a format used by hmmscan.
 
 Panther models
 ~~~~~~~~~~~~~~~~~~~~~~~~~

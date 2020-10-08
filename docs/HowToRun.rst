@@ -166,7 +166,6 @@ system. First, if you have not yet run the initilisation script run the followin
 This command will  press and index the hmm models to prepare them into a format used by hmmscan. This command need only be run once.
 
 You can then run the following two test case commands:
-
 ::
     ./interproscan.sh -i test_proteins.fasta -f tsv -dp
     ./interproscan.sh -i test_proteins.fasta -f tsv
