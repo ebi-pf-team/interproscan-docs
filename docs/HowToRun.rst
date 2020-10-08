@@ -159,12 +159,17 @@ InterProScan 5 test run
 
 This distribution of InterProScan 5 provides a set of protein test
 sequences, which you can use to check how InterProScan 5 behaves on your
-system. Run the following two test case commands:
+system. First, if you have not yet run the initilisation script run the following command:
+::
+    python3 initial_setup.py
+
+This command will  press and index the hmm models to prepare them into a format used by hmmscan. This command need only be run once.
+
+You can then run the following two test case commands:
 
 ::
-
-    ./interproscan.sh -i test_proteins.fasta -f tsv
     ./interproscan.sh -i test_proteins.fasta -f tsv -dp
+    ./interproscan.sh -i test_proteins.fasta -f tsv
 
 The first test should create an output file with the default file name
 test\_proteins.fasta.tsv, and the second would then create
