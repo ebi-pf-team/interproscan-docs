@@ -44,9 +44,16 @@ Extract the tar ball:
 
 This is a completely self-contained version that includes member
 database specific binaries and model / signature files. This should run
-'out of the box' on a Linux system. Note that it excludes Panther (which
-can be downloaded separately - see below) and analyses that contain
+'out of the box' on a Linux system. Note that it excludes analyses that contain
 components for which you are obliged to acquire your own license.
+
+Index hmm models
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Before you run interproscan for the first time, you should run the commanad:
+::
+    python3 initial_setup.py
+
+This command will  press and index the hmm models to prepare them into a format used by hmmscan. 
 
 Panther models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
