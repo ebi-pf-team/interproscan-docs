@@ -93,4 +93,4 @@ It is important to note that we run the latest available version of the
 pre-calculated match lookup service at the EBI. In the event of a new
 release, you will be required to either install the latest version of
 InterProScan 5, or to `install the required version of the lookup
-service locally <LocalLookupService>`__.
+service locally :ref:`LocalLookupService` <LocalLookupService>`__.
