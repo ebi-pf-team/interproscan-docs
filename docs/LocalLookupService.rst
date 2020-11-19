@@ -1,4 +1,4 @@
-The InterProScan  Lookup Match Service
+The InterProScan Lookup Match Service
 ==========================================
 
 The InterProScan match lookup service stores pre-calculated InterProScan
