@@ -18,6 +18,8 @@ will require to run successfully.  Here are some observed numbers that may act
 as a guide, but you may have to experiment for your own data. The input sequences
 were taken from `UniProt <https://www.uniprot.org>`__
 
+Run time statistics for selected input
+---------------------------------------
 =====   =========== =========== ========= ==========
 -cpu    max memory   sequence # seq size    run time
 =====  ============ =========== ========= ==========
@@ -47,12 +49,12 @@ Review your command line input options
 Do you need all the output InterProScan supplies by default? See `How to
 run InterProScan <HowToRun.html>`__ for more details, for example you may
 consider options such as:
-- Which result data are you interested in, do
+* Which result data are you interested in, do
 you require all applications (see -appl option)?
-- Do you require the
+* Do you require the
 residue level annotation? If not, this calculation can be disabled with
 the -dra option.
-- Make use of the default lookup service, or your own
+* Make use of the default lookup service, or your own
 local lookup service to avoid the need for calculating known results
 again (on by default, `read
 more <LocalLookupService.html#what-is-the-interproscan-5-lookup-service>`__).
