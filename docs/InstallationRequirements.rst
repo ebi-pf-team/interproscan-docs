@@ -125,20 +125,18 @@ This should report a version of java is available, similar to:
 
 ::
 
-    java version "1.8.0_60"
-    Java(TM) SE Runtime Environment (build 1.8.0_60-b27)
-    Java HotSpot(TM) Server VM (build 25.60-b23, mixed mode)
+    openjdk version "11.0.4" 2019-07-16
+    OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.4+11)
+    OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.4+11, mixed mode)
 
-**InterProScan release 5.17-56.0 or later will only run with Java
-version 1.8+.** The third line should include "Java HotSpot (TM)"
 
-InterProScan 5 will also work if the version information reports the
-OpenJDK JVM, though we have not extensively tested on OpenJDK. If
-InterProScan 5 fails to run on OpenJDK, you can obtain and install the
-Oracle/Sun JVM (JRE or JDK is suitable, see
-http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+**InterProScan release 5.37-76.0  or later will only run with Java
+version 11.*++  **
 
-InterProScan releases prior to 5.17-56.0 required Java 6 or 7.
+You can get Java from many places. We have tested Java 11 from the OpenJDK Binaries from https://adoptopenjdk.net/
+You can get information on OpenJDK reference implementations at https://jdk.java.net/ and download from https://openjdk.java.net/install/index.html
+
+InterProScan releases prior to 5.37-76.0 required Java 8.
 
 Appendix - Historical Java version testing information
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''

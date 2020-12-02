@@ -81,7 +81,7 @@ Hmmer 2 (used by SMART)
     wget ftp://selab.janelia.org/pub/software/hmmer/2.3.2/hmmer-2.3.2.tar.gz
     tar -xzvf hmmer-2.3.2.tar.gz
     cd hmmer-2.3.2
-    ./configure
+    ./configure --enable-threads
     make
     make check
     make install

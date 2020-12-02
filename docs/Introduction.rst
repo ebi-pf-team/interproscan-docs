@@ -31,8 +31,8 @@ To install and run InterProScan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For more information about using InterProScan please see the page links
-on the right, for example `how to download a copy <HowToDownload>`__ and
-`how to run InterProScan <HowToRun>`__.
+on the right, for example `how to download a copy <HowToDownload.html>`__ and
+`how to run InterProScan <HowToRun.html>`__.
 
 LSF cluster users
 ^^^^^^^^^^^^^^^^^

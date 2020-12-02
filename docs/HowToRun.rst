@@ -420,7 +420,7 @@ As this is a web service, your servers will need to have external access
 to http://www.ebi.ac.uk to use it. If you are behind a firewall that
 prevents such access and you are unable to configure access, you can
 either turn off use of this service or download a copy and run a `local
-match lookup service <LocalLookupService>`__.
+match lookup service <LocalLookupService.html>`__.
 
 To turn off use of the service, either use the -dp command line option,
 or edit **interproscan.properties** and comment out\ ``*`` or delete the
