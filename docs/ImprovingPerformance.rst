@@ -15,43 +15,47 @@ is the desired number of cores
 
 You have to remember, the more cores you specify, the more memory InterProScan
 will require to run successfully.  Here are some observed numbers that may act
-as a guide, but you may have to experiment for your data. the input sequences
-were taken from `UniProt <https://www.uniprot.org>`
+as a guide, but you may have to experiment for your own data. The input sequences
+were taken from `UniProt <https://www.uniprot.org>`__
 
 =====   =========== =========== ========= ==========
 -cpu    max memory   sequence # seq size    run time
 =====  ============ =========== ========= ==========
  16     10GB          16,000      6MB       4hr
-160     14GB         160,000     56MB      12hr
+ 16     14GB         160,000     56MB      12hr
 =====  ============ =========== ========= ==========
 
 Consider chunking large input files
 -----------------------------------
 
-If your FASTA input files contains a large number of sequences then you
+If your FASTA input files contains a large number of sequences
+say over 160, 0000 protein sequences, then you
 may consider splitting your input into smaller chunks (depends on
 resources, but batches of 80,000 protein sequences is a suggested
 starting point). You can then submit the smaller input files to
 InterProScan and process the results afterwards.
 
-For DNA/RNA sequences a much smaller number is suggested (e.g. 1,000
+For DNA/RNA sequences a much smaller number is suggested (e.g. 12,000
 sequences). However for improved performance you could translate these
 using an external tool and then submit the necessary protein sequences
-instead, see `running nucleic acid sequences <ScanNucleicAcidSeqs>`__
+instead, see `running nucleic acid sequences <ScanNucleicAcidSeqs.html>`__
 for more information.
 
 Review your command line input options
 --------------------------------------
 
 Do you need all the output InterProScan supplies by default? See `How to
-run InterProScan <HowToRun>`__ for more details, for example you may
-consider options such as: - Which result data are you interested in, do
-you require all applications (see -appl option)? - Do you require the
-residue level annotation? If not this calculation can be disabled with
-the -dra option. - Make use of the default lookup service, or your own
+run InterProScan <HowToRun.html>`__ for more details, for example you may
+consider options such as:
+- Which result data are you interested in, do
+you require all applications (see -appl option)?
+- Do you require the
+residue level annotation? If not, this calculation can be disabled with
+the -dra option.
+- Make use of the default lookup service, or your own
 local lookup service to avoid the need for calculating known results
 again (on by default, `read
-more <LocalLookupService#what-is-the-interproscan-5-lookup-service>`__).
+more <LocalLookupService.html#what-is-the-interproscan-5-lookup-service>`__).
 
 How to configure CPU usage? - Example cases
 -------------------------------------------
@@ -110,10 +114,10 @@ Case 2: Running InterProScan in CLUSTER mode
 You want to analysis sequences on a cluster/farm and you would like to
 set the number of reserved cores for each node.
 
-See https://github.com/ebi-pf-team/interproscan/wiki/ClusterMode
+See `Running InterProScan in CLUSTER mode <ClusterMode.html>`__
 
 Configure to analyse fewer ORFs (applies to nucleic acid sequences only)
 ------------------------------------------------------------------------
 
 For nucleic acid sequences, consider `reducing the number of ORFs to
-analyse <https://github.com/ebi-pf-team/interproscan/wiki/ScanNucleicAcidSeqs#selecting-the-orfs-to-analyse>`__.
+analyse <ScanNucleicAcidSeqs.html#selecting-the-orfs-to-analyse>`__.
