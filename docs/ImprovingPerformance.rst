@@ -3,12 +3,34 @@ Improving performance
 
 If InterProScan is taking a long time to run, consider the following:
 
+Review your CPU (and memory) command options
+------------------------------------------
+By default InterProScan uses 8 cpu cores on your machine. Most of the times this
+configuration is sufficient. However, if you have more cores available
+and you have more memory to support more threads, then you can change the number  of
+cpu cores used by adding the option below to the InterProScan command line, where N
+is the desired number of cores
+::
+    -cpu N
+
+You have to remember, the more cores you specify, the more memory InterProScan
+will require to run successfully.  Here are some observed numbers that may act
+as a guide, but you may have to experiment for your data. the input sequences
+were taken from `UniProt <https://www.uniprot.org>`
+
+=====   =========== =========== ========= ==========
+-cpu    max memory   sequence # seq size    run time
+=====  ============ =========== ========= ==========
+ 16     10GB          16,000      6MB       4hr
+160     14GB         160,000     56MB      12hr
+=====  ============ =========== ========= ==========
+
 Consider chunking large input files
 -----------------------------------
 
 If your FASTA input files contains a large number of sequences then you
 may consider splitting your input into smaller chunks (depends on
-resources, but batches of 10,000 protein sequences is a suggested
+resources, but batches of 80,000 protein sequences is a suggested
 starting point). You can then submit the smaller input files to
 InterProScan and process the results afterwards.
 
