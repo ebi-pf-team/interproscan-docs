@@ -16,7 +16,7 @@ compiled version
 InterProScan is designed to work with the same binary versions as used
 by the supported member database analyses. Therefore it is important to
 use the binary version numbers listed below, see `the
-FAQ <https://github.com/ebi-pf-team/interproscan/wiki/FAQ#5can-i-use-different-binary-versions-than-listed>`__
+FAQ <FAQ.html#5can-i-use-different-binary-versions-than-listed>`__
 for more information.
 
 cath-resolve-hits (used by CATH-Gene3D)
@@ -111,160 +111,21 @@ location. The default property values are:
     binary.hmmer3.hmmscan.path=bin/hmmer/hmmer3/3.1b1/hmmscan
     binary.hmmer3.hmmsearch.path=bin/hmmer/hmmer3/3.1b1/hmmsearch
 
-BLASTALL (used by ProDom)
--------------------------
-
-**Version 2.2.19**
-
-Download and unpack the suitable 32-bit OR 64-bit binary for your
-system, for example:
-
-::
-
-    a)
-    wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.19/blast-2.2.19-ia32-linux.tar.gz
-    b)
-    wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.19/blast-2.2.19-ia64-linux.tar.gz
-    tar -xzf blast-2.2.19-ia<bit-version>-linux.tar.gz
-
-Then either replace the relevant binary with your new one or update the
-relevant interproscan.properties values to point at the new file
-location. The default property values are:
-
-::
-
-    binary.blast.2.2.19.path=bin/blast/2.2.19
-
-**Note:** If no suitable binary is available for your system at
-ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.19/
-then you can try to compile the source code yourself on your system. The
-source can be found in the corresponding version of the NCBI toolkit at
-ftp://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools/old/20081116/
-
-EMBOSS getorf (for nucleic acid sequence search)
-------------------------------------------------
-
-InterProScan 5 takes advantage of the Open Reading Frame (ORF)
-prediction tool Emboss getorf.
-
-How to install on Debian based systems?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-On Debian based systems (e.g. Ubuntu or Linux Mint) EMBOSS is available
-as a package (see http://packages.debian.org/sid/emboss) produced by
-Debain Med (http://www.debian.org/devel/debian-med/) and can be
-installed with:
-
-::
-
-    $ sudo apt-get install emboss
-
-Issues with unnecessary dependencies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you have problems with unnecessary dependencies and you get error
-messages like the following...
-
-::
-
-    bin/nucleotide/getorf: error while loading shared libraries: ...
-
-... then try getting a binary with less dependencies from
-ftp://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/bin/getorf.zip.
-Unzip getorf.zip into bin/nucleotide/
-
-... or try compiling EMBOSS with appropriate 'configure' options
-**might** solve that (but not necessarily).
-
-For example:
-
-::
-
-    ./configure --disable-shared --without-x --without-java --without-hpdf --without-pngdriver --without-mysql --without-postgresql
-
-Get EMBOSS sources from EMBOSS [ftp://emboss.open-bio.org/pub/EMBOSS/]
-
-Note: additional options may be required with other versions of EMBOSS,
-this example uses EMBOSS 6.3.1.
-
-To disable, and thus remove dependencies on, MySQL, Postgres, Axis 2,
-X11, PDF support (libhpdf) and PNG support (libpng), and thus reduce the
-dependencies from:
-
-::
-
-    $ ldd interproscan-5-RC7/bin/nucleotide/getorf
-        linux-vdso.so.1 =>  (0x00007fff033ff000)
-        libmysqlclient.so.16 => /usr/lib64/mysql/libmysqlclient.so.16 (0x0000003bf0600000)
-        libcrypt.so.1 => /lib64/libcrypt.so.1 (0x0000003492000000)
-        libnsl.so.1 => /lib64/libnsl.so.1 (0x00000034e7a00000)
-        libssl.so.10 => /usr/lib64/libssl.so.10 (0x00000034df600000)
-        libcrypto.so.10 => /usr/lib64/libcrypto.so.10 (0x00000034dd200000)
-        libpq.so.5 => /usr/lib64/libpq.so.5 (0x0000003bf0e00000)
-        libX11.so.6 => /usr/lib64/libX11.so.6 (0x00000034db200000)
-        libgd.so.2 => /usr/lib64/libgd.so.2 (0x0000003bf0a00000)
-        libpng12.so.0 => /usr/lib64/libpng12.so.0 (0x00000034dee00000)
-        libz.so.1 => /lib64/libz.so.1 (0x00000034d9200000)
-        libm.so.6 => /lib64/libm.so.6 (0x00000034d8200000)
-        libc.so.6 => /lib64/libc.so.6 (0x00000034d8600000)
-        libfreebl3.so => /lib64/libfreebl3.so (0x0000003491800000)
-        libgssapi_krb5.so.2 => /lib64/libgssapi_krb5.so.2 (0x00000034de600000)
-        libkrb5.so.3 => /lib64/libkrb5.so.3 (0x00000034de200000)
-        libcom_err.so.2 => /lib64/libcom_err.so.2 (0x00000034dc600000)
-        libk5crypto.so.3 => /lib64/libk5crypto.so.3 (0x00000034dca00000)
-        libdl.so.2 => /lib64/libdl.so.2 (0x00000034d8a00000)
-        libldap_r-2.4.so.2 => /lib64/libldap_r-2.4.so.2 (0x00007f8b99cbf000)
-        libpthread.so.0 => /lib64/libpthread.so.0 (0x00000034d8e00000)
-        libxcb.so.1 => /usr/lib64/libxcb.so.1 (0x00000034dba00000)
-        libXpm.so.4 => /usr/lib64/libXpm.so.4 (0x000000348dc00000)
-        libjpeg.so.62 => /usr/lib64/libjpeg.so.62 (0x00000034eb000000)
-        libfontconfig.so.1 => /usr/lib64/libfontconfig.so.1 (0x00000034dfa00000)
-        libfreetype.so.6 => /usr/lib64/libfreetype.so.6 (0x00000034df200000)
-        /lib64/ld-linux-x86-64.so.2 (0x00000034d7e00000)
-        libkrb5support.so.0 => /lib64/libkrb5support.so.0 (0x00000034dde00000)
-        libkeyutils.so.1 => /lib64/libkeyutils.so.1 (0x00000034dc200000)
-        libresolv.so.2 => /lib64/libresolv.so.2 (0x00000034da200000)
-        liblber-2.4.so.2 => /lib64/liblber-2.4.so.2 (0x00000034eb800000)
-        libssl3.so => /usr/lib64/libssl3.so (0x00000034eac00000)
-        libsmime3.so => /usr/lib64/libsmime3.so (0x00000034ea800000)
-        libnss3.so => /usr/lib64/libnss3.so (0x00000034ea400000)
-        libnssutil3.so => /usr/lib64/libnssutil3.so (0x00000034e9c00000)
-        libplds4.so => /lib64/libplds4.so (0x00000034ea000000)
-        libplc4.so => /lib64/libplc4.so (0x00000034e9400000)
-        libnspr4.so => /lib64/libnspr4.so (0x00000034e9800000)
-        libsasl2.so.2 => /usr/lib64/libsasl2.so.2 (0x0000003490000000)
-        libXau.so.6 => /usr/lib64/libXau.so.6 (0x00000034db600000)
-        libexpat.so.1 => /lib64/libexpat.so.1 (0x00000034dea00000)
-        libselinux.so.1 => /lib64/libselinux.so.1 (0x00000034d9a00000)
-
-to a more portable:
-
-::
-
-    $ ldd emboss/getorf
-        linux-vdso.so.1 =>  (0x00007fff88bff000)
-        libm.so.6 => /lib64/libm.so.6 (0x00000034d8200000)
-        libc.so.6 => /lib64/libc.so.6 (0x00000034d8600000)
-        /lib64/ld-linux-x86-64.so.2 (0x00000034d7e00000)
-
-You will also find a discussion thread about that here [[Issue 11 \|
-https://code.google.com/p/interproscan/issues/detail?id=11]] (on Google
-Code).
-
-Then either replace the relevant binary with your new one or update the
-relevant interproscan.properties values to point at the new file
-location. The default property values are:
-
-::
-
-    binary.getorf.path=bin/nucleotide/getorf
-
 ncoils (used by Coils)
 ----------------------
+If you get **Coils**  (ncoils) errors, you may need to compile the **Coils** binary and it is straight forward as follows.
+::
 
-Instructions for compiling the "ncoils" binary can be found in the
+  cd src/coils/ncoils/2.2.1
+  make
+  cd ../../../..
+  cp src/coils/ncoils/2.2.1/ncoils bin/ncoils/2.2.1/ncoils
+
+The steps above normally solve the problem.
+
+Instructions for compiling the "ncoils" binary can also be found in the
 src/coils/ncoils/2.2.1/README file in your `extracted InterProScan 5
-distribution <HowToDownload>`__ (release 5.17-56.0 onwards).
+distribution <HowToDownload.html>`__ (release 5.17-56.0 onwards).
 
 Then either replace the relevant binary with your new one or update the
 relevant interproscan.properties values to point at the new file
@@ -303,6 +164,21 @@ point at the new file location. The default property values are:
 
 rpsblast/rpsbproc (used by CDD)
 -------------------------------
+There are two seperate application from NCBI that CDD uses for analysis in
+InterProScan. If the applications rpsblast and rpsbproc provided in
+InterProScan are not working for you,
+
+- download rpsblast/rpsbproc from NCBI (`https://blast.ncbi.nlm.nih.gov/Blast.cgi <https://blast.ncbi.nlm.nih.gov/Blast.cgi>`__)
+
+  - for rpsblast, it is part of the main blast package, so  download https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.11.0+-x64-linux.tar.gz  and look for rpsblast after uncompressing the tar file.
+  - for rpsbproc, get it from `ftp://ftp.ncbi.nih.gov/pub/mmdb/cdd/rpsbproc/ <ftp://ftp.ncbi.nih.gov/pub/mmdb/cdd/rpsbproc/>`__
+
+- if they dont work, then you have to compile these binaries for your system.
+We are working on a summary of how to compile rpsblast/rpsbproc for the latest
+Blast release - ncbi-blast-2.11.0+.
+
+For an older release ncbi-blast-2.6.0+, below are the  instructions. They could
+be adapted to work for ncbi-blast-2.11.0+.
 
 Instructions on how to compile rpsblast/rpsbproc for interproscan are
 summarised as follows:
@@ -373,4 +249,4 @@ By default the Phobius, SignalP and TMHMM member database analyses are
 deactivated because they contain licensed components. For instructions
 on how to activate these analyses, obtain the relevant licenses and
 compile the binaries please see "`activating licensed
-analyses <ActivatingLicensedAnalyses>`__".
+analyses <ActivatingLicensedAnalyses.html>`__".

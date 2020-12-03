@@ -4,13 +4,13 @@ Output formats
 In this version of InterProScan, you can retrieve output in any of the
 following five formats:
 
--  TSV: A simple tab-delimited file format
--  XML: The "IMPACT" XML format (`XSD available
+-  `TSV <OutputFormats.html#tab-separated-values-format-tsv>`__: A simple tab-delimited file format
+-  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The "IMPACT" XML format (`XSD available
    here <http://www.ebi.ac.uk/interpro/resources/schemas/interproscan5>`__).
--  JSON: Full output of results in JSON format
--  GFF3: The `GFF 3.0 <http://gmod.org/wiki/GFF#GFF3_Format>`__ format
--  HTML: An HTML representation of the protein matches
--  SVG: An Scalable Vector Graphics representation of the protein
+-  `JSON <OutputFormats.html#javascript-object-notation-json>`__: Full output of results in JSON format
+-  `GFF3 <OutputFormats.html#generic-feature-format-version-3-gff3>`__: The `GFF 3.0 <http://gmod.org/wiki/GFF#GFF3_Format>`__ format
+-  `HTML <OutputFormats.html#svg-and-html>`__ (deprecated): An HTML representation of the protein matches
+-  `SVG <OutputFormats.html#svg-and-html>`__ (deprecated): An Scalable Vector Graphics representation of the protein
    matches
 
 InterProScan 5 can output results for protein and nucleotide sequences
@@ -64,14 +64,14 @@ The TSV format presents the match data in columns as follows:
     database method (e.g. 3.1E-52)
 10. Status - is the status of the match (T: true)
 11. Date - is the date of the run
-12. (InterPro annotations - accession (e.g. IPR002093) - optional
-    column; only displayed if -iprlookup option is switched on)
-13. (InterPro annotations - description (e.g. BRCA2 repeat) - optional
-    column; only displayed if -iprlookup option is switched on)
+12. InterPro annotations - accession (e.g. IPR002093)
+13. InterPro annotations - description (e.g. BRCA2 repeat)
 14. (GO annotations (e.g. GO:0005515) - optional column; only displayed
     if --goterms option is switched on)
 15. (Pathways annotations (e.g. REACT\_71) - optional column; only
     displayed if --pathways option is switched on)
+
+If a value is missing in a column, for example, the match has no InterPro annotation, a '-' is displayed.
 
 Extensible Markup Language (XML)
 --------------------------------
@@ -298,10 +298,30 @@ Example output
     LNRGAIPIINENDSVVIDELKVGDNDTLSAQVAAMVQADLLVFLTDVDGLYTGNPNSDPR
     AKRLERIETINREIIDMAGGAGSSNGTGGMLTKIKAATIATESGVPVYICS
 
-Scalable Vector Graphics (SVG) and HyperText Markup Language (HTML)
--------------------------------------------------------------------
+SVG and HTML
+------------
 
-InterProScan 5 outputs a single HTML/SVG file for each protein sequence
+**Scalable Vector Graphics (SVG) and HyperText Markup Language (HTML)**
+
+These two graphical output formats are now deprecated! HTML is not available for
+InterProScan-5.48-83.0 and later versions. SVG will be removed in the second quarter of 2021.
+
+We have always aimed at providing the protein sequence view in InterProScan's
+HTML and SVG outputs to be almost exactly the same as the protein view on `the
+website <http://www.ebi.ac.uk/interpro>`__. But with the released of a new website with cool
+features at the end of 2019, maintaining the HTML and SVG outputs formats
+in InterProScan became unsustainable.
+
+However, we have a new  `**import feature on the website**
+<https://www.ebi.ac.uk/interpro/result/InterProScan/#table>`__, where after you import
+an InterProScan JSON output,
+you can get a nice graphical view of your results and can export the results into PNG, PDF etc.
+
+We would appreciate any feedback on this feature, `send us some comments using
+EMBL EBI's support form <http://www.ebi.ac.uk/support/interproscan>`__
+
+In the previous versions before InterProScan-5.48-83.0,
+InterProScan outputs a single HTML/SVG file for each protein sequence
 analysed. The HTML/SVG file(s) are compressed into a single gzipped tar
 archive (or "tarball") that includes the resources (images, Javascript,
 style etc) to render the pages/images in a browser or image viewer.

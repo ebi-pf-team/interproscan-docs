@@ -41,8 +41,8 @@ properties file (**interproscan.properties**).
 | .service.prox |                    |                        |
 | y.port        |                    |                        |
 +---------------+--------------------+------------------------+
-| precalculated | Web address of the | http://www.ebi.ac.uk/i |
-| .match.lookup | precalculated      | nterpro/match-lookup   |
+| precalculated | Web address of the |`http://www.ebi.ac.uk/in|
+| .match.lookup | precalculated      |terpro/match-lookup`    |
 | .service.url  | match lookup       |                        |
 |               | service. Used if   |                        |
 |               | the pre-calculated |                        |

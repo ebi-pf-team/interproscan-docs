@@ -1,11 +1,11 @@
-Obtaining a copy of InterProScan 5
+Obtaining a copy of InterProScan
 ==================================
 
 Firstly check your system satisfies the :ref:`Installation requirements`.
 To install the InterProScan 5 software you then need to complete the following steps:
 
 - Install the core InterProScan
-- Install/configure the Pre-calculated Match Lookup
+- Configure the Pre-calculated Match Lookup
 
 Obtaining the core InterProScan software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -14,16 +14,16 @@ Obtaining the core InterProScan software
 
     mkdir my_interproscan
     cd my_interproscan
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.47-82.0/interproscan-5.47-82.0-64-bit.tar.gz
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.47-82.0/interproscan-5.47-82.0-64-bit.tar.gz.md5
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.48-83.0/interproscan-5.48-83.0-64-bit.tar.gz
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.48-83.0/interproscan-5.48-83.0-64-bit.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
-    md5sum -c interproscan-5.47-82.0-64-bit.tar.gz.md5
-    # Must return *interproscan-5.47-82.0-64-bit.tar.gz: OK*
+    md5sum -c interproscan-5.48-83.0-64-bit.tar.gz.md5
+    # Must return *interproscan-5.48-83.0-64-bit.tar.gz: OK*
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.47-82.0/interproscan-5.47-82.0-64-bit.tar.gz)
+ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.48-83.0/interproscan-5.48-83.0-64-bit.tar.gz)
 
 As the compressed file is very large, it is **strongly recommended**
 that you use md5sum to check that the file has been downloaded without
@@ -33,7 +33,7 @@ Extract the tar ball:
 
 ::
 
-    tar -pxvzf interproscan-5.47-82.0-*-bit.tar.gz
+    tar -pxvzf interproscan-5.48-83.0-*-bit.tar.gz
 
     # where:
     #     p = preserve the file permissions
@@ -57,20 +57,27 @@ This command will  press and index the hmm models to prepare them into a format 
 
 Panther models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.47-82.0
+Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.48-83.0
 onwards, this is not necessary. Panther data is bundled together with the rest of the application data.
 
 Using the Local Pre-calculated Match Lookup Service (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This service is by default switched on, so you dont need to do any more
+installation or configuration, unless you want to install your own
+Pre-calculated Match Lookup Service. The uncompressed
+Match Lookup Service disk usage comes to more that 1TB, so it is
+recommened just to use the default setup.
 
-The pre-calculated match lookup web service is able to provide matches
-to more than 30 million protein sequences, including all of the sequence
-in UniProtKB. By default InterProScan 5 is configured (in the
+The pre-calculated match lookup web
+service is able to provide matches  to more than 300 million protein
+sequences, including all of the sequence in UniProtKB.
+
+By default InterProScan  is configured (in the
 interproscan.properties file) to use the web service hosted at the EBI.
 Your servers will need to have external access to http://www.ebi.ac.uk
 to use it.
 
-InterProScan 5 uses this service to retrieve pre-calculated matches,
+InterProScan  uses this service to retrieve pre-calculated matches,
 reducing the need for compute on your server and speeding up the
 response time.
 

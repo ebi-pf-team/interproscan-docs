@@ -100,14 +100,15 @@ identifiers.
 Improving performance
 ~~~~~~~~~~~~~~~~~~~~~
 
-InterProScan does not select the best ORF from the getorf output,
-instead it takes the ORFs generated and inputs them for analysis (see
-also the binary.getorf.parser.filtersize property mentioned below). This
+InterProScan does not select one best ORF from the getorf output,
+instead it takes the ORFs generated and select N longest ORFs and inputs
+them for analysis. The number selected depends on the
+binary.getorf.parser.filtersize property mentioned below. The default is 8. This
 means analysing nucleotide sequences can take much longer than analysing
 protein sequences.
 
 To improve InterProScan performance while running large nucleotide input
-files (> 1,000 sequences) you can:
+files (> 10,000 sequences) you can:
 
 1. First use an external program to translate your input. This is the
    best approach. There are various options, one of which is
@@ -119,18 +120,18 @@ files (> 1,000 sequences) you can:
 
 and/or...
 
-2. Chunk the input and then send the chunks to InterProScan For tips on
+2. Chunk the input and then send the chunks to InterProScan. For tips on
    configuring the general InterProScan CPU usage see also `improving
-   performance <https://github.com/ebi-pf-team/interproscan/wiki/ImprovingPerformance>`__.
+   performance <ImprovingPerformance.html>`__.
 
 Selecting the ORFs to analyse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For improved performance, Interproscan will select the longest 12 ORFs
+For improved performance, Interproscan will select the longest 8 ORFs
 predicted for each nucleic acid sequence. This can be changed using the
 new "binary.getorf.parser.filtersize" setting in the
 interproscan.properties file
 
 ::
 
-    binary.getorf.parser.filtersize=12
+    binary.getorf.parser.filtersize=8

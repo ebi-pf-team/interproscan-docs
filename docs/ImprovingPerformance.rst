@@ -1,7 +1,8 @@
 Improving performance
 =====================
 
-If InterProScan is taking a long time to run, consider the following:
+If InterProScan is taking a long time to run, or you just want to improve on the
+run time you are getting, then consider some of the following:
 
 Review your CPU (and memory) command options
 ------------------------------------------
@@ -18,14 +19,26 @@ will require to run successfully.  Here are some observed numbers that may act
 as a guide, but you may have to experiment for your own data. The input sequences
 were taken from `UniProt <https://www.uniprot.org>`__
 
-Run time statistics for selected input
----------------------------------------
-=====   =========== =========== ========= ==========
--cpu    max memory   sequence # seq size    run time
-=====  ============ =========== ========= ==========
- 16     10GB          16,000      6MB       4hr
- 16     14GB         160,000     56MB      12hr
-=====  ============ =========== ========= ==========
+.. list-table:: Run time statistics for selected input
+   :widths: 15 22 23 20 20
+   :header-rows: 1
+
+   * - -cpu
+     - max memory used (GB)
+     - input sequence count
+     - input sequence size (MB)
+     - run time
+   * -   16
+     -    10
+     -  16,000
+     -    6
+     -   4 hrs
+   * -   16
+     -    14
+     - 160, 000
+     -   56
+     -   12hrs
+
 
 Consider chunking large input files
 -----------------------------------
@@ -49,15 +62,12 @@ Review your command line input options
 Do you need all the output InterProScan supplies by default? See `How to
 run InterProScan <HowToRun.html>`__ for more details, for example you may
 consider options such as:
-* Which result data are you interested in, do
-you require all applications (see -appl option)?
-* Do you require the
-residue level annotation? If not, this calculation can be disabled with
-the -dra option.
-* Make use of the default lookup service, or your own
-local lookup service to avoid the need for calculating known results
-again (on by default, `read
-more <LocalLookupService.html#what-is-the-interproscan-5-lookup-service>`__).
+
+* Which result data are you interested in, do you require all applications (see `-appl option <HowToRun.html#appl-applications-application-name-optional>`__ )?
+* Do you require the residue level annotation? If not, this calculation can be disabled with the -dra option.
+* Make use of the default lookup service, or your own local lookup service to avoid the need for calculating known results again (on by default, `read more <LocalLookupService.html#what-is-the-interproscan-5-lookup-service>`__).
+
+
 
 How to configure CPU usage? - Example cases
 -------------------------------------------
