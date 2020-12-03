@@ -3,7 +3,7 @@ Installing and compiling binaries used in Interproscan
 
 The binaries that we distribute with InterProScan should work on most
 linux systems. However, in some cases they may not work on a particular
-system. If you are `trying to run InterProScan <HowToRun>`__ and you get
+system. If you are `trying to run InterProScan <HowToRun.html>`__ and you get
 an error then you may need to compile the binary causing the error on
 your own system in order for it to work.
 
@@ -231,7 +231,7 @@ sfld\_preprocess/sfld\_postprocess (used by SFLD)
 
 Instructions for compiling the "sfld\_preprocess" and
 "sfld\_postprocess" binaries can be found in the src/sfld/1/README file
-in your `extracted InterProScan 5 distribution <HowToDownload>`__
+in your `extracted InterProScan 5 distribution <HowToDownload.html>`__
 (release 5.22-61.0 onwards).
 
 Then either replace the relevant binary with your new one or update the

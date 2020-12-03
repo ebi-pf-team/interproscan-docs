@@ -55,7 +55,7 @@ properties file (**interproscan.properties**).
 |               | a local version of |                        |
 |               | the `lookup        |                        |
 |               | service <LocalLook |                        |
-|               | upService>`__      |                        |
+|               | upService.html>`__ |                        |
 +---------------+--------------------+------------------------+
 | **Other       |                    |                        |
 | properties**  |                    |                        |

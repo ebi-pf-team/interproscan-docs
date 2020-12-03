@@ -202,7 +202,7 @@ pre-calculating matches for sequences already found in UniProtKB. When a
 sequence is submitted to it, InterProScan calculates an MD5 checksum for
 the amino acid sequence and then uses that checksum to check the
 :ref:`What is the InterProScan 5 Lookup Service?` 
-`pre-calculated lookup service <PrecalculatedMatchLookup>`__ to see
+`pre-calculated lookup service <PrecalculatedMatchLookup.html>`__ to see
 whether it has already been encountered. If it has, the pre-calculated
 results are returned to the user; if not, the InterProScan search
 algorithms are run against the sequence.

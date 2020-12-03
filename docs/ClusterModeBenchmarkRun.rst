@@ -14,7 +14,7 @@ Benchmark run setup
 Which version of InterProScan 5 (I5) was used for this run?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`5.7-48 <Interproscan5_7_48_ReleaseNotes>`__
+`5.7-48 <ClusterModeBenchmarkRun.html>`__
 
 How was the set of input sequences assembled for this run?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,7 +62,7 @@ the DEFAULT interproscan.properties file:
     thinmaster.maxnumber.of.embedded.workers=5
 
 The full setting file can be found
-`here <LsfClusterModeSetupForBenchmark>`__.
+`here <LsfClusterModeSetupForBenchmark.html>`__.
 
 On which cluster/farm did we run I5?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
