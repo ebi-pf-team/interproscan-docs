@@ -1,7 +1,7 @@
-Running InterProScan 5
-======================
+Running InterProScan
+====================
 
-Once you have uncompressed your :ref:`Obtaining a copy of InterProScan 5`, you can
+Once you have uncompressed your :ref:`Obtaining a copy of InterProScan`, you can
 run InterProScan directly from the command line.
 
 Run the supplied shell script. If you run this script with no arguments,
@@ -129,8 +129,7 @@ After a short delay, you will see the following **usage instructions**:
     Available analyses:
                           TIGRFAM (XX.X) : TIGRFAMs are protein families based on Hidden Markov Models or HMMs
                              SFLD (X.X) : SFLDs are protein families based on Hidden Markov Models or HMMs
-                            ProDom (XXXX.X) : ProDom is a comprehensive set of protein domain families automatically generated from the UniProt Knowledge Database.
-                            Hamap (XXXXXX.XX) : High-quality Automated and Manual Annotation of Microbial Proteomes
+                            amap (XXXXXX.XX) : High-quality Automated and Manual Annotation of Microbial Proteomes
                             SMART (X.X) : SMART allows the identification and analysis of domain architectures based on Hidden Markov Models or HMMs
                               CDD (X.XX) : Prediction of CDD domains in Proteins
                   ProSiteProfiles (XX.XXX) : PROSITE consists of documentation entries describing protein domains, families and functional sites as well as associated patterns and profiles to identify them
@@ -154,12 +153,12 @@ After a short delay, you will see the following **usage instructions**:
 The latest analysis versions can be obtained by running the InterProScan
 script without any options specified.
 
-InterProScan 5 test run
+InterProScan  test run
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This distribution of InterProScan 5 provides a set of protein test
-sequences, which you can use to check how InterProScan 5 behaves on your
-system. First, if you have not yet run the initilisation script run the following command:
+This distribution of InterProScan provides a set of protein test
+sequences, which you can use to check how InterProScan  behaves on your
+system. First, if you have not yet run the initialisation script run the following command:
 ::
     python3 initial_setup.py
 
@@ -167,20 +166,23 @@ This command will  press and index the hmm models to prepare them into a format 
 
 You can then run the following two test case commands:
 ::
-    ./interproscan.sh -i test_proteins.fasta -f tsv -dp
-    ./interproscan.sh -i test_proteins.fasta -f tsv
+    ./interproscan.sh -i test_all_appl.fasta -f tsv -dp
+    ./interproscan.sh -i test_all_appl.fasta -f tsv
 
 The first test should create an output file with the default file name
 test\_proteins.fasta.tsv, and the second would then create
 test\_proteins.fasta\_1.tsv (since the default filename already exists).
 
+Both the above test commands should be run successfully, before running
+InterProScan on you own input set of sequences.
+
 **What should you get?**
 
-InterProScan 5 should run through properly without any warnings and it
+InterProScan should run through properly without any warnings and it
 will create a TSV output file containing several member database
 matches, including Gene3d, PIRSF etc.
 
-The member database binaries supplied with InterProScan 5 should run on
+The member database binaries supplied with InterProScan should run on
 most Linux systems, however if they don't work on a particular system
 then see the FAQ page,
 :ref:`What should I do if one of the binaries included with InterProScan 5 doesn't work on my system?`.
@@ -233,7 +235,7 @@ multiple **-appl** arguments:
 
 ::
 
-    ./interproscan.sh -appl Pfam-31.0 -appl PRINTS-42.0 -i /path/to/sequences.fasta
+    ./interproscan.sh -appl Pfam-33.1 -appl PRINTS-42.0 -i /path/to/sequences.fasta
 
 or you can use a single **-appl** option with a comma-separated list of
 analyses:
@@ -261,11 +263,13 @@ nucleotide sequences, return GFF3 and XML files with file names based
 upon the name of the fasta file. (**sequences.tsv, sequence.xml,
 sequences.gff3** in this case).
 
--iprlookup,--iprlookup (optional)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-iprlookup,--iprlookup
+^^^^^^^^^^^^^^^^^^^^^^
 
 Option that provides mappings from matched member database signatures to
-the InterPro entries that they are integrated into.
+the InterPro entries that they are integrated into. Starting from release
+of InterProScan-5.40-77.0, you don't have to explicity specify this option
+ as InterProScan will always provide mappings to InterPro entries.
 
 -goterms,--goterms (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -314,7 +318,7 @@ cross links to are: \* KEGG \* MetaCyc \* Reactome
 -t / --seqtype (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-InterProScan 5 supports analysis of both protein and nucleic acid
+InterProScan  supports analysis of both protein and nucleic acid
 sequences (DNA/RNA). Your input sequences are interpreted as protein
 sequences by default. If you like to scan nucleotide sequences you must
 set the -t option:
@@ -326,11 +330,11 @@ set the -t option:
 -T / --tempdir (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Optionally, you can specify the location of the InterProScan 5 temporary
+Optionally, you can specify the location of the InterProScan temporary
 directory. This directory is used as a working directory. The default
-temporary directory will be in the same directory as the InterProScan 5
+temporary directory will be in the same directory as the InterProScan
 script file (interproscan.sh). By default, this directory is completely
-cleaned up after InterProScan 5 finished all analyses successfully.
+cleaned up after InterProScan finished all analyses successfully.
 
 Example usage:
 
@@ -375,10 +379,10 @@ This distribution of InterProScan includes:
 - `SUPERFAMILY <http://supfam.cs.bris.ac.uk/SUPERFAMILY/>`__
 - `TIGRFAMs <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`__
 
-A number of other analyses are available in InterProScan 5. These
+A number of other analyses are available in InterProScan. These
 analyses use licensed code and data provided by third parties. If you
 wish to run these analyses it will be necessary for you to obtain a
-licence from the vendor and configure your local InterProScan 5
+licence from the vendor and configure your local InterProScan
 installation to use these:
 
 - `Phobius <http://phobius.sbc.su.se/>`__ (licensed software)
@@ -411,7 +415,7 @@ the path for the property:
 
 **NOTE**: Leave **/[!UNIQUE]** on the end - this is replaced with a
 timestamped / unique directory for each run. This directory is cleaned
-up and deleted at the end of each run of InterProScan 5.
+up and deleted at the end of each run of InterProScan.
 
 Configuring the Pre-calculated Match Lookup Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -432,7 +436,7 @@ following line, near the bottom of the file:
 
 **``*``\ (To comment the line out, add a # to the start of the line.)**
 
-Running InterProScan 5 on an LSF/SGE Cluster
+Running InterProScan on an LSF/SGE Cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please see :ref:`Cluster Mode`.

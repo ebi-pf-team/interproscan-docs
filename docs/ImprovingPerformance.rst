@@ -14,6 +14,9 @@ is the desired number of cores
 ::
     -cpu N
 
+The value N for -cpu represents the maximum number of threads (embedded workers)
+InterProScan will start and run at a time.
+
 You have to remember, the more cores you specify, the more memory InterProScan
 will require to run successfully.  Here are some observed numbers that may act
 as a guide, but you may have to experiment for your own data. The input sequences
@@ -29,15 +32,24 @@ were taken from `UniProt <https://www.uniprot.org>`__
      - input sequence size (MB)
      - run time
    * -   16
-     -    10
+     -    8
+     -  8,000
+     -    3
+     -   2 hrs
+   * -   16
+     -    12
      -  16,000
      -    6
      -   4 hrs
    * -   16
-     -    14
+     -    15
      - 160, 000
      -   56
      -   12hrs
+
+Let's say you have a super machine with 32 cores available and you want to use
+all or most of the cores. It would be recommended to specify -cpu 30,  as the
+main InterProScan process will always use 1 core.
 
 
 Consider chunking large input files
@@ -68,60 +80,10 @@ consider options such as:
 * Make use of the default lookup service, or your own local lookup service to avoid the need for calculating known results again (on by default, `read more <LocalLookupService.html#what-is-the-interproscan-5-lookup-service>`__).
 
 
+Running InterProScan in CLUSTER mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-How to configure CPU usage? - Example cases
--------------------------------------------
-
-Case 1: Running InterProScan in STANDALONE mode (default)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You want to analysis sequences on a single machine using a certain
-amount of available cores.
-
-Let's say your super machine has 40 cores available and you want to use
-all or most of the cores. How would you do that?
-
-In your InterProScan properties file edit the following properties to:
-
-::
-
-    #Number of embedded workers at start time
-    number.of.embedded.workers=1
-    #Maximum number of embedded workers
-    maxnumber.of.embedded.workers=35
-
-The **number of embedded workers** is how many you will initially start
-with, while the **maxnumber** is the highest number of workers that it
-will run at a time. Each embedded worker will run on one core and could
-start a binary, which will use a maximum of 1 core(see above e.g. HMMER3
-binary). In addition the master process will run on one core. So the
-best way to find out how to set the maxnumber of embedded workers is to
-subtract 1 core for the master process and 1 core for each embedded
-worker from the total number of cores available on your machine.
-
-+-----------------------------+------------------+
-| **Threads**                 | **Cores used**   |
-+=============================+==================+
-| master process              | 1                |
-+-----------------------------+------------------+
-| 35 embedded worker (35x1)   | 35               |
-+-----------------------------+------------------+
-| **total # of cores**        | **36**           |
-+-----------------------------+------------------+
-
-So if there are 40 cores on your machine then you should set this number
-to 35. You could also change the number of CPUs used by the binaries,
-which will have an impact on how many embedded workers you could maximum
-have.
-
-For example, if you set the cpu usage for all binaries to 4, then you
-would be able to set the maximum number of embedded workers 9 (1 master
-core + (9 \* 4) embedded worker cores = 36 cores total). This would
-allow less binary jobs to run simultaneously, but each would run faster
-than if they were using 1 cpu each.
-
-Case 2: Running InterProScan in CLUSTER mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This mode is still experimental, so I would not run in this mode in production.
 
 You want to analysis sequences on a cluster/farm and you would like to
 set the number of reserved cores for each node.

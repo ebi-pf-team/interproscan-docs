@@ -41,4 +41,12 @@ These steps should update the Coils binary.
 
 
 If you encounter errors not listed above,
-`please contact us using EMBL EBI's support form <http://www.ebi.ac.uk/support/interproscan>`__
+`please contact us using EMBL EBI's support form <http://www.ebi.ac.uk/support/interproscan>`__.
+
+please give us enough background information when you contact us, such as:
+
+- the linux distribution and version
+- the InterProScan version
+- the java version
+- command line used
+- the complete error log if possible
