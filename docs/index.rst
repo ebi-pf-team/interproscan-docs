@@ -5,7 +5,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Interproscan5 documentation
+InterProScan documentation
 ===========================
 
 .. toctree::
@@ -20,7 +20,6 @@ Interproscan5 documentation
    InputFormat
    OutputFormats
    ScanNucleicAcidSeqs
-   PrecalculatedMatchLookup
    LocalLookupService
    ClusterMode
    ConvertMode

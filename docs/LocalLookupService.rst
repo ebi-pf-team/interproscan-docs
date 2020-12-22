@@ -3,16 +3,18 @@ The InterProScan Lookup Match Service
 
 The InterProScan match lookup service stores pre-calculated InterProScan
 results for the sequences in the InterPro database. When InterProScan is
-queried with a known sequence it retrieves the result from the lookup
+queried with a known sequence, it retrieves the result from the lookup
 service and reports the result immediately, thereby reducing compute
-requirements and improving performance. For sequences not in the lookup
+requirements and improving performance.
+
+For sequences not in the lookup
 service, InterProScan will calculate these from scratch using the
 various analyses requested by the user.
 
 The default interproscan.properties configuration will use the lookup
-service hosted at EBI (which will be the most recent version
-http://www.ebi.ac.uk/interpro/match-lookup/version, only compatible with
-the most recent InterProScan release):
+service hosted at EBI http://www.ebi.ac.uk/interpro/match-lookup/version.
+This will be will be the most recent lookup service version and only compatible with
+the most recent InterProScan release:
 
 ::
 
@@ -22,32 +24,26 @@ the most recent InterProScan release):
     precalculated.match.lookup.service.proxy.host=
     precalculated.match.lookup.service.proxy.port=3128
 
-The default lookup service will not be used (therefore all calculations
-are performed locally instead) if: \* The version number of the service
-does not match your version of InterProScan. \* The service cannot be
-accessed (e.g. for firewall reasons or it is temporarily unavailable).
-\* You disable the lookup feature.
+The default lookup service will not be used in the following scenarios (therefore all calculations
+are performed locally):
 
-To disable the service you could either: \* Use the "-dp" command line
-option. \* Set the "precalculated.match.lookup.service.url=" property in
-your interproscan.properties configuration file (to an empty value).
+- The version number of the service does not match your version of InterProScan.
+- The service cannot be accessed (e.g., for firewall reasons or it is temporarily unavailable).
+- You disable the lookup feature. **To disable** the service you could either:
+
+    -  Use the "-dp" command lineoption.
+    -  Set the "precalculated.match.lookup.service.url=" property in your interproscan.properties configuration file (to an empty value).
 
 Installing the lookup service locally
 -------------------------------------
 
-You can choose to download and install the InterProScan 5 lookup service
-locally if required. This offers you several advantages: \* Control over
-the version of the lookup service - if you choose to upgrade
-InterProScan 5 less frequently than the release cycle, you can ensure
-that you are using a lookup service that is synchronized with the
-version of InterProScan 5 that you are running. \* A dedicated service.
-You will not be competing with other users for access to the service. \*
-Control over the scale of the service. The service is extremely
-responsive (a few milliseconds per sequence request) and a single web
-server will cope with a high load, however if you expect to put the
-service under a very high load, you may chose to run the service in
-parallel on multiple machines, potentially with load balancing. \* Run
-the service behind your firewall for maximum security.
+You can choose to download and install the InterProScan lookup service
+locally if required. This offers you several advantages:
+
+- provide control over the version of the lookup service - if you choose to upgrade InterProScan  less frequently than the release cycle, you can ensure that you are using a lookup service that is synchronized with the version of InterProScan that you are running.
+- A dedicated service. You will not be competing with other users for access to the service.
+- Control over the scale of the service. The service is extremely responsive (a few milliseconds per sequence request) and a single web server will cope with a high load, however if you expect to put the service under a very high load, you may chose to run the service in parallel on multiple machines, potentially with load balancing.
+- Run the service behind your firewall for maximum security.
 
 System requirements
 -------------------
@@ -80,22 +76,22 @@ has been downloaded correctly.
     cd i5_lookup_service
 
     # Download the tarball and the MD5 file.
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.46-81.0.tar.gz
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.46-81.0.tar.gz.md5
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.48-83.0.tar.gz
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.48-83.0.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
-    md5sum -c lookup_service_5.46-81.0.tar.gz.md5
-    # Must return *lookup_service_5.46-81.0.tar.gz: OK*
+    md5sum -c lookup_service_5.48-83.0.tar.gz.md5
+    # Must return *lookup_service_5.48-83.0.tar.gz: OK*
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.46-81.0.tar.gz)
+ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.48-83.0.tar.gz)
 
 Extract the tarball:
 
 ::
 
-    tar -pxvzf lookup_service_5.46-81.0.tar.gz
+    tar -pxvzf lookup_service_5.48-83.0.tar.gz
 
     # where:
     #     p = preserve the file permissions
@@ -120,8 +116,8 @@ will be used heavily. (Maximum recommended value 3500m).
 
 ::
 
-    cd lookup_service_5.46-81.0
-    java -Xmx2000m -jar server-5.46-81.0-jetty-console.war
+    cd lookup_service_5.48-83.0
+    java -Xmx2000m -jar server-5.48-83.0-jetty-console.war
 
 A new window will open. Set the port number as required and click the
 "Start" button to start the web service running.
@@ -147,11 +143,11 @@ will be used heavily. (Maximum recommended value 3500m).
 
 ::
 
-    cd lookup_service_5.46-81.0
-    java -Xmx2000m -jar server-5.46-81.0-jetty-console.war  [--option=value] [--option=value]
+    cd lookup_service_5.48-83.0
+    java -Xmx2000m -jar server-5.48-83.0-jetty-console.war  [--option=value] [--option=value]
 
     # Example command:
-    # java -Xmx2000m -jar server-5.46-81.0-jetty-console.war --headless --port 8080
+    # java -Xmx2000m -jar server-5.48-83.0-jetty-console.war --headless --port 8080
 
 Where options include:
 
@@ -175,8 +171,8 @@ Example output from a successful startup is given below:
 
 ::
 
-    $ java -Xmx2000m -jar server-5.46-81.0-jetty-console.war
-    10242 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Added web application on path / from war /example/path/to/server-5.46-81.0-jetty-console.war
+    $ java -Xmx2000m -jar server-5.48-83.0-jetty-console.war
+    10242 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Added web application on path / from war /example/path/to/server-5.48-83.0-jetty-console.war
     10243 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Starting web application on port 8080
     10245 [Thread-2] INFO org.eclipse.jetty.server.Server - jetty-8.1.12.v20130726
     10818 [Thread-2] INFO org.eclipse.jetty.plus.webapp.PlusConfiguration - No Transaction manager found - if your webapp requires one, please configure one.

@@ -7,27 +7,27 @@ exist. (see "How to Run" in User documentation). This generic mechanism
 is based upon a REST web service that retrieves data from a
 `BerkeleyDB <http://en.wikipedia.org/wiki/Berkeley_DB>`__ database.
 
-The client to this service is built into the InterProScan 5 software, to
+The client to this service is built into the InterProScan software, to
 allow lookup from the web service. The web service can be installed and
 run "out of the box", using
-`Jetty <http://jetty.codehaus.org/jetty/>`__.
+`Jetty <https://www.eclipse.org/jetty/>`__.
 
 The service support two simple queries:
 
-- "Do these sequences need to be analysed?" This query returns protein sequences that have **not**
-  been analysed previously. Proteins are considered to have been analysed
-  previously even if they have no matches.
+- "Do these sequences need to be analysed?" This query returns protein sequences that have **not**  been analysed previously. Proteins are considered to have been analysed previouslyeven if they have no matches.
+
     - **Input**: Set of protein sequence MD5 checksums
     - **Output**: MD5 checksums of proteins that have **not** been analysed previously
 
 - "What are the matches for these sequences?"
+
     - **Input**: Set of protein sequence MD5 checksums
     - **Output**: Simple "BekerkeleyMatchXML" document containing all matches.
 
-Both of these services are used in I5 - the former to ensure that
+Both of these services are used in InterProScan - the former to ensure that
 protein sequences with no matches are not re-analysed needlessly.
 
-Incorporation into InterProScan 5
+Incorporation into InterProScan
 ---------------------------------
 
 The hook into this service is from the
@@ -49,7 +49,7 @@ install the web service locally.
 The
 `BerkeleyPrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/BerkeleyPrecalculatedProteinLookup.java>`__
 then uses the client to query for pre-calculated matches / proteins that
-have been previously analysed. Complete InterProScan 5 Protein objects
+have been previously analysed. Complete InterProScan  Protein objects
 with a set of Matches are returned from the
 `BerkeleyPrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/BerkeleyPrecalculatedProteinLookup.java>`__
 to the

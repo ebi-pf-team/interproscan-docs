@@ -51,6 +51,9 @@ Let's say you have a super machine with 32 cores available and you want to use
 all or most of the cores. It would be recommended to specify -cpu 30,  as the
 main InterProScan process will always use 1 core.
 
+Each database analysis may also have options to specify how many threads to assign to it, for
+example,  HMMER3 based analyses such as Gene3D have this option. But we dont recommend
+changing the default cpu values for each analysis.
 
 Consider chunking large input files
 -----------------------------------
