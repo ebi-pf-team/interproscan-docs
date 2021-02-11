@@ -110,14 +110,14 @@ want to test the lookup service, a simple user interface is included to
 allow you to set the port number to run the service.
 
 Note that in the example below, the memory available to Java has been
-set to 2000MB (using the ``-Xmx2000m`` switch). This is recommended as a
+set to 8000MB (using the ``-Xmx8000m`` switch). This is recommended as a
 good starting value - you may choose to set this higher if the service
-will be used heavily. (Maximum recommended value 3500m).
+will be used heavily. (We have tested it with -Xmx36000m without problems).
 
 ::
 
     cd lookup_service_5.48-83.0
-    java -Xmx2000m -jar server-5.48-83.0-jetty-console.war
+    java -Xmx8000m -jar server-5.48-83.0-jetty-console.war
 
 A new window will open. Set the port number as required and click the
 "Start" button to start the web service running.
@@ -137,17 +137,17 @@ number and other options can be passed in on the command line as
 follows:
 
 Note that in the example below, the memory available to Java has been
-set to 2000MB (using the ``-Xmx2000m`` switch). This is recommended as a
+set to 8000MB (using the ``-Xmx8000m`` switch). This is recommended as a
 good starting value - you may choose to set this higher if the service
-will be used heavily. (Maximum recommended value 3500m).
+will be used heavily. (We have tested it with -Xmx36000m).
 
 ::
 
     cd lookup_service_5.48-83.0
-    java -Xmx2000m -jar server-5.48-83.0-jetty-console.war  [--option=value] [--option=value]
+    java -Xmx8000m -jar server-5.48-83.0-jetty-console.war  [--option=value] [--option=value]
 
     # Example command:
-    # java -Xmx2000m -jar server-5.48-83.0-jetty-console.war --headless --port 8080
+    # java -Xmx8000m -jar server-5.48-83.0-jetty-console.war --headless --port 8080
 
 Where options include:
 
@@ -171,7 +171,7 @@ Example output from a successful startup is given below:
 
 ::
 
-    $ java -Xmx2000m -jar server-5.48-83.0-jetty-console.war
+    $ java -Xmx8000m -jar server-5.48-83.0-jetty-console.war
     10242 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Added web application on path / from war /example/path/to/server-5.48-83.0-jetty-console.war
     10243 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Starting web application on port 8080
     10245 [Thread-2] INFO org.eclipse.jetty.server.Server - jetty-8.1.12.v20130726
