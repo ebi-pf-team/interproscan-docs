@@ -1,11 +1,11 @@
-Release notes: InterProScan 5.48-83.0
+Release notes: InterProScan 5.50-84.0
 =====================================
 
-**3rd December 2020**. We are pleased to announce the release of
-InterProScan 5 (**version 5.48-83.0**).
+*11th February 2021**. We are pleased to announce the release of
+InterProScan 5 (**version 5.50-84.0**).
 
 This release of InterProScan 5 includes a data update (using InterPro
-version **83.0** data).
+version **84.0** data).
 
 What’s new
 ~~~~~~~~~~
@@ -15,11 +15,13 @@ Data update
 
 -  Synchronized with `InterPro version 
    83.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
+-  The addition of 205 InterPro entries
+-  Integration of 252 new methods from the Pfam (1), PANTHER (209), CDD (42) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
--
-- InterProScan requires Java 11
+- InterProScan requires at least Java 11
+- Fixed the 'Could not open table ????' error seen on some file systems
 
 Other updates
 ^^^^^^^^^^^^^^^^
@@ -28,7 +30,7 @@ Other updates
 Known issues
 ^^^^^^^^^^^^
 
-Documented on the following Wiki page: :ref:`Known issues`.
+Documented on the following  page: :ref:`Known issues`.
 
 
 Reporting issues
