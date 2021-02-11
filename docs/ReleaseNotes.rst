@@ -1,8 +1,8 @@
-Release notes: InterProScan 5.49-83.0
+Release notes: InterProScan 5.48-83.0
 =====================================
 
 **3rd December 2020**. We are pleased to announce the release of
-InterProScan 5 (**version 5.49-83.0**).
+InterProScan 5 (**version 5.48-83.0**).
 
 This release of InterProScan 5 includes a data update (using InterPro
 version **83.0** data).
