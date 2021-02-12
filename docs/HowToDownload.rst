@@ -14,16 +14,16 @@ Obtaining the core InterProScan software
 
     mkdir my_interproscan
     cd my_interproscan
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.48-83.0/interproscan-5.48-83.0-64-bit.tar.gz
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.48-83.0/interproscan-5.48-83.0-64-bit.tar.gz.md5
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
-    md5sum -c interproscan-5.48-83.0-64-bit.tar.gz.md5
-    # Must return *interproscan-5.48-83.0-64-bit.tar.gz: OK*
+    md5sum -c interproscan-5.50-84.0-64-bit.tar.gz.md5
+    # Must return *interproscan-5.50-84.0-64-bit.tar.gz: OK*
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.48-83.0/interproscan-5.48-83.0-64-bit.tar.gz)
+ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz)
 
 As the compressed file is very large, it is **strongly recommended**
 that you use md5sum to check that the file has been downloaded without
@@ -33,7 +33,7 @@ Extract the tar ball:
 
 ::
 
-    tar -pxvzf interproscan-5.48-83.0-*-bit.tar.gz
+    tar -pxvzf interproscan-5.50-84.0-*-bit.tar.gz
 
     # where:
     #     p = preserve the file permissions
@@ -57,7 +57,7 @@ This command will  press and index the hmm models to prepare them into a format 
 
 Panther models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.48-83.0
+Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.50-84.0
 onwards, this is not necessary. Panther data is bundled together with the rest of the application data.
 
 Using the Local Pre-calculated Match Lookup Service (optional)
@@ -69,7 +69,7 @@ Match Lookup Service disk usage comes to more that 1TB, so it is
 recommened just to use the default setup.
 
 The pre-calculated match lookup web
-service is able to provide matches  to more than 300 million protein
+service is able to provide matches  to more than 400 million protein
 sequences, including all of the sequence in UniProtKB.
 
 By default InterProScan  is configured (in the

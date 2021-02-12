@@ -14,7 +14,7 @@ Data update
 ^^^^^^^^^^^
 
 -  Synchronized with `InterPro version 
-   83.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
+   84.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
 -  The addition of 205 InterPro entries
 -  Integration of 252 new methods from the Pfam (1), PANTHER (209), CDD (42) databases.
 
