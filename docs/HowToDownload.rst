@@ -25,7 +25,7 @@ Obtaining the core InterProScan software
 (Direct link:
 ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz)
 
-As the compressed file is very large, it is **strongly recommended**
+As the compressed file is large, it is **strongly recommended**
 that you use md5sum to check that the file has been downloaded without
 errors, as described above.
 
