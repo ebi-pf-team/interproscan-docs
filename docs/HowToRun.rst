@@ -242,7 +242,7 @@ analyses:
 
 ::
 
-    ./interproscan.sh -appl CDD,COILS,Gene3D,HAMAP,MobiDBLite,PANTHER,Pfam,PIRSF,PRINTS,ProDom,PROSITEPATTERNS,PROSITEPROFILES,SFLD,SMART,SUPERFAMILY,TIGRFAM -i /path/to/sequences.fasta
+    ./interproscan.sh -appl CDD,COILS,Gene3D,HAMAP,MobiDBLite,PANTHER,Pfam,PIRSF,PRINTS,PROSITEPATTERNS,PROSITEPROFILES,SFLD,SMART,SUPERFAMILY,TIGRFAM -i /path/to/sequences.fasta
 
 A list of all available analyses is in the section "`Included
 Analyses <#included-analyses>`__"
@@ -369,7 +369,6 @@ This distribution of InterProScan includes:
 - `Pfam <http://pfam.sanger.ac.uk/>`__
 - `PIRSF <http://pir.georgetown.edu/pirwww/dbinfo/pirsf.shtml>`__
 - `PRINTS <http://www.bioinf.manchester.ac.uk/dbbrowser/PRINTS/index.php>`__
-- `ProDom <http://prodom.prabi.fr/prodom/current/html/home.php>`__
 - `PROSITE <http://prosite.expasy.org/>`__ (Profiles and Patterns)
 - `SFLD <http://sfld.rbvi.ucsf.edu/django/>`__
 - `SMART <http://smart.embl-heidelberg.de/>`__ (unlicensed components only
