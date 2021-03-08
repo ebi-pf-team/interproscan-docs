@@ -5,8 +5,8 @@ In this version of InterProScan, you can retrieve output in any of the
 following five formats:
 
 -  `TSV <OutputFormats.html#tab-separated-values-format-tsv>`__: A simple tab-delimited file format
--  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The "IMPACT" XML format (`XSD available
-   here <http://www.ebi.ac.uk/interpro/resources/schemas/interproscan5>`__).
+-  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The InterProScan XML format (`XSD available
+   here <OutputFormats.html#the-xml-schema-definition>`__).
 -  `JSON <OutputFormats.html#javascript-object-notation-json>`__: Full output of results in JSON format
 -  `GFF3 <OutputFormats.html#generic-feature-format-version-3-gff3>`__: The `GFF 3.0 <http://gmod.org/wiki/GFF#GFF3_Format>`__ format
 -  `HTML <OutputFormats.html#svg-and-html>`__ (deprecated): An HTML representation of the protein matches
@@ -155,8 +155,11 @@ Example output
         </protein>
     </protein-matches>
 
+The XML Schema Definition
+-------------------------
 The XML Schema Definition (XSD) is available
-`here <ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/>`__.
+`here <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/>`__.
+
 
 Listed below are the XSD files for the InterProScan 5 XML output format (with the InterProScan release versions they apply to noted in brackets afterwards).
 
