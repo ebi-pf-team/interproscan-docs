@@ -23,13 +23,13 @@ e.g.:
 
 ::
 
-    ./interproscan.sh -f XML -f HTML -i /path/to/sequences.fasta -b /path/to/output_file
+    ./interproscan.sh -f XML -f JSON -i /path/to/sequences.fasta -b /path/to/output_file
 
 or
 
 ::
 
-    ./interproscan.sh -f XML, HTML -i /path/to/sequences.fasta -b /path/to/output_file
+    ./interproscan.sh -f XML, JSON -i /path/to/sequences.fasta -b /path/to/output_file
 
 These two equivalent commands will output the results in XML and HTML
 format.
