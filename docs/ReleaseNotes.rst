@@ -1,4 +1,4 @@
-Release notes: InterProScan 5.50-84.0
+Release notes: InterProScan 5.51-85.0
 =====================================
 
 *13th April 2021**. We are pleased to announce the release of
