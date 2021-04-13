@@ -38,12 +38,12 @@ The missing library is libgomp1. On Ubuntu you might install it as follows:
 ::
   sudo apt-get install -y libgomp1
 
-On other systems, you have simmilar installation commands
+On other systems, you have similar installation commands
 
 3. Coils errors
 ~~~~~~~~~~~~~~~~
 If you see an error concerning **Coils**, for example the error below, it means the binary
-we provide is not compartible with your system.
+we provide is not compatible with your system.
 ::
 
   Cannot run program ".../bin/ncoils/2.2.1/ncoils": error=2, No such file or directory

@@ -62,11 +62,11 @@ onwards, this is not necessary. Panther data is bundled together with the rest o
 
 Using the Local Pre-calculated Match Lookup Service (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This service is by default switched on, so you dont need to do any more
+This service is by default switched on, so you don't need to do any more
 installation or configuration, unless you want to install your own
 Pre-calculated Match Lookup Service. The uncompressed
 Match Lookup Service disk usage comes to more that 1TB, so it is
-recommened just to use the default setup.
+recommended just to use the default setup.
 
 The pre-calculated match lookup web
 service is able to provide matches  to more than 400 million protein

@@ -193,7 +193,7 @@ the lookup service to use a different port using the --port option.
 
 Once successfully started the service will wait, ready to receive any
 requests that are passed it's way. It will continue listening for
-requests until the service is stopped. To confirm all is runnning
+requests until the service is stopped. To confirm all is running
 correctly you can now test the service.
 
 Testing the service
