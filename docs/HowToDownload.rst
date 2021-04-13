@@ -49,7 +49,7 @@ components for which you are obliged to acquire your own license.
 
 Index hmm models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Before you run interproscan for the first time, you should run the commanad:
+Before you run interproscan for the first time, you should run the command:
 ::
     python3 initial_setup.py
 
