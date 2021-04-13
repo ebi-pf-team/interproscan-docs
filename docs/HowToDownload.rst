@@ -14,16 +14,16 @@ Obtaining the core InterProScan software
 
     mkdir my_interproscan
     cd my_interproscan
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz.md5
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.51-85.0/interproscan-5.51-85.0-64-bit.tar.gz
+    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.51-85.0/interproscan-5.51-85.0-64-bit.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
-    md5sum -c interproscan-5.50-84.0-64-bit.tar.gz.md5
-    # Must return *interproscan-5.50-84.0-64-bit.tar.gz: OK*
+    md5sum -c interproscan-5.51-85.0-64-bit.tar.gz.md5
+    # Must return *interproscan-5.51-85.0-64-bit.tar.gz: OK*
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.50-84.0/interproscan-5.50-84.0-64-bit.tar.gz)
+ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.51-85.0/interproscan-5.51-85.0-64-bit.tar.gz)
 
 As the compressed file is large, it is **strongly recommended**
 that you use md5sum to check that the file has been downloaded without
@@ -33,7 +33,7 @@ Extract the tar ball:
 
 ::
 
-    tar -pxvzf interproscan-5.50-84.0-*-bit.tar.gz
+    tar -pxvzf interproscan-5.51-85.0-*-bit.tar.gz
 
     # where:
     #     p = preserve the file permissions
@@ -57,7 +57,7 @@ This command will  press and index the hmm models to prepare them into a format 
 
 Panther models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.50-84.0
+Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.51-85.0
 onwards, this is not necessary. Panther data is bundled together with the rest of the application data.
 
 Using the Local Pre-calculated Match Lookup Service (optional)

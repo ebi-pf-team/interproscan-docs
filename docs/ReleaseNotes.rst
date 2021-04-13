@@ -1,11 +1,11 @@
 Release notes: InterProScan 5.50-84.0
 =====================================
 
-*11th February 2021**. We are pleased to announce the release of
-InterProScan 5 (**version 5.50-84.0**).
+*13th April 2021**. We are pleased to announce the release of
+InterProScan 5 (**version 5.51-85.0**).
 
 This release of InterProScan 5 includes a data update (using InterPro
-version **84.0** data).
+version **85.0** data).
 
 What’s new
 ~~~~~~~~~~
@@ -14,9 +14,10 @@ Data update
 ^^^^^^^^^^^
 
 -  Synchronized with `InterPro version 
-   84.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
--  The addition of 205 InterPro entries
--  Integration of 252 new methods from the Pfam (1), PANTHER (209), CDD (42) databases.
+   85.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
+-  The addition of 157 InterPro entries.
+-  An update to CATH-Gene3D [4.3.0].
+-  Integration of 333 new methods from the Pfam (3), SUPERFAMILY (11), CATH-Gene3D (168), PANTHER (88), CDD (62), SFLD (1) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
