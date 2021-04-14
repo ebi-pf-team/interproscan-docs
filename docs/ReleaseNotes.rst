@@ -22,7 +22,7 @@ Data update
 Software updates
 ^^^^^^^^^^^^^^^^
 - InterProScan requires at least Java 11
-- Fixed the 'Could not open table ????' error seen on some file systems
+- Fixed the Error after more than '90% completed' seen on some file systems
 
 Other updates
 ^^^^^^^^^^^^^^^^
