@@ -165,7 +165,7 @@ Listed below are the XSD files for the InterProScan 5 XML output format (with th
 
 - `interproscan-model-4.5.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.5.xsd>`__ (as produced by InterProScan 5 from version 5.51-85.0 onwards)
 
-- `interproscan-model-3.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.0.xsd>`__ (as produced by InterProScan 5 from version 5.31-70.0 onwards)
+- `interproscan-model-3.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.0.xsd>`__ (as produced by InterProScan 5 from version 5.31-70.0 to 5.50-84.0)
 - `interproscan-model-2.2.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.2.xsd>`__ (as produced by InterProScan 5 from version 5.28-67.0 to 5.30-69.0)
 - `interproscan-model-2.1.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.1.xsd>`__ (as produced by InterProScan 5 from version 5.26-65.0 to 5.27-66.0)
 - `interproscan-model-2.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.0.xsd>`__ (as produced by InterProScan 5 from version 5.21-60.0 to 5.25-64.0)
