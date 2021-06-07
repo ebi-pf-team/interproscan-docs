@@ -1,11 +1,11 @@
-Release notes: InterProScan 5.51-85.0
+Release notes: InterProScan 5.52-86.0
 =====================================
 
-*13th April 2021**. We are pleased to announce the release of
-InterProScan 5 (**version 5.51-85.0**).
+*7th June 2021**. We are pleased to announce the release of
+InterProScan 5 (**version 5.52-86.0**).
 
 This release of InterProScan 5 includes a data update (using InterPro
-version **85.0** data).
+version **86.0** data).
 
 What’s new
 ~~~~~~~~~~
@@ -14,15 +14,14 @@ Data update
 ^^^^^^^^^^^
 
 -  Synchronized with `InterPro version 
-   85.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
--  The addition of 157 InterPro entries.
--  An update to CATH-Gene3D [4.3.0].
--  Integration of 333 new methods from the Pfam (3), SUPERFAMILY (11), CATH-Gene3D (168), PANTHER (88), CDD (62), SFLD (1) databases.
+   86.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
+-  The addition of 299 InterPro entries.
+-  An update to PROSITE patterns (2021_01), PROSITE profiles (2021_01).
+-  Integration of 454 new methods from the CATH-Gene3D (80), CDD (27), PANTHER (295), PROSITE profiles (39), Pfam (7), SFLD (1), SMART (2), SUPERFAMILY (3) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
 - InterProScan requires at least Java 11
-- Fixed the Error after more than '90% completed' seen on some file systems
 
 Other updates
 ^^^^^^^^^^^^^^^^
