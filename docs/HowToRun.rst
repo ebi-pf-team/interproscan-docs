@@ -170,8 +170,8 @@ You can then run the following two test case commands:
     ./interproscan.sh -i test_all_appl.fasta -f tsv
 
 The first test should create an output file with the default file name
-test\_proteins.fasta.tsv, and the second would then create
-test\_proteins.fasta\_1.tsv (since the default filename already exists).
+test\_all\_appl.fasta.tsv, and the second would then create
+test\_all\_appl.fasta\_1.tsv (since the default filename already exists).
 
 Both the above test commands should be run successfully, before running
 InterProScan on you own input set of sequences.
