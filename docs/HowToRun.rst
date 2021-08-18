@@ -312,8 +312,11 @@ path / name.
 
 Option that provides mappings from matches to pathway information, which
 is based on the matched manually curated InterPro entries. (IMPLIES
--iprlookup option). The different pathways databases that I5 provides
-cross links to are: \* KEGG \* MetaCyc \* Reactome
+-iprlookup option). The different pathways databases that InterProScan provides
+cross links to are: 
+
+* MetaCyc 
+* Reactome
 
 -t / --seqtype (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
