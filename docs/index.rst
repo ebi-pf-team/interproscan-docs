@@ -32,6 +32,7 @@ InterProScan documentation
    ConfigurationOptions
    ClusterModeBenchmarkRun
    JSONOutputFormatHistory
+   Citing
    Contact
 
 Indices and tables
