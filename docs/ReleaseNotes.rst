@@ -1,8 +1,7 @@
 Release notes: InterProScan 5.54-87.0
 =====================================
 
-*29th November 2021**. We are pleased to announce the release of
-InterProScan 5 (**version 5.54-87.0**).
+*29th December 2021**. We are pleased to announce the release of InterProScan 5 (**version 5.54-87.0**).
 
 What’s new
 ~~~~~~~~~~
