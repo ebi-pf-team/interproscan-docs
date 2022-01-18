@@ -60,8 +60,8 @@ requirements:
 Obtaining the lookup service
 ----------------------------
 
-Version 5.53-87.0 of the lookup service is only compatible with version
-5.53-87.0 of InterProScan. Instructions below are for installing the
+Version 5.54-87.0 of the lookup service is only compatible with version
+5.54-87.0 of InterProScan. Instructions below are for installing the
 latest version, you can download previous versions of the lookup service
 from ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/.
 
@@ -76,22 +76,22 @@ has been downloaded correctly.
     cd i5_lookup_service
 
     # Download the tarball and the MD5 file.
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.53-87.0.tar.gz
-    wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.53-87.0.tar.gz.md5
+    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.54-87.0.tar.gz
+    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.54-87.0.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
-    md5sum -c lookup_service_5.53-87.0.tar.gz.md5
-    # Must return *lookup_service_5.53-87.0.tar.gz: OK*
+    md5sum -c lookup_service_5.54-87.0.tar.gz.md5
+    # Must return *lookup_service_5.54-87.0.tar.gz: OK*
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.53-87.0.tar.gz)
+https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.54-87.0.tar.gz)
 
 Extract the tarball:
 
 ::
 
-    tar -pxvzf lookup_service_5.53-87.0.tar.gz
+    tar -pxvzf lookup_service_5.54-87.0.tar.gz
 
     # where:
     #     p = preserve the file permissions
@@ -116,8 +116,8 @@ will be used heavily. (We have tested it with -Xmx36000m without problems).
 
 ::
 
-    cd lookup_service_5.53-87.0
-    java -Xmx8000m -jar server-5.53-87.0-jetty-console.war
+    cd lookup_service_5.54-87.0
+    java -Xmx8000m -jar server-5.54-87.0-jetty-console.war
 
 A new window will open. Set the port number as required and click the
 "Start" button to start the web service running.
@@ -143,11 +143,11 @@ will be used heavily. (We have tested it with -Xmx36000m).
 
 ::
 
-    cd lookup_service_5.53-87.0
-    java -Xmx8000m -jar server-5.53-87.0-jetty-console.war  [--option=value] [--option=value]
+    cd lookup_service_5.54-87.0
+    java -Xmx8000m -jar server-5.54-87.0-jetty-console.war  [--option=value] [--option=value]
 
     # Example command:
-    # java -Xmx8000m -jar server-5.53-87.0-jetty-console.war --headless --port 8080
+    # java -Xmx8000m -jar server-5.54-87.0-jetty-console.war --headless --port 8080
 
 Where options include:
 
@@ -171,8 +171,8 @@ Example output from a successful startup is given below:
 
 ::
 
-    $ java -Xmx8000m -jar server-5.53-87.0-jetty-console.war
-    10242 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Added web application on path / from war /example/path/to/server-5.53-87.0-jetty-console.war
+    $ java -Xmx8000m -jar server-5.54-87.0-jetty-console.war
+    10242 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Added web application on path / from war /example/path/to/server-5.54-87.0-jetty-console.war
     10243 [Thread-2] INFO org.simplericity.jettyconsole.DefaultJettyManager - Starting web application on port 8080
     10245 [Thread-2] INFO org.eclipse.jetty.server.Server - jetty-8.1.12.v20130726
     10818 [Thread-2] INFO org.eclipse.jetty.plus.webapp.PlusConfiguration - No Transaction manager found - if your webapp requires one, please configure one.
@@ -203,7 +203,7 @@ To test the service:
 
 ::
 
-    # Assuming the lookup service has been started on the same machine and you are using 
+    # Assuming the lookup service has been started on the same machine and you are using
     # the default port of 8080 then...
 
     # in a web browser:
@@ -214,7 +214,7 @@ To test the service:
     curl http://localhost:8080/version
     curl http://localhost:8080/matches?md5=2E38C8D754C63117A4FA5F5E44F2194E
 
-    # To access your lookup service from another machine replace "localhost" with 
+    # To access your lookup service from another machine replace "localhost" with
     # the fully qualified name of the machine where the lookup service is running.
     # The Linux command "uname -n" can be used to find the machine name.
     # Alternatively you could use the machines IP address instead of the hostname.

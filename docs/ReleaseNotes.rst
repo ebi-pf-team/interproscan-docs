@@ -1,31 +1,15 @@
-Release notes: InterProScan 5.53-87.0
+Release notes: InterProScan 5.54-87.0
 =====================================
 
-*18th November 2021**. We are pleased to announce the release of
-InterProScan 5 (**version 5.53-87.0**).
-
-This release of InterProScan 5 includes a data update (using InterPro
-version **87.0** data).
+*29th November 2021**. We are pleased to announce the release of
+InterProScan 5 (**version 5.54-87.0**).
 
 What’s new
 ~~~~~~~~~~
 
-Data update
-^^^^^^^^^^^
-
--  Synchronized with `InterPro version
-   87.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
--  The addition of 1155 InterPro entries.
--  An update to Pfam (34.0).
--  Integration of 1256 new methods from the CATH-Gene3D (11), CDD (84), PANTHER (232), Pfam (918), SUPERFAMILY (11) databases.
-
 Software updates
 ^^^^^^^^^^^^^^^^
-- InterProScan requires at least Java 11
-
-Other updates
-^^^^^^^^^^^^^^^^
--  `Deprecated HTML and SVG output formats <OutputFormats.html#svg-and-html>`__.
+- InterProScan depends on Log4j 2.17.1, which includes fixes for the `Log4Shell vulnerability <https://en.wikipedia.org/wiki/Log4Shell>`__.
 
 Known issues
 ^^^^^^^^^^^^
