@@ -1,20 +1,28 @@
-Release notes: InterProScan 5.54-87.0
+Release notes: InterProScan 5.55-88.0
 =====================================
 
-Released on 29 December 2021
+Released on 10 March 2022
 
 What’s new
 ~~~~~~~~~~
 
+Data update
+^^^^^^^^^^^
+
+-  Synchronized with `InterPro version 88.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
+-  The addition of 39 InterPro entries.
+-  Integration of 45 new methods from the CATH-Gene3D (14), CDD (7), PANTHER (13), PRINTS (1), Pfam (2), SMART (1), SUPERFAMILY (7) databases.
+
+
 Software updates
 ^^^^^^^^^^^^^^^^
 
-InterProScan depends on Log4j 2.17.1, which includes fixes for the `Log4Shell vulnerability <https://en.wikipedia.org/wiki/Log4Shell>`__.
+-  PIRSR has been updated to fix a bug that occurred on rules containing 'Nter' and/or 'Cter' for the start/end locations.
 
 Known issues
 ^^^^^^^^^^^^
 
-Documented on the following  page: :ref:`Known issues`.
+-  Documented on the following  page: :ref:`Known issues`.
 
 Reporting issues
 ^^^^^^^^^^^^^^^^

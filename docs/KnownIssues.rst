@@ -40,11 +40,10 @@ In this case, you may need to compile the **Coils** binary and it is straight fo
 
 These steps should update the Coils binary.
 
-3. PIRSR errors
+3. HMMER errors
 ~~~~~~~~~~~~~~~~
 
-Some PIRSR rules contain 'Nter' and/or 'Cter' for the start/end locations and InterProScan fails for sequences that hit those site rules.
-If residue annotation is not required it can be disabled by using the "-dra" command line option in InterProScan.
+The HMM libraries provided by some member databases (SUPERFAMILY and SFLD) are not compatible with newer HMMER versions and an error will occur when those libraries are being indexed by hmmpress version greater than '3.1b1'. To avoid this issue we recommend using the HMMER binaries bundled with interproscan.
 
 
 If you encounter errors not listed above,
