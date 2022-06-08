@@ -1,4 +1,4 @@
-Release notes: InterProScan 5.56-88.0
+Release notes: InterProScan 5.56-89.0
 =====================================
 
 Released on 26 May 2022
