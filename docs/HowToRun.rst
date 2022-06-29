@@ -129,7 +129,7 @@ After a short delay, you will see the following **usage instructions**:
     Available analyses:
                           TIGRFAM (XX.X) : TIGRFAMs are protein families based on Hidden Markov Models or HMMs
                              SFLD (X.X) : SFLDs are protein families based on Hidden Markov Models or HMMs
-                            amap (XXXXXX.XX) : High-quality Automated and Manual Annotation of Microbial Proteomes
+                            Hamap (XXXXXX.XX) : High-quality Automated and Manual Annotation of Microbial Proteomes
                             SMART (X.X) : SMART allows the identification and analysis of domain architectures based on Hidden Markov Models or HMMs
                               CDD (X.XX) : Prediction of CDD domains in Proteins
                   ProSiteProfiles (XX.XXX) : PROSITE consists of documentation entries describing protein domains, families and functional sites as well as associated patterns and profiles to identify them
