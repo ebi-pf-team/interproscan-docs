@@ -12,7 +12,7 @@ is the richest data type and is therefore the only format which allows
 us to produce any other format of interest.
 
 For more information on InterProScan formats available see `output
-formats <https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats>`__.
+formats <OutputFormats.html>__.
 
 To enable InterProScan 5 to run in CONVERT mode you need to set the mode
 option to 'CONVERT'.
