@@ -15,140 +15,103 @@ After a short delay, you will see the following **usage instructions**:
 
 ::
 
-    Welcome to InterProScan-5.XX-XX.X
-    usage: java -XX:+UseParallelGC -XX:+AggressiveOpts
-                -XX:+UseFastAccessorMethods -Xms128M -Xmx2048M -jar
-                interproscan-5.jar
+    Welcome to InterProScan-5.57-90.0
+    Running InterProScan v5 in STANDALONE mode... on Linux
+    usage: java -XX:+UseParallelGC -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -Xms128M
+                -Xmx2048M -jar interproscan-5.jar
 
     Please give us your feedback by sending an email to
 
     interhelp@ebi.ac.uk
 
-     -appl,--applications <ANALYSES>            Optional, comma separated list
-                                                of analyses.  If this option
-                                                is not set, ALL analyses will
-                                                be run.
-     -b,--output-file-base <OUTPUT-FILE-BASE>   Optional, base output filename
-                                                (relative or absolute path).
-                                                Note that this option, the
-                                                --output-dir (-d) option and
-                                                the --outfile (-o) option are
-                                                mutually exclusive.  The
-                                                appropriate file extension for
-                                                the output format(s) will be
-                                                appended automatically. By
-                                                default the input file
-                                                path/name will be used.
-     -d,--output-dir <OUTPUT-DIR>               Optional, output directory.
-                                                Note that this option, the
-                                                --outfile (-o) option and the
-                                                --output-file-base (-b) option
-                                                are mutually exclusive. The
-                                                output filename(s) are the
-                                                same as the input filename,
-                                                with the appropriate file
-                                                extension(s) for the output
-                                                format(s) appended
-                                                automatically .
-     -dp,--disable-precalc                      Optional.  Disables use of the
-                                                precalculated match lookup
-                                                service.  All match
-                                                calculations will be run
-                                                locally.
-     -dra,--disable-residue-annot               Optional, excludes sites from
-                                                the XML, JSON output
-     -f,--formats <OUTPUT-FORMATS>              Optional, case-insensitive,
-                                                comma separated list of output
-                                                formats. Supported formats are
-                                                TSV, XML, JSON, GFF3, HTML and
-                                                SVG. Default for protein
-                                                sequences are TSV, XML and
-                                                GFF3, or for nucleotide
-                                                sequences GFF3 and XML.
-     -goterms,--goterms                         Optional, switch on lookup of
-                                                corresponding Gene Ontology
-                                                annotation (IMPLIES -iprlookup
-                                                option)
-     -help,--help                               Optional, display help
-                                                information
-     -i,--input <INPUT-FILE-PATH>               Optional, path to fasta file
-                                                that should be loaded on
-                                                Master startup. Alternatively,
-                                                in CONVERT mode, the
-                                                InterProScan 5 XML file to
-                                                convert.
-     -iprlookup,--iprlookup                     Also include lookup of
-                                                corresponding InterPro
-                                                annotation in the TSV and GFF3
-                                                output formats.
-     -ms,--minsize <MINIMUM-SIZE>               Optional, minimum nucleotide
-                                                size of ORF to report. Will
-                                                only be considered if n is
-                                                specified as a sequence type.
-                                                Please be aware of the fact
-                                                that if you specify a too
-                                                short value it might be that
-                                                the analysis takes a very long
-                                                time!
-     -o,--outfile <EXPLICIT_OUTPUT_FILENAME>    Optional explicit output file
-                                                name (relative or absolute
-                                                path).  Note that this option,
-                                                the --output-dir (-d) option
-                                                and the --output-file-base
-                                                (-b) option are mutually
-                                                exclusive. If this option is
-                                                given, you MUST specify a
-                                                single output format using the
-                                                -f option.  The output file
-                                                name will not be modified.
-                                                Note that specifying an output
-                                                file name using this option
-                                                OVERWRITES ANY EXISTING FILE.
-     -pa,--pathways                             Optional, switch on lookup of
-                                                corresponding Pathway
-                                                annotation (IMPLIES -iprlookup
-                                                option)
-     -t,--seqtype <SEQUENCE-TYPE>               Optional, the type of the
-                                                input sequences (dna/rna (n)
-                                                or protein (p)).  The default
-                                                sequence type is protein.
-     -T,--tempdir <TEMP-DIR>                    Optional, specify temporary
-                                                file directory (relative or
-                                                absolute path). The default
-                                                location is temp/.
-     -version,--version                         Optional, display version
-                                                number
+     -appl,--applications <ANALYSES>                           Optional, comma separated list of analyses.  If this option
+                                                               is not set, ALL analyses will be run.
+     -b,--output-file-base <OUTPUT-FILE-BASE>                  Optional, base output filename (relative or absolute path).
+                                                               Note that this option, the --output-dir (-d) option and the
+                                                               --outfile (-o) option are mutually exclusive.  The
+                                                               appropriate file extension for the output format(s) will be
+                                                               appended automatically. By default the input file path/name
+                                                               will be used.
+     -cpu,--cpu <CPU>                                          Optional, number of cores for inteproscan.
+     -d,--output-dir <OUTPUT-DIR>                              Optional, output directory.  Note that this option, the
+                                                               --outfile (-o) option and the --output-file-base (-b) option
+                                                               are mutually exclusive. The output filename(s) are the same
+                                                               as the input filename, with the appropriate file extension(s)
+                                                               for the output format(s) appended automatically .
+     -dp,--disable-precalc                                     Optional.  Disables use of the precalculated match lookup
+                                                               service.  All match calculations will be run locally.
+     -dra,--disable-residue-annot                              Optional, excludes sites from the XML, JSON output
+     -etra,--enable-tsv-residue-annot                          Optional, includes sites in TSV output
+     -exclappl,--excl-applications <EXC-ANALYSES>              Optional, comma separated list of analyses you want to
+                                                               exclude.
+     -f,--formats <OUTPUT-FORMATS>                             Optional, case-insensitive, comma separated list of output
+                                                               formats. Supported formats are TSV, XML, JSON, and GFF3.
+                                                               Default for protein sequences are TSV, XML and GFF3, or for
+                                                               nucleotide sequences GFF3 and XML.
+     -goterms,--goterms                                        Optional, switch on lookup of corresponding Gene Ontology
+                                                               annotation (IMPLIES -iprlookup option)
+     -help,--help                                              Optional, display help information
+     -i,--input <INPUT-FILE-PATH>                              Optional, path to fasta file that should be loaded on Master
+                                                               startup. Alternatively, in CONVERT mode, the InterProScan 5
+                                                               XML file to convert.
+     -incldepappl,--incl-dep-applications <INC-DEP-ANALYSES>   Optional, comma separated list of deprecated analyses that
+                                                               you want included.  If this option is not set, deprecated
+                                                               analyses will not run.
+     -iprlookup,--iprlookup                                    Also include lookup of corresponding InterPro annotation in
+                                                               the TSV and GFF3 output formats.
+     -ms,--minsize <MINIMUM-SIZE>                              Optional, minimum nucleotide size of ORF to report. Will only
+                                                               be considered if n is specified as a sequence type. Please be
+                                                               aware of the fact that if you specify a too short value it
+                                                               might be that the analysis takes a very long time!
+     -o,--outfile <EXPLICIT_OUTPUT_FILENAME>                   Optional explicit output file name (relative or absolute
+                                                               path).  Note that this option, the --output-dir (-d) option
+                                                               and the --output-file-base (-b) option are mutually
+                                                               exclusive. If this option is given, you MUST specify a single
+                                                               output format using the -f option.  The output file name will
+                                                               not be modified. Note that specifying an output file name
+                                                               using this option OVERWRITES ANY EXISTING FILE.
+     -pa,--pathways                                            Optional, switch on lookup of corresponding Pathway
+                                                               annotation (IMPLIES -iprlookup option)
+     -t,--seqtype <SEQUENCE-TYPE>                              Optional, the type of the input sequences (dna/rna (n) or
+                                                               protein (p)).  The default sequence type is protein.
+     -T,--tempdir <TEMP-DIR>                                   Optional, specify temporary file directory (relative or
+                                                               absolute path). The default location is temp/.
+     -verbose,--verbose                                        Optional, display more verbose log output
+     -version,--version                                        Optional, display version number
+     -vl,--verbose-level <VERBOSE-LEVEL>                       Optional, display verbose log output at level specified.
+     -vtsv,--output-tsv-version                                Optional, includes a TSV version file along with any TSV
+                                                               output (when TSV output requested)
+    Copyright © EMBL European Bioinformatics Institute, Hinxton, Cambridge, UK. (http://www.ebi.ac.uk) The InterProScan
+    software itself is provided under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0.html).
+    Third party components (e.g. member database binaries and models) are subject to separate licensing - please see the
+    individual member database websites for details.
 
-    Copyright (c) EMBL European Bioinformatics Institute, Hinxton, Cambridge,
-    UK. (http://www.ebi.ac.uk) The InterProScan software itself is provided
-    under the Apache License, Version 2.0
-    (http://www.apache.org/licenses/LICENSE-2.0.html). Third party components
-    (e.g. member database binaries and models) are subject to separate
-    licensing - please see the individual member database websites for
-    details.
     Available analyses:
-                          TIGRFAM (XX.X) : TIGRFAMs are protein families based on Hidden Markov Models or HMMs
-                             SFLD (X.X) : SFLDs are protein families based on Hidden Markov Models or HMMs
-                            Hamap (XXXXXX.XX) : High-quality Automated and Manual Annotation of Microbial Proteomes
-                            SMART (X.X) : SMART allows the identification and analysis of domain architectures based on Hidden Markov Models or HMMs
-                              CDD (X.XX) : Prediction of CDD domains in Proteins
-                  ProSiteProfiles (XX.XXX) : PROSITE consists of documentation entries describing protein domains, families and functional sites as well as associated patterns and profiles to identify them
-                  ProSitePatterns (XX.XXX) : PROSITE consists of documentation entries describing protein domains, families and functional sites as well as associated patterns and profiles to identify them
-                      SUPERFAMILY (X.XX) : SUPERFAMILY is a database of structural and functional annotation for all proteins and genomes.
-                           PRINTS (XX.X) : A fingerprint is a group of conserved motifs used to characterise a protein family
-                          PANTHER (X.X) : The PANTHER (Protein ANalysis THrough Evolutionary Relationships) Classification System is a unique resource that classifies genes by their functions, using published scientific experimental evidence and evolutionary relationships to predict function even in the absence of direct experimental evidence.
-                           Gene3D (X.X.X) : Structural assignment for whole genes and genomes using the CATH domain structure database
-                            PIRSF (X.XX) : The PIRSF concept is being used as a guiding principle to provide comprehensive and non-overlapping clustering of UniProtKB sequences into a hierarchical order to reflect their evolutionary relationships.
-                             Pfam (XX.X) : A large collection of protein families, each represented by multiple sequence alignments and hidden Markov models (HMMs)
-                            Coils (X.X) : Prediction of Coiled Coil Regions in Proteins
-                       MobiDBLite (X.X) : Prediction of disordered domains Regions in Proteins
+                          TIGRFAM (XX.X) : TIGRFAMs are protein families based on hidden Markov models (HMMs).
+                             SFLD (X) : SFLD is a database of protein families based on hidden Markov models (HMMs).
+                      SUPERFAMILY (X.XX) : SUPERFAMILY is a database of structural and functional annotations for all proteins and genomes.
+                          PANTHER (XX.X) : The PANTHER (Protein ANalysis THrough Evolutionary Relationships) Classification System is a unique resource that classifies genes by their functions, using published scientific experimental evidence and evolutionary relationships to predict function even in the absence of direct experimental evidence.
+                           Gene3D (X.X.X) : Structural assignment for whole genes and genomes using the CATH domain structure database.
+                            Hamap (XXXX_XX) : High-quality Automated and Manual Annotation of Microbial Proteomes.
+                      ProSiteProfiles (XXX_XX) : PROSITE consists of documentation entries describing protein domains, families and functional sites as well as associated patterns and profiles to identify them.
+                            Coils (X.X.X) : Prediction of coiled coil regions in proteins.
+                            SMART (X.X) : SMART allows the identification and analysis of domain architectures based on hidden Markov models (HMMs).
+                              CDD (X.XX) : CDD predicts protein domains and families based on a collection of well-annotated multiple sequence alignment models.
+                           PRINTS (XX.X) : A compendium of protein fingerprints - a fingerprint is a group of conserved motifs used to characterise a protein family.
+                            PIRSR (XXXX_XX) : PIRSR is a database of protein families based on hidden Markov models (HMMs) and Site Rules.
+                      ProSitePatterns (XXXX_XX) : PROSITE consists of documentation entries describing protein domains, families and functional sites as well as associated patterns and profiles to identify them.
+                          AntiFam (X.X) : AntiFam is a resource of profile-HMMs designed to identify spurious protein predictions.
+                             Pfam (XX.X) : A large collection of protein families, each represented by multiple sequence alignments and hidden Markov models (HMMs).
+                       MobiDBLite (X.X) : Prediction of intrinsically disordered regions in proteins.
+                            PIRSF (X.XX) : The PIRSF concept is used as a guiding principle to provide comprehensive and non-overlapping clustering of UniProtKB sequences into a hierarchical order to reflect their evolutionary relationships.
 
     Deactivated analyses:
-            SignalP_GRAM_POSITIVE (X.X) : Analysis SignalP_GRAM_POSITIVE-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.4.0.path
-                      SignalP_EUK (X.X) : Analysis SignalP_EUK-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.4.0.path
-                          Phobius (X.XX) : Analysis Phobius-X.XX is deactivated, because the following parameters are not set in the interproscan.properties file: binary.phobius.pl.path.1.01
-                            TMHMM (X.Xc) : Analysis TMHMM-X.Xc is deactivated, because the following parameters are not set in the interproscan.properties file: binary.tmhmm.path, tmhmm.model.path
-            SignalP_GRAM_NEGATIVE (X.X) : Analysis SignalP_GRAM_NEGATIVE-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.4.0.path
+                      SignalP_EUK (X.X) : Analysis SignalP_EUK-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.X.X.path
+            SignalP_GRAM_NEGATIVE (X.X) : Analysis SignalP_GRAM_NEGATIVE-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.X.X.path
+            SignalP_GRAM_POSITIVE (X.X) : Analysis SignalP_GRAM_POSITIVE-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.X.X.path
+                          Phobius (X.XX) : Analysis Phobius-X.XX is deactivated, because the following parameters are not set in the interproscan.properties file: binary.phobius.pl.path.X.XX
+                            TMHMM (X.X) : Analysis TMHMM-X.Xc is deactivated, because the following parameters are not set in the interproscan.properties file: binary.tmhmm.path, tmhmm.model.path
+            SignalP_GRAM_NEGATIVE (X.X) : Analysis SignalP_GRAM_NEGATIVE-X.X is deactivated, because the following parameters are not set in the interproscan.properties file: binary.signalp.X.X.path
 
 The latest analysis versions can be obtained by running the InterProScan
 script without any options specified.
@@ -203,7 +166,7 @@ advantage of this feature, and increase the speed of InterProScan, by
 pre-calculating matches for sequences already found in UniProtKB. When a
 sequence is submitted to it, InterProScan calculates an MD5 checksum for
 the amino acid sequence and then uses that checksum to check the
-:ref:`What is the InterProScan 5 Lookup Service?` 
+:ref:`What is the InterProScan 5 Lookup Service?`
 `pre-calculated lookup service <PrecalculatedMatchLookup.html>`__ to see
 whether it has already been encountered. If it has, the pre-calculated
 results are returned to the user; if not, the InterProScan search
@@ -313,9 +276,9 @@ path / name.
 Option that provides mappings from matches to pathway information, which
 is based on the matched manually curated InterPro entries. (IMPLIES
 -iprlookup option). The different pathways databases that InterProScan provides
-cross links to are: 
+cross links to are:
 
-* MetaCyc 
+* MetaCyc
 * Reactome
 
 -t / --seqtype (optional)

@@ -9,9 +9,6 @@ following five formats:
    here <OutputFormats.html#the-xml-schema-definition>`__).
 -  `JSON <OutputFormats.html#javascript-object-notation-json>`__: Full output of results in JSON format
 -  `GFF3 <OutputFormats.html#generic-feature-format-version-3-gff3>`__: The `GFF 3.0 <http://gmod.org/wiki/GFF#GFF3_Format>`__ format
--  `HTML <OutputFormats.html#svg-and-html>`__ (deprecated): An HTML representation of the protein matches
--  `SVG <OutputFormats.html#svg-and-html>`__ (deprecated): An Scalable Vector Graphics representation of the protein
-   matches
 
 InterProScan 5 can output results for protein and nucleotide sequences
 in all formats. **Please note** you can only trace protein match
@@ -31,7 +28,7 @@ or
 
     ./interproscan.sh -f XML, JSON -i /path/to/sequences.fasta -b /path/to/output_file
 
-These two equivalent commands will output the results in XML and HTML
+These two equivalent commands will output the results in XML and JSON
 format.
 
 Tab-separated values format (TSV)
@@ -77,7 +74,7 @@ Extensible Markup Language (XML)
 --------------------------------
 
 XML representation of the matches - this is the richest form of the
-data. The XML Schema Definition (XSD) file links are below the example output. 
+data. The XML Schema Definition (XSD) file links are below the example output.
 
 
 Example output
@@ -301,57 +298,3 @@ Example output
     RPTKIADKQASAAVGQGLLLEEYTTNLLLRQIVSAQILLTQDDFVDKRRYKNAHQALSVL
     LNRGAIPIINENDSVVIDELKVGDNDTLSAQVAAMVQADLLVFLTDVDGLYTGNPNSDPR
     AKRLERIETINREIIDMAGGAGSSNGTGGMLTKIKAATIATESGVPVYICS
-
-SVG and HTML
-------------
-
-**Scalable Vector Graphics (SVG) and HyperText Markup Language (HTML)**
-
-These two graphical output formats are now deprecated! HTML is not available for
-InterProScan-5.48-83.0 and later versions. SVG will be removed in the second quarter of 2021.
-
-We have always aimed at providing the protein sequence view in InterProScan's
-HTML and SVG outputs to be almost exactly the same as the protein view on `the
-website <http://www.ebi.ac.uk/interpro>`__. But with the released of a new website with cool
-features at the end of 2019, maintaining the HTML and SVG outputs formats
-in InterProScan became unsustainable.
-
-However, we have a new  `**import feature on the website**
-<https://www.ebi.ac.uk/interpro/result/InterProScan/#table>`__, where after you import
-an InterProScan JSON output,
-you can get a nice graphical view of your results and can export the results into PNG, PDF etc.
-
-We would appreciate any feedback on this feature, `send us some comments using
-EMBL EBI's support form <http://www.ebi.ac.uk/support/interproscan>`__
-
-In the previous versions before InterProScan-5.48-83.0,
-InterProScan outputs a single HTML/SVG file for each protein sequence
-analysed. The HTML/SVG file(s) are compressed into a single gzipped tar
-archive (or "tarball") that includes the resources (images, Javascript,
-style etc) to render the pages/images in a browser or image viewer.
-(Note that from version 5RC4, the SVG format has no external
-dependencies.)
-
-The tarball will be named something similar to:
-
-::
-
-    base_output_file_name.html.tar.gz OR base_output_file_name.svg.tar.gz
-
-To access the HTML pages/SVG images, unzip the tarball using a command
-like:
-
-::
-
-    tar -xvzf base_output_file_name.html(svg).tar.gz
-
-You can then open the unzipped HTML/SVG files in any browser or image
-viewer (for SVG).
-
-Example output
-~~~~~~~~~~~~~~
-
-.. figure:: P51587.svg.png
-   :alt: SVG example output
-
-   SVG example output

@@ -145,8 +145,6 @@ the following ways:
 -  New feature: option to look up biological pathways that the protein
    is potentially involved in
 -  New output formats: "IMPACT" XML format and GFF3.0
--  Improved graphical (HTML and SVG) representations of the protein
-   matches
 
 InterProScan 4.8 is no longer supported or updated. For more details on
 how to migrate to InterProScan 5  `send us a support request <Feedback.html>`__.

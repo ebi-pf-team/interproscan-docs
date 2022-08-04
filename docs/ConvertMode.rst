@@ -3,7 +3,7 @@ Running InterProScan 5 in CONVERT mode
 
 InterProScan 5's CONVERT mode allows you to reformat an existing
 InterProScan XML result file into any other possible output format (TSV,
-GFF3, SVG and HTML). For compatibility reasons you can also convert XML
+GFF3, JSON). For compatibility reasons you can also convert XML
 results into InterProScan 4.8 raw format (RAW). This will give our users
 enough time to migrate their pipeline to InterProScan 5.
 
@@ -57,10 +57,12 @@ You will see the following usage instructions:
                                                 path/name will be used.
      -f,--formats <OUTPUT-FORMATS>              Optional, case-insensitive,
                                                 comma separated list of output
-                                                formats. Available formats are
-                                                TSV, GFF3 (default set) and
-                                                RAW (InterProScan 4 TSV),
-                                                HTML, SVG.
+                                                formats. Supported formats are
+                                                TSV, XML, JSON, and GFF3.
+                                                Default for protein sequences
+                                                are TSV, XML and GFF3, or
+                                                for nucleotide sequences
+                                                GFF3 and XML.
      -i,--input <INPUT-FILE-PATH>               Optional, path to fasta file
                                                 that should be loaded on
                                                 Master startup. Alternatively,
@@ -98,7 +100,7 @@ Example Usage
 ::
 
     # Convert from XML format to all other available formats
-    ./interproscan.sh -mode convert -f tsv,gff3,svg,raw -i /path/to/existing_output_file.xml -b /path/to/output_file_basename
+    ./interproscan.sh -mode convert -f tsv,gff3,raw -i /path/to/existing_output_file.xml -b /path/to/output_file_basename
 
     # Convert from XML format to TSV format (which automatically includes all available InterPro entry/GO term/pathways information)
     ./interproscan.sh -i /path/to/existing_output_file.xml -mode convert -f tsv -o /path/to/new_output_file.tsv

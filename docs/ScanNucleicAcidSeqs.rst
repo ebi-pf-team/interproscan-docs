@@ -36,7 +36,7 @@ How can I scan nucleic acid sequences in InterProScan 5?
 
 ::
 
-    ./interproscan.sh -t n -i /path/to/nucleic_acid_sequences.fasta 
+    ./interproscan.sh -t n -i /path/to/nucleic_acid_sequences.fasta
 
 or run the following commands:
 
@@ -44,7 +44,7 @@ or run the following commands:
 
     #translate the nucleic_acid_sequences
     ./bin/nucleotides/translate -i /path/to/nucleic_acid_sequences.fasta -o /path/to/output_orfs_sequences.fasta
-    #if output_orfs_sequences.fasta has more than 32,000 sequences then chunk the file then send the chunks to InterProScan 
+    #if output_orfs_sequences.fasta has more than 32,000 sequences then chunk the file then send the chunks to InterProScan
     #run InterProScan on the translated output
     ./interproscan.sh -i /path/to/output_orfs_sequences.fasta
 
@@ -52,9 +52,8 @@ Which output formats are supported?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Supported output formats are GFF3 and XML, which allow you to trace back
-from the match to the position inside your nucleic acid sequence. Other
-InterProScan 5 output formats like SVG,HTML and TSV are not available
-for nucleic acid sequence analysis.
+from the match to the position inside your nucleic acid sequence. Please not
+that the TSV format is not available for nucleic acid sequence analysis.
 
 Redundant sequences and identifiers in your FASTA file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.56-88.0
+Release notes: InterProScan 5.57-90.0
 =====================================
 
-Released on 26 May 2022
+Released on 04 August 2022
 
 What’s new
 ~~~~~~~~~~
@@ -9,15 +9,15 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 89.0 <http://www.ebi.ac.uk/interpro/release_notes/89.0/>`__.
--  The addition of 57 InterPro entries.
--  An update to HAMAP (2021_04), PROSITE patterns (2022_01), PROSITE profiles (2022_01).
--  Integration of 86 new methods from the CATH-Gene3D (8), CDD (3), HAMAP (37), PANTHER (4), PIRSF (1), PROSITE profiles (33) databases.
+-  Synchronized with `InterPro version 90.0 <http://www.ebi.ac.uk/interpro/release_notes/90.0/>`__.
+-  The addition of 492 InterPro entries.
+-  An update to Pfam (35.0).
+-  Integration of 473 new methods from the CATH-Gene3D (7), CDD (2), PANTHER (4), Pfam (459), SUPERFAMILY (1) databases.
 
-.. Software updates
+Software updates
 ^^^^^^^^^^^^^^^^
 
-.. -  PIRSR has been updated to fix a bug that occurred on rules containing 'Nter' and/or 'Cter' for the start/end locations.
+-  `Removed HTML and SVG output formats <OutputFormats.html#svg-and-html>`__.
 
 Known issues
 ^^^^^^^^^^^^
