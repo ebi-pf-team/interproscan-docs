@@ -17,7 +17,7 @@ Data update
 Software updates
 ^^^^^^^^^^^^^^^^
 
--  `Removed HTML and SVG output formats <OutputFormats.html#svg-and-html>`__.
+- Removed HTML and SVG output formats.
 
 Known issues
 ^^^^^^^^^^^^
