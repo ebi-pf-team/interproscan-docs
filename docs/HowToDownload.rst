@@ -57,7 +57,7 @@ This command will  press and index the hmm models to prepare them into a format 
 
 Panther models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Previous versions of InterProScan required a separate installation of Panther data. Starting with interproscan-5.57-90.0
+Previous versions of InterProScan required a separate installation of Panther data. Starting with InterProScan 5.47-82.0
 onwards, this is not necessary. Panther data is bundled together with the rest of the application data.
 
 Using the Local Pre-calculated Match Lookup Service (optional)
