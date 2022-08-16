@@ -63,7 +63,7 @@ Obtaining the lookup service
 Version 5.57-90.0 of the lookup service is only compatible with version
 5.57-90.0 of InterProScan. Instructions below are for installing the
 latest version, you can download previous versions of the lookup service
-from ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/.
+from https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/.
 
 This service is a very large download! You are **strongly recommended**
 to check the md5 checksum (as described below) to ensure that the file
