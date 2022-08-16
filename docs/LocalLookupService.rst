@@ -63,7 +63,7 @@ Obtaining the lookup service
 Version 5.57-90.0 of the lookup service is only compatible with version
 5.57-90.0 of InterProScan. Instructions below are for installing the
 latest version, you can download previous versions of the lookup service
-from ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/.
+from ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/.
 
 This service is a very large download! You are **strongly recommended**
 to check the md5 checksum (as described below) to ensure that the file
@@ -76,8 +76,8 @@ has been downloaded correctly.
     cd i5_lookup_service
 
     # Download the tarball and the MD5 file.
-    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.57-90.0.tar.gz
-    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.57-90.0.tar.gz.md5
+    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.57-90.0/lookup_service_5.57-90.0.tar.gz
+    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.57-90.0/lookup_service_5.57-90.0.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
     md5sum -c lookup_service_5.57-90.0.tar.gz.md5
@@ -85,7 +85,7 @@ has been downloaded correctly.
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.57-90.0.tar.gz)
+https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.57-90.0/lookup_service_5.57-90.0.tar.gz)
 
 Extract the tarball:
 
