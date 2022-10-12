@@ -9,7 +9,7 @@ as soon as possible. For assistance with other InterProScan problems,
 `please contact us using EMBL EBI's support form <http://www.ebi.ac.uk/support/interproscan>`__.
 
 
-1. CDD/RPSBlast errors.
+1. CDD/RPSBlast errors
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 On some linux systems, you may get rpsblast errors like
@@ -43,7 +43,29 @@ These steps should update the Coils binary.
 3. HMMER errors
 ~~~~~~~~~~~~~~~~
 
-The HMM libraries provided by some member databases (SUPERFAMILY and SFLD) are not compatible with newer HMMER versions and an error will occur when those libraries are being indexed by hmmpress version greater than '3.1b1'. To avoid this issue we recommend using the HMMER binaries bundled with interproscan.
+The HMM libraries provided by some member databases (SUPERFAMILY and SFLD) are not compatible with
+newer HMMER versions and an error will occur when those libraries are being indexed by hmmpress version
+greater than '3.1b1'. To avoid this issue we recommend using the HMMER binaries bundled with interproscan.
+
+4. Prosite/pfsearchV3 errors
+~~~~~~~~~~~~~~~~
+On some systems, specially on cluster environments, the following error has been reported
+::
+  Error setting affinity!
+  Error running prosite binary bin/prosite/pfsearchV3
+
+This means the provided binary is not compatible with your system. We have included alternative binaries
+that you can try, by updating you **interproscan.properties** file to point to the alternative binaries:
+::
+  binary.prosite.pfscanv3.path=${bin.directory}/prosite/altbin/pfscanV3.noaf
+  binary.prosite.pfsearchv3.path=${bin.directory}/prosite/altbin/pfsearchV3.noaf
+
+
+If the problem persist, you may need to compile those binaries from `source <https://github.com/sib-swiss/pftools3/>`__,
+making sure to build without affinity by compiling with the flag
+::
+  cmake -DUSE_AFFINITY=OFF ..
+
 
 
 If you encounter errors not listed above,

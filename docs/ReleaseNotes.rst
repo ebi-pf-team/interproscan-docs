@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.57-90.0
+Release notes: InterProScan 5.58-91.0
 =====================================
 
-Released on 04 August 2022
+Released on 13 October 2022
 
 What’s new
 ~~~~~~~~~~
@@ -9,20 +9,20 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 90.0 <http://www.ebi.ac.uk/interpro/release_notes/90.0/>`__.
--  The addition of 492 InterPro entries.
--  An update to Pfam (35.0).
--  Integration of 473 new methods from the CATH-Gene3D (7), CDD (2), PANTHER (4), Pfam (459), SUPERFAMILY (1) databases.
+-  Synchronized with `InterPro version 91.0 <http://www.ebi.ac.uk/interpro/release_notes/91.0/>`__.
+-  The addition of 154 InterPro entries.
+-  An update to PANTHER (17.0).
+-  Integration of 422 new methods from the CATH-Gene3D (14), CDD (295), PANTHER (108), PRINTS (1), Pfam (1), SMART (1), SUPERFAMILY (2) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
 
-- Removed HTML and SVG output formats.
+
 
 Known issues
 ^^^^^^^^^^^^
 
--  Documented on the following  page: :ref:`Known issues`.
+-  Documented on the following page: :ref:`Known issues`.
 
 Reporting issues
 ^^^^^^^^^^^^^^^^
