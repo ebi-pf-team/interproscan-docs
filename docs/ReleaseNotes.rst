@@ -17,6 +17,7 @@ Data update
 Software updates
 ^^^^^^^^^^^^^^^^
 
+- PANTHER subfamily matching is now performed using `TreeGrafter <https://github.com/ebi-pf-team/treegrafter>`__ instead of HMM signatures.
 
 
 Known issues
