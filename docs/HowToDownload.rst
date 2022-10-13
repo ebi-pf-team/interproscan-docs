@@ -51,7 +51,7 @@ Index hmm models
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Before you run interproscan for the first time, you should run the command:
 ::
-    python3 initial_setup.py
+    python3 setup.py
 
 This command will  press and index the hmm models to prepare them into a format used by hmmscan.
 
@@ -69,7 +69,7 @@ Match Lookup Service disk usage comes to more that 1TB, so it is
 recommended just to use the default setup.
 
 The pre-calculated match lookup web
-service is able to provide matches  to more than 400 million protein
+service is able to provide matches  to more than 500 million protein
 sequences, including all of the sequence in UniProtKB.
 
 By default InterProScan  is configured (in the
