@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'interproscan-docs'
-copyright = '2020, EMBL-EBI'
+copyright = '2022, EMBL-EBI'
 author = 'EMBL-EBI'
 
 # The version info for the project you're documenting, acts as replacement for
