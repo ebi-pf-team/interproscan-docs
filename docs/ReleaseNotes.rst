@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.59-91.0
+Release notes: InterProScan 5.60-92.0
 =====================================
 
-Released on 13 October 2022
+Released on 15 December 2022
 
 What’s new
 ~~~~~~~~~~
@@ -9,15 +9,14 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 91.0 <http://www.ebi.ac.uk/interpro/release_notes/91.0/>`__.
--  The addition of 154 InterPro entries.
--  An update to PANTHER (17.0).
--  Integration of 422 new methods from the CATH-Gene3D (14), CDD (295), PANTHER (108), PRINTS (1), Pfam (1), SMART (1), SUPERFAMILY (2) databases.
+-  Synchronized with `InterPro version 92.0 <http://www.ebi.ac.uk/interpro/release_notes/92.0/>`__.
+-  The addition of 291 InterPro entries.
+-  An update to CDD (3.20).
+-  Integration of 359 new methods from the CATH-Gene3D (7), CDD (239), PANTHER (105), PRINTS (2), Pfam (6) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
 
-- PANTHER subfamily matching is now performed using `TreeGrafter <https://github.com/ebi-pf-team/treegrafter>`__ instead of HMM signatures.
 
 
 Known issues
