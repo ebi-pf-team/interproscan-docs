@@ -83,7 +83,7 @@ response time.
 
 If you are behind a firewall that prevents such access and you are
 unable to configure access, you could **either**
-:ref:`What is the InterProScan 5 Lookup Service?`
+:ref:`Installing the lookup service locally`
 **or** turn off the use of this service, which means the
 analysis will run locally without any match lookup
 
