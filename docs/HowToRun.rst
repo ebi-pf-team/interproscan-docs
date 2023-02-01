@@ -123,7 +123,7 @@ This distribution of InterProScan provides a set of protein test
 sequences, which you can use to check how InterProScan  behaves on your
 system. First, if you have not yet run the initialisation script run the following command:
 ::
-    python3 initial_setup.py
+    python3 setup.py interproscan.properties
 
 This command will  press and index the hmm models to prepare them into a format used by hmmscan. This command need only be run once.
 
