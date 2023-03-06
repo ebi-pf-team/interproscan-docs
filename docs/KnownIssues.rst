@@ -40,16 +40,22 @@ In this case, you may need to compile the **Coils** binary and it is straight fo
 
 These steps should update the Coils binary.
 
-3. HMMER errors
+3. Prosite/pfsearchV3 errors
 ~~~~~~~~~~~~~~~~
 
-The HMM libraries provided by some member databases (SUPERFAMILY and SFLD) are not compatible with
-newer HMMER versions and an error will occur when those libraries are being indexed by hmmpress version
-greater than '3.1b1'. To avoid this issue we recommend using the HMMER binaries bundled with interproscan.
+On some linux systems, you may get pfsearchV3 errors like
 
-4. Prosite/pfsearchV3 errors
-~~~~~~~~~~~~~~~~
-On some systems, specially on cluster environments, the following error has been reported
+::
+  Error output from binary: bin/prosite/pfsearchV3: error while loading shared libraries: libpcre2.so: cannot open shared object file: No such file or directory
+
+The missing library is pcre2. On Ubuntu you might install it as follows:
+::
+  sudo apt-get install -y libpcre2-dev
+
+On other systems, you have similar installation commands.
+
+
+Additionally on some systems, specially on cluster environments, the following error has been reported
 ::
   Error setting affinity!
   Error running prosite binary bin/prosite/pfsearchV3
@@ -66,6 +72,12 @@ making sure to build without affinity by compiling with the flag
 ::
   cmake -DUSE_AFFINITY=OFF ..
 
+4. HMMER errors
+~~~~~~~~~~~~~~~~
+
+The HMM libraries provided by some member databases (SUPERFAMILY and SFLD) are not compatible with
+newer HMMER versions and an error will occur when those libraries are being indexed by hmmpress version
+greater than '3.1b1'. To avoid this issue we recommend using the HMMER binaries bundled with interproscan.
 
 
 If you encounter errors not listed above,

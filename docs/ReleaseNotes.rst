@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.60-92.0
+Release notes: InterProScan 5.61-93.0
 =====================================
 
-Released on 15 December 2022
+Released on 2 March 2023
 
 What’s new
 ~~~~~~~~~~
@@ -9,10 +9,10 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 92.0 <http://www.ebi.ac.uk/interpro/release_notes/92.0/>`__.
--  The addition of 291 InterPro entries.
--  An update to CDD (3.20).
--  Integration of 359 new methods from the CATH-Gene3D (7), CDD (239), PANTHER (105), PRINTS (2), Pfam (6) databases.
+-  Synchronized with `InterPro version 93.0 <http://www.ebi.ac.uk/interpro/release_notes/93.0/>`__.
+-  The addition of 275 InterPro entries.
+-  An update to PROSITE patterns (2022_05), PROSITE profiles (2022_05), SMART (9.0).
+-  Integration of 300 new methods from the CDD (261), PANTHER (12), PROSITE profiles (17), SMART (9), TIGRFAMs (1) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
