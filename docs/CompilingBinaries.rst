@@ -95,7 +95,7 @@ location. The default property values are:
     binary.hmmer2.hmmsearch.path=bin/hmmer/hmmer2/2.3.2/hmmsearch
     binary.hmmer2.hmmpfam.path=bin/hmmer/hmmer2/2.3.2/hmmpfam
 
-Hmmer 3 (used by CATH-Gene3D, HAMAP, PANTHER, Pfam, PIRSF, SFLD, SUPERFAMILY and TIGRFAMs)
+Hmmer 3 (used by CATH-Gene3D, HAMAP, PANTHER, Pfam, PIRSF, SFLD, SUPERFAMILY and NCBIFAM)
 ------------------------------------------------------------------------------------------
 
 Instructions for downloading and compiling Hmmer 3.1b1 can be found at:

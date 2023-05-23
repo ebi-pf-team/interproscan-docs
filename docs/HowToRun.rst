@@ -342,7 +342,8 @@ This distribution of InterProScan includes:
   an E-value filter, however you should not expect it to give the same
   match output as the fully licensed version of SMART)
 - `SUPERFAMILY <http://supfam.cs.bris.ac.uk/SUPERFAMILY/>`__
-- `TIGRFAMs <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`__
+- `NCBIFAM <https://www.ncbi.nlm.nih.gov/genome/annotation_prok/evidence/>`__
+  (includes the previous `TIGRFAM <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`__ analysis)
 
 A number of other analyses are available in InterProScan. These
 analyses use licensed code and data provided by third parties. If you
