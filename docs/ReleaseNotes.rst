@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.63-95.0
+Release notes: InterProScan 5.64-96.0
 =====================================
 
-Released on 29 June 2023
+Released on 14 September 2023
 
 What’s new
 ~~~~~~~~~~
@@ -9,10 +9,10 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 95.0 <http://www.ebi.ac.uk/interpro/release_notes/95.0/>`__.
--  The addition of 413 InterPro entries.
--  An update to NCBIfam (12.0).
--  Integration of 424 new methods from the CDD (157), NCBIfam (259), PANTHER (5), Pfam (2), SFLD (1) databases.
+-  Synchronized with `InterPro version 96.0 <http://www.ebi.ac.uk/interpro/release_notes/96.0/>`__.
+-  The addition of 1146 InterPro entries.
+-  An update to Pfam (36.0).
+-  Integration of 1127 new methods from the CATH-Gene3D (25), CDD (40), NCBIfam (5), PANTHER (9), Pfam (1048) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
