@@ -7,13 +7,6 @@ Helpdesk
 For further assistance with installing and using InterProScan please
 `contact us <http://www.ebi.ac.uk/support/interproscan>`__.
 
-Subscribe to the mailing list
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To get the latest InterProScan news, for example to receive
-announcements of new releases etc. please subscribe to the following
-mailing list: `interproscan-announce mailing
-list <http://listserver.ebi.ac.uk/mailman/listinfo/interproscan-announce>`__
 
 Follow us on Twitter
 ~~~~~~~~~~~~~~~~~~~~
