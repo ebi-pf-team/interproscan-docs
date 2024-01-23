@@ -27,8 +27,8 @@ postprocessing for CATH-Gene3D. The binary bundled in InterProScan
 should work on most systems. If you get errors, download
 cath-resolve-hits v0.15.2 that corresponds to your system from the
 following page
-https://github.com/UCLOrengoGroup/cath-tools/releases/tag/v0.15.2 into
-bin/gene3d/4.2.0/ and rename it to bin/gene3d/4.2.0/cath-resolve-hits.
+https://github.com/UCLOrengoGroup/cath-tools/releases/tag/v0.16.10 into
+bin/gene3d/4.3.0/ and rename it to bin/gene3d/4.3.0/cath-resolve-hits.
 
 If the precompiled binary doesnt' solve your problems, compile the
 binary for your system by following instructions on
@@ -40,38 +40,25 @@ location. The default property values are:
 
 ::
 
-    cath.resolve.hits.path=bin/gene3d/4.2.0/cath-resolve-hits
+    cath.resolve.hits.path=bin/gene3d/4.3.0/cath-resolve-hits
 
-Pfscan/Pfsearch (used by ProSite Profiles, ProSite Patterns and HAMAP)
-----------------------------------------------------------------------
+PfscanV3/PfsearchV3 (used by ProSite Profiles, ProSite Patterns and HAMAP)
+--------------------------------------------------------------------------
 
-Pfscan and pfsearch are written in fortran, so you may need to install
-gfortran. On Ubuntu this can easily be done by:
+PfscanV3 and PFsearchV3 binary packages for your platform
+can be downloaded from https://ftp.expasy.org/databases/prosite/ps_scan/.
 
-::
-
-    sudo apt-get install gfortran
-
-Otherwise, source code and instructions for compiling gfortran can be
-found at: http://gcc.gnu.org/wiki/GFortranBinaries
-
-Next, download the source code and compile
-
-::
-
-    wget ftp://ftp.lausanne.isb-sib.ch/pub/software/unix/pftools/pft2.3/pft2.3.5.d.tar.gz
-    tar -xzf pft2.3.5.d.tar.gz
-    cd pftools/
-    make io.o pfscan pfsearch
+Alternatively, you may download the source code from 
+https://github.com/sib-swiss/pftools3 and compile the binaries yourself.
 
 Then either replace the relevant files with your new ones or update the
 relevant interproscan.properties values to point at the new file
-locations. The default property values are:
+locations:
 
 ::
 
-    binary.prosite.pfscan.path=bin/prosite/pfscan
-    binary.prosite.pfsearch.path=bin/prosite/pfsearch
+    binary.prosite.pfscanv3.path=bin/prosite/pfscan
+    binary.prosite.pfsearchv3.path=bin/prosite/pfsearch
 
 Hmmer 2 (used by SMART)
 -----------------------
