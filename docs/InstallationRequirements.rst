@@ -141,7 +141,7 @@ InterProScan releases prior to 5.37-76.0 required Java 8.
 Appendix - Historical Java version testing information
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-Any Oracle/Open JDK/JRE with Java 1.8.x should work with InterProScan.
+Any Oracle/Open JDK/JRE with Java 1.11.x should work with InterProScan.
 Historical information about Java versions tested and confirmed to
 work/not work include below for information but this is not an
 exhaustive list!
