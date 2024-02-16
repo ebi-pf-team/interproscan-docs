@@ -3,7 +3,7 @@ How to Use InterProScan via Container
 
 InterProScan can be used via Docker or Singularity to simplify the installation and execution process in different computing environments.
 
-Before using InterProScan 5 via container, make sure you are using Linux and you have Docker or Singularity installed and running on your system.
+Before using InterProScan 5 via container, make sure you are using Linux operational system and you have Docker or Singularity installed and running on your system.
 
 The image (https://hub.docker.com/r/interpro/interproscan) does not include data required to run InterProScan, which need to be downloaded separately.
 
