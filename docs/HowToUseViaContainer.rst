@@ -1,14 +1,16 @@
-How to Use InterProScan via Docker or Singularity
+How to Use InterProScan via Container
 ==================================
 
 InterProScan can be used via Docker or Singularity to simplify the installation and execution process in different computing environments.
 
-Before using InterProScan 5 via container, make sure you have Docker/Singularity installed on your system and check your system satisfies the :ref:`Installation requirements`.
+Before using InterProScan 5 via container, make sure you are using Linux and you have Docker or Singularity installed and running on your system.
 
-The image (https://hub.docker.com/r/interpro/interproscan) does not include data required to run InterProScan, which need to be downloaded separately. For the latest InterProScan release (5.66-98.0), data can be downloaded.
+The image (https://hub.docker.com/r/interpro/interproscan) does not include data required to run InterProScan, which need to be downloaded separately.
 
 Get InterProScan data
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For the latest InterProScan release (5.66-98.0), data can be downloaded with the following command:
 
 ::
 
@@ -81,7 +83,8 @@ Run the image:
 
 ::
 
-    singularity exec -B $PWD/interproscan-latest/data:/opt/interproscan/data \
+    singularity exec
+        -B $PWD/interproscan-latest/data:/opt/interproscan/data \
         -B $PWD/output:/output \
         -B $PWD/temp:/temp \
         interproscan_latest.sif \
