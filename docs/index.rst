@@ -17,6 +17,7 @@ InterProScan documentation
    InstallationRequirements
    HowToDownload
    HowToRun
+   HowToUseViaContainer
    InputFormat
    OutputFormats
    ScanNucleicAcidSeqs
