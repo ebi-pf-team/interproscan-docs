@@ -5,7 +5,7 @@ InterProScan can be used via Docker or Singularity to simplify the installation 
 
 Before using InterProScan 5 via container, make sure you are using Linux operating system and you have Docker or Singularity installed and running on your system.
 
-The image (https://hub.docker.com/r/interpro/interproscan) does not include data required to run InterProScan, which need to be downloaded separately.
+The image (https://hub.docker.com/r/interpro/interproscan) does not include the data required to run InterProScan, which needs to be downloaded separately.
 
 Get InterProScan data
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,4 +95,4 @@ Run the image:
         --tempdir /temp \
         --cpu 16 \
 
-**NOTE**: Observe that in Singularity, it is necessary to provide the full path to the interproscan.sh script.
+**NOTE**: In Singularity, it is necessary to provide the full path to the interproscan.sh script.
