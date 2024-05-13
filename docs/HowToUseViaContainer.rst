@@ -1,5 +1,5 @@
 How to Use InterProScan via Container
-==================================
+=====================================
 
 InterProScan can be used via Docker or Singularity to simplify the installation and execution process in different computing environments.
 
@@ -8,7 +8,7 @@ Before using InterProScan 5 via container, make sure you are using Linux operati
 The image (https://hub.docker.com/r/interpro/interproscan) does not include the data required to run InterProScan, which needs to be downloaded separately.
 
 Get InterProScan data
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 For the latest InterProScan release (5.67-99.0), data can be downloaded with the following command:
 
@@ -33,14 +33,14 @@ The data will be extracted to interproscan-5.67-99.0/data.
 
 
 Using Docker
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 Pull the image:
 ::
     docker pull interpro/interproscan
 
 Example:
-^^^^^^^^^^
+^^^^^^^^
 
 Create the directories for temporary and output files, respectively:
 
@@ -64,14 +64,15 @@ Run the image:
     --cpu 16
 
 Using Singularity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+
 Pull the image:
 ::
 
     singularity pull docker://interpro/interproscan:latest
 
 Example:
-^^^^^^^^^^
+^^^^^^^^
 
 Create the directories for temporary and output files, respectively:
 
@@ -87,9 +88,10 @@ Run the image:
         -B $PWD/interproscan-latest/data:/opt/interproscan/data \
         -B $PWD/output:/output \
         -B $PWD/temp:/temp \
+        -B $PWD:/input \
         interproscan_latest.sif \
         /opt/interproscan/interproscan.sh \
-        --input /path/to/your/file.fasta \
+        --input /input/your.fasta \ \
         --disable-precalc \
         --output-dir /output \
         --tempdir /temp \
