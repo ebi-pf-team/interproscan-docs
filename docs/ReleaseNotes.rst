@@ -9,7 +9,7 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 99.0 <http://www.ebi.ac.uk/interpro/release_notes/100.0/>`__.
+-  Synchronized with `InterPro version 100.0 <http://www.ebi.ac.uk/interpro/release_notes/100.0/>`__.
 -  The addition of 570 InterPro entries.
 -  An update to Pfam (37.0).
 -  Integration of 582 new methods from the CDD (8), NCBIfam (26), PANTHER (3), Pfam (545) databases.
