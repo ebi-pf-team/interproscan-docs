@@ -22,7 +22,7 @@ Supported sequence format
 
 InterProScan 5 supports **unaligned sequences** only. Sequences should
 contain only valid IUPAC amino acid or nucleic acid characters. In
-addition gap ('-'), period ('.'), asterix or underscore symbols are not
+addition gap ('-'), period ('.'), asterisk or underscore symbols are not
 allowed and should produce warnings and InterProScan will exit
 immediately.
 
