@@ -46,7 +46,7 @@ Unsupported sequences:
 
     RFLLLSL--ARFSNNRFGVQLLQIANVNLKVRRYG (illegal gap character in the middle)
 
-    RFLLLSLARFSNNRFGVQLLQIANVNLKVRRYG* (illegal asterix character at the end)
+    RFLLLSLARFSNNRFGVQLLQIANVNLKVRRYG* (illegal asterisk character at the end)
 
     RFLLLSL_ARFSNNRFGVQLLQIANVNLKVRRYG (illegal underscore character)
 
