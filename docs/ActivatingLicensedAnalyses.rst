@@ -77,7 +77,7 @@ Files required by InterProScan:
 -  bin/tmhmm/2.0c/decodeanhmm.Linux_x86_64
 -  bin/tmhmm/2.0c/TMHMM2.0.model
 
-Example inteproscan.properties configuration:
+Example ``inteproscan.properties`` configuration:
 
 ::
 
