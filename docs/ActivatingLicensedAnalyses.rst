@@ -74,7 +74,7 @@ Website: https://services.healthtech.dtu.dk/services/TMHMM-2.0/
 
 Files required by InterProScan:
 
--  bin/tmhmm/2.0c/decodeanhmm
+-  bin/tmhmm/2.0c/decodeanhmm.Linux_x86_64
 -  bin/tmhmm/2.0c/TMHMM2.0.model
 
 Example inteproscan.properties configuration:
@@ -82,6 +82,6 @@ Example inteproscan.properties configuration:
 ::
 
     tmhmm.signature.library.release=2.0c
-    binary.tmhmm.path=bin/tmhmm/2.0c/decodeanhmm
+    binary.tmhmm.path=bin/tmhmm/2.0c/decodeanhmm.Linux_x86_64
     tmhmm.model.path=bin/tmhmm/2.0c/TMHMM2.0.model
 
