@@ -8,7 +8,7 @@ from the provider (ensuring the software version numbers are the same as
 those supported by your current InterProScan installation).
 
 An example of how to activate the Phobius 1.01, SignalP 4.1 and TMHMM
-2.0 analyses with InterProScan 5.19-58.0 is given below. Files can be
+2.0 analyses with InterProScan 5.69-101.0 is given below. Files can be
 placed in any location as long as your interproscan.properties
 configuration is updated accordingly.
 
@@ -24,7 +24,7 @@ Files required by InterProScan:
 -  bin/phobius/1.01/phobius.options
 -  bin/phobius/1.01/phobius.pl
 
-Example inteproscan.properties configuration:
+Example ``inteproscan.properties`` configuration:
 
 ::
 
@@ -34,21 +34,19 @@ Example inteproscan.properties configuration:
 SignalP
 ~~~~~~~
 
-Website: http://www.cbs.dtu.dk/services/SignalP/
+Website: https://services.healthtech.dtu.dk/cgi-bin/sw_request?software=signalp&version=4.1&packageversion=4.1g&platform=Linux
 
-For academic users there is a download site at:
-http://www.cbs.dtu.dk/cgi-bin/nph-sw\_request?signalp Other users are
-requested to contact software@cbs.dtu.dk.
+Files and directories required by InterProScan:
 
-Files required by InterProScan:
-
--  bin/signalp/4.1/signalp
 -  bin/signalp/4.1/bin/nnhowplayer.Linux\_i386
 -  bin/signalp/4.1/bin/nnhowplayer.Linux\_i486
 -  bin/signalp/4.1/bin/nnhowplayer.Linux\_i586
 -  bin/signalp/4.1/bin/nnhowplayer.Linux\_i686
 -  bin/signalp/4.1/bin/nnhowplayer.Linux\_ia64
 -  bin/signalp/4.1/bin/nnhowplayer.Linux\_x86\_64
+-  bin/signalp/4.1/lib/FASTA.pm
+-  bin/signalp/4.1/syn/
+-  bin/signalp/4.1/signalp
 
 Example inteproscan.properties configuration:
 
@@ -60,10 +58,10 @@ Example inteproscan.properties configuration:
     binary.signalp.path=bin/signalp/4.1/signalp
     signalp.perl.library.dir=bin/signalp/4.1/lib
 
-Please confirm that the following line in the "signalp" binary is set to
-the required location:
+Please make sure that the following line in the ``signalp`` Perl script 
+is set to the required location:
 
-::
+.. code-block:: perl
 
     BEGIN {
         $ENV{SIGNALP} = 'bin/signalp/4.1';
@@ -72,17 +70,12 @@ the required location:
 TMHMM
 ~~~~~
 
-Website: http://www.cbs.dtu.dk/services/TMHMM/
-
-There is a download page
-http://www.cbs.dtu.dk/cgi-bin/nph-sw\_request?tmhmm for academic users;
-other users are requested to contact CBS Software Package Manager at
-software@cbs.dtu.dk.
+Website: https://services.healthtech.dtu.dk/services/TMHMM-2.0/
 
 Files required by InterProScan:
 
 -  bin/tmhmm/2.0c/decodeanhmm
--  data/tmhmm/2.0c/TMHMM2.0c.model
+-  bin/tmhmm/2.0c/TMHMM2.0.model
 
 Example inteproscan.properties configuration:
 
@@ -90,6 +83,5 @@ Example inteproscan.properties configuration:
 
     tmhmm.signature.library.release=2.0c
     binary.tmhmm.path=bin/tmhmm/2.0c/decodeanhmm
-
-    tmhmm.model.path=data/tmhmm/2.0c/TMHMM2.0c.model
+    tmhmm.model.path=bin/tmhmm/2.0c/TMHMM2.0.model
 
