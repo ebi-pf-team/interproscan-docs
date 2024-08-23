@@ -46,22 +46,29 @@ Create the directories for temporary and output files, respectively:
 
 ::
 
-    mkdir temp output
+    mkdir input temp output
+
+Copy you input file(s) to the ``input`` directory:
+
+::
+
+    # Escherichia coli K-12 proteome
+    wget -O input/e-coli.fa 'https://rest.uniprot.org/uniprotkb/stream?format=fasta&query=%28proteome%3AUP000000625%29'
 
 Run the image:
 
 ::
 
     docker run --rm \
-    -v $PWD/interproscan-5.69-101.0/data:/opt/interproscan/data \
-    -v $PWD/output:/output \
-    -v $PWD/temp:/temp \
-    interpro/interproscan:5.69-101.0 \
-    --input /path/to/your/file.fasta \
-    --disable-precalc \
-    --output-dir /output \
-    --tempdir /temp \
-    --cpu 16
+        -v $PWD/interproscan-5.69-101.0/data:/opt/interproscan/data \
+        -v $PWD/input:/input \
+        -v $PWD/temp:/temp \
+        -v $PWD/output:/output \
+        interpro/interproscan:5.69-101.0 \
+        --input /input/e-coli.fa \
+        --output-dir /output \
+        --tempdir /temp \
+        --cpu 8
 
 Using Singularity
 ~~~~~~~~~~~~~~~~~
@@ -78,7 +85,14 @@ Create the directories for temporary and output files, respectively:
 
 ::
 
-    mkdir temp output
+    mkdir input temp output
+
+Copy you input file(s) to the ``input`` directory:
+
+::
+
+    # Escherichia coli K-12 proteome
+    wget -O input/e-coli.fa 'https://rest.uniprot.org/uniprotkb/stream?format=fasta&query=%28proteome%3AUP000000625%29'
 
 Run the image:
 
@@ -86,15 +100,15 @@ Run the image:
 
     singularity exec
         -B $PWD/interproscan-latest/data:/opt/interproscan/data \
-        -B $PWD/output:/output \
+        -B $PWD/input:/input \
         -B $PWD/temp:/temp \
-        -B $PWD:/input \
+        -B $PWD/output:/output \
         interproscan_latest.sif \
         /opt/interproscan/interproscan.sh \
-        --input /input/your.fasta \ \
+        --input /input/e-coli.fa \ \
         --disable-precalc \
         --output-dir /output \
         --tempdir /temp \
-        --cpu 16 \
+        --cpu 8
 
 **NOTE**: In Singularity, it is necessary to provide the full path to the interproscan.sh script.
