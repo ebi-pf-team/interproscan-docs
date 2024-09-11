@@ -21,8 +21,6 @@ which lists all available flags/options for ``InterProScan``:
 
     $ nextflow run interproscan.nf --help
 
-    Nextflow 24.04.4 is available - Please consider updating your version to it
-
     N E X T F L O W   ~  version 24.04.2
 
     Launching `interproscan.nf` [astonishing_leavitt] DSL2 - revision: 8d1c18b8be
@@ -33,7 +31,7 @@ which lists all available flags/options for ``InterProScan``:
     Params options:
         --applications <ANALYSES>          Optional, comma separated - without spaces - list of analysis methods (i.e. member databases/applications).
                                             If this option is not set, ALL analyses will be run.
-        --datadir <DATA-DIR-PATH>          Optinal. Path to the data directory if data is not located in the 
+        --datadir <DATA-DIR-PATH>          Optinal. Path to the data directory if the data is not located in the 
                                             InterProScan project directory.
         --disable_precalc                  Optional. Disables use of the precalculated match lookup service.
                                             All match calculations will be run locally.

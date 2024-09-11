@@ -92,4 +92,4 @@ all of these analyses for their valued and on-going support!
   The implementation of SMART in ``InterProscan`` uses unlicensed components only. 
   This analysis has simplified post-processing that includes
   an E-value filter, however you should not expect it to give the same
-  match output as the fully licensed version of SMART
+  match output as the fully licensed version of SMART.

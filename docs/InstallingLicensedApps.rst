@@ -29,7 +29,7 @@ Installing MobiDB / MobiDB-Lite
 
 MobiDB-Lite provides fast consensus annotation of intrinsic disorder regions in proteins.
 
-Some components of `MoiDB-Lite <https://github.com/BioComputingUP/MobiDB-lite>`_ are GPL-licensed. 
+Some components of `MobiDB-Lite <https://github.com/BioComputingUP/MobiDB-lite>`_ are GPL-licensed. 
 When you include GPL-licensed software in your own software, you need to license your software in GPL - 
 this would include ``InterProScan`` and any work generated using ``InterProScan``. To avoid this, 
 EBI provides a GNU-license implementation of the software used to screen for matches against 

@@ -11,7 +11,7 @@ To install the ``InterProScan`` 6 software you need to complete the following st
 3. (Optional) Install licensed software (MobiDB, SignalP, DeepTMHMM and Phobius)
 4. (Optional) Setup a local InterPro Match Lookup Service (MLS)
 
-If the installation is unsuccessful please check the `FAQs <FAQ.rst>`_, raise an issue at our 
+If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise an issue at our 
 `GitHub repository <https://github.com/ebi-pf-team/interproscan6/issues>`_, or 
 `raise a ticket <https://www.ebi.ac.uk/about/contact/support/interpro>`_ via InterPro.
 
@@ -19,7 +19,7 @@ If the installation is unsuccessful please check the `FAQs <FAQ.rst>`_, raise an
     Due to licensing ``MobiDB``, ``Phobius``, ``SignalP``, and ``DeepTMHMM`` member database analyses 
     are deactivated in ``InterProScan``. To activate these analyses you will need to obtain
     the relevant licenses and files from the respective providers. Please see the 
-    `"Installing licsensed members" documentation <InstallingLicensedApps>`_ for more information.
+    `"Installing licsensed members" documentation <InstallingLicensedApps.html>`_ for more information.
 
 [1] Setting up ``InterProScan`` and its dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
