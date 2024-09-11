@@ -23,29 +23,105 @@ which lists all available flags/options for ``InterProScan``:
 
     N E X T F L O W   ~  version 24.04.2
 
-    Launching `interproscan.nf` [astonishing_leavitt] DSL2 - revision: 8d1c18b8be
+    Launching `interproscan.nf` [desperate_mcnulty] DSL2 - revision: d83dabd311
+
+
+    If you use InterProScan in your work please cite:
+
+    InterProScan:
+    > Jones P, Binns D, Chang HY, Fraser M, Li W, McAnulla C, McWilliam H,
+    Maslen J, Mitchell A, Nuka G, Pesseat S, Quinn AF, Sangrador-Vegas A,
+    Scheremetjew M, Yong SY, Lopez R, Hunter S.
+    InterProScan 5: genome-scale protein function classification.
+    Bioinformatics. 2014 May 1;30(9):1236-40. doi: 10.1093/bioinformatics/btu031.
+    Epub 2014 Jan 21. PMID: 24451626; PMCID: PMC3998142.
+
+    InterPro:
+    > Paysan-Lafosse T, Blum M, Chuguransky S, Grego T, Pinto BL, Salazar GA, Bileschi ML,
+    Bork P, Bridge A, Colwell L, Gough J, Haft DH, Letunić I, Marchler-Bauer A, Mi H,
+    Natale DA, Orengo CA, Pandurangan AP, Rivoire C, Sigrist CJA, Sillitoe I, Thanki N,
+    Thomas PD, Tosatto SCE, Wu CH, Bateman A.
+    InterPro in 2022. Nucleic Acids Res. 2023 Jan 6;51(D1):D418-D427.
+    doi: 10.1093/nar/gkac993. PMID: 36350672; PMCID: PMC9825450.
+
 
     Usage example:
-        nextflow run interproscan.nf --input <path to fasta file>
+        nextflow run interproscan.nf -profile <executor, container runtime> --input <path to fasta file>
 
-    Params options:
-        --applications <ANALYSES>          Optional, comma separated - without spaces - list of analysis methods (i.e. member databases/applications).
-                                            If this option is not set, ALL analyses will be run.
-        --datadir <DATA-DIR-PATH>          Optinal. Path to the data directory if the data is not located in the 
-                                            InterProScan project directory.
-        --disable_precalc                  Optional. Disables use of the precalculated match lookup service.
-                                            All match calculations will be run locally.
-        --formats <FORMATS> Optional, comma separated - without spaces - list of output formats.
-        --goterms Optional. Include GO terms in the output.
-        --help                             Optional, display help information
-        --input <INPUT-FILE-PATH>          [REQUIRED] Path to fasta file that should be loaded on Master startup.
-        --nucleic                          Optional. Input comprises nucleic acid sequences.
-        --outdir <OUTPUT-DIR-PATH>         Optional. Path to the output directory.
-                                            If this option is not set, the output will be write to the current working dir.
-                                            All output filenames are prefixed with the input FASTA filename.
-        --pathways Optional. Include pathway information in the output.
-        --signalp_mode Optional. Set which SignalP/SignalP_EUK prediction models are used. Models may have to be installed. Accepted: 'fast', 'slow', 'slow-sequential'. Default: 'fast'.
-        --version                          Print the version of InterProScan.
+    Arguments:
+        [Required]
+        -profile                    Define the runtime profiles to use. Note the signal dash!
+                                        Define an executor (built-in: 'local', 'slurm' and 'lsf') 
+                                        and container runtime (built-in: 'docker', 'singularity', and 'apptainer')
+        --input <INPUT-FILE-PATH>   Path to fasta file of sequences to be analysed.
+
+
+        [Optional]
+        --applications <ANALYSES>   Comma separated (without spaces) listing applications/member DBs to run.
+                                        Default: All Interpro consortium members (except MobiDB-Lite) will run.
+        --datadir <DATA-DIR>        Path to the data dir. Default 'data' dir in the Interproscan project dir.
+                                        Nextflow does not tolerate spaces in paths.
+        --disable_precalc           Disables use of the precalculated match lookup service. [Boolean]
+                                        All match calculations will be run locally.
+        --formats <FORMATS>         Comma separated (without spaces) list output file formats.
+                                        Accepted: tsv, json and xml. Default: tsv,json,xml
+        --goterms                   Include GO terms in the output. [Boolean]
+        --help                      Display help information. [Boolean]
+        --nucleic                   Input comprises nucleic acid sequences. [Boolean]
+        --outdir <OUTPUT-DIR>       Path to the output dir.
+                                        Output files are automatically named after the input file, with the 
+                                        suffix '.ips6.*'. Default: present working dir.
+                                        Nextflow does not tolerate spaces in paths.
+        --pathways                  Include pathway information in the output. [Boolean]
+        --signalp_mode <MODE        SignalP/SignalP_EUK prediction models to use. Models may have to be installed.
+                                        Accepted: 'fast', 'slow', 'slow-sequential'. Default: 'fast'.
+        --version                   Print the version of InterProScan.[Boolean]
+
+    Please give us your feedback by sending an email to
+
+    interhelp@ebi.ac.uk
+
+    Copyright © EMBL European Bioinformatics Institute, Hinxton, Cambridge, UK. (http://www.ebi.ac.uk) The InterProScan
+    software itself is provided under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0.html).
+    Third party components (e.g. member database binaries and models) are subject to separate licensing - please see the
+    individual member database websites for details.
+
+    Built-in analyses:
+        AntiFam: Profile-HMMs designed to identify spurious protein predictions.
+        CDD: Predict protein domains and families based on well-annotated multiple sequence alignment models.
+        Coils: Prediction of coiled coil regions in proteins.
+        Hamap: High-quality Automated and Manual Annotation of Microbial Proteomes.
+        Gene3D: Structural assignment for whole genes and genomes using the CATH domain structure database.
+        FunFam: Protein function annotations for protein families and superfamilies, based upon evolutionary relationships
+        NCBIfam: NCBIFams (including the original TIGRFAMs) are protein families based on hidden Markov models (HMMs).
+        PANTHER: The PANTHER (Protein ANalysis THrough Evolutionary Relationships) Classification System 
+                classifies genes by their functions, using published scientific experimental evidence 
+                and evolutionary relationships to predict function.
+        Pfam: A large collection of protein families, each represented by multiple sequence alignments and 
+                hidden Markov models (HMMs).
+        PIRSF: The PIRSF concept is used as a guiding principle to provide comprehensive and 
+                non-overlapping clustering of UniProtKB sequences into a hierarchical order to reflect 
+                their evolutionary relationships.
+        PIRSR: PIRSR is a database of protein families based on hidden Markov models (HMMs) and Site Rules.
+        PRINTS: A compendium of protein fingerprints - a fingerprint is a group of conserved motifs 
+                used to characterise a protein family.
+        ProSite_Patterns: Documentation entries describing protein domains, families and functional sites.
+                PROSITE patterns are simple, descriptive motifs representing conserved sequences.
+        ProSite_Profiles: Documentation entries describing protein domains, families and functional sites.
+                PROSITE profiles are detailed, position-specific scoring matrices that offer a more sensitive 
+                and comprehensive means of identifying and classifying protein domains and families.
+        SFLD: SFLD is a database of protein families based on hidden Markov models (HMMs).
+        SUPERFAMILY: SUPERFAMILY is a database of structural and functional annotations for all proteins and genomes.
+        SMART: SMART allows the identification and analysis of domain architectures based on hidden Markov models (HMMs).
+
+    Licensed analyses (require additional installation steps):
+        DeepTMHMM: Coming Soon!
+        MobiDB: Prediction of intrinsically disordered regions in proteins. 
+                Runs idrpred to check for hits against a MobiDB-Lite database.
+        Phobius:  A combined transmembrane topology and signal peptide predictor.
+        SignalP: Signal peptide prediction using all SignalP models.
+        SignalP_EUK : Signal peptide prediction using SignalP, and triggers post-processing of the SP 
+                predictions by SignalP6 to prevent spurious results (only predicts type Sec/SPI).
 
 .. TIP::
     You can find a complete list of all ``InterProScan`` flags in the `Command-line arguments`_ 
