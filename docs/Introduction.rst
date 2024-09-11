@@ -44,7 +44,7 @@ To install and run InterProScan
       --input <path to input FASTA>
       
 
-Built in executors: ``slurm``, ``local``  
+Built in executors: ``slurm``, ``local``, ``lsf``  
 Build in container runtimes: ``docker``, ``singularity``, ``apptainer``  
 
 For more information about using ``InterProScan`` please see the page links
