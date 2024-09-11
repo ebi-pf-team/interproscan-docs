@@ -338,8 +338,10 @@ refer to this documentation before creating your own profiles.
 Customising the output
 ~~~~~~~~~~~~~~~~~~~~~~
 
+The contents of the output files can be configured using the command line.
+
 Location of the output dir
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 By default ``InterProScan`` writes the output files to the current working directory.
 
@@ -356,7 +358,7 @@ The output filenames are always prefixed with the input FASTA file name.
     an already existing output directory.
 
 Formats
-^^^^^^^
+-------
 
 You can chose which output file formats that any results are written to using the ``--formats`` option
 and providing a comma separate list. The supported file types are ``XML``, ``JSON`` and ``TSV``.
@@ -374,7 +376,7 @@ all member databases on a SLURM cluster with Singularity, generating only ``JSON
 You can find a description of the output file schemas in `"Output formats" documentation <OutputFormats.html>`_. 
 
 GO terms and pathways
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Gene Ontology (GO) terms are standardised vocabulary terms used to describe the biological 
 functions, processes, and cellular locations of genes and gene products (such as proteins) 

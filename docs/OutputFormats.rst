@@ -258,7 +258,7 @@ using the command:
                     "evalue": 4.5e-180,
                     "score": 611.7,
                     "model-ac": "NF033681"
-                ...
+                },
                 {
                     "signature": {
                         "accession": "cd04486",
@@ -291,8 +291,7 @@ using the command:
                                 "start": "226",
                                 "end": "226",
                                 "residue": "T"
-                                },
-                                ...
+                                }
                             ]
                             }
                         ],
@@ -314,7 +313,7 @@ using the command:
                 "id": "WP_338726824.1"
                 }
             ]
-        },
+        }
     }
 
 An example JSON file (Nucleic)
