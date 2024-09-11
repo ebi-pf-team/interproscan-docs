@@ -7,8 +7,8 @@ directory containing the ``InterProScan`` code base and InterPro release data):
 .. code-block:: bash
 
     nextflow run <path to the interproscan.nf> \
-        --input <path to fasta file> \
-        -profile <executorprofile, containerRuntime profile>
+        -profile <executorprofile, containerRuntime profile> \
+        --input <path to fasta file>
 
 .. ATTENTION::
     All ``InterProScan`` custom flags, such as ``--input``, use **double** dashes.  
@@ -100,7 +100,7 @@ the example input file ``mini_test.fasta`` using Docker locally, you could use t
 
 .. NOTE::
     To analyse nucleic acid sequences please see the 
-    `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.rst>`_
+    `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
 
 Command-line arguments
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -113,7 +113,7 @@ Required arguments
 
 ``-profile`` - Define the ``InterProScan`` profile(s) to use.
 
-The built-in executor profiles are ``local`` and ``slurm``.  
+The built-in executor profiles are ``local``, ``lsf``, and ``slurm``.  
 The built-in container runtime profiles are ``docker``, ``singularity``, and ``apptainer``.  
 
 ``--input`` - Path to an input FASTA file of protein or nucleic acids sequences.
@@ -141,7 +141,7 @@ Eddy/Rivas lab group.
 
 .. TIP::
     You can find out more 
-    in the  `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.rst>`_
+    in the  `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
 
 Configuring the output data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -203,21 +203,21 @@ flag to define a subset of member databases as a comma separated list, for examp
 .. code-block:: bash
 
     nextflow run interproscan.nf \
+        -profile <profiles> \
         --input <path to input fasta file> \
-        --applications "antifam,sfld" \
-        -profile <profiles>
+        --applications "antifam,sfld"
 
 For example, to analyse the protein sequences in the example input fasta file ``utilities/test_files/best_to_test.fasta``
 against only the AntiFam and NCBIFam member databases, using an Apptainer image
-(`see the Alternative Container docs <AlternativeContainers.rst>`_ on how to build an Apptainer image),
+(`see the Alternative Container docs <AlternativeContainers.html>`_ on how to build an Apptainer image),
 you could use:
 
 .. code-block:: bash
 
     nextflow run interproscan.nf \
-        --input utilities/test_files/best_to_test.fasta \
-        --applications "antifam,ncbifam" \
         -profile apptainer
+        --input utilities/test_files/best_to_test.fasta \
+        --applications "antifam,ncbifam"
 
 .. NOTE::
     The member database (or 'applications') names are case insensitive,  both 
@@ -256,30 +256,6 @@ set. As stated in the `SignalP README <https://github.com/chenxi-zhang-art/signa
 
 > Specifying the eukarya method of SignalP6 (SignalP_EUK) triggers post-processing of the SP predictions by SignalP6 to prevent spurious results (only predicts type Sec/SPI).
 
-
-Running licensed applications
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Once the licensed software is installed (see the :ref:`Installing Licensed Applications` documentation) 
-you are free to include these applications in your analyses.
-
-The software can be included in the analysis using the 
-``--applications`` flag, just like any other member database.
-
-For example, (presuming ``MobiDB``, ``SignalP6``, ``DeepTMHMM`` and ``Phobius`` are installed), to run 
-``InterProScan`` to analyse the protein sequences on the example input FASTA file 
-``best_to_test.fasta`` using the 
-applications ``CDD``, ``Pfam``, ``SignalP6``, ``DeepTMHMM`` and ``Phobius``, and using Docker
-as the container runtime on your locally, 
-you can use the following command:
-
-.. code-block:: bash
-
-    nextflow run interproscan.nf \
-        --input utilities/test_files/best_to_test.fasta \
-        --applications "cdd,pfam,signalp,tmhmm,phobius" \
-        -profile docker,local
-
 Disable looking for precalculated matches in InterPro
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -296,9 +272,9 @@ command:
 .. code-block:: bash
 
     nextflow run interproscan.nf \
-        --input <path to input fasta file> \
-        --disable_precalc \
         -profile <profile>
+        --input <path to input fasta file> \
+        --disable_precalc
 
 For example, to analyse the protein sequences in the example input fasta 
 file ``utilities/test_files/mini_test.fasta``
@@ -308,9 +284,9 @@ using Docker as the container runtime on your local system, you could run:
 .. code-block:: bash
 
     nextflow run interproscan.nf --input utilities/test_files/best_to_test.fasta \
+        -profile docker,local \
         --applications panther,sfld \
-        --disable_precalc \
-        -profile docker,local
+        --disable_precalc
 
 .. NOTE::
     The order the flags (e.g. ``--input``, ``--applications``, ``-profile``) does **not** matter.
@@ -319,7 +295,7 @@ Running on a cluster
 ~~~~~~~~~~~~~~~~~~~~
 
 The ``InterProScan`` 6 installation does not need to be reconfigured to run on a cluster, but 
-you may need to `build alternative containers <AlternativeContainers.rst>`_ if 
+you may need to `build alternative containers <AlternativeContainers.html>`_ if 
 Docker is not supported on your system.
 
 At the moment, ``InterProScan`` provides only built-in support for the SLURM and LSF schedulers.
@@ -330,8 +306,8 @@ appropriate container run time  in the ``-profile`` option:
 .. code-block:: bash
 
     nextflow run interproscan.nf \
-        --input <input fasta> \
-        -profile slurm,<containerRuntime>
+        -profile slurm,<containerRuntime> \
+        --input <input fasta> 
 
 For example, to analyse protein sequences in the example input fasta file ``utilities/test_files/best_to_test.fasta``
 against only the Gene3D and FunFam member databases, using a Singularity image,
@@ -340,9 +316,9 @@ you could use:
 .. code-block:: bash
 
     nextflow run interproscan.nf \
+        -profile slurm,singularity \
         --input utilities/test_files/best_to_test.fasta \
-        --applications "funfam,gene3d" \
-        -profile slurm,singularity
+        --applications "funfam,gene3d"
 
 .. WARNING::
 
@@ -356,7 +332,7 @@ you could use:
     to ensure they met requirements and expected practices of your system. 
     If you are unsure how to deploy Nextflow on your system contact the sysadmin.
 
-You can find out more information on the ``InterProScan`` profiles `here <Profiles.rst>`. Please 
+You can find out more information on the ``InterProScan`` profiles `here <Profiles.html>`. Please 
 refer to this documentation before creating your own profiles.
 
 Customising the output
@@ -391,11 +367,11 @@ all member databases on a SLURM cluster with Singularity, generating only ``JSON
 .. code-block:: bash
 
     nextflow run interproscan.nf \
-        --input utilities/test_files/best_to_test.fasta \
         -profile slurm,singularity \
+        --input utilities/test_files/best_to_test.fasta \
         --format json,tsv
 
-You can find a description of the output file schemas in `"Output formats" documentation <OutputFormats.rst>`_. 
+You can find a description of the output file schemas in `"Output formats" documentation <OutputFormats.html>`_. 
 
 GO terms and pathways
 ^^^^^^^^^^^^^^^^^^^^^
@@ -454,10 +430,10 @@ citations for ``InterProScan`` and ``InterPro``.
 .. code-block:: bash
 
     $ nextflow run interproscan.nf \
+        -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
-        --applications antifam,ncbifam,gene3d,funfam,sfld \
-        -profile docker
+        --applications antifam,ncbifam,gene3d,funfam,sfld
 
     N E X T F L O W   ~  version 24.04.2
 
@@ -493,10 +469,10 @@ nucleic acid sequence.
 .. code-block:: bash
 
     $ nextflow run interproscan.nf \
+        -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
-        --applications antifam,ncbifam,gene3d,funfam,sfld \
-        -profile docker
+        --applications antifam,ncbifam,gene3d,funfam,sfld
     ...
     Number of sequences to analyse: 253
 
@@ -520,6 +496,7 @@ The extract from the terminal output below shows the progress during an ``InterP
 .. code-block:: bash
 
     $ nextflow run interproscan.nf \
+        -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
         --applications antifam,ncbifam,gene3d,funfam,sfld
@@ -569,7 +546,11 @@ via the InterPro Match Lookup Service (MLS).
 
 .. code-block:: bash
 
-    $ nextflow run interproscan.nf --input utilities/test_files/best_to_test.fasta --formats json,tsv --applications antifam,ncbifam,gene3d,funfam,sfld
+    $ nextflow run interproscan.nf \
+        -profile docker \
+        --input utilities/test_files/best_to_test.fasta \
+        --formats json,tsv \
+        --applications antifam,ncbifam,gene3d,funfam,sfld
     ...
     Using precalculated match lookup service
     Running sequence analysis
