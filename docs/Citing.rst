@@ -1,29 +1,184 @@
-########
+===================
 Citing InterProScan
-########
+===================
 
-****
-Latest publications
-****
+Latest  InterPro and InterProScan publications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you find InterPro useful for your research, please cite the following publications:
 
 InterPro
-====
-`The InterPro protein families and domains database: 20 years on <https://doi.org/10.1093/nar/gkaa977>`_
-Matthias Blum, Hsin-Yu Chang, Sara Chuguransky, Tiago Grego, Swaathi Kandasaamy, Alex Mitchell, Gift Nuka, Typhaine Paysan-Lafosse, Matloob Qureshi, Shriya Raj, Lorna Richardson, Gustavo A Salazar, Lowri Williams, Peer Bork, Alan Bridge, Julian Gough, Daniel H Haft, Ivica Letunic, Aron Marchler-Bauer, Huaiyu Mi, Darren A Natale, Marco Necci, Christine A Orengo, Arun P Pandurangan, Catherine Rivoire, Christian J A Sigrist, Ian Sillitoe, Narmada Thanki, Paul D Thomas, Silvio C E Tosatto, Cathy H Wu, Alex Bateman, Robert D Finn
-Nucleic Acids Research (2020), gkaa977, PMID: `33156333 <https://europepmc.org/article/MED/33156333>`_
+--------
+
+`InterPro in 2022 <https://academic.oup.com/nar/article/51/D1/D418/6814474?login=false>`_
+Paysan-Lafosse T, Blum M, Chuguransky S, Grego T, Pinto BL, Salazar GA, Bileschi ML, Bork P, Bridge A, 
+Colwell L, Gough J, Haft DH, Letunić I, Marchler-Bauer A, Mi H, Natale DA, Orengo CA, Pandurangan AP, 
+Rivoire C, Sigrist CJA, Sillitoe I, Thanki N, Thomas PD, Tosatto SCE, Wu CH, Bateman A. InterPro in 2022. 
+Nucleic Acids Res. 2023 Jan 6;51(D1):D418-D427. doi: 10.1093/nar/gkac993. PMID: 36350672; PMCID: PMC9825450.
 
 InterProScan
-====
+-------------
+
 `InterProScan 5: genome-scale protein function classification <https://doi.org/10.1093/bioinformatics/btu031>`_
 Philip Jones, David Binns, Hsin-Yu Chang, Matthew Fraser, Weizhong Li, Craig McAnulla, Hamish McWilliam, John Maslen, Alex Mitchell, Gift Nuka, Sebastien Pesseat, Antony F. Quinn, Amaia Sangrador-Vegas, Maxim Scheremetjew, Siew-Yit Yong, Rodrigo Lopez, Sarah Hunter
 Bioinformatics (2014), PMID: `24451626 <https://europepmc.org/article/MED/24451626>`_
 
+Member database and third party tool publications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-****
-All previous publications
-****
+Member database publications
+----------------------------
+
+In alphabetical order:
+
+AntiFam
+^^^^^^^
+
+Eberhardt, R. Y., Haft, D. H., Punta, M., Martin, M., O’Donovan, C., & Bateman, A. (2012). AntiFam: A tool to help identify spurious ORFs in protein annotation. Database, bas003
+
+CATH-Gene3D  
+^^^^^^^^^^^
+
+There are multiple citations for CATH-Gene3D, as this member includes CATH Superfamilies and the Gene3D 
+database:
+
+Sillitoe I., Bordin N., Dawson N., Waman V.P., Ashford P., Scholes H.M., Pang C.S.M., Woodridge L., Rauer C., Sen N., Abbasian M., Le Cornu S., Lam S.D., Berka K., Varekova I.H., Svobodova R., Lees J., Orengo C.A. CATH: increased structural coverage of functional space. Nucleic Acids Res. 2021 Jan.
+
+Waman V.P., Bordin N., Alcraft R., Vickerstaff R., Rauer C., Chan Q., Sillitoe I., Yamamori H., Orengo C. CATH 2024: CATH-AlphaFlow Doubles the Number of Structures in CATH and Reveals Nearly 200 New Folds. J Mol Biol.
+
+Orengo C.A., Michie A.D., Jones S., Jones D.T., Swindells M.B., Thornton J.M. CATH–a hierarchic classification of protein domain structures. Structure.
+
+Lewis T.E., Sillitoe I., Dawson N., Lam S.D., Clarke T., Orengo C.A., Lees J.G. Gene3D: Extensive prediction of globular domains in proteins.
+
+CDD
+^^^
+
+Wang J., et al. (2023). “The conserved domain database in 2023”, Nucleic Acids Res.51 (D)384-8
+
+Coils
+^^^^^
+
+Kumar P., Petrenas R., Dawson W.M., Schweke H., Levy E.D., Woolfson D.N. (2023). “CC+: A Searchable Database of Validated Coiled Coils in PDB Structures and AlphaFold2 Models”, Protein Science, Volume 32, Article number e4789.
+
+DeepTMHMM
+^^^^^^^^^
+
+Hallgren J., Tsirigos K.D., Pedersen M.D., Almagro Armenteros J.J., Marcatili P., Nielsen H., Krogh A., Winther O. (2022). “DeepTMHMM predicts alpha and beta transmembrane proteins using deep neural networks”, bioRxiv.
+
+FunFam
+^^^^^^
+
+Scheibenreif L, Littmann M, Orengo C, Rost B. “FunFam protein families improve residue level molecular function prediction.” BMC Bioinformatics. 2019.
+
+HAMAP
+^^^^^
+
+Lima T, Auchincloss AH, Coudert E, Keller G, Michoud K, Rivoire C, Bulliard V, de Castro E, Lachaize C, Baratin D, Phan I, Bougueleret L, Bairoch A. “HAMAP: a database of completely sequenced microbial proteome sets and manually curated microbial protein families in UniProtKB/Swiss-Prot.” Nucleic Acids Res. 2009
+
+MobiDB
+^^^^^^
+
+Piovesan D, Del Conte A, Clementel D, Monzon AM, Bevilacqua M, Aspromonte MC, Iserte JA, Orti FE, Marino-Buslje C, Tosatto SCE. “MobiDB: 10 years of intrinsically disordered proteins.” Nucleic Acids Res. 2022
+
+NCBIFam
+^^^^^^^
+
+No pbulication available.
+
+Panther
+^^^^^^^
+
+Mi H, Muruganujan A, Ebert D, Huang X, Thomas PD. “PANTHER version 14: more genomes, a new PANTHER GO-slim and improvements in enrichment analysis tools.” Nucleic Acids Res. 2019
+
+Pfam
+^^^^
+
+Finn RD, Coggill P, Eberhardt RY, Eddy SR, Mistry J, Mitchell AL, Potter SC, Punta M, Qureshi M, Sangrador-Vegas A, Salazar GA, Tate J, Bateman A. “The Pfam protein families database: towards a more sustainable future.” Nucleic Acids Res. 2016
+
+Phobius
+^^^^^^^
+
+Käll L, Krogh A, Sonnhammer EL. “A combined transmembrane topology and signal peptide prediction method.” J Mol Biol. 2004
+
+PirsR & PirsF
+^^^^^^^^^^^^^
+
+No pbulication available.
+
+PRINTS
+^^^^^^
+
+Attwood TK, Croning MD, Flower DR, Lewis AP, Mabey JE, Scordis P, Selley JN, Wright W. “PRINTS-S: the database formerly known as PRINTS.” Nucleic Acids Res. 2000
+
+PROSITE Patterns & Profiles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sigrist CJ, Cerutti L, Hulo N, Gattiker A, Falquet L, Pagni M, Bairoch A, Bucher P. “PROSITE: a documented database using patterns and profiles as motif descriptors.” Brief Bioinform. 2002
+
+SignalP
+^^^^^^^
+
+Teufel, F., Almagro Armenteros, J.J., Johansen, A.R. et al. SignalP 6.0 predicts all five types of signal peptides using protein language models. Nat Biotechnol 40, 1023–1025 (2022). https://doi.org/10.1038/s41587-021-01156-3
+
+SLFD
+^^^^
+
+Holliday G.L., Brown S.D., Akiva E., Mischel D., Hicks M.A., Morris J.H., Huang C.C., Meng E.C., Pegg S.C., Ferrin T.E., Babbitt P.C. Biocuration in the structure-function linkage database: the anatomy of a superfamily. Database (Oxford). 2017 Jan 1;2017(1):bax006. doi: 10.1093/database/bax006. Erratum in: Database (Oxford). 2017 Jan 1;2017:null. PMID: 28365730; PMCID: PMC5467563.
+
+SMART
+^^^^^
+
+Letunic I, Doerks T, Bork P. “SMART: recent updates, new developments and status in 2015.” Nucleic Acids Res. 2015
+
+Superfamily
+^^^^^^^^^^^
+
+Wilson D, Pethica R, Zhou Y, Talbot C, Vogel C, Madera M, Chothia C, Gough J. “SUPERFAMILY–sophisticated comparative genomics, data mining, visualization and phylogeny.” Nucleic Acids Res. 2009
+
+Third party tool publications
+-----------------------------
+
+BioPython
+^^^^^^^^^
+
+Used in Panther analyses.
+
+Biopython: Cock, P. J., Antao, T., Chang, J. T., Chapman, B. A., Cox, C. J., Dalke, A., … others. (2009). Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics, 25 (11), 1422–1423.
+
+BLAST
+^^^^^
+
+Used for CDD analyses.
+
+BLAST: Altschul, S.F., Gish, W., Miller, W., Myers, E.W., Lipman, D.J. (1990) “Basic local alignment search tool.” J. Mol. Biol. 215:403-4102. Altschul, S.F., Madden, T.L., Schaffer, A.A., Zhang, J., Zhang, Z., Miller, W., Lipman, D.J. (1997) “Gapped BLAST and PSI-BLAST: a new generation of protein database search programs.” Nucleic Acids Res. 25:3389-3402.
+
+Easel
+^^^^^
+
+Used to predict ORFs in nucleic acid sequences.
+
+HMMER3
+^^^^^^
+
+Used in AntiFam, CATH-Gene3D, FunFam, HAMAP, NCBIFam, Panther, Pfam, PirsF, PirsR, SFLD, SMART and Superfamily analyses.
+
+HMMER3: Eddy, S.R. (2011). “Accelerated Profile HMM Searches.” PLoS Comput. Biol. 7(10): e1002195.
+
+TreeGrafter
+^^^^^^^^^^^
+
+Used in Panther analyses.
+
+TreeGrafter: Tang, H., Finn, R.D., Thomas, P.D. (2019). “TreeGrafter: phylogenetic tree-based annotation of proteins with Gene Ontology terms and other annotations.” Bioinformatics, 35 (3): 518-520.
+
+
+Previous InterPro and InterProScan publications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`The InterPro protein families and domains database: 20 years on <https://doi.org/10.1093/nar/gkaa977>`_
+Matthias Blum, Hsin-Yu Chang, Sara Chuguransky, Tiago Grego, Swaathi Kandasaamy, Alex Mitchell, Gift Nuka, Typhaine Paysan-Lafosse, Matloob Qureshi, Shriya Raj, Lorna Richardson, Gustavo A Salazar, Lowri Williams, Peer Bork, Alan Bridge, Julian Gough, Daniel H Haft, Ivica Letunic, Aron Marchler-Bauer, Huaiyu Mi, Darren A Natale, Marco Necci, Christine A Orengo, Arun P Pandurangan, Catherine Rivoire, Christian J A Sigrist, Ian Sillitoe, Narmada Thanki, Paul D Thomas, Silvio C E Tosatto, Cathy H Wu, Alex Bateman, Robert D Finn
+Nucleic Acids Research (2020), gkaa977, PMID: `33156333 <https://europepmc.org/article/MED/33156333>`_
+
 
 `InterPro in 2019: improving coverage, classification and access to protein sequence annotations <https://doi.org/10.1093/nar/gky1100>`_
 Alex L Mitchell, Teresa K Attwood, Patricia C Babbitt, Matthias Blum, Peer Bork, Alan Bridge, Shoshana D Brown, Hsin-Yu Chang, Sara El-Gebali, Matthew I Fraser, Julian Gough, David R Haft, Hongzhan Huang, Ivica Letunic, Rodrigo Lopez, Aurélien Luciani, Fabio Madeira, Aron Marchler-Bauer, Huaiyu Mi, Darren A Natale, Marco Necci, Gift Nuka, Christine Orengo, Arun P Pandurangan, Typhaine Paysan-Lafosse, Sebastien Pesseat, Simon C Potter, Matloob A Qureshi, Neil D Rawlings, Nicole Redaschi, Lorna J Richardson, Catherine Rivoire, Gustavo A Salazar, Amaia Sangrador-Vegas, Christian J A Sigrist, Ian Sillitoe, Granger G Sutton, Narmada Thanki, Paul D Thomas, Silvio C E Tosatto, Siew-Yit Yong, Robert D Finn
@@ -110,5 +265,3 @@ Bioinformatics (2000), 16(12):1145-50, PMID: `11159333 <https://europepmc.org/ar
 `The InterPro database, an integrated documentation resource for protein families, domains and functional sites <https://dx.doi.org/10.1093%2Fnar%2F29.1.37>`_
 Apweiler R, Attwood TK, Bairoch A, Bateman A, Birney E, Biswas M, Bucher P, Cerutti L, Corpet F, Croning MD, Durbin R, Falquet L, Fleischmann W, Gouzy J, Hermjakob H, Hulo N, Jonassen I, Kahn D, Kanapin A, Karavidopoulou Y, Lopez R, Marx B, Mulder NJ, Oinn TM, Pagni M, Servant F, Sigrist CJ, Zdobnov EM.
 Nucleic Acids Res (2001), 1;29(1):37-40, PMID: `11125043 <https://europepmc.org/article/MED/11125043>`_
-
-

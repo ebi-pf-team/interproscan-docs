@@ -1,60 +1,39 @@
-Precalculated match lookup
-==========================
+Precalculated Match Lookup Service
+==================================
 
-InterProScan uses a lookup service to check whether or not a protein
-submitted to it has been encountered before and, therefore, if matches
-exist. (see "How to Run" in User documentation). This generic mechanism
+InterProScan uses a lookup service to check whether or not a protein sequence
+has been encountered before and, therefore, if matches
+exist. (see `"How to Run" <HowToRun.html>`__ in our documentation). When InterProScan is
+queried with a known sequence, it retrieves the result from the lookup
+service and reports the result immediately, thereby reducing compute
+requirements and improving performance. This generic mechanism
 is based upon a REST web service that retrieves data from a
 `BerkeleyDB <http://en.wikipedia.org/wiki/Berkeley_DB>`__ database.
 
-The client to this service is built into the InterProScan software, to
-allow lookup from the web service. The web service can be installed and
-run "out of the box", using
-`Jetty <https://www.eclipse.org/jetty/>`__.
+For sequences not in the lookup
+service, InterProScan will calculate these from scratch using the
+various analyses requested by the user.
 
-The service support two simple queries:
+The default ``InterProScan`` configuration will use the lookup
+service hosted at EBI http://www.ebi.ac.uk/interpro/match-lookup/version.
+This will be will be the most recent lookup service version. Therefore, ``InterProScan`` will 
+require access to the internet to run when the using the Match Lookup Service (MLS) is enabled.
 
-- "Do these sequences need to be analysed?" This query returns protein sequences that have **not**  been analysed previously. Proteins are considered to have been analysed previouslyeven if they have no matches.
+Disabling using the Match Lookup Service
+----------------------------------------
 
-    - **Input**: Set of protein sequence MD5 checksums
-    - **Output**: MD5 checksums of proteins that have **not** been analysed previously
+If you do not wish or are unable to use the InterPro MLS, you can disable looking for 
+precalculated matches by including the ``--disable_precalc`` flag in your ``InterProScan``
+command:
 
-- "What are the matches for these sequences?"
+.. code-block:: bash
 
-    - **Input**: Set of protein sequence MD5 checksums
-    - **Output**: Simple "BekerkeleyMatchXML" document containing all matches.
+    nextflow run interproscan.nf \
+        -profile <profile>
+        --input <path to input fasta file> \
+        --disable_precalc
 
-Both of these services are used in InterProScan - the former to ensure that
-protein sequences with no matches are not re-analysed needlessly.
+Using a local precalculated match lookup service
+------------------------------------------------
 
-Incorporation into InterProScan
----------------------------------
-
-The hook into this service is from the
-`ProteinLoader <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/ProteinLoader.java>`__
-class, into which is injected a
-`BerkeleyPrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/BerkeleyPrecalculatedProteinLookup.java>`__,
-which is an implementation of the
-`PrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/PrecalculatedProteinLookup.java>`__
-interface.
-
-A
-`MatchHttpClient <https://github.com/ebi-pf-team/interproscan/tree/master/core/precalcmatches/precalc-match-client/src/main/java/uk/ac/ebi/interpro/scan/precalc/client/MatchHttpClient.java>`__
-instance is injected into the
-`BerkeleyPrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/BerkeleyPrecalculatedProteinLookup.java>`__
-class, which is used to query the web service. The client is configured
-from properties to set the URL of the web service, should users wish to
-install the web service locally.
-
-The
-`BerkeleyPrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/BerkeleyPrecalculatedProteinLookup.java>`__
-then uses the client to query for pre-calculated matches / proteins that
-have been previously analysed. Complete InterProScan  Protein objects
-with a set of Matches are returned from the
-`BerkeleyPrecalculatedProteinLookup <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/BerkeleyPrecalculatedProteinLookup.java>`__
-to the
-`ProteinLoader <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/ProteinLoader.java>`__
-instance. The
-`ProteinLoader <https://github.com/ebi-pf-team/interproscan/tree/master/core/business/src/main/java/uk/ac/ebi/interpro/scan/business/sequence/ProteinLoader.java>`__
-then persists these matches and ensures that the Protein objects
-included are **not** scheduled for reanalysis.
+Coming Soon.

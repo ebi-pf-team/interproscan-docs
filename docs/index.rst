@@ -33,7 +33,7 @@ Nextflow enables the integration of ``InterProScan`` into HPC schedulers and clo
    Profiles
    InputFormat
    OutputFormats
-   HowToNucleic
+   ScanNucleicAcidSeqs
    PrecalculatedMatchLookup
    AdvancedConfiguration
    UnderTheHood

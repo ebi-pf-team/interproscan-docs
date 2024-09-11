@@ -1,298 +1,590 @@
+==============
 Output formats
 ==============
 
-In this version of InterProScan, you can retrieve output in any of the
-following five formats:
+``InterProScan`` version 6 you can the retrieve output in any of the
+following formats:
 
 -  `TSV <OutputFormats.html#tab-separated-values-format-tsv>`__: A simple tab-delimited file format
--  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The InterProScan XML format (`XSD available
-   here <OutputFormats.html#the-xml-schema-definition>`__).
+-  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The ``InterProScan`` XML format 
 -  `JSON <OutputFormats.html#javascript-object-notation-json>`__: Full output of results in JSON format
--  `GFF3 <OutputFormats.html#generic-feature-format-version-3-gff3>`__: The `GFF 3.0 <http://gmod.org/wiki/GFF#GFF3_Format>`__ format
 
-InterProScan 5 can output results for protein and nucleotide sequences
-in all formats. **Please note** you can only trace protein match
-positions to the original nucleotide sequence with GFF3, XML and JSON
-outputs.
-
-You can override the default output formats using the **-f** option,
-e.g.:
-
-::
-
-    ./interproscan.sh -f XML -f JSON -i /path/to/sequences.fasta -b /path/to/output_file
-
-or
-
-::
-
-    ./interproscan.sh -f XML, JSON -i /path/to/sequences.fasta -b /path/to/output_file
-
-These two equivalent commands will output the results in XML and JSON
-format.
+This page provides a summary of the data structure of each output file.
 
 Tab-separated values format (TSV)
 ---------------------------------
 
-Basic tab delimited format. Outputs only those sequences with domain
-matches.
+The ``TSV`` file presents the data in a simple tab delimited format, that only includes sequences 
+with domain matches.
 
-Example output
-~~~~~~~~~~~~~~
-
-::
-
-    P51587  14086411a2cdf1c4cba63020e1622579    3418    Pfam    PF09103 BRCA2, oligonucleotide/oligosaccharide-binding, domain 1    2670    2799    7.9E-43 T   15-03-2013
-    P51587  14086411a2cdf1c4cba63020e1622579    3418    ProSiteProfiles PS50138 BRCA2 repeat profile.   1002    1036    0.0 T   18-03-2013  IPR002093   BRCA2 repeat    GO:0005515|GO:0006302
-    P51587  14086411a2cdf1c4cba63020e1622579    3418    Gene3D  G3DSA:2.40.50.140       2966    3051    3.1E-52 T   15-03-2013
-    ...
+Data in the TSV file
+~~~~~~~~~~~~~~~~~~~~
 
 The TSV format presents the match data in columns as follows:
 
 1.  Protein accession (e.g. P51587)
 2.  Sequence MD5 digest (e.g. 14086411a2cdf1c4cba63020e1622579)
 3.  Sequence length (e.g. 3418)
-4.  Analysis (e.g. Pfam / PRINTS / Gene3D)
+4.  Member database (e.g. Pfam / PRINTS / Gene3D)
 5.  Signature accession (e.g. PF09103 / G3DSA:2.40.50.140)
 6.  Signature description (e.g. BRCA2 repeat profile)
-7.  Start location
-8.  Stop location
-9.  Score - is the e-value (or score) of the match reported by member
-    database method (e.g. 3.1E-52)
+7.  Start location (match location start in the query sequence)
+8.  Stop location (match location end in the query sequence)
+9.  Score - is the E-value (or score) of the match reported by the member
+    database (e.g. 3.1E-52)
+    * E-value for AntiFam, Cath-Gene3D, FunFam, NCBIFam, PANTHER, Pfam, PIRSF, PRINTS, SFLD, SMART, SUPERFAMILY, CDD
+    * Score for HAMAP, PROSITE ProSiteProfiles
+    * '-' for Coils, MobiDB-lite, Phobius, PROSITE Patterns, SignalP, TMHMM
 10. Status - is the status of the match (T: true)
-11. Date - is the date of the run
-12. InterPro annotations - accession (e.g. IPR002093)
-13. InterPro annotations - description (e.g. BRCA2 repeat)
-14. GO annotations with their source(s), e.g. GO:0005515(InterPro)|GO:0006302(PANTHER)|GO:0007195(InterPro,PANTHER). This is an optional column; only displayed if the :code:`--goterms` option is switched on
-15. Pathways annotations, e.g. REACT\_71. This is an optional column; only displayed if the :code:`--pathways` option is switched on
+11. Date - is the date of the run (format ``DD-MM-YYYY``)
+12. Associataed InterPro entry accession (e.g. IPR002093)
+13. Associated InterPro entry description (e.g. BRCA2 repeat)
+14. Pipe-separated list of GO annotations with their source(s), e.g. GO:0005515(InterPro)|GO:0006302(PANTHER)|GO:0007195(InterPro,PANTHER). This is an optional column; only displayed if the ``--goterms`` option is switched on
+15. Pipe-separated list of pathways annotations, e.g. REACT\_71. This is an optional column; only displayed if the ``--pathways`` option is switched on
 
-If a value is missing in a column, for example, the match has no InterPro annotation, a '-' is displayed.
+An example TSV file
+~~~~~~~~~~~~~~~~~~~
 
-Extensible Markup Language (XML)
---------------------------------
-
-XML representation of the matches - this is the richest form of the
-data. The XML Schema Definition (XSD) file links are below the example output.
-
-
-Example output
-~~~~~~~~~~~~~~
+Below is an example of a TSV file that includes the optional GO terms and pathways columns:
 
 ::
 
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <protein-matches xmlns="http://www.ebi.ac.uk/interpro/resources/schemas/interproscan5" interproscan-version="5.26-65.0">
-        <protein>
-            <sequence md5="14086411a2cdf1c4cba63020e1622579">MPIGSKERPTFFEIFKTRCNKADLGPISLNWFEELSSEAPPYNSEPAEESEHKNNNYEPNLFKTPQRKPSYNQLASTPIIFKEQGLTLPLYQSPVKELDKFKLDLGRNVPNSRHKSLRTVKTKMDQADDVSCPLLNSCLSESPVVLQCTHVTPQRDKSVVCGSLFHTPKFVKGRQTPKHISESLGAEVDPDMSWSSSLATPPTLSSTVLIVRNEEASETVFPHDTTANVKSYFSNHDESLKKNDRFIASVTDSENTNQREAASHGFGKTSGNSFKVNSCKDHIGKSMPNVLEDEVYETVVDTSEEDSFSLCFSKCRTKNLQKVRTSKTRKKIFHEANADECEKSKNQVKEKYSFVSEVEPNDTDPLDSNVAHQKPFESGSDKISKEVVPSLACEWSQLTLSGLNGAQMEKIPLLHISSCDQNISEKDLLDTENKRKKDFLTSENSLPRISSLPKSEKPLNEETVVNKRDEEQHLESHTDCILAVKQAISGTSPVASSFQGIKKSIFRIRESPKETFNASFSGHMTDPNFKKETEASESGLEIHTVCSQKEDSLCPNLIDNGSWPATTTQNSVALKNAGLISTLKKKTNKFIYAIHDETSYKGKKIPKDQKSELINCSAQFEANAFEAPLTFANADSGLLHSSVKRSCSQNDSEEPTLSLTSSFGTILRKCSRNETCSNNTVISQDLDYKEAKCNKEKLQLFITPEADSLSCLQEGQCENDPKSKKVSDIKEEVLAAACHPVQHSKVEYSDTDFQSQKSLLYDHENASTLILTPTSKDVLSNLVMISRGKESYKMSDKLKGNNYESDVELTKNIPMEKNQDVCALNENYKNVELLPPEKYMRVASPSRKVQFNQNTNLRVIQKNQEETTSISKITVNPDSEELFSDNENNFVFQVANERNNLALGNTKELHETDLTCVNEPIFKNSTMVLYGDTGDKQATQVSIKKDLVYVLAEENKNSVKQHIKMTLGQDLKSDISLNIDKIPEKNNDYMNKWAGLLGPISNHSFGGSFRTASNKEIKLSEHNIKKSKMFFKDIEEQYPTSLACVEIVNTLALDNQKKLSKPQSINTVSAHLQSSVVVSDCKNSHITPQMLFSKQDFNSNHNLTPSQKAEITELSTILEESGSQFEFTQFRKPSYILQKSTFEVPENQMTILKTTSEECRDADLHVIMNAPSIGQVDSSKQFEGTVEIKRKFAGLLKNDCNKSASGYLTDENEVGFRGFYSAHGTKLNVSTEALQKAVKLFSDIENISEETSAEVHPISLSSSKCHDSVVSMFKIENHNDKTVSEKNNKCQLILQNNIEMTTGTFVEEITENYKRNTENEDNKYTAASRNSHNLEFDGSDSSKNDTVCIHKDETDLLFTDQHNICLKLSGQFMKEGNTQIKEDLSDLTFLEVAKAQEACHGNTSNKEQLTATKTEQNIKDFETSDTFFQTASGKNISVAKESFNKIVNFFDQKPEELHNFSLNSELHSDIRKNKMDILSYEETDIVKHKILKESVPVGTGNQLVTFQGQPERDEKIKEPTLLGFHTASGKKVKIAKESLDKVKNLFDEKEQGTSEITSFSHQWAKTLKYREACKDLELACETIEITAAPKCKEMQNSLNNDKNLVSIETVVPPKLLSDNLCRQTENLKTSKSIFLKVKVHENVEKETAKSPATCYTNQSPYSVIENSALAFYTSCSRKTSVSQTSLLEAKKWLREGIFDGQPERINTADYVGNYLYENNSNSTIAENDKNHLSEKQDTYLSNSSMSNSYSYHSDEVYNDSGYLSKNKLDSGIEPVLKNVEDQKNTSFSKVISNVKDANAYPQTVNEDICVEELVTSSSPCKNKNAAIKLSISNSNNFEVGPPAFRIASGKIVCVSHETIKKVKDIFTDSFSKVIKENNENKSKICQTKIMAGCYEALDDSEDILHNSLDNDECSTHSHKVFADIQSEEILQHNQNMSGLEKVSKISPCDVSLETSDICKCSIGKLHKSVSSANTCGIFSTASGKSVQVSDASLQNARQVFSEIEDSTKQVFSKVLFKSNEHSDQLTREENTAIRTPEHLISQKGFSYNVVNSSAFSGFSTASGKQVSILESSLHKVKGVLEEFDLIRTEHSLHYSPTSRQNVSKILPRVDKRNPEHCVNSEMEKTCSKEFKLSNNLNVEGGSSENNHSIKVSPYLSQFQQDKQQLVLGTKVSLVENIHVLGKEQASPKNVKMEIGKTETFSDVPVKTNIEVCSTYSKDSENYFETEAVEIAKAFMEDDELTDSKLPSHATHSLFTCPENEEMVLSNSRIGKRRGEPLILVGEPSIKRNLLNEFDRIIENQEKSLKASKSTPDGTIKDRRLFMHHVSLEPITCVPFRTTKERQEIQNPNFTAPGQEFLSKSHLYEHLTLEKSSSNLAVSGHPFYQVSATRNEKMRHLITTGRPTKVFVPPFKTKSHFHRVEQCVRNINLEENRQKQNIDGHGSDDSKNKINDNEIHQFNKNNSNQAAAVTFTKCEEEPLDLITSLQNARDIQDMRIKKKQRQRVFPQPGSLYLAKTSTLPRISLKAAVGGQVPSACSHKQLYTYGVSKHCIKINSKNAESFQFHTEDYFGKESLWTGKGIQLADGGWLIPSNDGKAGKEEFYRALCDTPGVDPKLISRIWVYNHYRWIIWKLAAMECAFPKEFANRCLSPERVLLQLKYRYDTEIDRSRRSAIKKIMERDDTAAKTLVLCVSDIISLSANISETSSNKTSSADTQKVAIIELTDGWYAVKAQLDPPLLAVLKNGRLTVGQKIILHGAELVGSPDACTPLEAPESLMLKISANSTRPARWYTKLGFFPDPRPFPLPLSSLFSDGGNVGCVDVIIQRAYPIQWMEKTSSGLYIFRNEREEEKEAAKYVEAQQKRLEALFTKIQEEFEEHEENTTKPYLPSRALTRQQVRALQDGAELYEAVKNAADPAYLEGYFSEEQLRALNNHRQMLNDKKQAQIQLEIRKAMESAEQKEQGLSRDVTTVWKLRIVSYSKKEKDSVILSIWRPSSDLYSLLTEGKRYRIYHLATSKSKSKSERANIQLAATKKTQYQQLPVSDEILFQIYQPREPLHFSKFLDPDFQPSCSEVDLIGFVVSVVKKTGLAPFVYLSDECYNLLAIKFWIDLNEDIIKPHMLIAASNLQWRPESKSGLLTLFAGDFSVFSASPKEGHFQETFNKMKNTVENIDILCNEAENKLMHILHANDPKWSTPTKDCTSGPYTAQIIPGTGNKLLMSSPNCEIYYQSPLSLCMAKRKSVSTPVSAQMTSKSCKGEKEIDDQKNCKKRRALDFLSRLPLPPPVSPICTFVSPAAQKAFQPPRSCGTKYETPIKKKELNSPQMTPFKKFNEISLLESNSIADEELALINTQALLSGSTGEKQFISVSESTRTAPTSSEDYLRLKRRCTTSLIKEQESSQASTEECEKNKQDTITTKKYI</sequence>
-            <xref id="P51587"/>
-            <matches>
-    ...
-                <hmmer3-match score="341.9" evalue="0.0">
-                    <signature name="BRCA-2_helical" desc="BRCA2, helical" ac="PF09169">
-                        <entry type="DOMAIN" name="BRCA2_hlx" desc="Breast cancer type 2 susceptibility protein, helical domain" ac="IPR015252">
-                            <go-xref category="BIOLOGICAL_PROCESS" name="double-strand break repair via homologous recombination" id="GO:0000724" db="GO"/>
-                            <go-xref category="MOLECULAR_FUNCTION" name="single-stranded DNA binding" id="GO:0003697" db="GO"/>
-                            <go-xref category="BIOLOGICAL_PROCESS" name="DNA recombination" id="GO:0006310" db="GO"/>
-                        </entry>
-                        <models>
-                            <model name="BRCA-2_helical" desc="BRCA2, helical" ac="PF09169"/>
-                        </models>
-                        <signature-library-release version="27.0" library="PFAM"/>
-                    </signature>
-                    <locations>
-                        <hmmer3-location env-start="2479" env-end="2667" hmm-end="195" hmm-start="1" evalue="9.6E-102" score="0.0" end="2667" start="2479"/>
-                    </locations>
-                </hmmer3-match>
-    ...
-                <superfamilyhmmer3-match evalue="0.0">
-                    <signature name="BRCA2 helical domain" ac="SSF81872">
-                        <entry type="DOMAIN" name="BRCA2_hlx" desc="Breast cancer type 2 susceptibility protein, helical domain" ac="IPR015252">
-                            <go-xref category="BIOLOGICAL_PROCESS" name="double-strand break repair via homologous recombination" id="GO:0000724" db="GO"/>
-                            <go-xref category="MOLECULAR_FUNCTION" name="single-stranded DNA binding" id="GO:0003697" db="GO"/>
-                            <go-xref category="BIOLOGICAL_PROCESS" name="DNA recombination" id="GO:0006310" db="GO"/>
-                        </entry>
-                        <models>
-                            <model name="BRCA2 helical domain" ac="0039279"/>
-                            <model name="BRCA2 helical domain" ac="0040951"/>
-                        </models>
-                        <signature-library-release version="1.75" library="SUPERFAMILY"/>
-                    </signature>
-                    <locations>
-                        <superfamilyhmmer3-location end="2668" start="2479"/>
-                    </locations>
-                </superfamilyhmmer3-match>
-    ...
-                <rpsblast-match>
-                    <signature ac="cd08964" desc="L-asparaginase_II" name="L-asparaginase_II">
-                        <models>
-                            <model ac="cd08964" desc="L-asparaginase_II" name="L-asparaginase_II"/>
-                        </models>
-                        <signature-library-release library="CDD" version="3.14"/>
-                    </signature>
-                    <locations>
-                        <rpsblast-location evalue="8.66035E-152" score="433.09" start="50" end="364">
-                            <sites>
-                                <rpsblast-site description="homotetramer interface" numLocations="51">
-    <site-locations>
-        <site-location residue="Y" start="271" end="271"/>
-        <site-location residue="R" start="246" end="246"/>
-        <site-location residue="Y" start="229" end="229"/>
-        ...
-    </site-locations>
-                                </rpsblast-site>
-                                ...
-                            </sites>
-                        </rpsblast-location>
-                    </locations>
-                </rpsblast-match>
-                ...
-            </matches>
-        </protein>
-    </protein-matches>
+    P51587  14086411a2cdf1c4cba63020e1622579    3418    Pfam    PF09103 BRCA2, oligonucleotide/oligosaccharide-binding, domain 1    2670    2799    7.9E-43 T   15-03-2013    -    -
+    P51587  14086411a2cdf1c4cba63020e1622579    3418    ProSiteProfiles PS50138 BRCA2 repeat profile.   1002    1036    0.0 T   18-03-2013  IPR002093   BRCA2 repeat    GO:0005515|GO:0006302    -
+    P51587  14086411a2cdf1c4cba63020e1622579    3418    Gene3D  G3DSA:2.40.50.140       2966    3051    3.1E-52 T   15-03-2013    -    -
+    UPI0004FABBC5	92e4b89dd86f8ab828f57121f6d7d460	257	PRINTS	PR01914 Neurotrophin-3 signature	81	95	2.0E-26	T	28-03-2024	IPR015578	Neurotrophin-3	GO:0005165(InterPro)	Reactome:R-BTA-9034013|Reactome:R-BTA-9034793|Reactome:R-BTA-9603381|Reactome:R-HSA-9025046|Reactome:R-HSA-9034013|Reactome:R-HSA-9034015|Reactome:R-HSA-9034793|Reactome:R-HSA-9034864|Reactome:R-HSA-9603381|Reactome:R-MMU-9034013|Reactome:R-MMU-9034793|Reactome:R-MMU-9603381|Reactome:R-RNO-9034013|Reactome:R-RNO-9034793|Reactome:R-RNO-9603381
 
-The XML Schema Definition
--------------------------
-The XML Schema Definition (XSD) is available
-`here <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/>`__.
+.. NOTE::
+    If a value is missing in a column, for example, the match has no InterPro annotation, a '-' is displayed.
 
+An example TSV file (Nucleic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Listed below are the XSD files for the InterProScan 5 XML output format (with the InterProScan release versions they apply to noted in brackets afterwards).
+Below is an example of a TSV file that was generated using nucleic acid sequences as input:
 
-- `interproscan-model-4.6.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.6.xsd>`__ (as produced by InterProScan 5 from version 5.63-95.0 onwards)
-- `interproscan-model-4.5.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.5.xsd>`__ (as produced by InterProScan 5 from version 5.51-85.0 to 5.62-94.0)
-- `interproscan-model-3.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.0.xsd>`__ (as produced by InterProScan 5 from version 5.31-70.0 to 5.50-84.0)
-- `interproscan-model-2.2.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.2.xsd>`__ (as produced by InterProScan 5 from version 5.28-67.0 to 5.30-69.0)
-- `interproscan-model-2.1.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.1.xsd>`__ (as produced by InterProScan 5 from version 5.26-65.0 to 5.27-66.0)
-- `interproscan-model-2.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.0.xsd>`__ (as produced by InterProScan 5 from version 5.21-60.0 to 5.25-64.0)
-- `interproscan-model-1.4.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.4.xsd>`__ (as produced by InterProScan 5 in version 5.20-59.0 only)
-- `interproscan-model-1.3.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.3.xsd>`__ (as produced by InterProScan 5 in version 5.19-58.0 only)
-- `interproscan-model-1.2.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.2.xsd>`__ (as produced by InterProScan 5 from version 5.17-56.0 to 5.18-57.0)
-- `interproscan-model-1.1.xsd <htpp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.1.xsd>`__ (as produced by InterProScan 5 from version RC7 to 5.16-55.0)
-- `interproscan-model-1.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-1.0.xsd>`__ (InterProScan 5 version RC1 to RC6)
+::
+
+    Bob_orf9	bb3bde1de955af5b7f49a84ba2c4d4ae	369	hamap	MF_00456	Glutamate 5-kinase/delta-1-pyrroline-5-carboxylate synthase	4	259	35.881714	T	28-08-2024	IPR005715	Glu_5kinase/COase_Synthase		
+    Bob_orf9	bb3bde1de955af5b7f49a84ba2c4d4ae	369	CDD	cd04242	Glutamate-5-kinase domain	5	255	372.932	T	28-08-2024	IPR041739	G5K_ProB		
+    Bob_orf9	bb3bde1de955af5b7f49a84ba2c4d4ae	369	CDD	cd21157	None	263	356	105.626	T	28-08-2024	None	None		
+    Wilf_orf50	f927b0d241297dcc9a1c5990b58bf3c4	122	CDD	cd02947	None	15	109	116.118	T	28-08-2024	None	None		
+    reverse_orf59	d1b6cbf29dde9e5220196f3f6114a1c3	128	CDD	cd00199	None	76	126	47.4447	T	28-08-2024	None	None		
+    ENA|AACH01000027|AACH01000027.2_orf74	fd0743a673ac69fb6e5c67a48f264dd5	449	hamap	MF_00456	Glutamate 5-kinase/delta-1-pyrroline-5-carboxylate synthase	84	339	35.881714	T	28-08-2024	IPR005715	Glu_5kinase/COase_Synthase		
+    ENA|AACH01000027|AACH01000027.2_orf74	fd0743a673ac69fb6e5c67a48f264dd5	449	CDD	cd04242	Glutamate-5-kinase domain	85	335	372.546	T	28-08-2024	IPR041739	G5K_ProB		
+    ENA|AACH01000027|AACH01000027.2_orf74	fd0743a673ac69fb6e5c67a48f264dd5	449	CDD	cd21157	None	343	436	105.241	T	28-08-2024	None	None		
 
 
 JavaScript Object Notation (JSON)
 ---------------------------------
 
-JSON representation of the matches - an alternative to XML format. As
-new releases are made public, the changes to the expected JSON format
-are documented in :ref:`Change log for InterProScan JSON output format`.
+The ``JSON`` output file includes data for all sequences submitted to ``InterProScan``.
 
-Example output
-~~~~~~~~~~~~~~
+Data in the JSON file
+~~~~~~~~~~~~~~~~~~~~~
 
-::
+In the ``JSON`` file, each query sequence is represented by its unique JSON objectionary, that 
+contains all match and annotation retrieved and calculated by ``InterProScan``.
+
+The JSON objectionary for each query sequences contains:
+
+For each input/query sequence:
+
+* ``sequence``: The submitted protein or nucleotie sequence
+* ``md5``: MD5 hash of the submitted sequence
+* ``matches``: List of matches from pre-calculated matches and matches generated by the analysis. Specifically, it is a list of JSON objects, each JSON object representing a match. For each match:
+    * ``evalue``: Overall, full sequence evalue
+    * ``score``: Overall, full sequence bit-score
+    * ``model-ac``: Accession of the member database model
+    * ``signature``: A JSON object summarising the InterPro signature
+        * ``accession``: Signature accession
+        * ``name``: Name from the InterPro entry
+        * ``description``: Description from the InterPro entry
+        * ``entry``: The accession of the InterPro entry that the signature is associated with
+            * entry will be null if a singature is not associated with an InterPro entry
+            * ``accession``: The InterPro entry accession
+            * ``name``: The InterPro entry name
+            * ``description``: The InterPro entry description
+            * ``type``: The type of InterPro entry (e.g. family, domain, etc.)
+            * ``goXRefs``: Geneontology (GO) terms associated with the InterPro entry - only retrieved if the ``--goterms`` flag is used
+            * ``pathwayXRefs``: Pathway information associated with the InterPro entry - only retrieved if the ``--pathways`` flag is used
+        * ``signatureLibraryRelease``: JSON object containing:
+            * ``library``: Application/member database name
+            * ``version``: Release version number
+    * ``locations`` : List of locations where the signature matched the protein sequence. Specifically, this is a list of JSON objects, one JSON object per location where a match between the protein sequence and signature was found. For each location:
+        * ``start`` Start point of the alignment location with respect to the query sequence -- listed as "**ali** coord **from**" in HMMER
+        * ``end`` End point of the alignment location with respect to the query sequence -- listed as "**ali** coord **to**" in HMMER
+        * ``hmmStart`` Start point of the local alignment with respect to the HMM profile -- listed as "**hmm** coord **from**" in HMMER
+        * ``hmmEnd`` End point of the local alignment with respect to the HMM profile -- listed as "**hmm** coord **to**" in HMMER
+        * ``evalue``: Independent E-value
+        * ``score``: Bit score
+        * ``envelopesStart``: Start of the envelop -- listed as "**env** coord **from**" in HMMER
+        * ``envelopeEnd``: End of the envelop -- listed as "**env** coord **to**" in HMMER
+        * ``location-fragments``: List of JSON objects, one JSON object per fragment:
+            * ``start``: Start location of the fragment in the query sequence
+            * ``end``: End location of the fragment in the query sequence
+            * ``dc-status``: Continuous/discontinuous status.
+        * ``sites``: List of JSON objects, one JSON object per site (a domain signature can have multiple sites). Per site:
+            * ``description``: Site description (from InterPro)
+            * ``numLocations``: The number of locations (it is the same as the lengh of ``siteLocations`` - so do we need it?)
+            * ``label``: Legacy key from ``InterProScan`` version 5
+            * ``group``: Legacy key from ``InterProScan`` version 5
+            * ``hmmStart``: Legacy key from ``InterProScan`` version 5
+            * ``hmmEnd``: Legacy key from ``InterProScan`` version 5 
+            * ``siteLocations``: List, one JSON object structure per location:
+                * ``start``: Start location of the site in the query sequence
+                * ``end``: End location of the site in the query sequence
+                * ``residue``: The amino acid residue of the site
+    * ``xref``: The protein sequence ID and description listed in the input FASTA file
+
+**Continuous and discontinuous status**: The ``dc-status`` refers to continuous nature of a domain 
+hit in some member databases. If a domain is not  continuous, i.e. is broken up into fragments, each 
+of the fragments are represented under the ``location-fragments`` key and are labelled as 
+"C_TERMINAL_DISC" (for the most c-terminal fragment), "N_TERMINAL_DISC" (for the most n-terminal fragment), 
+and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "discontinuous". For example:
+
+.. code-block:: JSON
 
     {
-     "interproscan-version": "5.26-65.0",
-    "results": [{
-      "sequence" : "MSKIGKSIRLERIIDRKTRKTVIVPMDHGLTVGPIPGLIDLAAAVDKVAEGGANAVLGHMGLPLYGHRGYGKDVGLIIHLSASTSLGPDANHKVLVTRVEDAIRVGADGVSIHVNVGAEDEAEMLRDLGMVARRCDLWGMPLLAMMYPRGAKVRSEHSVEYVKHAARVGAELGVDIVKTNYTGSPETFREVVRGCPAPVVIAGGPKMDTEADLLQMVYDAMQAGAAGISIGRNIFQAENPTLLTRKLSKIVHEGYTPEEAARLKL",
-      "md5" : "88d47cc807fe8e977130b0cc93e0bd61",
-      "matches" : [ {
-        "signature" : {
-          "accession" : "PIRSF038992",
-          "name" : "Aldolase_Ia",
-          "description" : null,
-          "type" : null,
-          "signatureLibraryRelease" : {
-            "library" : "PIRSF",
-            "version" : "3.01"
-          },
-          "models" : {
-            "PIRSF038992" : {
-              "accession" : "PIRSF038992",
-              "name" : "Aldolase_Ia",
-              "description" : null,
-              "key" : "PIRSF038992"
-            }
-          },
-          "entry" : {
-            "accession" : "IPR002915",
-            "name" : "DeoC/FbaB/lacD_aldolase",
-            "description" : "DeoC/FbaB/ lacD aldolase",
-            "type" : "FAMILY",
-            "goXRefs" : [ {
-              "identifier" : "GO:0016829",
-              "name" : "lyase activity",
-              "databaseName" : "GO",
-              "category" : "MOLECULAR_FUNCTION"
-            } ],
-            "pathwayXRefs" : [ {
-              "identifier" : "R-HSA-71336",
-              "name" : "Pentose phosphate pathway (hexose monophosphate shunt)",
-              "databaseName" : "Reactome"
+        "location-fragments" : [ {
+            "start" : 84,
+            "end" : 134,
+            "dc-status" : "NC_TERMINAL_DISC"
             }, {
-              "identifier" : "R-HSA-6798695",
-              "name" : "Neutrophil degranulation",
-              "databaseName" : "Reactome"
-            } ]
-          }
-        },
-        "locations" : [ {
-          "start" : 1,
-          "end" : 265,
-          "hmmStart" : 2,
-          "hmmEnd" : 262,
-          "hmmBounds" : "INCOMPLETE",
-          "evalue" : 3.3E-94,
-          "score" : 302.6,
-          "envelopeStart" : 1,
-          "envelopeEnd" : 265
-        } ],
-        "evalue" : 3.0E-94,
-        "score" : 302.7
-      }, {
-        ...
-    }]
+            "start" : 7,
+            "end" : 43,
+            "dc-status" : "C_TERMINAL_DISC"
+            }, {
+            "start" : 477,
+            "end" : 529,
+            "dc-status" : "N_TERMINAL_DISC"
+            }, {
+            "start" : 203,
+            "end" : 297,
+            "dc-status" : "NC_TERMINAL_DISC"
+        } ]
     }
 
-Generic Feature Format Version 3 (GFF3)
----------------------------------------
+Not all member database analyses can detect discontinious domains. At the present only Gene3D and 
+FunFam are able to detect discontinious domains.
 
-The GFF3 format is a flat tab-delimited file, which is much richer then
-the TSV output format. It allows you to trace back from matches to
-predicted proteins and to nucleic acid sequences. It also contains a
-FASTA format representation of the predicted protein sequences and their
-matches. You will find a documentation of all the columns and attributes
-used on http://www.sequenceontology.org/gff3.shtml.
+**The HMMER envelop:** The envelope represents the region of a protein sequence where the 
+domain may be located. Often it is wider than what HMMER chooses as a reasonably confident 
+alignment.
 
-**Please note** in GFF3 sequence identifiers "...may contain any
-characters, but must escape any characters not in the set..." (1)
+**Panther exception:** The output from HMMER3 against the HMM models of Panther is post-processed to 
+select only the best homologous family. Therefore, there is a maximum of one domain hit 
+for each Panther signature in a protein sequence. Owing to this the E-value and Score and listed 
+under the ``signature`` key, not the ``locations`` key.
 
-::
+.. TIP::
+    To understand the meaning of the values in the ``InterProScan`` output for member databases 
+    that implement ``hmmsearch`` from HMMER3, we recommed referring to the offical 
+    `HMMER3 documentation <http://eddylab.org/software/hmmer/Userguide.pdf>`_, specifically 
+    under the "Step 2: search the sequence database with hmmsearch" header.
 
-    a-zA-Z0-9.:^*$@!+_?-|.
+An example JSON file
+~~~~~~~~~~~~~~~~~~~~
 
-1. http://www.sequenceontology.org/gff3.shtml
+Below is a truncated example of the contents of a JSON file. You can recreate the full output 
+using the command:
 
-Example output
-~~~~~~~~~~~~~~
+.. code-block:: bash
 
-::
+    nextflow run interproscan.nf \
+        --input utilities/test_files/best_to_test.fasta \
+        --disable_precalc \
+        --goterms \
+        --pathways \
+        -profile docker,local
 
-    ##gff-version 3
-    ##feature-ontology http://song.cvs.sourceforge.net/viewvc/song/ontology/sofa.obo?revision=1.269
-    ##interproscan-version 5.26-65.0
-    ##sequence-region AACH01000027 1 1347
-    ##seqid|source|type|start|end|score|strand|phase|attributes
-    AACH01000027    provided_by_user    nucleic_acid    1   1347    .   +   .   Name=AACH01000027;md5=b2a7416cb92565c004becb7510f46840;ID=AACH01000027
-    AACH01000027    getorf  ORF 1   1347    .   +   .   Name=AACH01000027.2_21;Target=pep_AACH01000027_1_1347 1 449;md5=b2a7416cb92565c004becb7510f46840;ID=orf_AACH01000027_1_1347
-    AACH01000027    getorf  polypeptide 1   449 .   +   .   md5=fd0743a673ac69fb6e5c67a48f264dd5;ID=pep_AACH01000027_1_1347
-    AACH01000027    Pfam    protein_match   84  314 1.2E-45 +   .   Name=PF00696;signature_desc=Amino acid kinase family;Target=null 84 314;status=T;ID=match$8_84_314;Ontology_term="GO:0008652";date=15-04-2013;Dbxref="InterPro:IPR001048","Reactome:REACT_13"
-    ##sequence-region 2
-    ...
-    >pep_AACH01000027_1_1347
-    LVLLAAFDCIDDTKLVKQIIISEIINSLPNIVNDKYGRKVLLYLLSPRDPAHTVREIIEV
-    LQKGDGNAHSKKDTEIRRREMKYKRIVFKVGTSSLTNEDGSLSRSKVKDITQQLAMLHEA
-    GHELILVSSGAIAAGFGALGFKKRPTKIADKQASAAVGQGLLLEEYTTNLLLRQIVSAQI
-    LLTQDDFVDKRRYKNAHQALSVLLNRGAIPIINENDSVVIDELKVGDNDTLSAQVAAMVQ
-    ADLLVFLTDVDGLYTGNPNSDPRAKRLERIETINREIIDMAGGAGSSNGTGGMLTKIKAA
-    TIATESGVPVYICSSLKSDSMIEAAEETEDGSYFVAQEKGLRTQKQWLAFYAQSQGSIWV
-    DKGAAEALSQYGKSLLLSGIVEAEGVFSYGDIVTVFDKESGKSLGKGRVQFGASALEDML
-    RSQKAKGVLIYRDDWISITPEIQLLFTEF
-    ...
-    >match$8_84_314
-    KRIVFKVGTSSLTNEDGSLSRSKVKDITQQLAMLHEAGHELILVSSGAIAAGFGALGFKK
-    RPTKIADKQASAAVGQGLLLEEYTTNLLLRQIVSAQILLTQDDFVDKRRYKNAHQALSVL
-    LNRGAIPIINENDSVVIDELKVGDNDTLSAQVAAMVQADLLVFLTDVDGLYTGNPNSDPR
-    AKRLERIETINREIIDMAGGAGSSNGTGGMLTKIKAATIATESGVPVYICS
+.. code-block:: JSON
+
+    {
+        {
+            "sequence": """MDNVNKLTAISLAVAAALPMMASADVMITEYVEGSSNNKAIELYNSGDTAIDLAGYKLVRYKDGATVASD
+                MVALDGQSIAPKTTKVILNSSAVITLDQGVDSYSGSLSFNGGDAVALVKDDAVVDIIGDVPTPTGWGFDVTLKRKLDALVANT
+                VFNAAQWEQLPKDTFSGLGSLETPAEPEVPLFSCSGAKIVPIYQVQGAGESSPYVPEGAFESEAEVTVRGIVTARGESLFKGF
+                YLQEVKGDNSPYTSDGVFVFLGEAVPEAIQPGVEVCVQGKVKEYFGLTQIDIKADKKFEVGAKGEVPVAAPFYVADGETLAQA
+                LERYEGMNVALDAGSDLKISRTFSYDYAGRRNNMLVSYKEPLMKSTQLYPALSAEATALVKSNLENQLFIESDYKPADGVIPY
+                FPDFNVETGYIRVGDQLTNLQGVIGYSYGAYRLVATNTITAGDFIRGDDRTDAPSVATKGDLRVASFNVLNFFNDVDGGDTNP
+                SGSNRGALTLEEMVLQRTKIVSAITAMNADIVGLMEIANNGFGEKSAIKNLVDALNEKQTPENAYSFVEITDADKYDGKYFGT
+                DAITVGMLYRGGKVTLAGAAQAIDTPEQHASAGSVTRTKDGKTETNPGNDAYQRHSLAQTFKIHDESLTVVVNHLKSKGSGCL
+                EDWANFEESVDPADQQGKCNAFRVSAAKVLGETLKDVKGDLLIIGDMNAYGMEDPIRVLTDFDASKSDRDIMTASWTTLDGKV
+                FERQGSKIEKGYGLINLNTKAHGAGTYSYSYNGELGNLDHALANASLAKRLVDIEDWHINSVESNLFEYGKKFSGDLAKSENA
+                FSASDHDPVIVALSYPAPVVPPKPEPTPKDDGGALGYLGLALMSLFGLQRRRR""",
+            "md5": "3156952d6b1f52bf18e848ccc4e7e455",
+            "matches": [
+                {
+                    "signature": {
+                        "accession": "NF033681",
+                        "name": "ExeM_NucH_DNase",
+                        "description": "ExeM/NucH family extracellular endonuclease",
+                        "signatureLibraryRelease": {
+                            "library": "NCBIFAM",
+                            "version": "14.0"
+                        },
+                        "entry": {
+                            "accession": "IPR047971",
+                            "name": "ExeM-like",
+                            "description": "Extracellular endonuclease ExeM-like",
+                            "type": "FAMILY",
+                            "goXRefs": [],
+                            "pathwayXRefs": []
+                        }
+                    },
+                    "locations": [
+                        {
+                        "start": 221,
+                        "end": 831,
+                        "representative": false,
+                        "evalue": 5.4e-180,
+                        "score": 611.4,
+                        "hmmStart": 1,
+                        "hmmEnd": 545,
+                        "hmmLength": 546,
+                        "hmmBounds": "N_TERMINAL_COMPLETE",
+                        "envelopeStart": 221,
+                        "envelopeEnd": 832,
+                        "postProcessed": false,
+                        "location-fragments": [
+                            {
+                            "start": 221,
+                            "end": 831,
+                            "dc-status": "CONTINUOUS"
+                            }
+                        ]
+                        }
+                    ],
+                    "evalue": 4.5e-180,
+                    "score": 611.7,
+                    "model-ac": "NF033681"
+                ...
+                {
+                    "signature": {
+                        "accession": "cd04486",
+                        "name": "YhcR_OBF_like",
+                        "description": "YhcR_OBF_like",
+                        "signatureLibraryRelease": {
+                            "library": "CDD",
+                            "version": "3.20"
+                        },
+                        "entry": null
+                    },
+                    "locations": [
+                        {
+                        "start": 220,
+                        "end": 291,
+                        "representative": false,
+                        "evalue": 2.23848e-22,
+                        "score": 90.0124,
+                        "sites": [
+                            {
+                            "description": "generic binding surface I",
+                            "numLocations": 19,
+                            "siteLocations": [
+                                {
+                                "start": "225",
+                                "end": "225",
+                                "residue": "V"
+                                },
+                                {
+                                "start": "226",
+                                "end": "226",
+                                "residue": "T"
+                                },
+                                ...
+                            ]
+                            }
+                        ],
+                        "location-fragments": [
+                            {
+                            "start": 220,
+                            "end": 291,
+                            "dc-status": "CONTINUOUS"
+                            }
+                        ]
+                        }
+                    ],
+                    "model-ac": "cd04486"
+                }
+            ],
+            "xref": [
+                {
+                "name": "WP_338726824.1 extracellular exonuclease ExeM [Shewanella baltica]",
+                "id": "WP_338726824.1"
+                }
+            ]
+        },
+    }
+
+An example JSON file (Nucleic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Below is a truncated example of the contents of a JSON file, generated using nucleic acid 
+sequences as input. You can recreate the full output 
+using the command:
+
+
+Extensible Markup Language (XML)
+--------------------------------
+
+The richest form of the data is the XML representtaion, and includes data for all sequences 
+listed in the input FASTA File.
+
+    nextflow run interproscan.nf \
+        --input utilities/test_files/test_nt_seqs.fasta \
+        --disable_precalc \
+        -profile docker,local \
+        --nucleic \
+        --applications cdd,hamap
+
+.. code-block:: JSON
+
+    {
+    "sequence": "atggcggcggaagaaggcgtggtgattgcgtgccataacaaagatgaatttgatgcgcagatgaccaaagcgaaagaagcgggcaaagtggtgattattgattttaccgcgagctggtgcggcccgtgccgctttattgcgccggtgtttgcggaatatgcgaaaaaatttccgggcgcggtgtttctgaaagtggatgtggatgaactgaaagaagtggcggaaaaatataacgtggaagcgatgccgacctttctgtttattaaagatggcgcggaagcggataaagtggtgggcgcgcgcaaagatgatctgcagaacaccattgtgaaacatgtgggcgcgaccgcggcgagcgcgagcgcg",
+    "md5": "e9b174d63adc63bab79c90fdbc8d1670",
+    "crossReferences": [
+    {
+        "name": "Wilf",
+        "id": "Wilf"
+    }
+    ],
+    "openReadingFrames": [
+        {
+          "start": 1,
+          "end": 366,
+          "strand": "SENSE",
+          "protein": {
+            "sequence": "MAAEEGVVIACHNKDEFDAQMTKAKEAGKVVIIDFTASWCGPCRFIAPVFAEYAKKFPGAVFLKVDVDELKEVAEKYNVEAMPTFLFIKDGAEADKVVGARKDDLQNTIVKHVGATAASASA",
+            "md5": "f927b0d241297dcc9a1c5990b58bf3c4",
+            "matches": [
+              {
+                "signature": {
+                  "accession": "cd02947",
+                  "name": "TRX_family",
+                  "description": "-",
+                  "signatureLibraryRelease": {
+                    "library": "CDD",
+                    "version": "3.20"
+                  },
+                  "entry": null
+                },
+                "locations": [
+                  {
+                    "start": 15,
+                    "end": 109,
+                    "representative": false,
+                    "evalue": 9.55092e-36,
+                    "score": 116.118,
+                    "sites": [
+                      {
+                        "description": "catalytic residues",
+                        "numLocations": 2,
+                        "siteLocations": [
+                          {
+                            "start": 40,
+                            "end": 40,
+                            "residue": "C"
+                          },
+                          {
+                            "start": 43,
+                            "end": 43,
+                            "residue": "C"
+                          }
+                        ]
+                      }
+                    ],
+                    "location-fragments": [
+                      {
+                        "start": 15,
+                        "end": 109,
+                        "dc-status": "CONTINUOUS"
+                      }
+                    ]
+                  }
+                ],
+                "model-ac": "cd02947"
+              }
+            ],
+            "xref": [
+              {
+                "name": "orf50 source=Wilf coords=1..366 length=122 frame=1 desc=",
+                "id": "orf50"
+              }
+            ]
+          }
+        },
+    ],
+    }
+
+Data in the XML file
+~~~~~~~~~~~~~~~~~~~~
+
+The XML Schema Definition (XSD) is available
+`here <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/>`_. ``InterProScan6`` uses the 
+latest XSD.
+
+For each query sequence:
+
+* ``sequence``: The submitted protein or nucleotie sequence
+* ``xref``: The sequence ID and name/description from the input FASTA file
+* ``md5``: MD5 hash of the submitted sequence
+* ``matches``: List of matches from pre-calculated matches and matches generated by the analysis.
+    * ``hmmer3-match``: Represents a HMMER3 match: AntiFam, NCBIFam, FunFam, Gene3D, HAMAP, Panther, SFLD, SUPERFAMILY
+    * ``<member-name>-match``: Match from a member database that does not use HMMER, e.g. CDD
+    * The information for both these keys is very similar and is summarised here:
+        * ``signature``: Represents the member database signature. Includes accession, name and description
+            * ``entry``: Associated InterPro entry. Includes entry accession, description, name and type (e.g. family, domain, etc.), as well as any associated pathway information (if the ``--pathway`` flag is used) and Geneontology (GO) terms (of the ``--goterms`` flag is used)
+            * ``library release``: Release version of the member datbase. Includes name and version/release number
+        * ``models``: Information about the model, including the name, and accession
+        * ``locations``: Represents domain hits in the query sequence. Includes:
+            * E-value
+            * Score: The bitscore or other member database relevant score
+            * The envelop start and end: Start and end point of the envelop - listed as "env to/from" in HMMER
+            * Hmm-start and hmm-end: Start and end point of the local alignemnt with respect to the HMM profile - listed as "hmm to/from" in HMMER
+            * Hmm-length: Length of the alignemnt along the query sequence
+            * Hmm-bounds: Description of the HMMER Hmm bound pattern
+            * start and end: Start and end point of the alignment location with respect to the query sequence - listed as "ali to/from" in HMMER
+            * alignemnt: The query sequence alignment to the model
+            * cigar-alignemnt: The `cigar alignment <https://replicongenetics.com/cigar-strings-explained/>`_
+            * ``site-loctaions``: information about sites (for those member databases that contain site data):
+                * Each site is represented by a ``site-location``, which as a start, stop and residue.
+
+**HMM Bounds:** (Quoted from the  official `HMMER3 documentation <http://eddylab.org/software/hmmer/Userguide.pdf>`_):
+It’s not immediately easy to tell from the “to” coordinate whether
+the alignment ended internally in the query or target, versus ran
+all the way (as in a full-length global alignment) to the end(s). To
+make this more readily apparent, with each pair of query and target
+endpoint coordinates, there’s also a little symbology: ``..`` means both
+ends of the alignment ended internally, ``[]`` means both ends of the
+alignment were full-length flush to the ends of the query or target,
+and ``[.`` and ``.]`` mean only the left or right end was flush/full length.
+
+.. TIP::
+    To understand the meaning of the values in the ``InterProScan`` output for member databases 
+    that implement ``hmmsearch`` from HMMER3, we recommed referring to the offical 
+    `HMMER3 documentation <http://eddylab.org/software/hmmer/Userguide.pdf>`_, specifically 
+    under the "Step 2: search the sequence database with hmmsearch" header.
+
+An example XML file
+~~~~~~~~~~~~~~~~~~~
+
+Below is an extract from an ``InterProScan`` output XML file. You can recreate the full output 
+using the command:
+
+.. code-block:: bash
+
+    nextflow run interproscan.nf \
+        --input utilities/test_files/best_to_test.fasta \
+        --disable_precalc \
+        --goterms \
+        --pathways \
+        -profile docker,local
+
+Below is an extract from a XML output file, showing the results for one protein:
+
+.. code-block:: xml
+
+    <protein>
+    <sequence md5="268e4659f70d6eb10e6545eccaa347cf">MLIERMFPFISESVRVHQLPEGGVLEIDYMRDNVSISDFEYLDLNKTAYELCMLMDGQKTAEQILEYQCAAYNESPEDHKDWYYEMLDMLLNKQVIRLTDQPEYRRIATSGSSDFPMPLHATFELTHRCNLKCAHCYLESSPEALGTVSLEQFKKTADMLYEKGVLTCEITGGEIFVHPNANELLEYVLKKFKKVAVLTNGTLMRKESLEILRAYKQKIIVGISLDSVHSEVHDSFRGRKGSFAQTCKTIKLLSDHGIFVRVAMSVFEKNMWEIHDMAQKVRDLGAKAFSYNWVDDFGRGKDMIHPTKDAEQHRKFMEYEQNVIDEFKDLIPIIPYERKRAANCGAGWKSIVISPFGEVRPCALFPKEFSLGNIFHDSYESIFDSALVHKLWKAQAPRFSEHCKKDKCPFSGYCGGCYLKGLNSNKYHRKNICSWAKNEQLEDVVQLI</sequence>
+    <xref id="A0A0H3E4R3_BACA1" name="A0A0H3E4R3_BACA1 1-448"/>
+    <matches>
+    <hmmer3-match evalue="0.0" score="609.7">
+        <signature ac="SFLDG01386" desc="main SPASM domain-containing" name="main_SPASM_domain-containing">
+        <signature-library-release library="SFLD" version="4"/>
+        </signature>
+        <model-ac>SFLDG01386</model-ac>
+        <locations>
+            <hmmer3-location env-end="448" env-start="1" score="609.6" evalue="0.0" hmm-start="1" hmm-end="443" hmm-length="349" hmm-bounds="N_TERMINAL_COMPLETE" start="1" end="447" representative="false">
+            <location-fragments>
+            <hmmer3-location-fragment start="1" end="447" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <sites>
+                <hmmer3-site description="Binds [4Fe-4S]-AdoMet cluster" numLocations="3">
+                <site-locations>
+                <site-location residue="C" start="129" end="129"/>
+                <site-location residue="C" start="136" end="136"/>
+                <site-location residue="C" start="133" end="133"/>
+                </site-locations>
+                <group>0</group>
+                <hmmEnd>0</hmmEnd>
+                <hmmStart>0</hmmStart>
+                </hmmer3-site>
+            </sites>
+            </hmmer3-location>
+        </locations>
+    </hmmer3-match>
+    <hmmer3-match evalue="0.0" score="609.7">
+        <signature ac="SFLDF00315" desc="antilisterial bacteriocin subtilosin biosynthesis protein (AlbA-like)" name="antilisterial_bacteriocin_sub">
+        <signature-library-release library="SFLD" version="4"/>
+        </signature>
+        <model-ac>SFLDF00315</model-ac>
+        <locations>
+            <hmmer3-location env-end="448" env-start="1" score="609.6" evalue="0.0" hmm-start="1" hmm-end="443" hmm-length="448" hmm-bounds="N_TERMINAL_COMPLETE" start="1" end="447" representative="false">
+            <location-fragments>
+            <hmmer3-location-fragment start="1" end="447" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <sites>
+                <hmmer3-site description="Binds [4Fe-4S]-AdoMet cluster" numLocations="3">
+                <site-locations>
+                <site-location residue="C" start="129" end="129"/>
+                <site-location residue="C" start="136" end="136"/>
+                <site-location residue="C" start="133" end="133"/>
+                </site-locations>
+                <group>0</group>
+                <hmmEnd>0</hmmEnd>
+                <hmmStart>0</hmmStart>
+                </hmmer3-site>
+            </sites>
+            </hmmer3-location>
+        </locations>
+        </hmmer3-match>
+    </matches>
+    </protein>
+
+An example XML file (Nucleic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Below is an extract from an ``InterProScan`` output XML file, generated when the input FASTA file contained 
+nucleic acid sequences. You can recreate the full output 
+using the command:
+
+.. code-block:: bash
+
+    nextflow run interproscan.nf \
+        --input utilities/test_files/best_to_test.fasta \
+        --disable_precalc \
+        --goterms \
+        --pathways \
+        -profile docker,local
+
+Below is an extract from a XML output file, showing the results for one protein:
+
+.. code-block:: xml
+
+	<nucleotide-sequence>
+		<sequence md5="e9b174d63adc63bab79c90fdbc8d1670">atggcggcggaagaaggcgtggtgattgcgtgccataacaaagatgaatttgatgcgcagatgaccaaagcgaaagaagcgggcaaagtggtgattattgattttaccgcgagctggtgcggcccgtgccgctttattgcgccggtgtttgcggaatatgcgaaaaaatttccgggcgcggtgtttctgaaagtggatgtggatgaactgaaagaagtggcggaaaaatataacgtggaagcgatgccgacctttctgtttattaaagatggcgcggaagcggataaagtggtgggcgcgcgcaaagatgatctgcagaacaccattgtgaaacatgtgggcgcgaccgcggcgagcgcgagcgcg</sequence>
+		<xref id="Wilf" name="Wilf" />
+    		<orf end="366" start="1" strand="SENSE">
+                <protein>
+                    <sequence md5="f927b0d241297dcc9a1c5990b58bf3c4">MAAEEGVVIACHNKDEFDAQMTKAKEAGKVVIIDFTASWCGPCRFIAPVFAEYAKKFPGAVFLKVDVDELKEVAEKYNVEAMPTFLFIKDGAEADKVVGARKDDLQNTIVKHVGATAASASA</sequence>
+                    <xref id="orf50" name="orf50 source=Wilf coords=1..366 length=122 frame=1 desc=" />
+                    <matches>
+                        <cdd-domain>
+                            <signature ac="cd02947" desc="" name="">
+                                <entry ac="-" desc="" name="" type="Domain" />
+                                <signature-library-release library="CDD" version="3.20" />
+                            </signature>
+                            <model-ac>cd02947</model-ac>
+                            <locations>
+                                <analysis-location end="109" start="15" representative="" evalue="9.55092e-36" score="116.118">
+                                    <location-fragments>
+                                        <analysis-location-fragment description="catalytic residues" numLocations="2" />
+                                    </location-fragments>
+                                </analysis-location>
+                            </locations>
+                        </cdd-domain>
+                    </matches>
+                </protein>
+		    </orf>
+	</nucleotide-sequence>

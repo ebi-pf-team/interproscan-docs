@@ -1,44 +1,85 @@
+=============
 Input formats
 =============
 
-Supported input file format
----------------------------
+``InterProScan`` only accepts a single FASTA file as its input. The input 
+FASTA file can contain multiple sequences.
 
-InterProScan 5 supports the FASTA file format.
-
-An example of a simple FASTA format file containing unaligned sequences:
+For example, here is an extract of a simple FASTA format file containing unaligned sequences:
 
 ::
 
     > seq1 Description of seq1.
     AGTACGTAGTAGCTGCTGCTACGTGCGCTAGCTAGTACGTCA
     TAGTA
-    > seq2 Description of seq2.
+    > seq2
     CGATCGATCGTACGTCGACTGATCGTAGCTACGTCGTACGTAG
     CATCGTCAGTTACTGC
+    > sp|seq3 Description of seq3
+    CGATCGATCGTACGTCGACTGATCGTAGCTACGTCGTACGTAG
+    CATCGTCAGTTACTGCATGGTT
 
-Supported sequence format
--------------------------
+.. ATTENTION::
+    The input FASTA file must contain sequences of the same type, i.e. *all* protein sequences 
+    or *all* nucleic sequences.
 
-InterProScan 5 supports **unaligned sequences** only. Sequences should
-contain only valid IUPAC amino acid or nucleic acid characters. In
-addition gap ('-'), period ('.'), asterisk or underscore symbols are not
-allowed and should produce warnings and InterProScan will exit
-immediately.
+Illegal characters
+------------------
 
-Example for supported protein sequence:
+Some analysis methods do not support specific characters within the input sequences. The table
+below lists all the illegal characters for each of the member databases whom (as far as we 
+are aware) haven non-tolerated characters. If ``InterProScan`` detects any of these characters 
+in the input to the respective member database it should produce warnings and exit immediately.
+
+.. WARNING::
+    We cannot guarantee that this is an exhaustive list.
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Member DB
+     - Illegal characters
+   * - AntiFam
+     - \-
+   * - FunFam
+     - \- _ .
+   * - Gene3D
+     - \- _ .
+   * - HAMAP
+     - \- _ .
+   * - NCBIFAM
+     - \-
+   * - Panther
+     - \-
+   * - Pfam
+     - \-
+   * - Phobius
+     - - _ . * o x u z j
+   * - PIRSR
+     - \-
+   * - PIRSF
+     - \-
+   * - PROSITE Profiles
+     - - _ .
+   * - SFLD
+     - \- _ .
+   * - SUPERFAMILY
+     - \-
+
+Here is an example of a supported protein sequence...
 
 ::
 
     MPIGSKERPTFFEIFKTRCNKADLGPISLNWFEELSSEAPPYNSEPAEESEHKNNNYEPN
 
-Example for supported nucleic acid sequence:
+and a supported nucleic acid sequence...
 
 ::
 
     atgaaatataaacgcattgtgtttaaagtgggcaccagcagcctgaccaacg
 
-Unsupported sequences:
+and examples of unsupported sequences:
 
 ::
 
@@ -46,7 +87,7 @@ Unsupported sequences:
 
     RFLLLSL--ARFSNNRFGVQLLQIANVNLKVRRYG (illegal gap character in the middle)
 
-    RFLLLSLARFSNNRFGVQLLQIANVNLKVRRYG* (illegal asterisk character at the end)
+    RFLLLSLARFSNNRFGVQLLQIANVNLKVRRYG* (illegal asterix character at the end)
 
     RFLLLSL_ARFSNNRFGVQLLQIANVNLKVRRYG (illegal underscore character)
 
