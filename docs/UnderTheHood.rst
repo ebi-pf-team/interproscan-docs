@@ -4,7 +4,6 @@ How InterProScan operates under the hood
 
 Each member database or application in ``InterProScan`` has its own unique method of analysis. 
 Below we outline the method of analysis for each member database.
-``InterProScan`` contains a separate method of analysis.
 
 Applications and member databases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,17 +38,17 @@ use a member-database-specific tool.
 Third party tools
 ~~~~~~~~~~~~~~~~~
 
-- ```HMMER``` <https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gky448>_ - Assesses alignment between query sequence and Hidden Markov Models (HMMs)
-- ```cath-resolve-hits``` <https://doi.org/10.1093/bioinformatics/bty863>_ - helps to resolve domain matches
-- ```TreeGrafter``` <https://doi.org/10.1093/bioinformatics/bty625>_ - a tool for annotating uncharacterised protein sequences, using annotated phylogenetic trees.
-- ```rpsblast``` <https://www.animalgenome.org/blast/doc/rpsblast.html>_ - reversed position specific BLAST.
-- ```nCoils``` <https://doi.org/10.1016/S0076-6879(96)66032-7>_ - tool for the prediction and analysis of coiled-coil structures
-- ```modidb``` <https://doi.org/10.1093/nar/gkac1065>_ - Database and software for intrinsically disordered proteins
-- ```phobius``` <https://doi.org/10.1016/j.jmb.2004.03.016>_ - Tool for prediction of transmembrane domains
-- ```fingerPRINTScan``` <https://doi.org/10.1093/bioinformatics/15.10.799>_ - Search against FingerPRINTScan with a protein query sequence to identify the closest matching PRINTS sequence motif fingerprints in a protein sequence.
-- ```pfsearchV3``` <https://doi.org/10.1093/bioinformatics/btt129>_ - a code acceleration and heuristic to search PROSITE profiles
-- ```signalP``` <https://www.nature.com/articles/s41587-021-01156-3>_ - predict signal peptides
-- ```TmHMM``` <https://doi.org/10.1006/jmbi.2000.4315>_ - a tool to predict transmembrane domains
+- `HMMER <https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gky448>`__- Assesses alignment between query sequence and Hidden Markov Models (HMMs)
+- `cath-resolve-hits <https://doi.org/10.1093/bioinformatics/bty863>`__- helps to resolve domain matches
+- `TreeGrafter <https://doi.org/10.1093/bioinformatics/bty625>`__- a tool for annotating uncharacterised protein sequences, using annotated phylogenetic trees.
+- `rpsblast <https://www.animalgenome.org/blast/doc/rpsblast.html>`__- reversed position specific BLAST.
+- `nCoils <https://doi.org/10.1016/S0076-6879(96)66032-7>`__- tool for the prediction and analysis of coiled-coil structures
+- `modidb <https://doi.org/10.1093/nar/gkac1065>`__- Database and software for intrinsically disordered proteins
+- `phobius <https://doi.org/10.1016/j.jmb.2004.03.016>`__- Tool for prediction of transmembrane domains
+- `fingerPRINTScan <https://doi.org/10.1093/bioinformatics/15.10.799>`__- Search against FingerPRINTScan with a protein query sequence to identify the closest matching PRINTS sequence motif fingerprints in a protein sequence.
+- `pfsearchV3 <https://doi.org/10.1093/bioinformatics/btt129>`__- a code acceleration and heuristic to search PROSITE profiles
+- `signalP <https://www.nature.com/articles/s41587-021-01156-3>`__- predict signal peptides
+- `TmHMM <https://doi.org/10.1006/jmbi.2000.4315>`__- a tool to predict transmembrane domains
 
 Member databases that use HMMER
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,7 +71,7 @@ Each member databases requires its own HMMs.
 * `Superfamily`_
 
 Note, the names of the modules listed below are written as they are presented in the termianl 
-when running ``InterProScan``.
+when running ``InterProScan``. Thus Cath-Gene3D is listed as Gene3D and MobiDB-Lite is listed as MobiDB.
 
 AntiFam
 -------
@@ -418,110 +417,92 @@ search services, including site annotation and the location of conserved domain 
 footprints. It is downloaded from the `CDD ftp server <https://ftp.ncbi.nih.gov/pub/mmdb/cdd/rpsbproc/>`_ 
 within the IPS6-CDD docker image.
 
-## Coils
+Coils
+-----
 
 The Coils database and the accompanying tool ``ncoils`` are used for the identification of coiled-coil motifs in protein sequences.
 
 1. ``COILS_RUNNER``: The protein sequences are analysed using ``ncoils``.
 2. ``COILS_PARSER``: An in-house python script ``coils_parser.py`` parses the output from ``ncoils``, parsing the output into the internal IPS6 JSON structure.
 
-### Notes:
+* **Coils:** The Coils database is a curated collection of protein sequences that contain coiled-coil motifs.
+* **``ncoils:``:** The ncoils tool is a software program designed to predict the presence of coiled-coil motifs in protein sequences. It uses algorithms that compare the input sequence against the Coils database and apply pattern recognition techniques to identify regions likely to form coiled-coil structures.
+* **Coiled-coils:** Structural motifs in proteins that are characterised by two or more alpha-helices coiled together. These are often important for protein-protein interactions and the formation of protein complexes.
 
-_**Coils:** The Coils database is a curated collection of protein sequences that contain coiled-coil motifs._
+MobiDB
+------
 
-_**``ncoils:``:** The ncoils tool is a software program designed to predict the presence of coiled-coil motifs in protein sequences. It uses algorithms that compare the input sequence against the Coils database and apply pattern recognition techniques to identify regions likely to form coiled-coil structures._
-
-_**Coiled-coils:** Structural motifs in proteins that are characterised by two or more alpha-helices coiled together. These are often important for protein-protein interactions and the formation of protein complexes._
-
-## MobiDB
-
-MobiDB and MobiDB Lite are resources that are focused on the annotation and study of protein disorder and mobility.
+MobiDB and MobiDB-Lite are resources that are focused on the annotation and study of protein disorder and mobility.
 
 1. ``MOBI_RUNNER``: The protein sequences are analysed using ``mobiDB Lite`` binary (packaged into the ``IPS6`` docker container).
 2. ``MOBI_PARSER``: An in-house python script ``mobi_parser.py`` parses the output from ``mobiDB``, parsing the output into the internal IPS6 JSON structure.
 
-### Notes:
+* **mobiDB:** A comprehensive database of detailed annotations of protein disorder and related features, integrating data from various sources.
+* **mobiDB Lite:** A streamlined, simplified version of the mobiDB database, designed for the quick and easy access to information about protein disorder. It provides annotations of disordered regions in proteins, which are segments that do not adopt a fixed three-dimensional structure. This lightweight version is particularly useful for researchers who need rapid access to disorder annotations without the detailed features of the full database.
 
-_**mobiDB:** A comprehensive database of detailed annotations of protein disorder and related features, integrating data from various sources._
-
-_**mobiDB Lite:** A streamlined, simplified version of the mobiDB database, designed for the quick and easy access to information about protein disorder. It provides annotations of disordered regions in proteins, which are segments that do not adopt a fixed three-dimensional structure. This lightweight version is particularly useful for researchers who need rapid access to disorder annotations without the detailed features of the full database._
-
-## Phobius
+Phobius
+-------
 
 ``Phobius`` is a bioinformatic tool for the prediction of signal peptides and transmembrane domains in protein sequences.
 
 1. ``PHOBIUS_RUNNER``: The protein sequences are parsed using the sequence analysis tool ``Phobius`` to predict the presence of signal peptides and transmembrane domains.
 2. ``PHOBIUS_PARSER``: The output from ``Phobius`` is parsed into the internal IPS6 JSON structure, using an in-house python script.
 
-### Notes:
+* **Signal peptides:** A signal peptide, also known as a signal sequence, localisation sequence, or leader peptide, is a short peptide (protein sequence) that is usually 16-30 amino acids long. It is present at the N-terminus (or occasionally at the C-terminus or internally) of most newly synthesised proteins that are destined toward the secretory pathway. The role of the signal peptide is to prompt the transportation of the protein to a specific region of the cell, often the cell membrane. The signal peptide is typically cleaved following the succcessfully translocation of the protein.
+* **Transmembrane regions:** The transmembrane region/domain in a protein sequence is the region of the protein that spans the entirety of the cell membrane. Transmembrane regions are typically composed of hydrophobic (water repelling) amino acids, forming a structure that is compatible with the hydrophobic environment between the lipid bilayers of the cell membrane.
 
-_**Signal peptides:** A signal peptide, also known as a signal sequence, localisation sequence, or leader peptide, is a short peptide (protein sequence) that is usually 16-30 amino acids long. It is present at the N-terminus (or occasionally at the C-terminus or internally) of most newly synthesised proteins that are destined toward the secretory pathway. The role of the signal peptide is to prompt the transportation of the protein to a specific region of the cell, often the cell membrane. The signal peptide is typically cleaved following the succcessfully translocation of the protein._
-
-_**Transmembrane regions:** The transmembrane region/domain in a protein sequence is the region of the protein that spans the entirety of the cell membrane. Transmembrane regions are typically composed of hydrophobic (water repelling) amino acids, forming a structure that is compatible with the hydrophobic environment between the lipid bilayers of the cell membrane._
-
-## PRINTS
+PRINTS
+------
 
 The PRINTS database contains conserved motifs (fingerprints) representing protein families, and the ``fingerPRINTScan`` tool is used to identify these motifs in protein sequences, aiding in protein classification and functional prediction.
 
 1. ``PRINTS_RUNNER``: The protein sequences are parsed using the sequence analysis tool ``fingerPRINTScan`` to predict the presence of conserved motifs.
 2. ``PRINTS_PARSER``: The output from ``fingerPRINTScan`` is parsed into the internal IPS6 JSON structure, using an in-house python script.
 
-### Notes:
+* **PRINT:** The PRINTS database is a collection of protein fingerprints, which are groups of conserved motifs or patterns that characterise protein families. These fingerprints are derived from sequence alignments and are used to identify and classify proteins based on their evolutionary relationships and functional similarities._
+* **fingerprint:** A fingerprint is a group of conserved motifs used to characterise a protein family.
+* **``fingerPRINTScan``:** fingerPRINTScan is a software tool designed to scan protein sequences for the presence of fingerprints stored in the PRINTS database.
 
-_**PRINT:** The PRINTS database is a collection of protein fingerprints, which are groups of conserved motifs or patterns that characterise protein families. These fingerprints are derived from sequence alignments and are used to identify and classify proteins based on their evolutionary relationships and functional similarities._
-
-_**fingerprint:** A fingerprint is a group of conserved motifs used to characterise a protein family._
-
-_**``fingerPRINTScan``:** fingerPRINTScan is a software tool designed to scan protein sequences for the presence of fingerprints stored in the PRINTS database._
-
-## PROSITE Patterns
+PROSITE Patterns
+----------------
 
 PROSITE is a database of protein domains, families, and functional sites. It contains biologically significant sites and patterns that help in identifying these features in protein sequences. PROSITE is widely used for protein annotation and to predict the function of newly discovered proteins based on their sequence similarity to known patterns.
 
 1. ``PROSITE_RUNNER``: The protein sequences are analaysed by the PROSITE perl script ``ps_scan.pl``, using the PROSITE Patterns models (``prosite_patterns.dat``) and evaluator models (``evaluator.dat``), by coordinating running ``pfscanV3``.
 2. ``PROSITE_PARSER``: The output from ``ps_scan.pl`` is parsed into the internal ``IPS6`` JSON structure by an in-house Python script, which filteres out all matches that do not have a match level of 'STRONG'.
 
-### Notes:
+* **PROSITE Patterns:** PROSITE patterns, also known as motifs or signatures, are short, descriptive sequences that represent conserved regions within protein families. These patterns are typically made up of specific amino acids that are highly conserved and are often critical for the protein's function or structure. Patterns are usually represented using regular expressions that describe the amino acid sequence, allowing for some degree of variability. For example, a PROSITE pattern might specify a conserved sequence where certain positions can tolerate a limited range of amino acids.
+* **``pfscan``:** A tool to scan protein sequences for PROSITE patterns. It uses predefined patterns (regular expressions) to scan sequences, looking for exact or near-exact matches to the specified patterns in the PROSITE database.
+* **PROSITE Patterns vs Profiles:** PROSITE patterns are simple, descriptive motifs representing conserved sequences, while PROSITE profiles are detailed, position-specific scoring matrices that offer a more sensitive and comprehensive means of identifying and classifying protein domains and families. Both are used in the PROSITE database for annotating and predicting protein functions.
 
-_**PROSITE Patterns:** PROSITE patterns, also known as motifs or signatures, are short, descriptive sequences that represent conserved regions within protein families. These patterns are typically made up of specific amino acids that are highly conserved and are often critical for the protein's function or structure. Patterns are usually represented using regular expressions that describe the amino acid sequence, allowing for some degree of variability. For example, a PROSITE pattern might specify a conserved sequence where certain positions can tolerate a limited range of amino acids._
-
-_**``pfscan``:** A tool to scan protein sequences for PROSITE patterns. It uses predefined patterns (regular expressions) to scan sequences, looking for exact or near-exact matches to the specified patterns in the PROSITE database._
-
-_**PROSITE Patterns vs Profiles:** PROSITE patterns are simple, descriptive motifs representing conserved sequences, while PROSITE profiles are detailed, position-specific scoring matrices that offer a more sensitive and comprehensive means of identifying and classifying protein domains and families. Both are used in the PROSITE database for annotating and predicting protein functions._
-
-## PROSITE Profiles
+PROSITE Profiles
+----------------
 
 PROSITE is a database of protein domains, families, and functional sites. It contains biologically significant sites and patterns that help in identifying these features in protein sequences. PROSITE is widely used for protein annotation and to predict the function of newly discovered proteins based on their sequence similarity to known patterns.
 
 1. ``PROSITE_RUNNER``: The protein sequences are analaysed by the PROSITE perl script ``ps_scan.pl``, using the PROSITE Profile models (``prosite_profiles.dat``) and evaluator models (``evaluator.dat``), by coordinating running ``pfsearchV3``.
 2. ``PROSITE_PARSER``: The output from ``ps_scan.pl`` is parsed into the internal ``IPS6`` JSON structure by an in-house Python script, which filteres out all matches that do not have a match level of 'ONE', 'ZERO', 'MINUS_ONE'.
 
-### Notes:
+* **PROSITE Profile:** PROSITE profiles are more complex and sensitive than patterns. They are position-specific scoring matrices (PSSMs) that provide a quantitative measure of how well a sequence fits a particular protein domain or family. Profiles capture the variability at each position in the sequence, assigning scores based on the likelihood of observing each amino acid at each position. Profiles can detect more distant relationships than patterns, and are particularly useful for identifying members of protein families that have diverged significantly, i.e. where simple patterns might fail.
+* **``pfsearch``:** A tool to search protein sequences against a database of PROSITE profiles. It uses profiles (position-specific scoring matrices) to perform searches, which allows for the detection of distant evolutionary relationships and more subtle sequence features. ``pfsearch`` compares the input protein sequences to the profiles in the PROSITE database and calculates scores to identify matches.
+* **PROSITE Patterns vs Profiles:** PROSITE patterns are simple, descriptive motifs representing conserved sequences, while PROSITE profiles are detailed, position-specific scoring matrices that offer a more sensitive and comprehensive means of identifying and classifying protein domains and families. Both are used in the PROSITE database for annotating and predicting protein functions.
 
-_**PROSITE Profile:** PROSITE profiles are more complex and sensitive than patterns. They are position-specific scoring matrices (PSSMs) that provide a quantitative measure of how well a sequence fits a particular protein domain or family. Profiles capture the variability at each position in the sequence, assigning scores based on the likelihood of observing each amino acid at each position. Profiles can detect more distant relationships than patterns, and are particularly useful for identifying members of protein families that have diverged significantly, i.e. where simple patterns might fail._
-
-_**``pfsearch``:** A tool to search protein sequences against a database of PROSITE profiles. It uses profiles (position-specific scoring matrices) to perform searches, which allows for the detection of distant evolutionary relationships and more subtle sequence features. ``pfsearch`` compares the input protein sequences to the profiles in the PROSITE database and calculates scores to identify matches._
-
-_**PROSITE Patterns vs Profiles:** PROSITE patterns are simple, descriptive motifs representing conserved sequences, while PROSITE profiles are detailed, position-specific scoring matrices that offer a more sensitive and comprehensive means of identifying and classifying protein domains and families. Both are used in the PROSITE database for annotating and predicting protein functions._
-
-## SignalP
+SignalP
+-------
 
 ``SignalP`` is a bioinformatic tool for the prediction of the signal peptides and the location of their cleavage sites.
 
 1. ``SIGNALP_RUNNER``: The protein sequences are parsed using the sequence analysis tool ``SignalP`` to predict the presence of signal peptides.
 2. ``SIGNALP_PARSER``: The output from ``SignalP`` is parsed into the internal IPS6 JSON structure, using an in-house python script.
 
-### Notes:
+**Signal peptides:** A signal peptide, also known as a signal sequence, localisation sequence, or leader peptide, is a short peptide (protein sequence) that is usually 16-30 amino acids long. It is present at the N-terminus (or occasionally at the C-terminus or internally) of most newly synthesised proteins that are destined toward the secretory pathway. The role of the signal peptide is to prompt the transportation of the protein to a specific region of the cell, often the cell membrane. The signal peptide is typically cleaved following the succcessfully translocation of the protein.
 
-_**Signal peptides:** A signal peptide, also known as a signal sequence, localisation sequence, or leader peptide, is a short peptide (protein sequence) that is usually 16-30 amino acids long. It is present at the N-terminus (or occasionally at the C-terminus or internally) of most newly synthesised proteins that are destined toward the secretory pathway. The role of the signal peptide is to prompt the transportation of the protein to a specific region of the cell, often the cell membrane. The signal peptide is typically cleaved following the succcessfully translocation of the protein._
-
-## (Deep)TMHMM
+(Deep)TMHMM
+-----------
 
 TMHMM is used to predict the presence of transmembrane domains within protein sequences. DeepTMHMM specifically uses deep leearning methos to predicte the membrane topology of transmembrane proteins. The model employed by DeepTMHMM encodes the primary amino acid sequence by a pre-trained language model and decodes the topology by a state space model to produce topology and type predictions at unprecedented accuracy.
 
 1. ``TMHMM_RUNNER``: The protein sequences are parsed using the sequence analysis toole ``DeepTHMM``
 2. ``TMHMM_PARSER``: The output from ``SignalP`` is parsed into the internal IPS6 JSON structure, using an in-house python script.
 
-### Notes:
-
-_**Transmembrane regions:** The transmembrane region/domain in a protein sequence is the region of the protein that spans the entirety of the cell membrane. Transmembrane regions are typically composed of hydrophobic (water repelling) amino acids, forming a structure that is compatible with the hydrophobic environment between the lipid bilayers of the cell membrane._
+**Transmembrane regions:** The transmembrane region/domain in a protein sequence is the region of the protein that spans the entirety of the cell membrane. Transmembrane regions are typically composed of hydrophobic (water repelling) amino acids, forming a structure that is compatible with the hydrophobic environment between the lipid bilayers of the cell membrane.
