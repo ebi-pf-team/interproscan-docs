@@ -31,13 +31,13 @@ Member database publications
 
 In alphabetical order:
 
-AntiFam
-^^^^^^^
+Citing AntiFam
+^^^^^^^^^^^^^^
 
 Eberhardt, R. Y., Haft, D. H., Punta, M., Martin, M., O’Donovan, C., & Bateman, A. (2012). AntiFam: A tool to help identify spurious ORFs in protein annotation. Database, bas003
 
-CATH-Gene3D  
-^^^^^^^^^^^
+Citing CATH-Gene3D  
+^^^^^^^^^^^^^^^^^^
 
 There are multiple citations for CATH-Gene3D, as this member includes CATH Superfamilies and the Gene3D 
 database:
@@ -50,122 +50,122 @@ Orengo C.A., Michie A.D., Jones S., Jones D.T., Swindells M.B., Thornton J.M. CA
 
 Lewis T.E., Sillitoe I., Dawson N., Lam S.D., Clarke T., Orengo C.A., Lees J.G. Gene3D: Extensive prediction of globular domains in proteins.
 
-CDD
-^^^
+Citing CDD
+^^^^^^^^^^
 
 Wang J., et al. (2023). “The conserved domain database in 2023”, Nucleic Acids Res.51 (D)384-8
 
-Coils
-^^^^^
+Citing Coils
+^^^^^^^^^^^^
 
 Kumar P., Petrenas R., Dawson W.M., Schweke H., Levy E.D., Woolfson D.N. (2023). “CC+: A Searchable Database of Validated Coiled Coils in PDB Structures and AlphaFold2 Models”, Protein Science, Volume 32, Article number e4789.
 
-DeepTMHMM
-^^^^^^^^^
+Citing DeepTMHMM
+^^^^^^^^^^^^^^^^
 
 Hallgren J., Tsirigos K.D., Pedersen M.D., Almagro Armenteros J.J., Marcatili P., Nielsen H., Krogh A., Winther O. (2022). “DeepTMHMM predicts alpha and beta transmembrane proteins using deep neural networks”, bioRxiv.
 
-FunFam
-^^^^^^
+Citing FunFam
+^^^^^^^^^^^^^
 
 Scheibenreif L, Littmann M, Orengo C, Rost B. “FunFam protein families improve residue level molecular function prediction.” BMC Bioinformatics. 2019.
 
-HAMAP
-^^^^^
+Citing HAMAP
+^^^^^^^^^^^^
 
 Lima T, Auchincloss AH, Coudert E, Keller G, Michoud K, Rivoire C, Bulliard V, de Castro E, Lachaize C, Baratin D, Phan I, Bougueleret L, Bairoch A. “HAMAP: a database of completely sequenced microbial proteome sets and manually curated microbial protein families in UniProtKB/Swiss-Prot.” Nucleic Acids Res. 2009
 
-MobiDB
-^^^^^^
+Citing MobiDB
+^^^^^^^^^^^^^
 
 Piovesan D, Del Conte A, Clementel D, Monzon AM, Bevilacqua M, Aspromonte MC, Iserte JA, Orti FE, Marino-Buslje C, Tosatto SCE. “MobiDB: 10 years of intrinsically disordered proteins.” Nucleic Acids Res. 2022
 
-NCBIFam
-^^^^^^^
+Citing NCBIFam
+^^^^^^^^^^^^^^
 
 No pbulication available.
 
-Panther
-^^^^^^^
+Citing Panther
+^^^^^^^^^^^^^^
 
 Mi H, Muruganujan A, Ebert D, Huang X, Thomas PD. “PANTHER version 14: more genomes, a new PANTHER GO-slim and improvements in enrichment analysis tools.” Nucleic Acids Res. 2019
 
-Pfam
-^^^^
+Citing Pfam
+^^^^^^^^^^^
 
 Finn RD, Coggill P, Eberhardt RY, Eddy SR, Mistry J, Mitchell AL, Potter SC, Punta M, Qureshi M, Sangrador-Vegas A, Salazar GA, Tate J, Bateman A. “The Pfam protein families database: towards a more sustainable future.” Nucleic Acids Res. 2016
 
-Phobius
-^^^^^^^
+Citing Phobius
+^^^^^^^^^^^^^^
 
 Käll L, Krogh A, Sonnhammer EL. “A combined transmembrane topology and signal peptide prediction method.” J Mol Biol. 2004
 
-PirsR & PirsF
-^^^^^^^^^^^^^
+Citing PirsR & PirsF
+^^^^^^^^^^^^^^^^^^^^
 
 No pbulication available.
 
-PRINTS
-^^^^^^
+Citing PRINTS
+^^^^^^^^^^^^^
 
 Attwood TK, Croning MD, Flower DR, Lewis AP, Mabey JE, Scordis P, Selley JN, Wright W. “PRINTS-S: the database formerly known as PRINTS.” Nucleic Acids Res. 2000
 
-PROSITE Patterns & Profiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Citing PROSITE Patterns & Profiles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sigrist CJ, Cerutti L, Hulo N, Gattiker A, Falquet L, Pagni M, Bairoch A, Bucher P. “PROSITE: a documented database using patterns and profiles as motif descriptors.” Brief Bioinform. 2002
 
-SignalP
-^^^^^^^
+Citing SignalP
+^^^^^^^^^^^^^^
 
 Teufel, F., Almagro Armenteros, J.J., Johansen, A.R. et al. SignalP 6.0 predicts all five types of signal peptides using protein language models. Nat Biotechnol 40, 1023–1025 (2022). https://doi.org/10.1038/s41587-021-01156-3
 
-SLFD
-^^^^
+Citing SLFD
+^^^^^^^^^^^
 
 Holliday G.L., Brown S.D., Akiva E., Mischel D., Hicks M.A., Morris J.H., Huang C.C., Meng E.C., Pegg S.C., Ferrin T.E., Babbitt P.C. Biocuration in the structure-function linkage database: the anatomy of a superfamily. Database (Oxford). 2017 Jan 1;2017(1):bax006. doi: 10.1093/database/bax006. Erratum in: Database (Oxford). 2017 Jan 1;2017:null. PMID: 28365730; PMCID: PMC5467563.
 
-SMART
-^^^^^
+Citing SMART
+^^^^^^^^^^^^
 
 Letunic I, Doerks T, Bork P. “SMART: recent updates, new developments and status in 2015.” Nucleic Acids Res. 2015
 
-Superfamily
-^^^^^^^^^^^
+Citing Superfamily
+^^^^^^^^^^^^^^^^^^
 
 Wilson D, Pethica R, Zhou Y, Talbot C, Vogel C, Madera M, Chothia C, Gough J. “SUPERFAMILY–sophisticated comparative genomics, data mining, visualization and phylogeny.” Nucleic Acids Res. 2009
 
 Third party tool publications
 -----------------------------
 
-BioPython
-^^^^^^^^^
+Citing BioPython
+^^^^^^^^^^^^^^^^
 
 Used in Panther analyses.
 
 Biopython: Cock, P. J., Antao, T., Chang, J. T., Chapman, B. A., Cox, C. J., Dalke, A., … others. (2009). Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics, 25 (11), 1422–1423.
 
-BLAST
-^^^^^
+Citing BLAST
+^^^^^^^^^^^^
 
 Used for CDD analyses.
 
 BLAST: Altschul, S.F., Gish, W., Miller, W., Myers, E.W., Lipman, D.J. (1990) “Basic local alignment search tool.” J. Mol. Biol. 215:403-4102. Altschul, S.F., Madden, T.L., Schaffer, A.A., Zhang, J., Zhang, Z., Miller, W., Lipman, D.J. (1997) “Gapped BLAST and PSI-BLAST: a new generation of protein database search programs.” Nucleic Acids Res. 25:3389-3402.
 
-Easel
-^^^^^
+Citing Easel
+^^^^^^^^^^^^
 
 Used to predict ORFs in nucleic acid sequences.
 
-HMMER3
-^^^^^^
+Citing HMMER3
+^^^^^^^^^^^^^
 
 Used in AntiFam, CATH-Gene3D, FunFam, HAMAP, NCBIFam, Panther, Pfam, PirsF, PirsR, SFLD, SMART and Superfamily analyses.
 
 HMMER3: Eddy, S.R. (2011). “Accelerated Profile HMM Searches.” PLoS Comput. Biol. 7(10): e1002195.
 
-TreeGrafter
-^^^^^^^^^^^
+Citing TreeGrafter
+^^^^^^^^^^^^^^^^^^
 
 Used in Panther analyses.
 

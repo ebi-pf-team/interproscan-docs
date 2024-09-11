@@ -11,9 +11,9 @@ Applications and member databases
 We divide the member databases into two groups: those that use HMMER and those that don't and instead
 use a member-database-specific tool.
 
-* `HMMER`_
+* `HMMER <UnderTheHood.html#member-databases-that-use-hmmer>`_
    * `AntiFam`_
-   * `Cath-Gene-3D`_
+   * `Cath-Gene-3D <UnderTheHood.html#gene3d-analysis>`_
    * `FunFam`_
    * `HAMAP`_
    * `NCBIFam`_
@@ -24,7 +24,7 @@ use a member-database-specific tool.
    * `SFLD`_
    * `SMART`_
    * `Superfamily`_
-* `Member db specific tools`_
+* `Member db specific tools <UnderTheHood.html#member-databases-with-specific-tools>`_
    * `CDD`_
    * `Coils`_
    * `MobiDB`_
@@ -137,8 +137,8 @@ superfamilies are present in the input dataset. The query sequences are then onl
 against the FunFam families that belong to the matched Cath-Gene3D superfamilies, thus 
 running the query sequences against a subset of FunFam families.
 
-Gene3D
-------
+Gene3D analysis
+---------------
 
 The Cath-Gene3D database, or Gene3D, is a resource that provides structural annotation and 
 evolutionary relationships for protein domains.
@@ -151,14 +151,9 @@ suprious matches.
 1. ``GENE3D_HMMER_RUNNER``: Protein sequences are analysed using HMMER3 and the HMM profiles 
 in the Gene3D HMM file (``data/gene3d/version/gene3d_main.hmm``)
 2. ``GENE3D_HMMER_PARSER``: The ``HMMER.out`` file is parsed into the internal ``IPS6`` JSON structure.
-3. ``GENE3D_CATH_RESEOLVE_HITS``: The ``HMMER.out`` output file is parsed by ``cath-resolve-hits`` 
-    to collapse lists of domain matches to the best, non-overlapping subset.
-4. ``GENE3D_ADD_CATH_SUPERFAMILIES``: A third-party (Cath-Gene3D) python script 
-    ``assign_cath_superfamilies.py`` is used to parse the output (the filtered domain matches) from 
-    ``cath-resolve-hits`` and assign the Cath superfamily models and associated metadata to the 
-    domain matches (based upon the domain ID's).
-5. ``GENE3D_FUNFAM_PARSER``: An in-house python script parses the output from 
-    ``assign_cath_superfamilies.py``, adding these data into the internal ``IPS6`` JSON structure.
+3. ``GENE3D_CATH_RESEOLVE_HITS``: The ``HMMER.out`` output file is parsed by ``cath-resolve-hits`` to collapse lists of domain matches to the best, non-overlapping subset.
+4. ``GENE3D_ADD_CATH_SUPERFAMILIES``: A third-party (Cath-Gene3D) python script ``assign_cath_superfamilies.py`` is used to parse the output (the filtered domain matches) from ``cath-resolve-hits`` and assign the Cath superfamily models and associated metadata to the domain matches (based upon the domain ID's).
+5. ``GENE3D_FUNFAM_PARSER``: An in-house python script parses the output from ``assign_cath_superfamilies.py``, adding these data into the internal ``IPS6`` JSON structure.
 
 CATH
 ^^^^
@@ -246,13 +241,8 @@ Pfam
 
 Pfam is a comprehensive database of protein families and domains. It is a collection of multiple sequence alignments and hidden Markov models (HMMs) representing protein domains and families. 
 
-1. ``PFAM_HMMER_RUNNER``: Protein sequences are analysed using HMMER3 and the HMM profiles 
-in the Pfam HMM file (``data/pfam/version/pfam_a.hmm``)
-2. ``PFAM_PARSER``: The hits from HMMER are parsed by an in-house post-processing script which 
-   for each match decides if to keep or ignore the match by comparing the current match 
-   to previously evaluated Pfam matches (which we decided to keep). A match is ignored when: 
-   the match overlaps another match, both matches belong to the same clan, and one of the matches 
-   is nested in the other. The script parses the selected matches into the internal IPS6 JSON structure.
+1. ``PFAM_HMMER_RUNNER``: Protein sequences are analysed using HMMER3 and the HMM profiles in the Pfam HMM file (``data/pfam/version/pfam_a.hmm``)
+2. ``PFAM_PARSER``: The hits from HMMER are parsed by an in-house post-processing script which for each match decides if to keep or ignore the match by comparing the current match to previously evaluated Pfam matches (which we decided to keep). A match is ignored when: the match overlaps another match, both matches belong to the same clan, and one of the matches is nested in the other. The script parses the selected matches into the internal IPS6 JSON structure.
 
 Nested domains
 ^^^^^^^^^^^^^^
@@ -272,14 +262,10 @@ proteins into hierarchical clusters, ranging from broad superfamilies to more sp
 The PIRSF concept is used as a guiding principle to provide comprehensive and non-overlapping 
 clustering of UniProtKB sequences into a hierarchical order to reflect their evolutionary relationships.
 
-1. ``PIRSF_HMMER_RUNNER``: Protein sequences are analysed using HMMER3 and the HMM profiles in the 
-    PirsF HMM file (``data/pirsf/version/pirsf.hmm``).
+1. ``PIRSF_HMMER_RUNNER``: Protein sequences are analysed using HMMER3 and the HMM profiles in the PirsF HMM file (``data/pirsf/version/pirsf.hmm``).
 2. ``PIRSF_HMMER_PARSER``: The ``HMMER.out`` file is parsed into the internal ``IPS6`` JSON structure.
-3. ``PIRSF_RUNNER``: The PirsF perl script ``pirsf.pl`` is used to post-process HMMER hits in the 
-HMMER3 out file.
-4. ``PIRSF_PARSER``: The output from ``pirsf.pl`` is parsed, and the additional data is added 
-to the internal ``IPS6`` JSON structure, and the hits in the ``IPS6`` JSON are filtered to only 
-retain the 'best' family and subfamily matches selected by ``pirsf.pl``.
+3. ``PIRSF_RUNNER``: The PirsF perl script ``pirsf.pl`` is used to post-process HMMER hits in the HMMER3 out file.
+4. ``PIRSF_PARSER``: The output from ``pirsf.pl`` is parsed, and the additional data is added to the internal ``IPS6`` JSON structure, and the hits in the ``IPS6`` JSON are filtered to only retain the 'best' family and subfamily matches selected by ``pirsf.pl``.
 
 PirsF vs. PirsR
 ^^^^^^^^^^^^^^^
@@ -301,7 +287,7 @@ the HMMER3 ``.dtbl`` file.
 4. ``PIRSR_PARSER``: The output from ``pirsr.py`` is parsed, and the additional data is added 
 to the internal ``IPS6`` JSON structure, and the hits in the ``IPS6`` JSON.
 
-PirsF vs. PirsR
+PirsR vs. PirsF
 ^^^^^^^^^^^^^^^
 
 PIRSF focuses on classifying entire protein sequences into superfamilies to study functional 

@@ -3,7 +3,7 @@ Advanced Configuration Options
 ==============================
 
 The basic operation of ``InterProScan`` is configured via the command line. You can find a list of 
-the command line options in the `Command-line arguments`_ documentation.
+the command line options in the `command-line arguments <HowToRun.html#command-line-arguments>`_ section of the docs.
 
 Advanced and utility parameters are configured via the ``InterProScan`` ``nextflow.config`` file.
 
