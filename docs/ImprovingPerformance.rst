@@ -14,6 +14,25 @@ These values are defined in the executor profiles (located in ``utilities/profil
 
 You could try assigning more memory to the slower running processes. 
 
+Increase the queue size
+-----------------------
+
+When running ``InterProScan`` on the cluster the Nextflow parameter ``QueueSize`` tests the total number 
+of parallel jobs than ``InterProScan`` can handle. Increasing this value can allow ``InterProScan`` 
+to run more jobs in parallel, thus reducing the total run time. 
+
+The ``QueueSize`` is set in each of the executor profiles in ``utilities/profiles/``.
+
+Reassess the batch size
+-----------------------
+
+We selected a batch size we found to be optimal when running an analysis will all member (licensed and 
+built-in). However, the total runtime may be reduced by using an alternative batch size when 
+running analyses with a subset of databases.
+
+The batch size is defined in ``InterProScan`` ``nextflow.config`` file (found within the root 
+of the project directory).
+
 Review your command line input options
 --------------------------------------
 
