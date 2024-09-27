@@ -12,8 +12,32 @@ altering the batch size.
 IPS6 Benchmarked
 ~~~~~~~~~~~~~~~~
 
+We have run InterProScan 6 (version 6.0.0) with Nextflow version 24.04.3 on our local cluster, 
+using SLURM, against a complete *Homo sapien* genome, 
+containing 87,231 protein sequences (`GCA_011064465.2 <https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_011064465.2/>`_ 
+from NCBI GenBank).
 
+As of 1st September 2024, there are approximatley 340+ compute nodes (each with 48 physical cores and 340-468 GB RAM) 
+comprising 16,000 hyper-threaded CPU cores on our internal cluster. 
 
+The precalculated MLS was also disabled.
+
+Below is the ``InterProScan`` command used:
+
+.. code-block:: bash
+
+    nextflow run interproscan.nf \
+        -profile slurm,singularity \
+        --input h.sapien.GCA_011064465.2.faa \
+        --disable_precalc \
+        --applications 'antifam,cdd,coils,gene3d,funfam,hamap,ncbifam,mobidb,panther,pfam,phobius,pirsf,pirsr,prints,prosite_patterns,prosite_profiles,sfld,smart,signalp,superfamily' \
+        -with-timeline \
+        -with-report \
+        --outdir benchmark
+
+The benchmarking was completed three times:
+
+[INSERT TABLE HERE]
 
 How to benchmark IPS6
 ~~~~~~~~~~~~~~~~~~~~~

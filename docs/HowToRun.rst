@@ -1,8 +1,18 @@
 Running InterProScan
 ====================
 
-``InterProScan`` is run using the following command (presuming the terminal is pointed at the 
-directory containing the ``InterProScan`` code base and InterPro release data):
+``InterProScan`` can be using the following command (presuming ``InterProScan`` was `not 
+installed from source <HowToInstall.html>`__):
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile <executorprofile, containerRuntime profile> \
+        --input <path to fasta file>
+
+When using this command Nextflow will automatically retrieve the latest version of ``InterProScan6`` 
+from our GitHub repository.
+
+If ``InterProScan`` was `installed from source <<HowToInstall.html>`__, please use the following 
+command structure to run ``InterProScan``:
 
 .. code-block:: bash
 
@@ -14,12 +24,17 @@ directory containing the ``InterProScan`` code base and InterPro release data):
     All ``InterProScan`` custom flags, such as ``--input``, use **double** dashes.  
     All Nextflow flags, such as ``-profile``, use a **single** dash.
 
+For the rest of this page we will use the command ``nextflow run ebi-pf-team/interproscan6...``.
+
+The Help Message
+~~~~~~~~~~~~~~~~
+
 The ``--help`` flag is used to print the help message,
 which lists all available flags/options for ``InterProScan``:
 
 .. code-block:: bash
 
-    $ nextflow run interproscan.nf --help
+    $ nextflow run ebi-pf-team/interproscan6 --help
 
     N E X T F L O W   ~  version 24.04.2
 
@@ -46,7 +61,7 @@ which lists all available flags/options for ``InterProScan``:
 
 
     Usage example:
-        nextflow run interproscan.nf -profile <executor, container runtime> --input <path to fasta file>
+        nextflow run ebi-pf-team/interproscan6 -profile <executor, container runtime> --input <path to fasta file>
 
     Arguments:
         [Required]
@@ -163,7 +178,7 @@ the example input file ``mini_test.fasta`` using Docker locally, you could use t
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile docker,local \
         --input utilities/test_files/mini_test.fasta
         
@@ -276,7 +291,7 @@ flag to define a subset of member databases as a comma separated list, for examp
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile <profiles> \
         --input <path to input fasta file> \
         --applications "antifam,sfld"
@@ -288,7 +303,7 @@ you could use:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile apptainer
         --input utilities/test_files/best_to_test.fasta \
         --applications "antifam,ncbifam"
@@ -345,7 +360,7 @@ command:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile <profile>
         --input <path to input fasta file> \
         --disable_precalc
@@ -357,7 +372,7 @@ using Docker as the container runtime on your local system, you could run:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf --input utilities/test_files/best_to_test.fasta \
+    nextflow run ebi-pf-team/interproscan6 --input utilities/test_files/best_to_test.fasta \
         -profile docker,local \
         --applications panther,sfld \
         --disable_precalc
@@ -379,7 +394,7 @@ appropriate container run time  in the ``-profile`` option:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile slurm,<containerRuntime> \
         --input <input fasta> 
 
@@ -389,7 +404,7 @@ you could use:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile slurm,singularity \
         --input utilities/test_files/best_to_test.fasta \
         --applications "funfam,gene3d"
@@ -442,7 +457,7 @@ all member databases on a SLURM cluster with Singularity, generating only ``JSON
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile slurm,singularity \
         --input utilities/test_files/best_to_test.fasta \
         --format json,tsv
@@ -466,7 +481,7 @@ GO terms and pathways mapping in the results:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/best_to_test.fasta \
         -profile docker,local \
         --pathways \
@@ -505,7 +520,7 @@ citations for ``InterProScan`` and ``InterPro``.
 
 .. code-block:: bash
 
-    $ nextflow run interproscan.nf \
+    $ nextflow run ebi-pf-team/interproscan6 \
         -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
@@ -544,7 +559,7 @@ nucleic acid sequence.
 
 .. code-block:: bash
 
-    $ nextflow run interproscan.nf \
+    $ nextflow run ebi-pf-team/interproscan6 \
         -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
@@ -571,7 +586,7 @@ The extract from the terminal output below shows the progress during an ``InterP
 
 .. code-block:: bash
 
-    $ nextflow run interproscan.nf \
+    $ nextflow run ebi-pf-team/interproscan6 \
         -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
@@ -622,7 +637,7 @@ via the InterPro Match Lookup Service (MLS).
 
 .. code-block:: bash
 
-    $ nextflow run interproscan.nf \
+    $ nextflow run ebi-pf-team/interproscan6 \
         -profile docker \
         --input utilities/test_files/best_to_test.fasta \
         --formats json,tsv \
