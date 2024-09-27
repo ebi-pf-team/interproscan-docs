@@ -29,17 +29,11 @@ To install and run InterProScan
 
 1. Install NextFlow (version >= 23.10) and Java (version >= 11), please see the `Nextflow documentation <https://www.nextflow.io/>`__
 
-2. Pull the ``interproscan6`` image from Docker Hub using your container runtime of choice
+2. Run
 
 .. code-block:: bash
 
-    docker pull interpro/interproscan6:latest
-
-3. Run ``InterProScan``
-
-.. code-block:: bash
-
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
       -profile <executor, containerRuntime> \
       --input <path to input FASTA>
       
@@ -47,9 +41,11 @@ To install and run InterProScan
 Built in executors: ``slurm``, ``local``, ``lsf``  
 Build in container runtimes: ``docker``, ``singularity``, ``apptainer``  
 
+For alternative methods for installing ``InterProScan`` please see the 
+`how to install <HowToInstall.html>`__ page.
+
 For more information about using ``InterProScan`` please see the page links
-on the right, for example `how to install <HowToInstall.html>`__,
-`how to run <HowToRun.html>`__ and `profiles <Profiles.html>`__.
+on the right, for example `how to run <HowToRun.html>`__ and `profiles <Profiles.html>`__.
 
 Included analyses
 ~~~~~~~~~~~~~~~~~
