@@ -6,8 +6,8 @@ Before installing ``InterProScan``, please check you system satisfies the :ref:`
 
 To install the ``InterProScan`` 6 software you need to complete the following steps:
 
-1. Install the core ``InterProScan``
-2. Retrieve a InterPro release data set
+1. Retrieve a InterPro release data set
+2. Setting up ``InterProScan`` and its dependencies
 3. (Optional) Install licensed software (MobiDB, SignalP, DeepTMHMM and Phobius)
 4. (Optional) Setup a local InterPro Match Lookup Service (MLS)
 
@@ -21,19 +21,67 @@ If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise a
     the relevant licenses and files from the respective providers. Please see the 
     `"Installing licsensed members" documentation <InstallingLicensedApps.html>`_ for more information.
 
-[1] Setting up ``InterProScan`` and its dependencies
+
+[1] Retrieve an InterPro release dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``InterProScan`` relies on the models that are incorporated into each of the InterPro
+member databases. These data are bundled together and can be retrieved using the
+following bash commands:
+
+.. code-block:: bash
+
+    # replace interpro-version with the appropriate version number
+    INTERPRO_VERSION="102.0"
+    curl "https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/$INTERPRO_VERSION/interproscan-data-$INTERPRO_VERSION.tar.gz" \
+        --output interproscan-data-<interpro-version>.tar.gz
+    tar -pxzf interproscan-data-<interpro-version>.tar.gz
+    mv interproscan-data-<interpro-version>/data .
+    rm interproscan-data-<interpro-version> -rf
+    rm interproscan-data-<interpro-version>.tar.gz
+
+
+[2] Setting up InterProScan and its dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Option A: Pull from Docker
---------------------------
+Option A: Let Nextflow do the work
+----------------------------------
 
-1. Use your container runtime to pull the ``interproscan6`` image from Dockerhub:
+Each time you run ``InterProScan``, call the tool using ``ebi-pf-team/interproscan6``, for example:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+      -profile <executor, containerRuntime> \
+      --input <path to input FASTA>
+
+
+Option B: Pull from Docker manually
+-----------------------------------
+
+Alternatively you can pull the ``InterProScan`` image yourself from DockerHub using your container 
+runtime of choice. If you are using this method you will need to also acquire a copy of the 
+``InterProScan`` software.
+
+1. Download the ``InterProScan`` software
+
+.. code-block:: bash
+
+    git clone https://github.com/ebi-pf-team/interproscan6.git
+
+Or if you do not have ``git``:
+
+.. code-block:: bash
+
+    wget -o https://github.com/ebi-pf-team/interproscan6/archive/refs/heads/main.zip
+
+2. Pull the ``InterProScan`` image from DockerHub
 
 For example, using Docker:
 
 .. code-block:: bash
 
-    docker pull interproscan6:latest
+    docker pull interpro/interproscan6:latest
 
 Using Singularity:
 
@@ -47,25 +95,23 @@ Using Apptainer:
 
     apptainer pull interproscan6.sif docker://interpro/interproscan6:latest
 
-2. Test the installation:
-
-.. code-block:: bash
-
-    $ nextflow run interproscan.nf --help
-    # or...
-    $ nextflow run interproscan.nf --version
-
-Option B: Install from source
+Option C: Install from source
 -----------------------------
 
 The ``InterProScan`` code base is available at `GitHub <https://github.com/ebi-pf-team/interproscan6>`__.
 
-1. Clone the GitHub repository
+1. Download the ``InterProScan`` software
 
 .. code-block:: bash
 
     git clone https://github.com/ebi-pf-team/interproscan6.git
     cd interproscan6
+
+Or if you do not have ``git``:
+
+.. code-block:: bash
+
+    wget -o https://github.com/ebi-pf-team/interproscan6/archive/refs/heads/main.zip
 
 2. Build the docker image (which automatically installs all dependencies)
 
@@ -88,28 +134,10 @@ Using an alternative container runtime
 ``InterProScan`` also supports using Singularity and Apptainer. You can find more information 
 on this in the :ref:`Using Alternative Container Runners` documentation.
 
-[2] Retrieve an InterPro release dataset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``InterProScan`` relies on the models that are incorporated into each of the InterPro
-member databases. These data are bundled together and can be retrieved using the
-following bash commands:
-
-.. code-block:: bash
-
-    # replace interpro-version with the appropriate version number
-    INTERPRO_VERSION="102.0"
-    curl "https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/$INTERPRO_VERSION/interproscan-data-$INTERPRO_VERSION.tar.gz" \
-        --output interproscan-data-<interpro-version>.tar.gz
-    tar -pxzf interproscan-data-<interpro-version>.tar.gz
-    mv interproscan-data-<interpro-version>/data .
-    rm interproscan-data-<interpro-version> -rf
-    rm interproscan-data-<interpro-version>.tar.gz
-
 [3] (Optional) Install licensed software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Due to licensing ``MobiDB``, ``Phobius``, ``SignalP``, and ``DeepTMHMM`` member database analyses 
+Due to licensing ``Phobius``, ``SignalP``, and ``DeepTMHMM`` member database analyses 
 are deactivated in ``InterProScan`` by default.
 
 To activate these analyses you will need to obtain
