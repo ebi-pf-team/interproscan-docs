@@ -23,7 +23,7 @@ include the ``--nucleic`` flag in your ``InterProScan`` command:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input <path to input FASTA> \
         --nucleic \
         -profile <profiles>
@@ -39,7 +39,7 @@ using the Docker ``interproscan6`` image locally, you could run the following co
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/test_nt_seqs.fasta
         --applications cdd,sfld,panther,pfam,signalp,phobius \
         --disable_precalc \

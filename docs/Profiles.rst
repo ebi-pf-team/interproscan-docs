@@ -15,7 +15,7 @@ to run ``InterProScan`` locally using docker, use the ``local`` and ``docker`` p
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         -profile local,docker \
         --input utilities/test_files/best_to_test.fasta
 

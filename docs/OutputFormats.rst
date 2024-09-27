@@ -190,7 +190,7 @@ using the command:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/best_to_test.fasta \
         --disable_precalc \
         --goterms \
@@ -330,7 +330,7 @@ Extensible Markup Language (XML)
 The richest form of the data is the XML representtaion, and includes data for all sequences 
 listed in the input FASTA File.
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/test_nt_seqs.fasta \
         --disable_precalc \
         -profile docker,local \
@@ -473,7 +473,7 @@ using the command:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/best_to_test.fasta \
         --disable_precalc \
         --goterms \
@@ -550,7 +550,7 @@ using the command:
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
+    nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/best_to_test.fasta \
         --disable_precalc \
         --goterms \
