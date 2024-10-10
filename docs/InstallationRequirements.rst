@@ -17,7 +17,7 @@ Software requirements:
 
 -  64-bit Linux
 -  Perl 5 (default on most Linux distributions)
--  Python 3 (InterProScan 5.30-69.0 onwards)
+-  Python 3.8 (InterProScan 5.70-102.0 onwards)
 -  Java JDK/JRE version 11 (InterProScan 5.37-76.0 onwards)
 -  Environment variables set
 
@@ -99,7 +99,7 @@ This should report a version of Python is available, similar to:
 
 ::
 
-    Python 3.5.1
+    Python 3.11.6
 
 A default Python installation is sufficient: no third party Python
 modules need to be installed.
