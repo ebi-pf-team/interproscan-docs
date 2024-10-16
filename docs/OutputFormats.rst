@@ -63,7 +63,7 @@ The TSV format presents the match data in columns as follows:
 11. Date - is the date of the run
 12. InterPro annotations - accession (e.g. IPR002093)
 13. InterPro annotations - description (e.g. BRCA2 repeat)
-14. GO annotations with their source(s), e.g. GO:0005515(InterPro)|GO:0006302(PANTHER)|GO:0007195(InterPro,PANTHER). This is an optional column; only displayed if the :code:`--goterms` option is switched on
+14. GO annotations with their source(s), e.g. GO:0005515\(InterPro\)|GO:0006302\(PANTHER\)|GO:0007195\(InterPro,PANTHER\). This is an optional column; only displayed if the :code:`--goterms` option is switched on
 15. Pathways annotations, e.g. REACT\_71. This is an optional column; only displayed if the :code:`--pathways` option is switched on
 
 If a value is missing in a column, for example, the match has no InterPro annotation, a '-' is displayed.
