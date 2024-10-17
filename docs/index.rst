@@ -31,7 +31,6 @@ InterProScan documentation
    FAQ
    CompilingBinaries
    ConfigurationOptions
-   ClusterModeBenchmarkRun
    JSONOutputFormatHistory
    Citing
    Contact

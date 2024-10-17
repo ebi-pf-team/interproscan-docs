@@ -15,5 +15,4 @@
 .. include:: FAQ.rst
 .. include:: CompilingBinaries.rst
 .. include:: ConfigurationOptions.rst
-.. include:: ClusterModeBenchmarkRun.rst
 .. include:: Contact.rst 
