@@ -98,14 +98,14 @@ Run the image:
 
 ::
 
-    singularity exec
-        -B $PWD/interproscan-latest/data:/opt/interproscan/data \
+    singularity exec \
+        -B $PWD/interproscan-5.70-102.0/data:/opt/interproscan/data \
         -B $PWD/input:/input \
         -B $PWD/temp:/temp \
         -B $PWD/output:/output \
         interproscan_latest.sif \
         /opt/interproscan/interproscan.sh \
-        --input /input/e-coli.fa \ \
+        --input /input/e-coli.fa \
         --disable-precalc \
         --output-dir /output \
         --tempdir /temp \
