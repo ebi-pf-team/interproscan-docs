@@ -1,4 +1,4 @@
-Release notes: InterProScan 5.70-102.0
+Release notes: InterProScan 5.71-102.0
 =====================================
 
 Released on 3 October 2024
