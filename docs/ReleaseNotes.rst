@@ -17,6 +17,8 @@ Data update
 Software updates
 ^^^^^^^^^^^^^^^^
 
+- This update fixes a bug on InterProScan 5.70-102.0 where MobiDBLite matches were not returned when
+  using the Match Lookup Service.
 
 
 Known issues
