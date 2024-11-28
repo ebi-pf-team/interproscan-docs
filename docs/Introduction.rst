@@ -11,7 +11,7 @@ protein belongs to and the domains and sites it contains.
 
 Users that have nucleotide or protein sequences that they wish to 
 functionally characterise can use the software package ``InterProScan``. This 
-software runs the scanning algorithms from the InterPro database against 
+software runs the scanning algorithms from the InterPro databases against
 all sequences submitted in FASTA format. Matches are calculated 
 against all required member database signatures, and the results 
 are then outputted in a variety of formats.
@@ -20,14 +20,21 @@ Supported platforms
 ~~~~~~~~~~~~~~~~~~~
 
 ``InterProScan`` version 6 uses the `Nextflow <https://www.nextflow.io/docs>`__ 
-workflow system for deployment. This means ``InterProScan`` 
+workflow manager. This means ``InterProScan``
 can be deployed on a system running 64-bit Linux, Windows or MacOS. Additionally, 
 Nextflow enables the integration of ``InterProScan`` into HPC schedulers and cloud providers.
 
 To install and run InterProScan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Install NextFlow (version >= 23.10) and Java (version >= 11), please see the `Nextflow documentation <https://www.nextflow.io/>`__
+1. Install NextFlow (version >= 24.10), please see the `Nextflow documentation <https://www.nextflow.io/>`__
+
+2. Download InterPro data files
+
+.. code-block:: bash
+
+   curl -OJ https://ftp.ebi.ac.uk/pub/software/unix/iprscan/6/102.0/interproscan-data-102.0.tar.gz
+   tar -pxzf interproscan-data-102.0.tar.gz
 
 2. Run
 
@@ -35,17 +42,20 @@ To install and run InterProScan
 
     nextflow run ebi-pf-team/interproscan6 \
       -profile <executor, containerRuntime> \
-      --input <path to input FASTA>
-      
+      --input <path to input FASTA> \
+      --datadir interproscan-data-102.0
 
-Built in executors: ``slurm``, ``local``, ``lsf``  
+Built in executors: ``local``, ``slurm``, ``lsf``
 Build in container runtimes: ``docker``, ``singularity``, ``apptainer``  
 
 For alternative methods for installing ``InterProScan`` please see the 
 `how to install <HowToInstall.html>`__ page.
 
 For more information about using ``InterProScan`` please see the page links
-on the right, for example `how to run <HowToRun.html>`__ and `profiles <Profiles.html>`__.
+on the right, for example `how to run <HowToRun.html>`__.
+
+For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
+see the `profiles page <Profiles.html>`__.
 
 Included analyses
 ~~~~~~~~~~~~~~~~~
@@ -58,6 +68,7 @@ This distribution of InterProScan includes:
 - `FunFam <https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2988-x>`__
 - `Gene3D <http://gene3d.biochem.ucl.ac.uk/Gene3D/>`__
 - `HAMAP <http://hamap.expasy.org/>`__
+- `MOBIDB <http://mobidb.bio.unipd.it/>`__
 - `NCBIFAM <https://www.ncbi.nlm.nih.gov/genome/annotation_prok/evidence/>`__
   (including the previous `TIGRFAM <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`__ analysis)
 - `PANTHER <http://www.pantherdb.org/>`__
@@ -76,7 +87,6 @@ wish to run these analyses it will be necessary for you to obtain a
 license from the vendor and configure your local InterProScan
 installation to use these:
 
-- `MOBIDB <http://mobidb.bio.unipd.it/>`__
 - `Phobius <http://phobius.sbc.su.se/>`__
 - `SignalP <http://www.cbs.dtu.dk/services/SignalP/>`__
 - `DeepTMHMM <https://www.biorxiv.org/content/10.1101/2022.04.08.487609v1>`__
@@ -87,5 +97,5 @@ all of these analyses for their valued and on-going support!
 .. WARNING::
   The implementation of SMART in ``InterProscan`` uses unlicensed components only. 
   This analysis has simplified post-processing that includes
-  an E-value filter, however you should not expect it to give the same
+  an E-value filter, therefore, you should not expect it to give the same
   match output as the fully licensed version of SMART.

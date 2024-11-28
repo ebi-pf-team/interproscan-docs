@@ -9,13 +9,13 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
-* Synchronised with `InterPro version 102.0 <http://www.ebi.ac.uk/interpro/release_notes/102.0/>`__.
+* Synchronised with `InterPro version 103.0 <http://www.ebi.ac.uk/interpro/release_notes/103.0/>`__.
 
 Software updates
 ^^^^^^^^^^^^^^^^
 
-* Migration to a Nextflow pipeline, which supports automated scaling.
-* MobiDB now listed as licensed software due to some componets in the package being GPL-licensed.
+* Migration to a Nextflow workflow manager, which supports automated scaling.
+* Support for Linux, MacOS and Windows OS as well as SLURM and LSF schedulers.
 * Containerised deployment, supporting Docker, Apptainer and Singularity
 
 Known issues
