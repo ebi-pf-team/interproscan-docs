@@ -14,16 +14,16 @@ Obtaining the core InterProScan software
 
     mkdir my_interproscan
     cd my_interproscan
-    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.71-102.0/interproscan-5.71-102.0-64-bit.tar.gz
-    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.71-102.0/interproscan-5.71-102.0-64-bit.tar.gz.md5
+    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz
+    wget https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz.md5
 
     # Recommended checksum to confirm the download was successful:
-    md5sum -c interproscan-5.71-102.0-64-bit.tar.gz.md5
-    # Must return *interproscan-5.71-102.0-64-bit.tar.gz: OK*
+    md5sum -c interproscan-5.72-103.0-64-bit.tar.gz.md5
+    # Must return *interproscan-5.72-103.0-64-bit.tar.gz: OK*
     # If not - try downloading the file again as it may be a corrupted copy.
 
 (Direct link:
-https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.71-102.0/interproscan-5.71-102.0-64-bit.tar.gz)
+https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz)
 
 As the compressed file is large, it is **strongly recommended**
 that you use md5sum to check that the file has been downloaded without
@@ -33,7 +33,7 @@ Extract the tar ball:
 
 ::
 
-    tar -pxvzf interproscan-5.71-102.0-*-bit.tar.gz
+    tar -pxvzf interproscan-5.72-103.0-*-bit.tar.gz
 
     # where:
     #     p = preserve the file permissions

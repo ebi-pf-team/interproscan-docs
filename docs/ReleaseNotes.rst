@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.71-102.0
+Release notes: InterProScan 5.72-103.0
 =====================================
 
-Released on 3 October 2024
+Released on 28 November 2024
 
 What’s new
 ~~~~~~~~~~
@@ -9,16 +9,13 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 102.0 <http://www.ebi.ac.uk/interpro/release_notes/102.0/>`__.
--  The addition of 241 InterPro entries.
--  An update to PANTHER (19.0).
--  Integration of 299 new methods from the CATH-Gene3D (1), CDD (7), PANTHER (151), Pfam (140) databases.
+-  Synchronized with `InterPro version 103.0 <http://www.ebi.ac.uk/interpro/release_notes/103.0/>`__.
+-  The addition of 1029 InterPro entries.
+-  An update to Pfam (37.1).
+-  Integration of 1019 new methods from the CDD (7), NCBIfam (2), PANTHER (1), PIRSF (1), Pfam (1008) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
-
-- This update fixes a bug on InterProScan 5.70-102.0 where MobiDBLite matches were not returned when
-  using the Match Lookup Service.
 
 
 Known issues
