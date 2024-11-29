@@ -48,14 +48,14 @@ To install and run InterProScan
 Built in executors: ``local``, ``slurm``, ``lsf``
 Build in container runtimes: ``docker``, ``singularity``, ``apptainer``  
 
+For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
+see the `profiles page <Profiles.html>`__.
+
 For alternative methods for installing ``InterProScan`` please see the 
 `how to install <HowToInstall.html>`__ page.
 
 For more information about using ``InterProScan`` please see the page links
 on the right, for example `how to run <HowToRun.html>`__.
-
-For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
-see the `profiles page <Profiles.html>`__.
 
 Included analyses
 ~~~~~~~~~~~~~~~~~
