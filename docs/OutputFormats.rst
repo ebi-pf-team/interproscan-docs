@@ -2,14 +2,70 @@
 Output formats
 ==============
 
-``InterProScan`` version 6 you can the retrieve output in any of the
-following formats:
+``InterProScan`` version 6 you can the retrieve output in the following formats:
 
 -  `TSV <OutputFormats.html#tab-separated-values-format-tsv>`__: A simple tab-delimited file format
--  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The ``InterProScan`` XML format 
 -  `JSON <OutputFormats.html#javascript-object-notation-json>`__: Full output of results in JSON format
+-  `XML <OutputFormats.html#extensible-markup-language-xml>`__: The ``InterProScan`` XML format
 
 This page provides a summary of the data structure of each output file.
+
+General notes
+-------------
+
+Continuous and discontinuous (dc-)status
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``dc-status`` refers to continuous nature of a domain 
+hit in some member databases. At the present only Gene3D and FunFam are able to detect discontinious domains.
+
+If a domain is not  continuous, i.e. is broken up into fragments, each 
+of the fragments are represented under the ``location-fragments`` key and are labelled as 
+"C_TERMINAL_DISC" (for the most c-terminal fragment), "N_TERMINAL_DISC" (for the most n-terminal fragment), 
+and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "discontinuous". For example:
+
+.. code-block:: JSON
+
+    {
+        "location-fragments" : [ {
+            "start" : 84,
+            "end" : 134,
+            "dc-status" : "NC_TERMINAL_DISC"
+            }, {
+            "start" : 7,
+            "end" : 43,
+            "dc-status" : "C_TERMINAL_DISC"
+            }, {
+            "start" : 477,
+            "end" : 529,
+            "dc-status" : "N_TERMINAL_DISC"
+            }, {
+            "start" : 203,
+            "end" : 297,
+            "dc-status" : "NC_TERMINAL_DISC"
+        } ]
+    }
+
+The HMMER envelope
+~~~~~~~~~~~~~~~~~~
+
+The envelope represents the region of a protein sequence where the 
+domain may be located. Often it is wider than what HMMER chooses as a reasonably confident 
+alignment.
+
+The Panther exception
+~~~~~~~~~~~~~~~~~~~~~
+
+The output from HMMER3 against the HMM models of Panther is post-processed to 
+select only the best homologous family. Therefore, there is a maximum of one domain hit 
+for each Panther signature in a protein sequence. Owing to this the E-value and Score and listed 
+under the ``signature`` key, not the ``locations`` key.
+
+.. TIP::
+    To understand the meaning of the values in the ``InterProScan`` output for member databases 
+    that implement ``hmmsearch`` from HMMER3, we recommend referring to the official 
+    `HMMER3 documentation <http://eddylab.org/software/hmmer/Userguide.pdf>`_, specifically 
+    under the "Step 2: search the sequence database with hmmsearch" header.
 
 Tab-separated values format (TSV)
 ---------------------------------
@@ -82,10 +138,10 @@ The ``JSON`` output file includes data for all sequences submitted to ``InterPro
 Data in the JSON file
 ~~~~~~~~~~~~~~~~~~~~~
 
-In the ``JSON`` file, each query sequence is represented by its unique JSON objectionary, that 
+In the ``JSON`` file, each query sequence is represented by its JSON object, that 
 contains all match and annotation retrieved and calculated by ``InterProScan``.
 
-The JSON objectionary for each query sequences contains:
+The JSON object for each query sequences contains:
 
 For each input/query sequence:
 
@@ -136,52 +192,6 @@ For each input/query sequence:
                 * ``residue``: The amino acid residue of the site
     * ``xref``: The protein sequence ID and description listed in the input FASTA file
 
-**Continuous and discontinuous status**: The ``dc-status`` refers to continuous nature of a domain 
-hit in some member databases. If a domain is not  continuous, i.e. is broken up into fragments, each 
-of the fragments are represented under the ``location-fragments`` key and are labelled as 
-"C_TERMINAL_DISC" (for the most c-terminal fragment), "N_TERMINAL_DISC" (for the most n-terminal fragment), 
-and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "discontinuous". For example:
-
-.. code-block:: JSON
-
-    {
-        "location-fragments" : [ {
-            "start" : 84,
-            "end" : 134,
-            "dc-status" : "NC_TERMINAL_DISC"
-            }, {
-            "start" : 7,
-            "end" : 43,
-            "dc-status" : "C_TERMINAL_DISC"
-            }, {
-            "start" : 477,
-            "end" : 529,
-            "dc-status" : "N_TERMINAL_DISC"
-            }, {
-            "start" : 203,
-            "end" : 297,
-            "dc-status" : "NC_TERMINAL_DISC"
-        } ]
-    }
-
-Not all member database analyses can detect discontinious domains. At the present only Gene3D and 
-FunFam are able to detect discontinious domains.
-
-**The HMMER envelop:** The envelope represents the region of a protein sequence where the 
-domain may be located. Often it is wider than what HMMER chooses as a reasonably confident 
-alignment.
-
-**Panther exception:** The output from HMMER3 against the HMM models of Panther is post-processed to 
-select only the best homologous family. Therefore, there is a maximum of one domain hit 
-for each Panther signature in a protein sequence. Owing to this the E-value and Score and listed 
-under the ``signature`` key, not the ``locations`` key.
-
-.. TIP::
-    To understand the meaning of the values in the ``InterProScan`` output for member databases 
-    that implement ``hmmsearch`` from HMMER3, we recommed referring to the offical 
-    `HMMER3 documentation <http://eddylab.org/software/hmmer/Userguide.pdf>`_, specifically 
-    under the "Step 2: search the sequence database with hmmsearch" header.
-
 An example JSON file
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -191,8 +201,9 @@ using the command:
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        --input utilities/test_files/best_to_test.fasta \
-        --disable_precalc \
+        --input tests/data/test_prot.fa \
+        --datadir data/ \
+        --disablePrecalc \
         --goterms \
         --pathways \
         -profile docker,local
@@ -203,13 +214,7 @@ using the command:
         {
             "sequence": """MDNVNKLTAISLAVAAALPMMASADVMITEYVEGSSNNKAIELYNSGDTAIDLAGYKLVRYKDGATVASD
                 MVALDGQSIAPKTTKVILNSSAVITLDQGVDSYSGSLSFNGGDAVALVKDDAVVDIIGDVPTPTGWGFDVTLKRKLDALVANT
-                VFNAAQWEQLPKDTFSGLGSLETPAEPEVPLFSCSGAKIVPIYQVQGAGESSPYVPEGAFESEAEVTVRGIVTARGESLFKGF
-                YLQEVKGDNSPYTSDGVFVFLGEAVPEAIQPGVEVCVQGKVKEYFGLTQIDIKADKKFEVGAKGEVPVAAPFYVADGETLAQA
-                LERYEGMNVALDAGSDLKISRTFSYDYAGRRNNMLVSYKEPLMKSTQLYPALSAEATALVKSNLENQLFIESDYKPADGVIPY
-                FPDFNVETGYIRVGDQLTNLQGVIGYSYGAYRLVATNTITAGDFIRGDDRTDAPSVATKGDLRVASFNVLNFFNDVDGGDTNP
-                SGSNRGALTLEEMVLQRTKIVSAITAMNADIVGLMEIANNGFGEKSAIKNLVDALNEKQTPENAYSFVEITDADKYDGKYFGT
-                DAITVGMLYRGGKVTLAGAAQAIDTPEQHASAGSVTRTKDGKTETNPGNDAYQRHSLAQTFKIHDESLTVVVNHLKSKGSGCL
-                EDWANFEESVDPADQQGKCNAFRVSAAKVLGETLKDVKGDLLIIGDMNAYGMEDPIRVLTDFDASKSDRDIMTASWTTLDGKV
+                ...
                 FERQGSKIEKGYGLINLNTKAHGAGTYSYSYNGELGNLDHALANASLAKRLVDIEDWHINSVESNLFEYGKKFSGDLAKSENA
                 FSASDHDPVIVALSYPAPVVPPKPEPTPKDDGGALGYLGLALMSLFGLQRRRR""",
             "md5": "3156952d6b1f52bf18e848ccc4e7e455",
@@ -332,7 +337,7 @@ listed in the input FASTA File.
 
     nextflow run ebi-pf-team/interproscan6 \
         --input utilities/test_files/test_nt_seqs.fasta \
-        --disable_precalc \
+        --disablePrecalc \
         -profile docker,local \
         --nucleic \
         --applications cdd,hamap
@@ -474,11 +479,12 @@ using the command:
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        --input utilities/test_files/best_to_test.fasta \
-        --disable_precalc \
+        -profile docker,local \
+        --input tests/data/test_prot.fa \
+        --datadir data/ \
+        --disablePrecalc \
         --goterms \
-        --pathways \
-        -profile docker,local
+        --pathways
 
 Below is an extract from a XML output file, showing the results for one protein:
 
@@ -551,11 +557,11 @@ using the command:
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        --input utilities/test_files/best_to_test.fasta \
-        --disable_precalc \
-        --goterms \
-        --pathways \
         -profile docker,local
+        --input tests/data/test_prot.fa \
+        --disablePrecalc \
+        --goterms \
+        --pathways
 
 Below is an extract from a XML output file, showing the results for one protein:
 
