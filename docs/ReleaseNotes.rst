@@ -14,7 +14,7 @@ Data update
 Software updates
 ^^^^^^^^^^^^^^^^
 
-* Migration to a Nextflow workflow manager, which supports automated scaling.
+* Migration to a Nextflow workflow manager.
 * Support for Linux, MacOS and Windows OS as well as SLURM and LSF schedulers.
 * Containerised deployment, supporting Docker, Apptainer and Singularity
 
