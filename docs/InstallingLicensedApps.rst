@@ -2,58 +2,25 @@
 Installing Licensed Applications
 ================================
 
-Due to licensing ``MobiDB``, ``Phobius``, ``SignalP``, and ``DeepTMHMM`` analyses 
+Due to licensing ``Phobius``, ``SignalP``, and ``DeepTMHMM`` analyses
 are deactivated in InterProScan by default. To activate these analyses you will need to obtain 
 the relevant licenses and files from the respective providers. This page walks 
 you through setting up the licensed software.
 
-.. NOTE::
-    The installation instructions below use the Docker files provided within the 
-    ``InterProScan`` code base (available via `GitHub <https://github.com/ebi-pf-team/interproscan6/tree/main>`_).
-    To use alternative container runtimes please see the `Using Alternative Container Runtimes page <AlternativeContainers.html>`__
-    of the this documentation.
+The installation instructions below use the Docker.
+To use alternative container runtimes please see the `Using Alternative Container Runtimes page <AlternativeContainers.html>`__
+of the this documentation.
+
+.. important::
+
+    Using licensed software requires a local installation of ``InterProScan6``.
 
 Installing DeepTMHMM
 ~~~~~~~~~~~~~~~~~~~~
 
-``TMHMM`` is used to predict the presence of transmembrane domains within protein sequences. 
-``DeepTMHMM`` specifically uses deep learning methods to predict the membrane topology of 
-transmembrane proteins. The model employed by DeepTMHMM encodes the primary amino acid sequence 
-by using a pre-trained language model and decodes the topology by using a state space model 
-in order to produce topology and type predictions.
+``DeepTMHMM`` uses deep learning methods to predict the membrane topology of transmembrane proteins.
 
-Coming soon... (temporarily held due to licensing).
-
-Installing MobiDB / MobiDB-Lite
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-MobiDB-Lite provides fast consensus annotation of intrinsic disorder regions in proteins.
-
-Some components of `MobiDB-Lite <https://github.com/BioComputingUP/MobiDB-lite>`_ are GPL-licensed. 
-When you include GPL-licensed software in your own software, you need to license your software in GPL - 
-this would include ``InterProScan`` and any work generated using ``InterProScan``. To avoid this, 
-EBI provides a GNU-license implementation of the software used to screen for matches against 
-the MobiDB-Lite database, called `idrpred <https://github.com/matthiasblum/idrpred>`_.
-
-Pull the ``idrpred`` image from Docker Hub using your container runtime of choice:
-
-For example, using Docker:
-
-.. code-block:: bash
-
-    docker pull matblum/idrpred:latest
-
-Using Singularity:
-
-.. code-block:: bash
-
-    singularity pull idrpred.sif docker://matblum/idrpred:latest
-
-Using Apptainer:
-
-.. code-block:: bash
-
-    apptainer pull idrpred.sif docker://matblum/idrpred:latest
+Coming soon...
 
 Installing Phobius
 ~~~~~~~~~~~~~~~~~~
@@ -68,7 +35,7 @@ transmembrane domains in protein sequences.
 
     tar -xzf phobius101_linux.tgz -C <PHOBIUS-DIR>
 
-3. Copy the Docker file from ``InterProScan`` ``docker_files/Phobius/Dockerfile`` to your local ``Phobius`` directory
+3. Copy the Docker file from ``InterProScan`` ``utilities/docker/Phobius/Dockerfile`` to your local ``Phobius`` directory
 
 .. code-block:: bash
 
@@ -82,14 +49,25 @@ transmembrane domains in protein sequences.
     # with the terminal pointed at your local phobius dir
     docker image build -t phobius .
 
-5. Check the ```subworkflows/sequence_analysis/members.config`` file to make sure the ``Phobius`` version is correct.
+5. Add ``Phobius`` to the ``conf/applications.config`` file with the path to your local ``Phobius`` directory.
 
 .. code-block:: groovy
 
     phobius {
-            release = "1.01" <---- update if necessary
-            runner = "phobius"
+            name = "Phobius"
+            invalid_chars = "-*.OXUZJ"
+            dir = ""    <----- Add relative or absolute path here
         }
+
+Alternatively, create your own configuration file and include ``Phobius``, and pass this to ``InterProScan6``:
+
+.. code-block:: groovy
+
+    nextflow run ebi-pf-team/interproscan6 \
+          -c <Path-to-config-file.config> \
+          -profile <docker/singularity/apptainer...local/lsf/slurm> \
+          --input <FASTA> \
+          --datadir <DATADIR>
 
 6. (Optional) Convert the Docker image to an image of your container runtime.
 
@@ -103,10 +81,7 @@ For example, to build a singularity image:
 Installing SignalP
 ~~~~~~~~~~~~~~~~~~
 
-``SignalP`` is a bioinformatic tool for the prediction of signal peptides and the location of their 
-cleavage sites.
-
-You can find the official ``SignalP`` installation documentation `here <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md>`_.
+``SignalP`` is a bioinformatic tool for the prediction of signal peptides in protein sequences.
 
 1. Obtain a license of `SignalP <https://services.healthtech.dtu.dk/services/SignalP-6.0/>`_
 2. Download ``SignalP6`` from the `SignalP6 server <https://services.healthtech.dtu.dk/services/SignalP-6.0/>`_ (under 'Downloads').
@@ -121,68 +96,34 @@ You can find the official ``SignalP`` installation documentation `here <https://
 
     tar -xzf signalp-6.0h.fast.tar.gz -C <SIGNALP-DIR>
 
-4. Copy the Docker file available in the ``./docker_files/signalp/`` directory of ``InterProScan`` 
-to the root of your local ``SignalP6`` directory (``<SIGNALP-DIR>``), so that **all** ``SignalP6`` 
-files are mounted when building the Docker image.:
-
-.. code-block:: bash
-
-    # with the terminal point at the root of this repo
-    cp docker_files/signalp/Dockerfile <SIGNALP-DIR>/Dockerfile
-
-5. Build a docker image
-
-.. code-block:: bash
-
-    # with the terminal pointed at your local signalp dir
-    docker build -t signalp6 .
-
-6. Check the SignalP release number is correct in the ``interproscan/subworkflows/sequence_analysis/members.config`` configuration file:
+4. Update the path to the unpackaged SignalP tar file in the ``conf/applications.config`` configuration file:
 
 .. code-block:: groovy
 
-    signalp {
-        release = "6.0h"  <--- make sure the release is correct
-        runner = "signalp"
-        ...
-    }
-    ...
-    signalp_euk {
-        release = "6.0h"  <--- make sure the release is correct
-        runner = "signalp_euk"
-        ...
-    }
+        signalp_euk {
+            name = "SignalP-Euk"
+            organism = "eukarya"
+            dir = ""            <---- update the path to unpackaged SignalP tar file
+            mode = "fast"
+        }
+        signalp_prok {
+            name = "SignalP-Prok"
+            organism = "other"
+            dir = ""            <---- update the path to unpackaged SignalP tar file
+            mode = "fast"
+        }
 
-7. (Optional) Convert the Docker image to an image of your container runtime.
+Alternatively, create your own configuration file and include ``SignalP`, and pass this to ``InterProScan6``:
 
-For example, to build a singularity image:
+.. code-block:: groovy
 
-.. code-block:: bash
+    nextflow run ebi-pf-team/interproscan6 \
+          -c <Path-to-config-file.config> \
+          -profile <docker/singularity/apptainer...local/lsf/slurm> \
+          --input <FASTA> \
+          --datadir <DATADIR>
 
-    docker save signalp6 > signalp6.tar
-    singularity build signalp6.sif docker-archive://signalp6.tar
-
-Running SignalP
----------------
-
-Include ``signalp`` or ``signalp_euk`` in the list of applications defined using the ``--applications`` flag.
-
-.. code-block:: bash
-
-    nextflow run interproscan.nf \
-        --input utilities/test_files/best_to_test.fasta \
-        --applications signalp \
-        -profile local,docker
-
-
-.. code-block:: bash
-
-    nextflow run interproscan.nf \
-        --input utilities/test_files/best_to_test.fasta \
-        --applications signalp_euk \
-        -profile local,docker
-
-Using ``signalp`` sets the ``organism`` argument for SignalP6 to 'other', configuring ``SignalP6`` 
+Using ``signalp_prok`` sets the ``organism`` argument for SignalP6 to 'other', configuring ``SignalP6``
 to run using all models.
 
 Using ``signalp_euk`` sets the ``organism`` argument for SignalP6 to 
@@ -200,34 +141,30 @@ To change the mode of ``SignalP6``:
 
 1. Incorporate the new mode into your ``SignalP6`` installation as per the `SignalP6 documentation <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md#installing-additional-modes>`_.
 
-2. Use the ``--signalp_mode`` flag when running ``InterProScan`` to define the mode.
-
-For example, to run `InterProScan` with the input file `best_to_test.fasta`, using SignalP with only eukaryotic models in slow mode, and with retrieving precalculated matches disabled on a local machine using docker:
+2. Use the ``--signalpMode`` flag when running ``InterProScan`` to define the mode.
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
-    --input utilities/test_files/best_to_test.fasta \
-    --applications signalp_euk \
-    --disable_precalc \
-    --signalp_mode slow \
-    -profile docker,local
+    nextflow run ebi-pf-team/interproscan6 \
+          -profile <docker/singularity/apptainer...local/lsf/slurm> \
+          --input <FASTA> \
+          --datadir <DATADIR> \
+          --signalpMode slow
 
-.. NOTE::
-    ``InterProScan`` supports running only **one** ``SignalP`` mode at a time.
+``InterProScan`` supports running only **one** ``SignalP`` mode at a time.
 
 .. WARNING::
     The slow mode can take 6x longer to compute. Use when accurate region borders are needed.
 
-Converting from CPU to GPU, and back again
-------------------------------------------
+Converting from CPU to GPU
+--------------------------
 
 The model weights that come with the ``SignalP`` installation by default run on your CPU.
 If you have a GPU available, you can convert your installation to use the GPU instead. 
 
 You will need to install ``SignalP`` in order to convert to GPU models.
 
-1. Convert the ``SignalP`` installation to GPU by following the `SignalP documentation <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md#converting-to-gpu>`_. Note this requires installing ``SignalP``.
+1. Convert the ``SignalP`` installation to GPU by following the `SignalP documentation <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md#converting-to-gpu>`_.
 2. Build a Docker image using the GPU-compatible models (using the Docker file provided in ``InterProScan``)
 
 .. code-block:: bash
@@ -237,24 +174,12 @@ You will need to install ``SignalP`` in order to convert to GPU models.
 
 3. (Optional) Convert the image to your container runtime of choice
 
-For example, to build a singularity image:
+4. Run ``InterProScan6`` with the flag ``--signalpGPU``.
 
 .. code-block:: bash
 
-    docker save signalp6_gpuu > signalp6_gpu.tar
-    singularity build signalp6_gpu.sif docker-archive://signalp6_gpu.tar
-
-To run ``SignalP`` with GPU acceleration with ``InterProScan6`` use the flag ``--signalp_gpu``.
-
-For example, to run ``InterProScan`` with only ``SignalP`` enabled, using GPU acceleration on a SLURM cluster with Singularity support:
-
-.. code-block:: bash
-
-    nextflow run interproscan.nf \\
-    --input <fasta file> \\
-    --applications signalp \\
-    --signalp_gpu \\
-    -profile singularity,slurm
-
-To run ``SignalP`` with the GPU acceleration, include the ``--signalp_gpu`` flag in the
-``InterProScan`` command.
+    nextflow run ebi-pf-team/interproscan6 \
+          -profile <docker/singularity/apptainer...local/lsf/slurm> \
+          --input <FASTA> \
+          --datadir <DATADIR> \
+          --signalpGPU
