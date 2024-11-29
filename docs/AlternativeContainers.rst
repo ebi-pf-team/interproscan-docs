@@ -2,13 +2,12 @@
 Using Alternative Container Runners
 ===================================
 
-In addition to supporting Docker, ``InterProScan`` provides built in support for container runners Apptainer and 
-Singularity.
+``InterProScan`` includes supports Docker, Apptainer and Singularity.
 
-Nextflow also includes support for Charliecloud, Podman, Sarus and Shifter. To use these container runtimes you will need to create a new Nextflow Profile. 
-Please see the `Profiles page <Profiles.html>`__ for more information.
+Nextflow also includes support for Charliecloud, Podman, Sarus and Shifter. To use these container runtimes
+you will need to create a new Nextflow Profile. Please see the `Profiles page <Profiles.html>`__ for more information.
 
-.. TIP::
+.. NOTE::
 
     It is not necessary to download the InterPro release data before building any 
     container for ``InterProScan``.
@@ -20,9 +19,6 @@ Apptainer
 popular alternative to Docker.
 Apptainer does not require root privileges or a separate daemon process, unlike Docker.
 
-You will need Apptainer installed on the system(s) you will use to build the container image
-and run the pipeline.
-
 Build an Apptainer image
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,7 +28,7 @@ You can pull the ``interproscan6`` image from Docker Hub using Apptainer:
 
     apptainer pull interproscan6.sif docker://interpro/interproscan6:latest    
 
-Alternatively, you can convert the ``interproscan6`` docker image on your host system, then export and transfer 
+Alternatively, you can convert the ``interproscan6`` docker image on your system, then export and transfer
 the resulting Apptainer image to another system. This approach may be required for 
 `installing licensed software <InstallingLicensedApps.html>`__.
 
@@ -61,9 +57,17 @@ E.g.
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
-        --input my_seqs.fasta \
-        -profiles apptainer
+    # running interproscan locally
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile apptainer,local
+        --input test_prot.fa \
+        --datadir interpro-103.0
+
+    # running using slurm
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile apptainer,slurm
+        --input test_prot.fa \
+        --datadir interpro-103.0
 
 Singularity
 -----------
@@ -71,14 +75,11 @@ Singularity
 `Singularity <https://sylabs.io/singularity/>`_ is a popular alternative to Docker.
 Singularity does not require root privileges or a separate daemon process, unlike Docker.
 
-You will need SingularityCE or SingularityPro installed on the system(s) 
-you will use to build the container image and run the pipeline.
-
 .. NOTE::
 
     ``InterProScan`` does not differentiate between SingularityCE (an open source 
     Singularity supported by Sylabs) and SingularityPro (commercial software from Sylabs). 
-    Nextflow implements a generic "singularity" executor for both.
+    A generic "singularity" executor for both.
 
 Build a Singularity image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,8 +118,14 @@ E.g.
 
 .. code-block:: bash
 
-    nextflow run interproscan.nf \
-        --input my_seqs.fasta \
-        -profiles singularity
+    # running interproscan locally
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile singularity,local
+        --input test_prot.fa \
+        --datadir interpro-103.0
 
-You can find more information on the ``InterProScan`` profiles :ref: `profiles-lable`.
+    # running using slurm
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile singularity,slurm
+        --input test_prot.fa \
+        --datadir interpro-103.0
