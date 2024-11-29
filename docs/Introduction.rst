@@ -2,7 +2,7 @@ Introduction
 ============
 
 What is InterProScan?
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 `InterPro <http://www.ebi.ac.uk/interpro/>`__ is a database that
 integrates predictive information about proteins' functions from
@@ -20,9 +20,8 @@ Supported platforms
 ~~~~~~~~~~~~~~~~~~~
 
 ``InterProScan`` version 6 uses the `Nextflow <https://www.nextflow.io/docs>`__ 
-workflow manager. This means ``InterProScan``
-can be deployed on a system running 64-bit Linux, Windows or MacOS. Additionally, 
-Nextflow enables the integration of ``InterProScan`` into HPC schedulers and cloud providers.
+workflow manager, and can deployed on a system running 64-bit Linux, Windows or MacOS and
+ integrated into HPC schedulers and cloud providers.
 
 To install and run InterProScan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,12 +45,12 @@ To install and run InterProScan
       --datadir interproscan-data-102.0
 
 Built in executors: ``local``, ``slurm``, ``lsf``
-Build in container runtimes: ``docker``, ``singularity``, ``apptainer``  
+Built in container runtimes: ``docker``, ``singularity``, ``apptainer``
 
 For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
 see the `profiles page <Profiles.html>`__.
 
-For alternative methods for installing ``InterProScan`` please see the 
+For setting up a local installation ``InterProScan`` please see the
 `how to install <HowToInstall.html>`__ page.
 
 For more information about using ``InterProScan`` please see the page links
@@ -81,10 +80,10 @@ This distribution of InterProScan includes:
 - `SMART <http://smart.embl-heidelberg.de/>`__ (unlicensed components only)
 - `SUPERFAMILY <http://supfam.cs.bris.ac.uk/SUPERFAMILY/>`__
 
-A number of other analyses are available in InterProScan. These
-analyses use licensed code and data provided by third parties. If you
+A number of other analyses are available in ``InterProScan```. These
+analyses use licensed components provided by third parties. If you
 wish to run these analyses it will be necessary for you to obtain a
-license from the vendor and configure your local InterProScan
+license from the vendor and configure your local ``InterProScan```
 installation to use these:
 
 - `Phobius <http://phobius.sbc.su.se/>`__
