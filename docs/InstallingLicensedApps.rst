@@ -7,20 +7,46 @@ are deactivated in InterProScan by default. To activate these analyses you will 
 the relevant licenses and files from the respective providers. This page walks 
 you through setting up the licensed software.
 
-The installation instructions below use the Docker.
-To use alternative container runtimes please see the `Using Alternative Container Runtimes page <AlternativeContainers.html>`__
-of the this documentation.
-
-.. important::
-
-    Using licensed software requires a local installation of ``InterProScan6``.
-
 Installing DeepTMHMM
 ~~~~~~~~~~~~~~~~~~~~
 
 ``DeepTMHMM`` uses deep learning methods to predict the membrane topology of transmembrane proteins.
 
-Coming soon...
+1. Acquire a licensed for `DeepTMHMM <https://services.healthtech.dtu.dk/services/DeepTMHMM-1.0/>`__ and download DeepTMHMM
+2. Unpack the ZIP file
+
+.. code-block:: bash
+
+    unzip DeepTMHMM-Academic-License-v1.0.zip <TMHMM-DIR>
+
+3. Define the TMHMM dir path.
+
+If you have a local installation of ``InterProScan6``, update the TMHMM ``dir`` path in
+``conf/applications.config``:
+
+.. code-block:: groovy
+
+    tmhmm {
+        name = "tmhmm"
+        dir = ""   <----- update the dir path
+    }
+
+Otherwise, provide your own configuration using the ``-C`` flag, which defines ``params.appsConfig`` from
+`conf/applications.conf <https://github.com/ebi-pf-team/interproscan6/blob/main/conf/applications.config>`__
+and includes a definition for TMHMM as laid out above.
+
+4. Run ``InterProScan6`` with (Deep)TMHMM
+
+When the ``dir`` field is populated TMHMM will be included in the default applications when the ``--applications``
+flag is not used, else include ``tmhmm`` when using the ``--application`` flag:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile <local,slurm,lsf...docker,singularity,apptainer> \
+        --input <fasta-file> \
+        --datadir <interpro-data-dir> \
+        --applications tmhmm
 
 Installing Phobius
 ~~~~~~~~~~~~~~~~~~
@@ -35,48 +61,35 @@ transmembrane domains in protein sequences.
 
     tar -xzf phobius101_linux.tgz -C <PHOBIUS-DIR>
 
-3. Copy the Docker file from ``InterProScan`` ``utilities/docker/Phobius/Dockerfile`` to your local ``Phobius`` directory
+3. Define the ``dir`` path for Phobius.
 
-.. code-block:: bash
-
-    # with the terminal pointed at the root of this repo
-    cp docker_files/phobius/Dockerfile <PHOBIUS-DIR>/Dockerfile
-
-4. Build a Docker image
-
-.. code-block:: bash
-
-    # with the terminal pointed at your local phobius dir
-    docker image build -t phobius .
-
-5. Add ``Phobius`` to the ``conf/applications.config`` file with the path to your local ``Phobius`` directory.
+If you have a local installation of ``InterProScan6``, update the ``Phobius`` ``dir`` path in
+``conf/applications.config``:
 
 .. code-block:: groovy
 
     phobius {
-            name = "Phobius"
-            invalid_chars = "-*.OXUZJ"
-            dir = ""    <----- Add relative or absolute path here
-        }
+        name = "Phobius"
+        invalid_chars = "-*.OXUZJ"
+        dir = ""    <----- Add relative or absolute path here
+    }
 
-Alternatively, create your own configuration file and include ``Phobius``, and pass this to ``InterProScan6``:
+Otherwise, provide your own configuration using the ``-C`` flag, which defines ``params.appsConfig`` from
+`conf/applications.conf <https://github.com/ebi-pf-team/interproscan6/blob/main/conf/applications.config>`__
+and includes a definition for ``Phobius``` as laid out above.
 
-.. code-block:: groovy
+4. Run ``InterProScan6`` with ``Phobius``
 
-    nextflow run ebi-pf-team/interproscan6 \
-          -c <Path-to-config-file.config> \
-          -profile <docker/singularity/apptainer...local/lsf/slurm> \
-          --input <FASTA> \
-          --datadir <DATADIR>
-
-6. (Optional) Convert the Docker image to an image of your container runtime.
-
-For example, to build a singularity image:
+When the ``dir`` field is populated ``Phobius`` will be included in the default applications when the ``--applications``
+flag is not used, else include ``phobius`` when using the ``--application`` flag:
 
 .. code-block:: bash
 
-    docker save phobius > phobius.tar
-    singularity build phobius.sif docker-archive://phobius.tar
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile <local,slurm,lsf...docker,singularity,apptainer> \
+        --input <fasta-file> \
+        --datadir <interpro-data-dir> \
+        --applications phobius
 
 Installing SignalP
 ~~~~~~~~~~~~~~~~~~
@@ -113,12 +126,12 @@ Installing SignalP
             mode = "fast"
         }
 
-Alternatively, create your own configuration file and include ``SignalP`, and pass this to ``InterProScan6``:
+Alternatively, create your own configuration file and include ``SignalP``, and pass this to ``InterProScan6``:
 
 .. code-block:: groovy
 
     nextflow run ebi-pf-team/interproscan6 \
-          -c <Path-to-config-file.config> \
+          -c <path-to-config-file.config> \
           -profile <docker/singularity/apptainer...local/lsf/slurm> \
           --input <FASTA> \
           --datadir <DATADIR>
@@ -156,8 +169,8 @@ To change the mode of ``SignalP6``:
 .. WARNING::
     The slow mode can take 6x longer to compute. Use when accurate region borders are needed.
 
-Converting from CPU to GPU
---------------------------
+Run with GPU acceleration
+-------------------------
 
 The model weights that come with the ``SignalP`` installation by default run on your CPU.
 If you have a GPU available, you can convert your installation to use the GPU instead. 
@@ -165,16 +178,7 @@ If you have a GPU available, you can convert your installation to use the GPU in
 You will need to install ``SignalP`` in order to convert to GPU models.
 
 1. Convert the ``SignalP`` installation to GPU by following the `SignalP documentation <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md#converting-to-gpu>`_.
-2. Build a Docker image using the GPU-compatible models (using the Docker file provided in ``InterProScan``)
-
-.. code-block:: bash
-
-    # with the terminal pointed at your local signalp dir
-    docker image build -t signalp6_gpu .
-
-3. (Optional) Convert the image to your container runtime of choice
-
-4. Run ``InterProScan6`` with the flag ``--signalpGPU``.
+2. Run ``InterProScan6`` with the flag ``--signalpGPU``.
 
 .. code-block:: bash
 
