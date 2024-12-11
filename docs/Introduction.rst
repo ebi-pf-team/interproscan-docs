@@ -47,6 +47,11 @@ To install and run InterProScan
 Built in executors: ``local``, ``slurm``, ``lsf``
 Built in container runtimes: ``docker``, ``singularity``, ``apptainer``
 
+.. NOTE::
+    The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
+    This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
+    licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
+
 For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
 see the `profiles page <Profiles.html>`__.
 

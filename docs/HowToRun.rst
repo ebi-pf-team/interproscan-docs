@@ -98,6 +98,11 @@ For example, to run ``InterProScan`` to analyse the protein sequences using Dock
     To analyse nucleic acid sequences please see the 
     `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
 
+.. NOTE::
+    The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
+    This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
+    licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
+
 Command-line arguments
 ~~~~~~~~~~~~~~~~~~~~~~
 
