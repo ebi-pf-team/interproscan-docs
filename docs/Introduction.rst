@@ -53,13 +53,8 @@ Built in container runtimes: ``docker``, ``singularity``, ``apptainer``
     licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
 
 For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
-see the `profiles page <Profiles.html>`__.
-
-For setting up a local installation ``InterProScan`` please see the
+see the `profiles page <Profiles.html>`__, and for setting up a local installation ``InterProScan`` please see the
 `how to install <HowToInstall.html>`__ page.
-
-For more information about using ``InterProScan`` please see the page links
-on the right, for example `how to run <HowToRun.html>`__.
 
 Included analyses
 ~~~~~~~~~~~~~~~~~

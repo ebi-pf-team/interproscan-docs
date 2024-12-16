@@ -45,16 +45,10 @@ and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "di
             "dc-status" : "NC_TERMINAL_DISC"
         } ]
     }
+]
 
-The HMMER envelope
-~~~~~~~~~~~~~~~~~~
-
-The envelope represents the region of a protein sequence where the 
-domain may be located. Often it is wider than what HMMER chooses as a reasonably confident 
-alignment.
-
-The Panther exception
-~~~~~~~~~~~~~~~~~~~~~
+One-hit limit for Panther
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The output from HMMER3 against the HMM models of Panther is post-processed to 
 select only the best homologous family. Therefore, there is a maximum of one domain hit 

@@ -8,7 +8,7 @@ Specifically, ``InterProScan`` uses the ORF prediction tool
 ``esl-translate`` from the `easel tool suite <https://github.com/EddyRivasLab/easel>`_ 
 to generate predicted ORFs from an input nucleic acid FASTA file. These predicted ORFs are 
 then used to generate hits. The predicted ORFs and their 
-InterPro signature matches are then associated with the respective input nucleic acid 
+InterPro signature matches are associated with the respective input nucleic acid
 sequence in the final output. 
 
 The ``easel`` application itself and all its dependencies are integrated into ``InterProScan``.

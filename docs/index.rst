@@ -29,13 +29,11 @@ Nextflow enables the integration of ``InterProScan`` into HPC schedulers and clo
    HowToInstall
    InstallingLicensedApps
    HowToRun
-   AlternativeContainers
    Profiles
    InputFormat
    OutputFormats
    ScanNucleicAcidSeqs
    PrecalculatedMatchLookup
-   AdvancedConfiguration
    UnderTheHood
    Benchmark
    ImprovingPerformance

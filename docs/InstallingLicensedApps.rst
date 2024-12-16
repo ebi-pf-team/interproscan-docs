@@ -4,137 +4,71 @@ Installing Licensed Applications
 
 Due to licensing ``Phobius``, ``SignalP``, and ``DeepTMHMM`` analyses
 are deactivated in InterProScan by default. To activate these analyses you will need to obtain 
-the relevant licenses and files from the respective providers. This page walks 
-you through setting up the licensed software.
+the relevant licenses and files from the respective providers.
 
-Installing DeepTMHMM
-~~~~~~~~~~~~~~~~~~~~
+For each of these member databases:
 
-``DeepTMHMM`` uses deep learning methods to predict the membrane topology of transmembrane proteins.
+1. Retrieve the relevant license and download the analysis software:
 
-1. Acquire a licensed for `DeepTMHMM <https://services.healthtech.dtu.dk/services/DeepTMHMM-1.0/>`__ and download DeepTMHMM
-2. Unpack the ZIP file
+* ``DeepTMHMM``: Contact the DeepTMHMM help desk and request a stand-alone licensed copy of DeepTMHMM.
+* ``Phobius``: From the `Phobius server <https://software.sbc.su.se/phobius.html>`__
+* ``SignalP``: From the `SignalP6 server <https://services.healthtech.dtu.dk/services/SignalP-6.0/>`__ (under 'Downloads')
 
-.. code-block:: bash
-
-    unzip DeepTMHMM-Academic-License-v1.0.zip <TMHMM-DIR>
-
-3. Define the TMHMM dir path.
-
-If you have a local installation of ``InterProScan6``, update the TMHMM ``dir`` path in
-``conf/applications.config``:
-
-.. code-block:: groovy
-
-    tmhmm {
-        name = "tmhmm"
-        dir = ""   <----- update the dir path
-    }
-
-Otherwise, provide your own configuration using the ``-C`` flag, which defines ``params.appsConfig`` from
-`conf/applications.conf <https://github.com/ebi-pf-team/interproscan6/blob/main/conf/applications.config>`__
-and includes a definition for TMHMM as laid out above.
-
-4. Run ``InterProScan6`` with (Deep)TMHMM
-
-When the ``dir`` field is populated TMHMM will be included in the default applications when the ``--applications``
-flag is not used, else include ``tmhmm`` when using the ``--application`` flag:
+2. Unpack the ``ZIP`` or ``TAR`` file
 
 .. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile <local,slurm,lsf...docker,singularity,apptainer> \
-        --input <fasta-file> \
-        --datadir <interpro-data-dir> \
-        --applications tmhmm
-
-Installing Phobius
-~~~~~~~~~~~~~~~~~~
-
-``Phobius`` is a bioinformatic tool for the prediction of signal peptides and 
-transmembrane domains in protein sequences.
-
-1. Obtain a license for ``Phobius`` and download a copy of the code from the `Phobius server <https://software.sbc.su.se/phobius.html>`_.
-2. Unpack the downloaded ``tar`` file into your desired directory
-
-.. code-block:: bash
-
+    # deeptmhmm
+    unzip DeepTMHMM-Academic-License-v1.0.zip <DEEPTMHMM-DIR>
+    # phobius
     tar -xzf phobius101_linux.tgz -C <PHOBIUS-DIR>
+    # signalp
+    tar -xzf signalp-6.0h.fast.tar.gz -C <SIGNALP-DIR>
 
-3. Define the ``dir`` path for Phobius.
-
-If you have a local installation of ``InterProScan6``, update the ``Phobius`` ``dir`` path in
-``conf/applications.config``:
+3. Update the relevant member's ``dir`` path in ``conf/applications.con`` or provide your own configuration using
+the ``-C`` flag, which defines ``params.appsConfig`` from
+`conf/applications.conf <https://github.com/ebi-pf-team/interproscan6/blob/main/conf/applications.config>`__
+and includes a definition for the member as laid out in ``conf/applications.com``:
 
 .. code-block:: groovy
 
+    deeptmhmm {
+        name = "tmhmm"
+        dir = "<DEEPTMHMM-DIR>"    <---- update the dir path
+        has_data=false
+    }
     phobius {
         name = "Phobius"
         invalid_chars = "-*.OXUZJ"
-        dir = ""    <----- Add relative or absolute path here
+        dir = "<PHOBIUS-DIR>"      <---- update dir path
+        has_data=false
+    }
+    signalp_euk {
+        name = "SignalP-Euk"
+        organism = "eukarya"
+        dir = "<SIGNALP-DIR>"      <---- update dir path
+        mode = "fast"
+        has_data=false
+    }
+    signalp_prok {
+        name = "SignalP-Prok"
+        organism = "other"
+        dir = "<SIGNALP-DIR>"      <---- update dir path
+        mode = "fast"
+        hase_data=false
     }
 
-Otherwise, provide your own configuration using the ``-C`` flag, which defines ``params.appsConfig`` from
-`conf/applications.conf <https://github.com/ebi-pf-team/interproscan6/blob/main/conf/applications.config>`__
-and includes a definition for ``Phobius``` as laid out above.
-
-4. Run ``InterProScan6`` with ``Phobius``
-
-When the ``dir`` field is populated ``Phobius`` will be included in the default applications when the ``--applications``
-flag is not used, else include ``phobius`` when using the ``--application`` flag:
+4. Run. When the ``dir`` field is populated for each member they will be included in the default applications when
+the ``--applications`` flag is not used, else include the member when using the ``--application`` flag.
 
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
         -profile <local,slurm,lsf...docker,singularity,apptainer> \
         --input <fasta-file> \
-        --datadir <interpro-data-dir> \
-        --applications phobius
+        --applications deeptmhmm,phobius,signalp_euk,signalp_prok
 
-Installing SignalP
-~~~~~~~~~~~~~~~~~~
-
-``SignalP`` is a bioinformatic tool for the prediction of signal peptides in protein sequences.
-
-1. Obtain a license of `SignalP <https://services.healthtech.dtu.dk/services/SignalP-6.0/>`_
-2. Download ``SignalP6`` from the `SignalP6 server <https://services.healthtech.dtu.dk/services/SignalP-6.0/>`_ (under 'Downloads').
-
-.. NOTE::
-    Either fast or slow models can be implemented. To change the implemented mode 
-    please see the :ref: `Changing-mode` documentation below
-
-3. Unpackage the ``SignalP6`` ``tar`` file
-
-.. code-block:: bash
-
-    tar -xzf signalp-6.0h.fast.tar.gz -C <SIGNALP-DIR>
-
-4. Update the path to the unpackaged SignalP tar file in the ``conf/applications.config`` configuration file:
-
-.. code-block:: groovy
-
-        signalp_euk {
-            name = "SignalP-Euk"
-            organism = "eukarya"
-            dir = ""            <---- update the path to unpackaged SignalP tar file
-            mode = "fast"
-        }
-        signalp_prok {
-            name = "SignalP-Prok"
-            organism = "other"
-            dir = ""            <---- update the path to unpackaged SignalP tar file
-            mode = "fast"
-        }
-
-Alternatively, create your own configuration file and include ``SignalP``, and pass this to ``InterProScan6``:
-
-.. code-block:: groovy
-
-    nextflow run ebi-pf-team/interproscan6 \
-          -c <path-to-config-file.config> \
-          -profile <docker/singularity/apptainer...local/lsf/slurm> \
-          --input <FASTA> \
-          --datadir <DATADIR>
+SignalP Prokayte versus Eukaryote
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using ``signalp_prok`` sets the ``organism`` argument for SignalP6 to 'other', configuring ``SignalP6``
 to run using all models.
@@ -146,8 +80,8 @@ Using ``signalp_euk`` sets the ``organism`` argument for SignalP6 to
 "Specifying the eukarya method of ``SignalP6`` (``SignalP_EUK``) triggers post-processing of 
 the SP predictions by ``SignalP6`` to prevent spurious results (only predicts type Sec/SPI)."
 
-Changing mode
--------------
+SignalP - Changing mode
+~~~~~~~~~~~~~~~~~~~~~~~
 
 ``SignalP6`` supports 3 modes: ``fast``, ``slow`` and ``slow-sequential``. 
 To change the mode of ``SignalP6``:
@@ -169,8 +103,8 @@ To change the mode of ``SignalP6``:
 .. WARNING::
     The slow mode can take 6x longer to compute. Use when accurate region borders are needed.
 
-Run with GPU acceleration
--------------------------
+Run SignalP with GPU acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The model weights that come with the ``SignalP`` installation by default run on your CPU.
 If you have a GPU available, you can convert your installation to use the GPU instead. 

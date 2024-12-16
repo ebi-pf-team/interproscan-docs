@@ -7,7 +7,7 @@ Running InterProScan
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-          -profile <ContainerRunTime:docker/singularity/apptainer...Executor:local/lsf/slurm> \
+          -profile <ContainerRunTime:docker/singularity/apptainer,Executor:local/lsf/slurm> \
           --input <FASTA> \
           --datadir <DATADIR>
 
@@ -17,7 +17,7 @@ command:
 .. code-block:: bash
 
     nextflow run <path to the interproscan main.nf> \
-          -profile <ContainerRunTime:docker/singularity/apptainer...Executor:local/lsf/slurm> \
+          -profile <ContainerRunTime:docker/singularity/apptainer,Executor:local/lsf/slurm> \
           --input <FASTA> \
           --datadir <DATADIR>
 
@@ -66,17 +66,17 @@ reducing the total run time and computational demand.
 
 The default output file formats for ``InterProScan`` are ``JSON``, ``TSV`` and ``XML``.
 
-Quick Start
-~~~~~~~~~~~
+Command-line arguments
+----------------------
+
+Required arguments
+~~~~~~~~~~~~~~~~~~
 
 The only **required** arguments to run ``InterProScan`` are:
 
-``-profile`` - Used to define the executor and the container runtime used.
-
-``--input`` - Used to define the path to the input file containing the query sequences to be 
-analysed in FASTA format.
-
-``--datadir`` - Used to define the path to the downloaded InterPro data directory, containing the member database models.
+* ``-profile`` - Used to define the executor and the container runtime used.
+* ``--input`` - Used to define the path to the input file containing the query sequences to be analysed in FASTA format.
+* ``--datadir`` - Used to define the path to the downloaded InterPro data directory, containing the member database models.
 
 The built-in executor profiles are ``local``, ``slurm`` and ``lsf``.
 The built-in container runtime profiles are ``docker``, ``singularity``, and ``apptainer``.  
@@ -90,34 +90,13 @@ For example, to run ``InterProScan`` to analyse the protein sequences using Dock
         --input tests/data/test_prot.fa \
         --datadir data
 
-.. TIP::
-    When running ``InterProScan6`` locally it is not essential to specify the local profile, 
-    although it is recommended to improve resource management and retrying jobs that fail.
-
-.. NOTE::
-    To analyse nucleic acid sequences please see the 
-    `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
+To analyse nucleic acid sequences please see the
+`"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
 
 .. NOTE::
     The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
     This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
     licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
-
-Command-line arguments
-~~~~~~~~~~~~~~~~~~~~~~
-
-Required arguments
-------------------
-
-* ``-profile`` - Define the ``InterProScan`` profile(s) to use.
-* ``--input`` - Path to an input FASTA file of protein or nucleic acids sequences.
-* ``--datadir`` - Path to the InterPro data directory.
-
-The built-in executor profiles are ``local``, ``lsf``, and ``slurm``.
-The built-in container runtime profiles are ``docker``, ``singularity``, and ``apptainer``.
-
-.. WARNING:: 
-    The input FASTA file must contain only protein sequences or only nucleic acid sequences.
 
 Optional arguments
 ------------------
@@ -129,138 +108,9 @@ Configuring the analysis
 comma separated list, e.g. ``--applications sfld,panther,gene3d``. Case insensitive.
 
 ``--disablePrecalc`` - [Boolean] Configures ``InterProScan`` to not retrieve precalculated matches
-from the InterPro Match-Lookup Service (MLS). 
-``InterProScan`` will, therefore, run the analyses on all sequences provided in the input FASTA file.
-
-``--nucleic`` - [Boolean] Indicates to ``InterProScan`` that the input file contains nucleic acid
-sequences, triggering ``InterProScan`` to predict potential open reading frames in each
-sequence using the `easel software suite <https://github.com/EddyRivasLab/easel>`_ from the 
-Eddy/Rivas lab group.
-
-.. TIP::
-    You can find out more 
-    in the  `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
-
-Configuring the output data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-``--outdir`` - [String] Define the path to the output directory. By default ``InterProScan`` 
-writes to the current working directory. This can be an absolute or relative path. The output
-filenames are always prefixed with the input FASTA filename.
-
-``--formats`` - [String] Define the output file formats as a comma separated list. The options 
-are ``JSON``, ``TSV``, and ``XML``. E.g. ``--formats tsv,xml``. Case insensitive. Default: 
-``JSON,TSV,XML``
-
-``--goterms`` - [Boolean] Configures ``InterProScan`` to include Gene Ontology (GO) terms in the output files. 
-These mappings are based on the manually curated InterPro entries.
-
-``--pathways`` - [Boolean] Configures ``InterProScan`` to include mappings from the signature matches to 
-the pathway information from the corresponding InterPro entries. These pathway data are from the 
-MetaCyc and Reactome pathway databases.
-
-.. TIP::
-    More information on choosing 
-    the output file formats and including mapped Gene Ontology (GO) terms and Pathway data 
-    in the output files can be found in the `Customising the output`_ section below.
-
-Configuring SignalP
-^^^^^^^^^^^^^^^^^^^
-
-``--signalpMode`` - Set which ``SignalP_Prok`` / ``SignalP_EUK`` prediction models are used. Models may have
-to be installed manually. Accepted: ``fast``, ``slow``, ``slow-sequential``
-
-Use the application name ``SignalP_Prok`` to run ``SignalP`` using all available models.
-
-Use the application name ``SignalP_Euk`` to run ``SignalP`` with the ``--organism eukaryote`` flag
-set. As stated in the `SignalP README <https://github.com/chenxi-zhang-art/signalP>`_:
-
-Utilities
-^^^^^^^^^
-
-``--citations`` - [Boolean] Display the citations for ``InterProScan``, all third party tools and 
-all members of the InterPro consortium. Analysis does not run.
-
-``--version`` - [Boolean] Display the version number of the InterProScan software you are running. 
-Analysis does not run.
-
-Selecting member databases
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-By default, ``InterProScan`` compares the protein sequences provided in an input FASTA file
-against all InterPro member databases. Use the ``--applications``
-flag to define a set of member databases as a comma separated list, for example:
-
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile <profiles> \
-        --input <path to input fasta file> \
-        --datadir <interpro data dir> \
-        --applications "antifam,sfld"
-
-For example, to analyse protein sequences using only the AntiFam and NCBIFam member databases, and an Apptainer image locally
-use:
-
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile apptainer,local \
-        --input tests/data/test_prot.fa \
-        --datadir interpro-103.0 \
-        --applications "antifam,ncbifam"
-
-.. NOTE::
-    The member database (or 'applications') names are case **insensitive**,  both
-    ``ANTIFAM,NCBIFAM`` and ``AntiFam,NCBIfam`` are acceptable.
-
-Below is a list of the currently supported member databases/applications:
-
-* AntiFam
-* CDD
-* Coils
-* FunFam
-* Gene3D
-* HAMAP
-* DeepTMHMM*
-* MobiDB
-* NCBIFam
-* Panther
-* Pfam
-* Phobius*
-* PIRSF
-* PIRSR
-* Prints
-* Prosite Patterns
-* Prosite Profiles
-* SFLD
-* SignalP_Prok*
-* SignalP_EUK*
-* SMART
-* SUPERFAMILY
-
-\* - Licensed software (see the :ref:`Installing Licensed Applications` documentation).
-
-Disable looking for precalculated matches in InterPro
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-With the aim to reduce the runtime and computational demand, 
-``InterProScan``  uses the InterPro Match Lookup Service (MLS) to retrieve pre-calculated matches,
-running the analyses only sequences were a precalculated match is not retrieved. 
-In order to use the InterPro MLS your system will need to have external 
-access to http://www.ebi.ac.uk.
-
-If you do not wish or are unable to use the InterPro MLS, you can disable looking for 
-precalculated matches by including the ``--disablePrecalc`` flag in your ``InterProScan``
-command:
-
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile <profile> \
-        --input <path to input fasta file> \
-        --datadir <path to interpro data dir> \
-        --disablePrecalc
+from the InterPro Match-Lookup Service (MLS) (connecting to the InterPro MLS requires an internet connection).
+When ``--disablePrecalc`` is used ``InterProScan`` will run the analyses on all sequences provided in the
+input FASTA file.
 
 For example, to analyse protein sequences against only Panther and SFLD, without retrieving precalculated matches
 from InterPro, and using Docker as the container runtime on your local system, you could run:
@@ -274,12 +124,84 @@ from InterPro, and using Docker as the container runtime on your local system, y
         --applications panther,sfld \
         --disablePrecalc
 
+``--nucleic`` - [Boolean] Indicates to ``InterProScan`` that the input file contains nucleic acid
+sequences, triggering ``InterProScan`` to predict potential open reading frames (ORFs) and analyse the
+ORFs' protein sequence products. You can find out more in the
+`"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
+
+Configuring the output data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``--outdir`` - [String] Define the path to the output directory. By default ``InterProScan`` 
+writes to the current working directory. This can be an absolute or relative path. The output
+filenames are always prefixed with the input FASTA filename. ``InterProScan`` will build the
+output directory and all necessary parent directories.
+
+.. NOTE::
+
+    Nextflow does not tolerate spaces (' ') in paths.
+
+.. WARNING::
+
+    ``InterProScan`` will overwrite any existing output files with the same file path.
+
+``--formats`` - [String] Define the output file formats as a comma separated list. The options 
+are ``JSON``, ``TSV``, and ``XML``. E.g. ``--formats tsv,xml``. Case insensitive. Default: 
+``JSON,TSV,XML``. You can find a description of the output file schemas in
+`"Output formats" documentation <OutputFormats.html>`_.
+
+``--goterms`` - [Boolean] Configures ``InterProScan`` to include Gene Ontology (GO) terms in the output files. 
+These mappings are based on the manually curated InterPro entries.
+
+``--pathways`` - [Boolean] Configures ``InterProScan`` to include mappings from the signature matches to 
+the pathway information from the corresponding InterPro entries. These pathway data are from the 
+MetaCyc and Reactome pathway databases.
+
+.. NOTE::
+    The GO terms and Pathways data are downloaded at the same time as the member database data
+    during the initially ``InterProScan`` installation. Therefore, internet access is
+    **not** required in order to include these data in the final resutls.
+
+For example, running ``InterProScan`` to analyses protein sequences using
+all member databases on a SLURM cluster with Singularity, generating only ``JSON`` and
+``TSV`` files that include goterms and pathway annotations, and writing the results to
+the output dir ``my_results/analysis_57``:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile slurm,singularity \
+        --input tests/data/test_prot.fa \
+        --datadir interpro-103.0/ \
+        --format json,tsv \
+        --outdir my_results/analysis_57 \
+        --goterms \
+        --pathways
+
+Configuring SignalP
+^^^^^^^^^^^^^^^^^^^
+
+* Use the application name ``SignalP_Prok`` to run ``SignalP`` using all available models.
+* Use the application name ``SignalP_Euk`` to run ``SignalP`` with the ``--organism eukaryote`` flag
+set. As stated in the `SignalP README <https://github.com/chenxi-zhang-art/signalP>`_.
+* ``--signalpMode`` - Set which ``SignalP_Prok`` / ``SignalP_EUK`` prediction models are used. Models may have
+to be installed manually. Accepted: ``fast``, ``slow``, ``slow-sequential``
+
+Utilities
+^^^^^^^^^
+
+``--citations`` - [Boolean] Display the citations for ``InterProScan``, all third party tools and 
+all members of the InterPro consortium. Analysis does not run.
+
+``--version`` - [Boolean] Display the version number of the InterProScan software you are running. 
+Analysis does not run.
+
 Running on a cluster
 ~~~~~~~~~~~~~~~~~~~~
 
 To run ``InterProScan``` 6 on a cluster of cloud, use the relevant executor profile for the system. 
-See the :ref:`Using Alternative Container Runners` documentation for more information on using alternative container runtimes
-to docker.
+See the `profiles page <Profiles.html>`__ documentation for more information on
+using alternative container runtimes or OSs.
 
 For example, to run  ``InterProScan`` using the SLURM scheduler:
 
@@ -309,85 +231,18 @@ you could use:
     ``InterProScan`` is resource intensive. We do not recommend running large analyses on login/head node.
     Run ``InterProScan`` as an interactive job or submit the job via a bash script.
 
-.. IMPORTANT::
-
-    The profiles in ``InterProScan6`` define the time and resource allocations for the analyses. 
-    We recommend reviewing the relevant profile configuration files in ``utilities/profiles`` 
-    to ensure they met requirements and expected practices of your system. 
-    If you are unsure how to deploy Nextflow on your system contact the sysadmin. 
-    You can find out more information on the ``InterProScan`` profiles `here <Profiles.html>`. Please 
-    refer to this documentation before creating your own profiles.
-
-Customising the output
-~~~~~~~~~~~~~~~~~~~~~~
-
-Location of the output dir
---------------------------
-
-* By default ``InterProScan`` writes the output files to the current working directory. 
-* Use the ``--outdir`` flag to provide a path to the desired output directory. This can be a relative 
-or absolute path.
-* ``InterProScan`` will build all necessary parent directories for the output files.
-* The output filenames are always prefixed with the input FASTA file name.
-
-.. WARNING::
-
-    ``InterProScan`` will overwrite any existing output files with the same file path.
-
-Formats
--------
-
-You can chose which output file formats that any results are written to using the ``--formats`` option
-and providing a comma separate list. The supported file types are ``XML``, ``JSON`` and ``TSV``.
-
-For example, running ``InterProScan`` to analyses protein sequences using 
-all member databases on a SLURM cluster with Singularity, generating only ``JSON`` and ``TSV`` files:
-
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile slurm,singularity \
-        --input tests/data/test_prot.fa \
-        --datadir interpro-103.0/ \
-        --format json,tsv
-
-You can find a description of the output file schemas in `"Output formats" documentation <OutputFormats.html>`_. 
-
-GO terms and pathways
----------------------
-
-Gene Ontology (GO) terms are standardised vocabulary terms used to describe the biological 
-functions, processes, and cellular locations of genes and gene products (such as proteins) 
-across different species.
-
-``InterProScan`` can be configured to map GO terms and Pathways data 
-from the InterPro database onto the calculated and pre-calculated matches by including the ``--goterms`` and 
-``--pathways`` flags respectively.
-
-For example, to run ``InterProScan`` using only the CDD and Coils member databases, running locally with Docker, 
-and including additional GO terms and pathways mapping in the results:
-
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile docker,local \
-        --input tests/data/test_prot.fa \
-        --datadir interpro-103.0 \
-        --pathways \
-        --goterms
-
-.. NOTE::
-    The GO terms and Pathways data are downloaded at the same time as the member database data
-    during the initially ``InterProScan`` installation. Therefore, internet access is 
-    **not** required in order to include these data in the final resutls.
+The profiles in ``InterProScan6`` define the time and resource allocations for the analyses.
+We recommend reviewing the relevant profile configuration files in ``utilities/profiles``
+to ensure they met requirements and expected practices of your system.
+If you are unsure how to deploy Nextflow on your system contact the sysadmin.
+You can find out more information on the ``InterProScan`` profiles `here <Profiles.html>`. Please
+refer to this documentation before creating your own profiles.
 
 Moving the work (temporary) directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Nextflow stores all temporary files inside a ``work`` directory in the current working
-directory.
-
-Use the ``-w`` / ``-work-dir`` flag to define the path of the directory where intermediate 
+directory. Use the ``-w`` / ``-work-dir`` flag to define the path of the directory where intermediate
 files are stored (note the **single** dash as this is a Nextflow flag).
 
 .. TIP::
@@ -401,7 +256,8 @@ The terminal output of ``InterProScan`` allows you to track the progress of the 
 realtime.
 
 The first section of the terminal output includes the version of Nextflow and ``InterProScan``, and the
-name of the container created by Nextflow from the ``interproscan6`` image during the run.
+name of the container created by Nextflow from the ``interproscan6`` image during the run. The
+second section tracks the progress of the various processes it spawns in a tablular format.
 
 .. code-block:: bash
 
@@ -418,16 +274,6 @@ name of the container created by Nextflow from the ``interproscan6`` image durin
     # InterProScan6 6.0.0-alpha
     # Genome-scale protein function classification
 
-Next, Nextflow tracks the progress of the various processes it spawns in a tablular format.
-
-.. code-block:: bash
-
-    $ nextflow run ebi-pf-team/interproscan6 \
-         -profile docker,local
-         --input tests/data/test_prot.fa \
-         --datadir data \
-         --applications ncbifam,antifam
-    ...
     executor >  local (10)
     [83/6d3f04] process > PREPARE_PROTEIN_SEQUENCES (1)    [100%] 1 of 1 ✔
     [ad/09104a] process > SCAN_SEQUENCES:RUN_ANTIFAM (1)   [100%] 1 of 1 ✔
@@ -442,10 +288,10 @@ Next, Nextflow tracks the progress of the various processes it spawns in a tablu
 
 The first column (e.g. ``[83/6d3f04]``) identifies the subdirectory within the ``work/`` directory
 (created by Nextflow) where the process is running, and where the output files
-for the process can be found.
+for the process can be found (useful for trouble shooting).
 
 The second column (e.g. ``process > SCAN_SEQUENCES:RUN_ANTIFAM``) identifies the type of
-task (e.g. ``process``), the associated subworkflow (``e.g. SCAN_SEQUENCES```) and the name
+task (e.g. ``process``), and the name
 of the task (e.g. ``SCAN_SEQUENCES:RUN_ANTIFAM```).  The number
 in parenthesises identifies the total number of spawned instances of that process.
 
@@ -453,20 +299,7 @@ The third column (e.g. ``[100%] 1 of 1 ✔``) indicates the percentage of the cu
 of the process that have been completed. Additionally, this column lists the total number and 
 number of completed tasks.
 
-.. NOTE::
-    Although ``InterProScan`` takes in a single FASTA file as input to improve the computing 
-    efficiency, ``InterProScan`` may split the FASTA file into smaller batches.  Each of these batch
-    is analysed by all specified applications. Thus, a single process may run multiple times, one for each batch.
-
-Then ``InterProScan`` finishes with a summary closing message
-
-.. code-block:: bash
-
-    InterProScan workflow completed successfully: true.
-    Any results are located at ./test_prot_noIllegals.fa.ips6.*
-    Duration: 1m 16s
-    Completed at: 29-Nov-2024 15:27:14
-    Duration    : 1m 16s
-    CPU hours   : (a few seconds)
-    Succeeded   : 10
+Although ``InterProScan`` takes in a single FASTA file as input to improve the computing
+efficiency, ``InterProScan`` may split the FASTA file into smaller batches.  Each of these batch
+is analysed by all specified applications. Thus, a single process may run multiple times, one for each batch.
 

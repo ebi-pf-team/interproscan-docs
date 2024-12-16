@@ -15,13 +15,6 @@ If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise a
 `GitHub repository <https://github.com/ebi-pf-team/interproscan6/issues>`_, or 
 `raise a ticket <https://www.ebi.ac.uk/about/contact/support/interpro>`_ via InterPro.
 
-.. IMPORTANT::
-    Due to licensing ``Phobius``, ``SignalP``, and ``DeepTMHMM`` member database analyses
-    are deactivated in ``InterProScan``. To activate these analyses you will need to obtain
-    the relevant licenses and files from the respective providers. Please see the 
-    `"Installing licsensed members" documentation <InstallingLicensedApps.html>`_ for more information.
-
-
 [1] Retrieve an InterPro release dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,8 +54,6 @@ to set up a local installation.
 Option B: Install from source
 -----------------------------
 
-The ``InterProScan`` code base is available at `GitHub <https://github.com/ebi-pf-team/interproscan6>`__.
-
 1. Download the ``InterProScan`` software
 
 .. code-block:: bash
@@ -78,7 +69,7 @@ Or if you do not have ``git``:
 
 2. Pull down the docker image or build the docker image.
 
-To build the docker image (which automatically installs all dependencies)
+To build the docker image:
 
 .. code-block:: bash
 
@@ -96,16 +87,7 @@ Using Singularity:
 
     singularity pull interproscan6.sif docker://ebi-pf-team/interproscan6:latest
 
-If you run ``InterProScan6`` using Singularity or Apptainer please ensure the ``interproscan6.sif`` images
-are in your current working directory. Alternatively, update the image path in the corresponding
-(``<container>.conf``) file in ``utilities/profiles``. You can find more information on this in
-the :ref:`Using Alternative Container Runners` documentation.
-
-3. Test the installation:
-
-.. code-block:: bash
-
-    $ nextflow run main.nf --help
+To use alternative container runtimes please see the `profiles page <Profiles.html>`__.
 
 [3] (Optional) Install licensed software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
