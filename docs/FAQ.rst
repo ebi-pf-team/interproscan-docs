@@ -74,6 +74,11 @@ the application name 'signalp_euk'. For example:
       --applications signalp_euk \
       --disable_precalc
 
+I keep running out of memory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See the `Improving Performance page <ImprovingPerformance.html>`__ for more information.
+
 I get a "permission denied" error
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -152,8 +157,6 @@ the ``runOptions`` key to the ``docker`` settings, and assing it the value ``--u
 
 Segmentation Fault
 ~~~~~~~~~~~~~~~~~~
-
-## Segmentation fault
 
 If you a recieve an error such as the following:
 

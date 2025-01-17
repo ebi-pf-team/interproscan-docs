@@ -35,9 +35,7 @@ Below is the ``InterProScan`` command used:
         -with-report \
         --outdir benchmark
 
-The benchmarking was completed three times:
-
-[INSERT TABLE HERE]
+Results coming soon.
 
 How to benchmark IPS6
 ~~~~~~~~~~~~~~~~~~~~~

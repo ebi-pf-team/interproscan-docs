@@ -55,13 +55,13 @@ in the input to the respective member database it should produce warnings and ex
    * - Pfam
      - \-
    * - Phobius
-     - - _ . * o x u z j
+     - \- _ . * o x u z j
    * - PIRSR
      - \-
    * - PIRSF
      - \-
    * - PROSITE Profiles
-     - - _ .
+     - \- _ .
    * - SFLD
      - \- _ .
    * - SUPERFAMILY

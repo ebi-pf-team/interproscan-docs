@@ -39,20 +39,20 @@ and includes a definition for the member as laid out in ``conf/applications.com`
     phobius {
         name = "Phobius"
         invalid_chars = "-*.OXUZJ"
-        dir = "<PHOBIUS-DIR>"      <---- update dir path
+        dir = "<PHOBIUS-DIR>"      <---- update the dir path
         has_data=false
     }
     signalp_euk {
         name = "SignalP-Euk"
         organism = "eukarya"
-        dir = "<SIGNALP-DIR>"      <---- update dir path
+        dir = "<SIGNALP-DIR>"      <---- update the dir path
         mode = "fast"
         has_data=false
     }
     signalp_prok {
         name = "SignalP-Prok"
         organism = "other"
-        dir = "<SIGNALP-DIR>"      <---- update dir path
+        dir = "<SIGNALP-DIR>"      <---- update the dir path
         mode = "fast"
         hase_data=false
     }

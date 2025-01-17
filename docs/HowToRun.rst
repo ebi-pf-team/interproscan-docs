@@ -67,10 +67,10 @@ reducing the total run time and computational demand.
 The default output file formats for ``InterProScan`` are ``JSON``, ``TSV`` and ``XML``.
 
 Command-line arguments
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Required arguments
-~~~~~~~~~~~~~~~~~~
+------------------
 
 The only **required** arguments to run ``InterProScan`` are:
 
@@ -137,7 +137,7 @@ writes to the current working directory. This can be an absolute or relative pat
 filenames are always prefixed with the input FASTA filename. ``InterProScan`` will build the
 output directory and all necessary parent directories.
 
-.. NOTE::
+.. WARNING::
 
     Nextflow does not tolerate spaces (' ') in paths.
 
@@ -199,9 +199,7 @@ Analysis does not run.
 Running on a cluster
 ~~~~~~~~~~~~~~~~~~~~
 
-To run ``InterProScan``` 6 on a cluster of cloud, use the relevant executor profile for the system. 
-See the `profiles page <Profiles.html>`__ documentation for more information on
-using alternative container runtimes or OSs.
+To run ``InterProScan`` 6 on a cluster or cloud use the relevant executor profile for the system.
 
 For example, to run  ``InterProScan`` using the SLURM scheduler:
 
@@ -213,7 +211,8 @@ For example, to run  ``InterProScan`` using the SLURM scheduler:
         --datadir <interpro data dir>
 
 At the moment, ``InterProScan`` provides only built-in support for the SLURM and LSF schedulers.
-To run ``InterProScan`` using alternative scheduler and cloud systems please refer to the `Profiles page <Profiles.html>`.
+See the `profiles page <Profiles.html>`__ documentation for more information on
+using alternative system schedulers.
 
 For example, to analyse protein sequences against only the Gene3D and FunFam member databases, using an Apptainer image,
 you could use:
@@ -235,7 +234,7 @@ The profiles in ``InterProScan6`` define the time and resource allocations for t
 We recommend reviewing the relevant profile configuration files in ``utilities/profiles``
 to ensure they met requirements and expected practices of your system.
 If you are unsure how to deploy Nextflow on your system contact the sysadmin.
-You can find out more information on the ``InterProScan`` profiles `here <Profiles.html>`. Please
+You can find out more information on the ``InterProScan`` profiles `here <Profiles.html>`__. Please
 refer to this documentation before creating your own profiles.
 
 Moving the work (temporary) directory

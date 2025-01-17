@@ -12,8 +12,9 @@ System requirements:
 ~~~~~~~~~~~~~~~~~~~~
 
 **Minimum (for the analysis of a small number of sequences):**
+
 * 3 cores
-* 6 GB RAM
+* 8 GB RAM
 
 ``InterProScan`` is processor and memory intensive.
 The more resources that are provided the faster the analysis will be, and the more

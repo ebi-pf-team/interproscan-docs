@@ -14,6 +14,18 @@ These values are defined in the executor profiles (located in ``utilities/profil
 
 You could try assigning more memory to the slower running processes. 
 
+Consider chunking large input files
+-----------------------------------
+
+If your FASTA input files contains a large number of sequences say over 160,0000 protein sequences,
+then you may consider splitting your input into smaller chunks (thus depends on resources, but batches of
+100,000 protein sequences is a suggested starting point). You can then submit the smaller input files to
+``InterProScan``` and process the results afterwards.
+
+For DNA/RNA sequences a much smaller number is suggested (e.g. 12,000 sequences).
+However for improved performance you could translate these using an external tool
+and then submit the necessary protein sequences instead, see running nucleic acid sequences for more information.
+
 Increase the queue size
 -----------------------
 
@@ -52,3 +64,13 @@ Configure to analyse fewer ORFs (applies to nucleic acid sequences only)
 
 For nucleic acid sequences, consider `reducing the number of ORFs to
 analyse <ScanNucleicAcidSeqs.html#configuring-the-orf-prediction>`__.
+
+Update to Java 19 or 21
+-----------------------
+
+`Virtual threads <https://www.infoq.com/articles/java-virtual-threads/>`__ were introduced in Java 19 and have been shown
+to potentially reduce the memory requirements of a Nextflow pipeline (as discussed in this
+`Seqera blog <https://seqera.io/blog/optimizing-nextflow-for-hpc-and-cloud-at-scale/>`__).
+
+From Nextflow +23.05.0, you can enable virtual threads by using Java 19 or later and setting the ``NXF_ENABLE_VIRTUAL_THREADS``
+environment variable to true. For Nextflow version +23.10.0, when using Java 21, virtual threads are enabled by default.

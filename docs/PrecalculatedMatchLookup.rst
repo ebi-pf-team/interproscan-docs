@@ -31,20 +31,4 @@ command:
 Using a local precalculated match lookup service
 ------------------------------------------------
 
-1. Download the InterPro MLS database (~2TB)
-
-.. code-block:: bash
-
-    wget ...
-
-2. Specify the path to the database, then start the server
-
-.. code-block:: bash
-
-    export MATCHES_API_PATH="/path/to/database"
-    uvicorn matchesapi:app
-
-3. ....
-
-For more information on using the InterPro local MLS, please see the
-`InterPro Matches API docs <https://github.com/ProteinsWebTeam/interpro-matches-api>`__.
+This feature will become available in the beta release.
