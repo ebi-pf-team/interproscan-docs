@@ -45,7 +45,6 @@ and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "di
             "dc-status" : "NC_TERMINAL_DISC"
         } ]
     }
-]
 
 One-hit limit for Panther
 ~~~~~~~~~~~~~~~~~~~~~~~~~

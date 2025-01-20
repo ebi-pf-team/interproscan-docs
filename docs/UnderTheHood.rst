@@ -33,7 +33,7 @@ use a member-database-specific tool.
    * `Prosite Patterns`_
    * `Prosite Profiles`_
    * `SignalP`_
-   * `(Deep)TMHMM`_
+   * `DeepTMHMM`_
 
 Third party tools
 ~~~~~~~~~~~~~~~~~
@@ -117,13 +117,10 @@ against the FunFam families that belong to the matched Cath-Gene3D superfamilies
 running the query sequences against a subset of FunFam families.
 
 1. Run the Gene3D analysis
-2. ``PREPARE_FUNFAM``: Find unique CATH superfamilies with at least one hit (in the GENE3D output)
-3. Joins the inut FASTA files with superamilies, nad then splits into smaller chunks to paralise searching FunFam amilies
-Post-process the HMMER hits, selecting the best domain matches using ``cath-resolve-hits``
-4. ``SEARCH_FUNFAM``: Run HMMER3 against the FunFam models of CATH superfamilies with hits in the GENE3D output
-5. ``RESOLVE_FUNFAM``: Post-process the HMMER hits, selecting the best domain matches using ``cath-resolve-hits``
-6. Joins all results into a single file
-7. ``PARSE_FUNFAM``: Parses the output into the internal IPS6 JSON structure.
+2. ``PREPARE_FUNFAM``: Find unique CATH superfamilies with at least one hit (in the GENE3D output) - This joins the input FASTA files with superfamilies, and then splits into smaller chunks to paralise searching FunFam families
+3. ``SEARCH_FUNFAM``: Run HMMER3 against the FunFam models of CATH superfamilies with hits in the GENE3D output
+4. ``RESOLVE_FUNFAM``: Post-process the HMMER hits, selecting the best domain matches using ``cath-resolve-hits``, and it joins all results into a single file
+5. ``PARSE_FUNFAM``: Parses the output into the internal IPS6 JSON structure.
 
 HAMAP
 -----

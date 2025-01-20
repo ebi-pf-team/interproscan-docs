@@ -21,7 +21,7 @@ Supported platforms
 
 ``InterProScan`` version 6 uses the `Nextflow <https://www.nextflow.io/docs>`__ 
 workflow manager, and can deployed on a system running 64-bit Linux, Windows or MacOS and
- integrated into HPC schedulers and cloud providers.
+integrated into HPC schedulers and cloud providers.
 
 To install and run InterProScan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -45,11 +45,11 @@ Using Nextflow
 
 You can generate a HTML report summarising the CPU usage, memory usage and runtime per process in IPS6 
 using Nextflow. Includes ``-with-report [file name].html`` in your IPS6 command. You can find more in the 
-`Nextflow docs <https://www.nextflow.io/docs/latest/tracing.html#execution-report>`_.
+`Nextflow documentation <https://www.nextflow.io/docs/latest/tracing.html#execution-report>`_.
 
 Nextflow can also be configured to generate a visual representation of the timeline of a IPS6 run. 
 Include ``-with-timeline [file name].html`` in your IPS6 command. You can find more information
-in the `Nextflow docs <https://www.nextflow.io/docs/latest/tracing.html#timeline-report>`_
+in the `Nextflow documentation pages <https://www.nextflow.io/docs/latest/tracing.html#timeline-report>`_
 
 Using the IPS6 benchmarking script
 ----------------------------------

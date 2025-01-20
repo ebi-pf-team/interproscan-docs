@@ -22,6 +22,7 @@ command:
           --datadir <DATADIR>
 
 .. ATTENTION::
+
     All ``InterProScan`` flags, such as ``--input``, use **double** dashes.
     All Nextflow flags, such as ``-profile``, use a **single** dash.
 
@@ -127,7 +128,7 @@ from InterPro, and using Docker as the container runtime on your local system, y
 ``--nucleic`` - [Boolean] Indicates to ``InterProScan`` that the input file contains nucleic acid
 sequences, triggering ``InterProScan`` to predict potential open reading frames (ORFs) and analyse the
 ORFs' protein sequence products. You can find out more in the
-`"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
+`"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`__.
 
 Configuring the output data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,7 +149,7 @@ output directory and all necessary parent directories.
 ``--formats`` - [String] Define the output file formats as a comma separated list. The options 
 are ``JSON``, ``TSV``, and ``XML``. E.g. ``--formats tsv,xml``. Case insensitive. Default: 
 ``JSON,TSV,XML``. You can find a description of the output file schemas in
-`"Output formats" documentation <OutputFormats.html>`_.
+`"Output formats" documentation <OutputFormats.html>`__.
 
 ``--goterms`` - [Boolean] Configures ``InterProScan`` to include Gene Ontology (GO) terms in the output files. 
 These mappings are based on the manually curated InterPro entries.
@@ -182,10 +183,8 @@ Configuring SignalP
 ^^^^^^^^^^^^^^^^^^^
 
 * Use the application name ``SignalP_Prok`` to run ``SignalP`` using all available models.
-* Use the application name ``SignalP_Euk`` to run ``SignalP`` with the ``--organism eukaryote`` flag
-set. As stated in the `SignalP README <https://github.com/chenxi-zhang-art/signalP>`_.
-* ``--signalpMode`` - Set which ``SignalP_Prok`` / ``SignalP_EUK`` prediction models are used. Models may have
-to be installed manually. Accepted: ``fast``, ``slow``, ``slow-sequential``
+* Use the application name ``SignalP_Euk`` to run ``SignalP`` with the ``--organism eukaryote`` flag set. As stated in the `SignalP README <https://github.com/chenxi-zhang-art/signalP>`__.
+* ``--signalpMode`` - Set which ``SignalP_Prok`` / ``SignalP_EUK`` prediction models are used. Models may have to be installed manually. Accepted: ``fast``, ``slow``, ``slow-sequential``
 
 Utilities
 ^^^^^^^^^
