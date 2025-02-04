@@ -10,26 +10,26 @@ The image (https://hub.docker.com/r/interpro/interproscan) does not include the 
 Get InterProScan data
 ~~~~~~~~~~~~~~~~~~~~~
 
-For the latest InterProScan release (5.72-103.0), data can be downloaded with the following command:
+For the latest InterProScan release (5.73-104.0), data can be downloaded with the following command:
 
 ::
 
-    curl -O http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/alt/interproscan-data-5.72-103.0.tar.gz
+    curl -O http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.73-104.0/alt/interproscan-data-5.73-104.0.tar.gz
 
 We always recommend verifying your downloads for corruption:
 
 ::
 
-    curl -O http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/alt/interproscan-data-5.72-103.0.tar.gz.md5
-    md5sum -c interproscan-data-5.72-103.0.tar.gz.md5
+    curl -O http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.73-104.0/alt/interproscan-data-5.73-104.0.tar.gz.md5
+    md5sum -c interproscan-data-5.73-104.0.tar.gz.md5
 
 Finally, extract data files from the downloaded archive:
 
 ::
 
-    tar -pxzf interproscan-data-5.72-103.0.tar.gz
+    tar -pxzf interproscan-data-5.73-104.0.tar.gz
 
-The data will be extracted to interproscan-5.72-103.0/data.
+The data will be extracted to interproscan-5.73-104.0/data.
 
 
 Using Docker
@@ -60,11 +60,11 @@ Run the image:
 ::
 
     docker run --rm \
-        -v $PWD/interproscan-5.72-103.0/data:/opt/interproscan/data \
+        -v $PWD/interproscan-5.73-104.0/data:/opt/interproscan/data \
         -v $PWD/input:/input \
         -v $PWD/temp:/temp \
         -v $PWD/output:/output \
-        interpro/interproscan:5.72-103.0 \
+        interpro/interproscan:5.73-104.0 \
         --input /input/e-coli.fa \
         --output-dir /output \
         --tempdir /temp \
@@ -99,7 +99,7 @@ Run the image:
 ::
 
     singularity exec \
-        -B $PWD/interproscan-5.72-103.0/data:/opt/interproscan/data \
+        -B $PWD/interproscan-5.73-104.0/data:/opt/interproscan/data \
         -B $PWD/input:/input \
         -B $PWD/temp:/temp \
         -B $PWD/output:/output \
