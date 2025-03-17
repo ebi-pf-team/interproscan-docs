@@ -1,59 +1,34 @@
 Nucleic acid sequences scan
 ===========================
 
-The Open Reading Frame prediction tool
+Translation into Open Reading Frames (ORFs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-InterProScan 5 takes advantage of the Open Reading Frame (ORF)
-prediction tool `Emboss
-getorf <http://emboss.sourceforge.net/apps/cvs/emboss/apps/getorf.html>`__.
-The getorf application itself and all of its dependencies are integrated
-in InterProScan. You do not need to install the Emboss package on your
-own, but you may use a local installation if you wish.
+InterProScan 5 translates nucleotide sequences in six frames into individual ORFs using **esl-translate**
+from the `Easel library <http://emboss.sourceforge.net/apps/cvs/emboss/apps/getorf.html>`__.
+Easel is used by and distributed with the `HMMER software package <http://hmmer.org/>`__.
+The **esl-translate** application itself and all of its dependencies are integrated
+in InterProScan.
 
-If you want to use a local installation you must edit the
-interproscan.sh script. This script sets 2 environment variables for
-Emboss getorf. Set these to the correct paths for your installation of
-Emboss.
+After translation, a parsing step will select the N longest ORFs and inputs
+them for analysis. The number number of ORFs selected depends on an interproscan property with the default of 8.
+This means that analysing nucleotide sequences can take much longer than analysing protein sequences because 
+each nucleotide sequence is translated into several protein sequences.
 
-::
-
-    # set environment variables for getorf
-    export EMBOSS_ACDROOT=bin/nucleotide
-    export EMBOSS_DATA=bin/nucleotide
-
-In addition open and edit your properties file
-(**interproscan.properties**), which you will find in your InterProScan
-root directory. Search for the property '**binary.getorf.path**' and
-change the path to your local **getorf** binary.
-
-::
-
-    binary.getorf.path=/path/to/bin/nucleotide/getorf
 
 How can I scan nucleic acid sequences in InterProScan 5?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To scan for nucleic acid sequences you must use the flag `-t n` or `--seqtype n` 
+::
+    -t,--seqtype <SEQUENCE-TYPE>   Optional, the type of the input sequences (dna/rna (n) or
+                                   protein (p)).  The default sequence type is protein.
+
+For example running:
 ::
 
     ./interproscan.sh -t n -i /path/to/nucleic_acid_sequences.fasta
 
-or run the following commands:
-
-::
-
-    #translate the nucleic_acid_sequences
-    ./bin/nucleotides/translate -i /path/to/nucleic_acid_sequences.fasta -o /path/to/output_orfs_sequences.fasta
-    #if output_orfs_sequences.fasta has more than 32,000 sequences then chunk the file then send the chunks to InterProScan
-    #run InterProScan on the translated output
-    ./interproscan.sh -i /path/to/output_orfs_sequences.fasta
-
-Which output formats are supported?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Supported output formats are GFF3 and XML, which allow you to trace back
-from the match to the position inside your nucleic acid sequence. Please not
-that the TSV format is not available for nucleic acid sequence analysis.
 
 Redundant sequences and identifiers in your FASTA file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,27 +67,31 @@ and in the GFF3 output:
 Entries with the same identifier and the same sequence will be merged
 into one.
 
-Please note: non unique identifiers are not supported. InterProScan 5
-will exit (with exit code 0) and will print out a list of all non unique
-identifiers.
+Please note: non unique identifiers are not supported. InterProScan will make them
+unique by adding '_sequential number' in the order of their appearance
+(e.g. P11111 will be P11111_1 for the first protein sequence).
+
 
 Improving performance
 ~~~~~~~~~~~~~~~~~~~~~
 
-InterProScan does not select one best ORF from the getorf output,
+InterProScan does not select one best ORF from the input nucleotide sequence,
 instead it takes the ORFs generated and select N longest ORFs and inputs
 them for analysis. The number selected depends on the
-binary.getorf.parser.filtersize property mentioned below. The default is 8. This
-means analysing nucleotide sequences can take much longer than analysing
+binary.getorf.parser.filtersize property mentioned that has a default value of 8.
+This means analysing nucleotide sequences can take much longer than analysing
 protein sequences.
 
 To improve InterProScan performance while running large nucleotide input
 files (> 10,000 sequences) you can:
 
-1. First use an external program to translate your input. This is the
-   best approach. There are various options, one of which is
-   emboss-transeq
-   (http://emboss.open-bio.org/rel/rel6/apps/transeq.html) from emboss.
+1. First translate your sequences externally and submit the protein sequences
+   for interproscan analysis. This is the best approach.
+   Besides esl-translate, other options may include
+   `getorf <https://emboss.bioinformatics.nl/cgi-bin/emboss/help/getorf>`__
+   or `transeq <https://emboss.bioinformatics.nl/cgi-bin/emboss/help/transeq>`__,
+   both part of the `EMBOSS suite of bioinformatics tools <https://emboss.bioinformatics.nl/cgi-bin/emboss/>`__.
+
    If you use transeq then please use the -clean option to change STOP
    codon positions from '*' to 'X' because Interproscan does not accept
    sequences with the '*' character.
@@ -122,6 +101,7 @@ and/or...
 2. Chunk the input and then send the chunks to InterProScan. For tips on
    configuring the general InterProScan CPU usage see also `improving
    performance <ImprovingPerformance.html>`__.
+
 
 Selecting the ORFs to analyse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
