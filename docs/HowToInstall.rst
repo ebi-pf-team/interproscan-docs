@@ -24,7 +24,7 @@ member databases. Download these data using the commands:
 .. code-block:: bash
 
     # replace interpro-version with the appropriate version number
-    INTERPRO_VERSION="103.0"
+    INTERPRO_VERSION="104.0"
     curl "https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/$INTERPRO_VERSION/interproscan-data-$INTERPRO_VERSION.tar.gz" \
         --output interproscan-data-<interpro-version>.tar.gz
     tar -pxzf interproscan-data-<interpro-version>.tar.gz

@@ -9,7 +9,7 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
-* Synchronised with `InterPro version 103.0 <http://www.ebi.ac.uk/interpro/release_notes/103.0/>`__.
+* Synchronised with `InterPro version 104.0 <http://www.ebi.ac.uk/interpro/release_notes/104.0/>`__.
 
 Software updates
 ^^^^^^^^^^^^^^^^

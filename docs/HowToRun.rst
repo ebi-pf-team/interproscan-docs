@@ -121,7 +121,7 @@ from InterPro, and using Docker as the container runtime on your local system, y
     nextflow run ebi-pf-team/interproscan6 --input tests/data/test_prot.fa \
         -profile docker,local \
         --input tests/data/test_prot.fa \
-        --datadir interpro-103.0 \
+        --datadir interpro-104.0 \
         --applications panther,sfld \
         --offline
 
@@ -173,7 +173,7 @@ the output dir ``my_results/analysis_57``:
     nextflow run ebi-pf-team/interproscan6 \
         -profile slurm,singularity \
         --input tests/data/test_prot.fa \
-        --datadir interpro-103.0/ \
+        --datadir interpro-104.0/ \
         --format json,tsv \
         --outdir my_results/analysis_57 \
         --goterms \
