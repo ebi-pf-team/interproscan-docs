@@ -11,7 +11,7 @@ The **esl-translate** application itself and all of its dependencies are integra
 in InterProScan.
 
 After translation, a parsing step will select the N longest ORFs and inputs
-them for analysis. The number number of ORFs selected depends on an interproscan property with the default of 8.
+them for analysis. The number number of ORFs selected depends on an interproscan property with the default value of 8.
 This means that analysing nucleotide sequences can take much longer than analysing protein sequences because 
 each nucleotide sequence is translated into several protein sequences.
 
@@ -67,8 +67,8 @@ and in the GFF3 output:
 Entries with the same identifier and the same sequence will be merged
 into one.
 
-Please note: non unique identifiers are not supported. InterProScan will make them
-unique by adding '_sequential number' in the order of their appearance
+Please note: non unique identifiers are automatically made unique by
+adding '_sequential number' in the order of their appearance
 (e.g. P11111 will be P11111_1 for the first protein sequence).
 
 
@@ -78,7 +78,7 @@ Improving performance
 InterProScan does not select one best ORF from the input nucleotide sequence,
 instead it takes the ORFs generated and select N longest ORFs and inputs
 them for analysis. The number selected depends on the
-binary.getorf.parser.filtersize property mentioned that has a default value of 8.
+binary.getorf.parser.filtersize property that has a default value of 8.
 This means analysing nucleotide sequences can take much longer than analysing
 protein sequences.
 
@@ -93,8 +93,8 @@ files (> 10,000 sequences) you can:
    both part of the `EMBOSS suite of bioinformatics tools <https://emboss.bioinformatics.nl/cgi-bin/emboss/>`__.
 
    If you use transeq then please use the -clean option to change STOP
-   codon positions from '*' to 'X' because Interproscan does not accept
-   sequences with the '*' character.
+   codon positions from \'*\' to \'X\' because Interproscan does not accept
+   sequences with the \'*\' character.
 
 and/or...
 
