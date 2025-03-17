@@ -32,8 +32,8 @@ To install and run InterProScan
 
 .. code-block:: bash
 
-   curl -OJ https://ftp.ebi.ac.uk/pub/software/unix/iprscan/6/102.0/interproscan-data-102.0.tar.gz
-   tar -pxzf interproscan-data-102.0.tar.gz
+   curl -OJ https://ftp.ebi.ac.uk/pub/software/unix/iprscan/6/104.0/interproscan-data-104.0.tar.gz
+   tar -pxzf interproscan-data-104.0.tar.gz
 
 2. Run
 
@@ -42,7 +42,7 @@ To install and run InterProScan
     nextflow run ebi-pf-team/interproscan6 \
       -profile <executor, containerRuntime> \
       --input <path to input FASTA> \
-      --datadir interproscan-data-102.0
+      --datadir interproscan-data-104.0
 
 Built in executors: ``local``, ``slurm``, ``lsf``
 Built in container runtimes: ``docker``, ``singularity``, ``apptainer``
