@@ -93,8 +93,8 @@ files (> 10,000 sequences) you can:
    both part of the `EMBOSS suite of bioinformatics tools <https://emboss.bioinformatics.nl/cgi-bin/emboss/>`__.
 
    If you use transeq then please use the -clean option to change STOP
-   codon positions from \'*\' to \'X\' because Interproscan does not accept
-   sequences with the \'*\' character.
+   codon positions from \'\*\' to \'X\' because Interproscan does not accept
+   sequences with the \'\*\' character.
 
 and/or...
 
