@@ -106,7 +106,7 @@ use the web service hosted at the EBI, therefore, your servers will need to have
 access to http://www.ebi.ac.uk to use it.
 
 If you do not wish to use the InterPro MLS in your analyses then include the 
-``--disablePrecalc`` flag in your ``InterProScan`` commands.
+``--offline`` flag in your ``InterProScan`` commands.
 
 Alternatively, you can install a local copy of the MLS. 
 The uncompressed MLS disk usage comes to more that 1TB, so it is

@@ -108,9 +108,9 @@ Configuring the analysis
 ``--applications`` - [String] Define a set of applications (member databases) to be used in the analysis, defined as a
 comma separated list, e.g. ``--applications sfld,panther,gene3d``. Case insensitive.
 
-``--disablePrecalc`` - [Boolean] Configures ``InterProScan`` to not retrieve precalculated matches
+``--offline`` - [Boolean] Configures ``InterProScan`` to not retrieve precalculated matches
 from the InterPro Match-Lookup Service (MLS) (connecting to the InterPro MLS requires an internet connection).
-When ``--disablePrecalc`` is used ``InterProScan`` will run the analyses on all sequences provided in the
+When ``--offline`` is used ``InterProScan`` will run the analyses on all sequences provided in the
 input FASTA file.
 
 For example, to analyse protein sequences against only Panther and SFLD, without retrieving precalculated matches
@@ -123,7 +123,7 @@ from InterPro, and using Docker as the container runtime on your local system, y
         --input tests/data/test_prot.fa \
         --datadir interpro-103.0 \
         --applications panther,sfld \
-        --disablePrecalc
+        --offline
 
 ``--nucleic`` - [Boolean] Indicates to ``InterProScan`` that the input file contains nucleic acid
 sequences, triggering ``InterProScan`` to predict potential open reading frames (ORFs) and analyse the
