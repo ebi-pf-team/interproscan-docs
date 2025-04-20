@@ -8,12 +8,12 @@ Runtime profiles
 on a local systems as well as on high performance computer systems using the schedulers
 SLURM or LSF, using Docker, Singularity or Apptainer.
 
-For example, to run ``InterProScan`` locally using docker, use the ``local`` and ``docker`` profiles:
+For example, to run ``InterProScan`` locally using docker, use the ``docker`` profile:
 
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        -profile local,docker \
+        -profile docker\
         --input tests/data/test_prot.fa \
         --datadir data
 
@@ -21,6 +21,8 @@ For example, to run ``InterProScan`` locally using docker, use the ``local`` and
 
     Note that the ``-profile`` option uses a single dash ('-') not a double ('--') dash,
     because it is a built in Nextflow option.
+
+To run on an alternative executor (i.e. on SLURM or LSF) you will need to use the appropriate executor profile.
 
 Owing to differences in permissions, architectures, and preferences, you may need
 to adapt these existing profiles (located in ``utilities/profiles``) or create your own.

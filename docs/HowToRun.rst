@@ -7,7 +7,7 @@ Running InterProScan
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-          -profile <ContainerRunTime:docker/singularity/apptainer,Executor:local/lsf/slurm> \
+          -profile <ContainerRunTime:docker/singularity/apptainer,Executor:lsf/slurm> \
           --input <FASTA> \
           --datadir <DATADIR>
 
@@ -17,7 +17,7 @@ command:
 .. code-block:: bash
 
     nextflow run <path to the interproscan main.nf> \
-          -profile <ContainerRunTime:docker/singularity/apptainer,Executor:local/lsf/slurm> \
+          -profile <ContainerRunTime:docker/singularity/apptainer,Executor:lsf/slurm> \
           --input <FASTA> \
           --datadir <DATADIR>
 
@@ -56,8 +56,8 @@ You can find a complete list of all ``InterProScan`` flags in the `Command-line 
 Default Operation
 ~~~~~~~~~~~~~~~~~
 
-By default, ``InterProScan`` compares the **protein sequences** provided in an input FASTA file
-against all member databases (specifically, all databases that are listed in ``conf/applications.config``).
+By default, ``InterProScan`` runs locally using the latest InterPro release in the data dir and compares
+the **protein sequences** provided in an input FASTA file against all member databases.
 
 ``InterProScan`` uses the InterPro Match Lookup Service (MLS) to retrieve
 pre-calculated matches that are already present in InterPro (which constitutes more
@@ -79,7 +79,7 @@ The only **required** arguments to run ``InterProScan`` are:
 * ``--input`` - Used to define the path to the input file containing the query sequences to be analysed in FASTA format.
 * ``--datadir`` - Used to define the path to the downloaded InterPro data directory, containing the member database models.
 
-The built-in executor profiles are ``local``, ``slurm`` and ``lsf``.
+The built-in executor profiles are ``slurm`` and ``lsf``.
 The built-in container runtime profiles are ``docker``, ``singularity``, and ``apptainer``.  
 
 For example, to run ``InterProScan`` to analyse the protein sequences using Docker locally:
@@ -87,9 +87,11 @@ For example, to run ``InterProScan`` to analyse the protein sequences using Dock
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        -profile docker,local \
+        -profile docker \
         --input tests/data/test_prot.fa \
         --datadir data
+
+``InterProScan`` runs locally be default, therefore, we do not need to specify a local executor profile.
 
 To analyse nucleic acid sequences please see the
 `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
@@ -101,6 +103,25 @@ To analyse nucleic acid sequences please see the
 
 Optional arguments
 ------------------
+
+Configuring the data
+^^^^^^^^^^^^^^^^^^^^
+
+``--download`` - [Boolean] Configure ``InterProScan`` to download any missing metadata and database files for InterPro
+and member databases defined by the ``--applications`` flag. Default, not enabled.
+
+``--interpro`` - [String] Specify the InterPro data version at run time. Defaults to the latest.
+
+To run the built-in ``InterProScan`` test using the InterPro release 105.0 and automating the download
+of missing data files, use the following command:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+      -profile test,docker \
+      --datadir data \
+      --interpro latest \
+      --download
 
 Configuring the analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -119,7 +140,7 @@ from InterPro, and using Docker as the container runtime on your local system, y
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 --input tests/data/test_prot.fa \
-        -profile docker,local \
+        -profile docker \
         --input tests/data/test_prot.fa \
         --datadir interpro-104.0 \
         --applications panther,sfld \
@@ -260,7 +281,7 @@ second section tracks the progress of the various processes it spawns in a tablu
 .. code-block:: bash
 
     $ nextflow run ebi-pf-team/interproscan6 \
-         -profile docker,local
+         -profile docker
          --input tests/data/test_prot.fa \
          --datadir data \
          --applications ncbifam,antifam
