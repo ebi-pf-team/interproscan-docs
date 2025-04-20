@@ -23,5 +23,10 @@ sequences that can be analysed at a time.
 Software requirements:
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Nextflow (version >=24.04)
-* Container runtime: Docker, Singularity or Apptainer
+* Nextflow (version >=24.10.4)
+* A container runtime:
+    * Docker (version >= 24.0.5)
+    * Singularity (version >= 4.2.0)
+    * Apptainer (version >= 1.3.4)
+
+Licenses and additional data from their respective authors are required to run ``Phobius``, ``SignalP`` and ``DeepTMHMM``.

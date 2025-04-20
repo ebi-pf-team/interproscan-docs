@@ -17,7 +17,7 @@ Disabling using the Match Lookup Service
 ----------------------------------------
 
 If you do not wish or are unable to use the InterPro MLS, you can disable looking for 
-precalculated matches by including the ``--disablePrecalc`` flag in your ``InterProScan``
+precalculated matches by including the ``--offline`` flag in your ``InterProScan``
 command:
 
 .. code-block:: bash
@@ -26,7 +26,7 @@ command:
         -profile <executor,containerRuntime> \
         --input <path to input fasta file> \
         --datadir <interpro data dir> \
-        --disablePrecalc
+        --offline
 
 Using a local precalculated match lookup service
 ------------------------------------------------

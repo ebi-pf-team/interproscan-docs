@@ -6,10 +6,11 @@ Before installing ``InterProScan``, please check you system satisfies the :ref:`
 
 To install the ``InterProScan6`` software you need to complete the following steps:
 
-1. Retrieve a InterPro release data set
+1. (Optional) Retrieve a InterPro release data set
 2. Set up ``InterProScan``
 3. (Optional) Install licensed software (SignalP, DeepTMHMM and Phobius)
 4. (Optional) Setup a local InterPro Match Lookup Service (MLS)
+5. Run the built-in test
 
 If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise an issue at our 
 `GitHub repository <https://github.com/ebi-pf-team/interproscan6/issues>`_, or 
@@ -19,18 +20,12 @@ If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``InterProScan`` relies on the models that are incorporated into each of the InterPro
-member databases. Download these data using the commands:
+member databases.
 
-.. code-block:: bash
+``InterProScan`` can be configured to automate the retrieval of missing metadata and database files by using the
+``--download`` flag.
 
-    # replace interpro-version with the appropriate version number
-    INTERPRO_VERSION="103.0"
-    curl "https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/$INTERPRO_VERSION/interproscan-data-$INTERPRO_VERSION.tar.gz" \
-        --output interproscan-data-<interpro-version>.tar.gz
-    tar -pxzf interproscan-data-<interpro-version>.tar.gz
-    mv interproscan-data-<interpro-version>/data .
-    rm interproscan-data-<interpro-version> -rf
-    rm interproscan-data-<interpro-version>.tar.gz
+Alternatively, you can download these data from `https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/105.0 <https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/105.0>`__.
 
 [2] Set up InterProScan
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,11 +40,14 @@ Run ``InterProScan6`` using:
     nextflow run ebi-pf-team/interproscan6 \
       -profile <executor, containerRuntime> \
       --input <path to input FASTA> \
-      --datadir <path to the downloaded InterPro data dir>
+      --datadir <path to the downloaded InterPro data dir> \
+      --download
 
 ``InterProScan6`` supports using Docker, Singularity and Apptainer, on Linux, MacOS, Windows,
 SLURM and LSF when using this method. To use an alternative scheduler or container runtime you will need
 to set up a local installation.
+
+You can exclude the ``--download`` flag if the data is already available in the specified data directory.
 
 Option B: Install from source
 -----------------------------
@@ -106,10 +104,40 @@ use the web service hosted at the EBI, therefore, your servers will need to have
 access to http://www.ebi.ac.uk to use it.
 
 If you do not wish to use the InterPro MLS in your analyses then include the 
-``--disablePrecalc`` flag in your ``InterProScan`` commands.
+``--offline`` flag in your ``InterProScan`` commands.
 
 Alternatively, you can install a local copy of the MLS. 
 The uncompressed MLS disk usage comes to more that 1TB, so it is
 recommended just to use the default setup.
 
 Please see `Local Precalculated Match Lookup Service <PrecalculatedMatchLookup.html>`__ documentation for more information.
+
+[5] Run the built-in test
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To test ``InterProScan``, run the following command:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+      -profile test,docker \
+      --datadir data \
+      --interpro latest \
+      --download
+
+Explanation of parameters:
+
+
+* ``profile test,docker```:
+    * ``test``: use an included example FASTA file
+    * ``docker``: execute tasks in Docker containers
+* ``--datadir`` data: use data as the directory for storing all required databases; created automatically if needed
+* ``--interpro`` latest: fetch the most recent InterPro release
+* ``--download``: download any missing metadata and database files
+
+After completion, you’ll find three output files in your working directory:
+* ``test.faa.json``: full annotations (JSON)
+* ``test.faa.tsv``: tabular summary (TSV)
+* ``test.faa.xml``: full annotations (XML)
+
+The JSON and XML outputs are more comprehensive; the TSV is a concise summary.

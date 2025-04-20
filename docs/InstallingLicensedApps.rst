@@ -117,7 +117,7 @@ You will need to install ``SignalP`` in order to convert to GPU models.
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-          -profile <docker/singularity/apptainer...local/lsf/slurm> \
+          -profile <docker/singularity/apptainer...lsf/slurm> \
           --input <FASTA> \
           --datadir <DATADIR> \
           --signalpGPU

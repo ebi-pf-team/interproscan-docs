@@ -62,7 +62,7 @@ specifically HMMs that represent protein sequence families from spurious open re
 Annotation of AntiFam domains requires only implementing HMMER, and requires no post-processing 
 of the HMMER hits.
 
-1. ``RUN_ANTIFAM``: Protein sequences are analysed using HMMER3 and the HMM profiles in the AntiFam HMM file (``<datadir>/antifam/version/AntiFam.hmm``)
+1. ``SEARCH_ANTIFAM``: Protein sequences are analysed using HMMER3 and the HMM profiles in the AntiFam HMM file (``<datadir>/antifam/version/AntiFam.hmm``)
 2. ``PARSE_ANTIFAM``: Parses the output into the internal IPS6 JSON structure.
 
 **What is AntiFam?:** During the lifetime of the Pfam protein families database a number of protein 
@@ -145,7 +145,7 @@ scratch by NCBI curators and models derived from a curated collection of protein
 Annotation of NCBIFam domains requires only implementing HMMER, and requires no post-processing 
 of the HMMER hits.
 
-1. ``RUN_NCBIFAM``: Protein sequences are analysed using HMMER3 and the HMM profiles in the
+1. ``SEARCH_NCBIFAM``: Protein sequences are analysed using HMMER3 and the HMM profiles in the
 NCBIFam HMM file (``<datadir>/ncbifam/version/NcbiFam.hmm``)
 2. ``PARSE_NCBIFAM``: Parses the output into the internal ``IPS6`` JSON structure.
 
@@ -154,18 +154,18 @@ Panther
 
 The PANTHER (Protein Analysis Through Evolutionary Relationships) database is a comprehensive resource that provides evoltionary and functional information about protein-coding genes, organising protein sequences into families of homologous genes. It classifies genes by their functions, using published scientific experimental evidence and evolutionary relationships to predict function even in the absence of direct experimental evidence.
 
-1. ``PANTHER_HMMER_RUNNER``: Protein sequences are analysed using HMMER3 and the HMM profiles 
+1. ``SEARCH_PANTHER``: Protein sequences are analysed using HMMER3 and the HMM profiles
 in the Panther HMM file (``<datadir>/panther/version/famhmm/panther_hmm``)
-2. ``PANTHER_HMMER_PARSER``: The ``HMMER.out`` files is parsed into the internal ``IPS6`` 
+2. ``PREPARE_TREEGRAFTER``: The ``HMMER.out`` files is parsed into the internal ``IPS6``
 JSON structure.
-3. ``PANTHER_POST_PROCESSER``: The input protein sequences and the hits from HMMER are 
+3. ``RUN_TREEGRAFTER``: The input protein sequences and the hits from HMMER are
 parsed to identify the 
 the best matching homologous family. This means there is only ever a maximum of one domain 
 hit for a Panther signature within a protein.  The Python package ``TreeGrafter`` is then 
 implemented, whcich uses the +15,000 phylogenetic trees in Panther to identify the best 
 location of each HMMER hit in the tree. This is used to infer PANTHER sunfamiy annotations, 
 and PAINT annotations.
-4. ``PANTHER_PARSER``: The output from ``TreeGrafter`` is added to the internal ``IPS6`` 
+4. ``PARSE_PANTHER``: The output from ``TreeGrafter`` is added to the internal ``IPS6``
 JSON by the in-house Python script ``process_treegrafter_hits.py``
 
 * Panther (through the use of ``TreeGrafter``) only takes the best match for each protein sequence, thus only producing **one** match per sequence. This means that in the output JSON file, the E-value and score and not contained under the ``locations`` key, but instead under the ``signature`` key.
@@ -198,7 +198,7 @@ proteins into hierarchical clusters, ranging from broad superfamilies to more sp
 The PIRSF concept is used as a guiding principle to provide comprehensive and non-overlapping 
 clustering of UniProtKB sequences into a hierarchical order to reflect their evolutionary relationships.
 
-1. ``RUN_PIRSF``: Protein sequences are analysed using HMMER3 and the HMM profiles in the PirsF HMM file (``<datadir>/pirsf/version/pirsf.hmm``).
+1. ``SEARCH_PIRSF``: Protein sequences are analysed using HMMER3 and the HMM profiles in the PirsF HMM file (``<datadir>/pirsf/version/pirsf.hmm``).
 2. ``PARSE_PIRSF``: Filter matches using an overlap threshold and combining overlapping family and subfamily matches, parsing the output into the internal IPS6 JSON structure.DeepTMHMM
 
 PirsF vs. PirsR
@@ -213,7 +213,7 @@ PirsR
 
 The Protein Information Resource Site Rule (PIRSR) database provides site-specific annotations for proteins, identifying functionally important sites, such as active sites, binding sites, and post-translational modification sites. It is a database of protein families based on hidden Markov models (HMMs) and Site Rules.
 
-1. ``RUN_PIRSR``: Protein sequences are analysed using HMMER3 and the HMM profiles in the
+1. ``SEARCH_PIRSR``: Protein sequences are analysed using HMMER3 and the HMM profiles in the
 PirsR HMM file (``<datadir>/pirsr/version/pirsr.hmm``).
 2. ``PARSE_PIRSR``: Post-process HMMER hits and parse the output into the internal IPS6 JSON structure.
 
@@ -222,7 +222,7 @@ SFLD
 
 The Structure-Function Linkage Database (SFLD) describes structure-function relationships for functionally diverse enzyme superfamilies. SFLD provides a hierarchical classification of enzymes that relates specific sequence-structure features to chemical capabilities, classifying evolutionarily related protein sequences according to shared biochemical functions and mapping these shared functions to conserved active site features.
 
-1. ``RUN_SFLD``: Protein sequences are analysed using HMMER3 and the HMM profiles
+1. ``SEARCH_SFLD``: Protein sequences are analysed using HMMER3 and the HMM profiles
 in the SFLD HMM file (``<datadir>/sfld/version/sfld.hmm``). HMMER generates a ``HMMER.out`` file, 
 a ``HMMER.dtbl`` file, as well as an alignment file (all three are required for post-processing).
 2. ``POST_PROCESS_SFLD``: The hits from HMMER are parsed by an in-house post-processing
@@ -246,9 +246,12 @@ identification and annotation of genetically mobile domains and the analysis of 
 These domain are extensively annotated with respect to phyletic distributions, functional class, 
 tertiary structures and functionally important residues.
 
-1. ``SEARCH_SMART``: Protein sequences are analysed using HMMER3 and the HMM profiles in 
-the SMART HMM file (``<datadir>/smart/version/smart.hmm``).
-2. ``PARSE_SMART``: The ``HMMER.out`` file is parsed into the internal ``IPS6`` JSON structure.
+1. ``PREFILTER_SMART``: Protein sequences are analysed using HMMER3 to identify the HMM profiles where significant hits
+may be found.
+2. ``PREPARE_SMART``: Batch the query FASTA file and identify the HMM profiles that matched at least one query sequence.
+1. ``SEARCH_SMART``: Protein sequences are analysed using HMMER2 and only the HMM profiles where a match was found during
+ the HMMER3 analysis.
+2. ``PARSE_SMART``: The ``HMMER.out`` file from HMMER2 is parsed into the internal ``IPS6`` JSON structure.
 
 ``InterProScan`` by default uses the implementation of SMART that contains no licensed components. 
 Post-processing of SMART matches requires 2 licensed files that need to be obtained from 
@@ -331,8 +334,8 @@ Phobius
 
 ``Phobius`` is a bioinformatic tool for the prediction of signal peptides and transmembrane domains in protein sequences.
 
-1. ``RUN_PRINTS``: The protein sequences are parsed using the sequence analysis tool ``Phobius`` to predict the presence of signal peptides and transmembrane domains.
-2. ``PARSE_PRINTS``: The output from ``Phobius`` is parsed into the internal IPS6 JSON structure.
+1. ``RUN_PHOBIUS``: The protein sequences are parsed using the sequence analysis tool ``Phobius`` to predict the presence of signal peptides and transmembrane domains.
+2. ``PARSE_PHOBIUS``: The output from ``Phobius`` is parsed into the internal IPS6 JSON structure.
 
 * **Signal peptides:** A signal peptide, also known as a signal sequence, localisation sequence, or leader peptide, is a short peptide (protein sequence) that is usually 16-30 amino acids long. It is present at the N-terminus (or occasionally at the C-terminus or internally) of most newly synthesised proteins that are destined toward the secretory pathway. The role of the signal peptide is to prompt the transportation of the protein to a specific region of the cell, often the cell membrane. The signal peptide is typically cleaved following the succcessfully translocation of the protein.
 * **Transmembrane regions:** The transmembrane region/domain in a protein sequence is the region of the protein that spans the entirety of the cell membrane. Transmembrane regions are typically composed of hydrophobic (water repelling) amino acids, forming a structure that is compatible with the hydrophobic environment between the lipid bilayers of the cell membrane.
@@ -342,8 +345,8 @@ PRINTS
 
 The PRINTS database contains conserved motifs (fingerprints) representing protein families, and the ``fingerPRINTScan`` tool is used to identify these motifs in protein sequences, aiding in protein classification and functional prediction.
 
-1. ``PRINTS_RUNNER``: The protein sequences are parsed using the sequence analysis tool ``fingerPRINTScan`` to predict the presence of conserved motifs.
-2. ``PRINTS_PARSER``: The output from ``fingerPRINTScan`` is parsed into the internal IPS6 JSON structure.
+1. ``RUN_PRINTS``: The protein sequences are parsed using the sequence analysis tool ``fingerPRINTScan`` to predict the presence of conserved motifs.
+2. ``PARSE_PRINTS``: The output from ``fingerPRINTScan`` is parsed into the internal IPS6 JSON structure.
 
 * **PRINT:** The PRINTS database is a collection of protein fingerprints, which are groups of conserved motifs or patterns that characterise protein families. These fingerprints are derived from sequence alignments and are used to identify and classify proteins based on their evolutionary relationships and functional similarities._
 * **fingerprint:** A fingerprint is a group of conserved motifs used to characterise a protein family.
