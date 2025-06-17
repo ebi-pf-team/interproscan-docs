@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.74-105.0
+Release notes: InterProScan 5.75-106.0
 =====================================
 
-Released on 24 April 2025
+Released on 19 June 2025
 
 What’s new
 ~~~~~~~~~~
@@ -9,10 +9,10 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 105.0 <http://www.ebi.ac.uk/interpro/release_notes/105.0/>`__.
--  The addition of 342 InterPro entries.
--  An update to HAMAP (2025_01), PROSITE patterns (2025_01), PROSITE profiles (2025_01), Pfam (37.3).
--  Integration of 385 new methods from the CDD (5), HAMAP (2), NCBIFAM (40), PANTHER (6), PROSITE profiles (12), Pfam (318), SMART (1), SUPERFAMILY (1) databases.
+-  Synchronized with `InterPro version 106.0 <http://www.ebi.ac.uk/interpro/release_notes/106.0/>`__.
+-  The addition of 683 InterPro entries.
+-  An update to Pfam (37.4).
+-  Integration of 727 new methods from the CDD (30), NCBIFAM (78), PANTHER (4), Pfam (613), SMART (1), SUPERFAMILY (1) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^

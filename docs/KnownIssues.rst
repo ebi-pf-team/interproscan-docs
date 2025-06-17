@@ -72,12 +72,6 @@ making sure to build without affinity by compiling with the flag
 ::
   cmake -DUSE_AFFINITY=OFF ..
 
-4. HMMER errors
-~~~~~~~~~~~~~~~~
-
-The HMM libraries provided by some member databases (SUPERFAMILY and SFLD) are not compatible with
-newer HMMER versions and an error will occur when those libraries are being indexed by hmmpress version
-greater than '3.1b1'. To avoid this issue we recommend using the HMMER binaries bundled with interproscan.
 
 
 If you encounter errors not listed above,
