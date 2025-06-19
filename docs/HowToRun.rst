@@ -107,21 +107,17 @@ Optional arguments
 Configuring the data
 ^^^^^^^^^^^^^^^^^^^^
 
-``--download`` - [Boolean] Configure ``InterProScan`` to download any missing metadata and database files for InterPro
-and member databases defined by the ``--applications`` flag. Default, not enabled.
-
 ``--interpro`` - [String] Specify the InterPro data version at run time. Defaults to the latest.
 
-To run the built-in ``InterProScan`` test using the InterPro release 105.0 and automating the download
-of missing data files, use the following command:
+To run the built-in ``InterProScan`` test using the InterPro release 105.0 (which will also automate the download
+of missing data files), use the following command:
 
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
       -profile test,docker \
       --datadir data \
-      --interpro latest \
-      --download
+      --interpro latest
 
 Configuring the analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,9 +125,9 @@ Configuring the analysis
 ``--applications`` - [String] Define a set of applications (member databases) to be used in the analysis, defined as a
 comma separated list, e.g. ``--applications sfld,panther,gene3d``. Case insensitive.
 
-``--offline`` - [Boolean] Configures ``InterProScan`` to not retrieve precalculated matches
+``--no-matches-api`` - [Boolean] Configures ``InterProScan`` to **not** retrieve precalculated matches
 from the InterPro Match-Lookup Service (MLS) (connecting to the InterPro MLS requires an internet connection).
-When ``--offline`` is used ``InterProScan`` will run the analyses on all sequences provided in the
+When ``--no-matches-api`` is used ``InterProScan`` will run the analyses on all sequences provided in the
 input FASTA file.
 
 For example, to analyse protein sequences against only Panther and SFLD, without retrieving precalculated matches
@@ -144,7 +140,7 @@ from InterPro, and using Docker as the container runtime on your local system, y
         --input tests/data/test_prot.fa \
         --datadir interpro-104.0 \
         --applications panther,sfld \
-        --offline
+        --no-matches-api
 
 ``--nucleic`` - [Boolean] Indicates to ``InterProScan`` that the input file contains nucleic acid
 sequences, triggering ``InterProScan`` to predict potential open reading frames (ORFs) and analyse the

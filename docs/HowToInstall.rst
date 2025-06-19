@@ -20,10 +20,7 @@ If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``InterProScan`` relies on the models that are incorporated into each of the InterPro
-member databases.
-
-``InterProScan`` can be configured to automate the retrieval of missing metadata and database files by using the
-``--download`` flag.
+member databases. ``InterProScan`` automates the retrieval of missing metadata and database files.
 
 Alternatively, you can download these data from `https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/105.0 <https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/105.0>`__.
 
@@ -40,14 +37,11 @@ Run ``InterProScan6`` using:
     nextflow run ebi-pf-team/interproscan6 \
       -profile <executor, containerRuntime> \
       --input <path to input FASTA> \
-      --datadir <path to the downloaded InterPro data dir> \
-      --download
+      --datadir <path to the downloaded InterPro data dir>
 
 ``InterProScan6`` supports using Docker, Singularity and Apptainer, on Linux, MacOS, Windows,
 SLURM and LSF when using this method. To use an alternative scheduler or container runtime you will need
 to set up a local installation.
-
-You can exclude the ``--download`` flag if the data is already available in the specified data directory.
 
 Option B: Install from source
 -----------------------------
@@ -104,7 +98,7 @@ use the web service hosted at the EBI, therefore, your servers will need to have
 access to http://www.ebi.ac.uk to use it.
 
 If you do not wish to use the InterPro MLS in your analyses then include the 
-``--offline`` flag in your ``InterProScan`` commands.
+``--no-matches-api`` flag in your ``InterProScan`` commands.
 
 Alternatively, you can install a local copy of the MLS. 
 The uncompressed MLS disk usage comes to more that 1TB, so it is
@@ -122,8 +116,7 @@ To test ``InterProScan``, run the following command:
     nextflow run ebi-pf-team/interproscan6 \
       -profile test,docker \
       --datadir data \
-      --interpro latest \
-      --download
+      --interpro latest
 
 Explanation of parameters:
 
@@ -133,7 +126,6 @@ Explanation of parameters:
     * ``docker``: execute tasks in Docker containers
 * ``--datadir`` data: use data as the directory for storing all required databases; created automatically if needed
 * ``--interpro`` latest: fetch the most recent InterPro release
-* ``--download``: download any missing metadata and database files
 
 After completion, you’ll find three output files in your working directory:
 * ``test.faa.json``: full annotations (JSON)

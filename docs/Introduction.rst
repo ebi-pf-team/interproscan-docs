@@ -35,8 +35,7 @@ To install and run InterProScan
     nextflow run ebi-pf-team/interproscan6 \
       -profile <executor, containerRuntime> \
       --input <path to input FASTA> \
-      --datadir interproscan-data \
-      --download
+      --datadir interproscan-data
 
 Explanation of parameters:
 
@@ -45,7 +44,6 @@ Explanation of parameters:
     * ``containerRuntime``: execute tasks in specified container - chose from ``docker``, ``signulatiry``, or ``apptainer``
 * ``--datadir`` data: use data as the directory for storing all required databases; created automatically if needed
 * ``--interpro`` latest: use the most recent InterPro release
-* ``--download``: download any missing metadata and database files
 
 After completion, you’ll find three output files in your working directory:
 * ``test.faa.json``: full annotations (JSON)

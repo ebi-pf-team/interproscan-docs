@@ -1,5 +1,5 @@
-Release notes: InterProScan 6.0.0
-==================================
+Release notes: InterProScan 6.0.0 [alpha]
+=========================================
 
 Released on 19th April 2025.
 
@@ -18,7 +18,7 @@ Software updates
 * Support for Linux, MacOS and Windows OS as well as SLURM and LSF schedulers.
 * Containerised deployment, supporting Docker, Apptainer and Singularity.
 * Decoupled software and data release.
-* Implementation of the ``--download`` option to automate downloading missing metadata and database files.
+* Automated downloading of missing metadata and database files.
 * Addition of the ``--interpro`` flag to specify the InterPro data version at run time. Defaults to the latest.
 
 Known issues
