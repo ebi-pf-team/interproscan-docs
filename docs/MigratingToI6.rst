@@ -44,7 +44,7 @@ Running InterProScan: Flag changes
 Support only for long-name (double dashed) flags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``InterProScan`` 6 only supports long-name (double dashed) flags, therefore, all flags from ``InterProScan``
+``InterProScan`` 6 only supports long-name (double dashed) flags, therefore, all flags from InterProScan
 5 that are supported in ``InterProScan`` 6 must be convereted to their long name.
 
 New flags
