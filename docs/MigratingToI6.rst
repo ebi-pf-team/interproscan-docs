@@ -93,7 +93,7 @@ Deprecated flags
 Application/Member db name aliases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The formating of all application names from ``InterProScan`` 5 are accepted in ``InterProScan`` 6.
+The formating of all application names from InterProScan 5 are accepted in ``InterProScan`` 6.
 
 SignalP and TMHMM update
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -110,7 +110,7 @@ SignalP has been upgraded to version 6 in ``InterProScan`` 6, and the applicatio
 Running on a cluster or cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Unlike ``InterProScan`` 5, ``InterProScan`` 6 does not require reconfiguration to run on a cluster or a cloud.
+Unlike InterProScan 5, ``InterProScan`` 6 does not require reconfiguration to run on a cluster or a cloud.
 
 By default ``InterProScan`` 6 runs in local mode, to run on a cluster or cloud use the ``--profile`` flag to specify
 the executor.
