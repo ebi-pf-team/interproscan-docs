@@ -19,7 +19,7 @@ Continuous and discontinuous (dc-)status
 The ``dc-status`` refers to continuous nature of a domain 
 hit in some member databases. At the present only Gene3D and FunFam are able to detect discontinious domains.
 
-If a domain is not  continuous, i.e. is broken up into fragments, each 
+If a domain is not continuous (i.e. it is broken up into fragments) each
 of the fragments are represented under the ``location-fragments`` key and are labelled as 
 "C_TERMINAL_DISC" (for the most c-terminal fragment), "N_TERMINAL_DISC" (for the most n-terminal fragment), 
 and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "discontinuous". For example:
