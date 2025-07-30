@@ -34,11 +34,11 @@ and "NC_TERMINAL_DISC" (for all other fragments) - where "DISC" is short for "di
             }, {
             "start" : 7,
             "end" : 43,
-            "dc-status" : "C_TERMINAL_DISC"
+            "dc-status" : "N_TERMINAL_DISC"
             }, {
             "start" : 477,
             "end" : 529,
-            "dc-status" : "N_TERMINAL_DISC"
+            "dc-status" : "C_TERMINAL_DISC"
             }, {
             "start" : 203,
             "end" : 297,

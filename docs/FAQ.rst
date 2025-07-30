@@ -8,7 +8,7 @@ How is InterProScan 6 different from InterProScan versions 4 and 5? How do I mig
 ``InterProScan`` 4 is way, way obsolete! But if you are still using ``InterProScan`` 4
 then we recommend you `send us a support request <Feedback.html>`__ as soon as possible.
 
-``InterProScan`` 5 is soon to be obsolete (estimated retirement Autumn 2025).
+``InterProScan`` 5 is soon to be obsolete (estimated retirement Q1/Q2 2026).
 
 ``InterProScan`` 6 uses an entirely new, streamlined code base, and uses the 
 `Nextflow <https://www.nextflow.io/>`_ workflow system for 
