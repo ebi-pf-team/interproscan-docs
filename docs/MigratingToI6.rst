@@ -24,13 +24,6 @@ Unlike version 5 which presumes the database data is located at ``./data``, ``In
 **must** be directed to the data directory when running any of the built-in (non-licensed) applications using the
 ``--datadir`` flag.
 
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-        -profile docker\
-        --input tests/data/test_prot.fa \
-        --datadir <path-to-the-data-dir>
-
 Specify the InterPro version (best practise)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -42,7 +35,7 @@ of analyses, use the ``--interpro`` flag to specify InterPro release to use [Def
     nextflow run ebi-pf-team/interproscan6 \
         -profile docker\
         --input tests/data/test_prot.fa \
-        --datadir data \
+        --datadir <path-to-the-data-dir> \
         --interpro 104.0
 
 Running InterProScan: Flag changes
@@ -57,14 +50,9 @@ Support only for long-name (double dashed) flags
 New flags
 ^^^^^^^^^
 
-``-profile`` -
-Specify the run time profile. Typically the container runtime (e.g. ``docker``), and when not running locally the
-executor (e.g. ``slurm``).
-*Note this option uses a single dash, not two.*
-
-``--nucleic`` -
-``InterProScan`` 6 defaults to analysing protein sequences. To analyse an input FASTA file of nucleotide sequences
-use the ``--nucleic`` flag.
+* ``-profile`` - Specify the run time profiles. Typically the container runtime (e.g. ``docker``), and when not running locally the executor (e.g. ``slurm``). Note this option uses a single dash.
+* ``--nucleic`` - ``InterProScan`` 6 defaults to analysing protein sequences. To analyse an input FASTA file of nucleotide sequences use the ``--nucleic`` flag.
+* ``--interpro`` - Specify the InterPro version to use.
 
 Renamed flags
 ^^^^^^^^^^^^^
@@ -80,26 +68,22 @@ Renamed flags
 +-------------------------+------------------------+------------------------------------------------------------+
 | ``--excl-applications`` | ``--skip-annotations`` | Comma-separated list of analyses to exclude                |
 +-------------------------+------------------------+------------------------------------------------------------+
+| ``--seqtype``           | ``--nucleic``          | Analyse nucleotide sequences                               |
++-------------------------+------------------------+------------------------------------------------------------+
 
 Note, ``InterProScan`` 6 will build the directory (including parents) if it does not already exist.
 
-Flags that are no longer supported
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following ``InterProScan`` 5 flags are not supported in ``InterProScan`` 6:
+Deprecated flags
+^^^^^^^^^^^^^^^^
 
 * ``-cpu,--cpu``
 * ``-b,--output-file-base``
-* ``-d,--output-dir`` [renamed to ``--outdir``]
-* ``-dp,--disable-precalc`` [renamed to ``--no-matches-api``]
 * ``-dra,--disable-residue-annot``
 * ``-etra,--enable-tsv-residue-annot``
-* ``-exclappl,--excl-applications`` [renamed to ``skip-applications``]
 * ``-incldepappl,--incl-dep-applications``
 * ``-iprlookup,--iprlookup``
 * ``-ms,--minsize``
 * ``-o,--outfile``
-* ``-t,--seqtype`` [``InterProScan`` 6 defaults to analysing protein sequences, use the ``--nucleic`` flag for nucleotide sequences]
 * ``-T,--tempdir`` [use the Nextflow ``-work-dir`` flag. Note the single dash]
 * ``-verbose,--verbose``
 * ``-version,--version`` [the version is always printed out to the terminal when ``InterProScan`` 6 launches]
@@ -111,40 +95,25 @@ Application/Member db name aliases
 
 The formating of all application names from ``InterProScan`` 5 are accepted in ``InterProScan`` 6.
 
-In addition, ``InterProScan`` 6 includes aliases that allow for inclusion of dashes in the following
-application names:
+SignalP and TMHMM update
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-* funfam, cath-funfam, cathfunfam
-* gene3d, cath-gene3d, cathgene3d
-* mobidblite, mobidb-lite
-* prositeprofiles, prosite-profiles
-* prositepatterns, prosite-patterns
-
-SignalP renaming
-^^^^^^^^^^^^^^^^
+TMHMM has been upgraded to DeepTMHMM in ``InterProScan`` 6, TMHMM is not supported, and the application name has
+changed from ``tmhmm`` to ``deeptmhmm``.
 
 SignalP has been upgraded to version 6 in ``InterProScan`` 6, and the application names for ``signalp_gram_negative`` and
 ``signalp_gram_positive`` have been combined and changed to ``signalp_prok`` for prokaryotic sequences.
 
-TMHMM update
-^^^^^^^^^^^^
-
-TMHMM has been upgraded to DeepTMHMM in ``InterProScan`` 6, and the application named to ``deeptmhmm``. ``tmhmm`` is
-not supported.
-
-GPU acceleration
-^^^^^^^^^^^^^^^^
-
-For significantly reduced compute times, SignalP and DeepTMHMM can be run with GPU acceleration. See the
+``InterProScan`` 6 supports GPU acceleration of these tools, see the
 `Installing Licensed Applications page <InstallingLicensedApps.rst>`__ for more information.
 
 Running on a cluster or cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Unlike ``InterProScan`` 5, ``InterProScan`` 6 does not need to be reconfigured to run on a cluster or a cloud. The same
-code base can be used out of the box for running locally, on a cluster, or a cloud.
+Unlike ``InterProScan`` 5, ``InterProScan`` 6 does not require reconfiguration to run on a cluster or a cloud.
 
-By default ``InterProScan`` 6 runs in local mode, to run on a cluster or cloud use the ``--profile`` flag.
+By default ``InterProScan`` 6 runs in local mode, to run on a cluster or cloud use the ``--profile`` flag to specify
+the executor.
 
 At the moment, ``InterProScan`` provides only built-in support for the SLURM and LSF schedulers.
 See the `profiles page <Profiles.html>`__ documentation for more information on
@@ -159,18 +128,7 @@ a JSON line output file, see the `Output Formats page <OutputFormats.rst>`__ for
 The content and structure of the TSV, JSON and GFF3 files are the same between versions 5 and 6, except for:
 
 * Gene3D and FunFam have been renamed to ``Cath-Gene3D`` and ``Cath-FunFam``.
-* The InterPro version and ``InterProScan`` version have been separated.
-
-``InterProScan`` 5:
-
-.. code-block:: json
-
-    }
-        "interproscan-version": "5.75-106.0",
-        "results": []
-    }
-
-``InterProScan`` 6:
+* The InterPro version and ``InterProScan`` version have been separated:
 
 .. code-block:: json
 
@@ -184,8 +142,8 @@ The content and structure of the TSV, JSON and GFF3 files are the same between v
 XML Schema changes
 ^^^^^^^^^^^^^^^^^^
 
-* Root node named from ``protein-matches`` to ``results`` (matching the JSON structure).
-* All match nodes and location node names have been renamed from their application/member db based naming to a generic ``match`` and ``location`` nodes.
+* Root node renamed from ``protein-matches`` to ``results`` (matching the JSON structure).
+* All match nodes and location node names have been renamed from their application-based naming to generic ``match`` and ``location`` nodes.
 
 Nucleotide output files
 ^^^^^^^^^^^^^^^^^^^^^^^
