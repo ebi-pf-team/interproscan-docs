@@ -6,11 +6,6 @@ Released on 8th July 2025.
 What’s new
 ~~~~~~~~~~
 
-Data update
-^^^^^^^^^^^
-
-* Synchronised with `InterPro version 105.0 <http://www.ebi.ac.uk/interpro/release_notes>`__.
-
 Software updates
 ^^^^^^^^^^^^^^^^
 

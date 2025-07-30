@@ -24,10 +24,8 @@ For each of these member databases:
     # signalp
     tar -xzf signalp-6.0h.fast.tar.gz -C <SIGNALP-DIR>
 
-3. Update the relevant member's ``dir`` path in ``conf/applications.con`` or provide your own configuration using
-the ``-C`` flag, which defines ``params.appsConfig`` from
-`conf/applications.conf <https://github.com/ebi-pf-team/interproscan6/blob/main/conf/applications.config>`__
-and includes a definition for the member as laid out in ``conf/applications.com``:
+3. Update the relevant member's ``dir`` path in ``conf/applications.con`` or provide your own configuration containing
+just the following information:
 
 .. code-block:: groovy
 
@@ -35,10 +33,10 @@ and includes a definition for the member as laid out in ``conf/applications.com`
         name = "tmhmm"
         dir = "<DEEPTMHMM-DIR>"    <---- update the dir path
         has_data=false
+        use_gpu=false
     }
     phobius {
         name = "Phobius"
-        invalid_chars = "-*.OXUZJ"
         dir = "<PHOBIUS-DIR>"      <---- update the dir path
         has_data=false
     }
@@ -48,13 +46,15 @@ and includes a definition for the member as laid out in ``conf/applications.com`
         dir = "<SIGNALP-DIR>"      <---- update the dir path
         mode = "fast"
         has_data=false
+        use_gpu=false
     }
     signalp_prok {
         name = "SignalP-Prok"
         organism = "other"
         dir = "<SIGNALP-DIR>"      <---- update the dir path
         mode = "fast"
-        hase_data=false
+        has_data=false
+        use_gpu=false
     }
 
 4. Run. When the ``dir`` field is populated for each member they will be included in the default applications when
@@ -103,7 +103,7 @@ To change the mode of ``SignalP6``:
 .. WARNING::
     The slow mode can take 6x longer to compute. Use when accurate region borders are needed.
 
-Run SignalP with GPU acceleration
+Run SignalP and DeepTMHMM with GPU acceleration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The model weights that come with the ``SignalP`` installation by default run on your CPU.
@@ -112,12 +112,29 @@ If you have a GPU available, you can convert your installation to use the GPU in
 You will need to install ``SignalP`` in order to convert to GPU models.
 
 1. Convert the ``SignalP`` installation to GPU by following the `SignalP documentation <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md#converting-to-gpu>`_.
-2. Run ``InterProScan6`` with the flag ``--signalpGPU``.
+2. Update the configuration file, setting ``use_gpu=true``
 
-.. code-block:: bash
+.. code-block:: groovy
 
-    nextflow run ebi-pf-team/interproscan6 \
-          -profile <docker/singularity/apptainer...lsf/slurm> \
-          --input <FASTA> \
-          --datadir <DATADIR> \
-          --signalpGPU
+    deeptmhmm {
+        name = "tmhmm"
+        dir = "<DEEPTMHMM-DIR>"
+        has_data=false
+        use_gpu=true               <---- set to true
+    }
+    signalp_euk {
+        name = "SignalP-Euk"
+        organism = "eukarya"
+        dir = "<SIGNALP-DIR>"
+        mode = "fast"
+        has_data=false
+        use_gpu=true               <---- set to true
+    }
+    signalp_prok {
+        name = "SignalP-Prok"
+        organism = "other"
+        dir = "<SIGNALP-DIR>"
+        mode = "fast"
+        has_data=false
+        use_gpu=true               <---- set to true
+    }

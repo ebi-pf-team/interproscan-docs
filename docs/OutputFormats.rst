@@ -321,6 +321,13 @@ Below is a truncated example of the contents of a JSON file, generated using nuc
 sequences as input. You can recreate the full output 
 using the command:
 
+JSON Line
+---------
+
+Unlike the JSON output file that contains one valid JSON string, and includes results for all sequences,
+the output file in JSON Lines format contains one JSON string per line. Each value represent the matches for one
+sequence. This is an advantage when processing many sequences: you don't need to load the entire JSON output in
+memory before processing, you can process the output one line (i.e. one sequence) at a time.
 
 Extensible Markup Language (XML)
 --------------------------------

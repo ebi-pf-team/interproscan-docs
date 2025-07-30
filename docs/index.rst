@@ -29,6 +29,7 @@ Nextflow enables the integration of ``InterProScan`` into HPC schedulers and clo
    HowToInstall
    InstallingLicensedApps
    HowToRun
+   MigratingToI6
    Profiles
    InputFormat
    OutputFormats
