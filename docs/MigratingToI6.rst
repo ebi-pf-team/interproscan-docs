@@ -57,33 +57,31 @@ Support only for long-name (double dashed) flags
 New flags
 ^^^^^^^^^
 
-**``-profile`**
+``-profile`` -
 Specify the run time profile. Typically the container runtime (e.g. ``docker``), and when not running locally the
 executor (e.g. ``slurm``).
 *Note this option uses a single dash, not two.*
 
-**``--nucleic``**
+``--nucleic`` -
 ``InterProScan`` 6 defaults to analysing protein sequences. To analyse an input FASTA file of nucleotide sequences
 use the ``--nucleic`` flag.
 
 Renamed flags
 ^^^^^^^^^^^^^
 
-**``--disable-precalc`` >> ``--no-matches-api``**
-The flag to skip the retrieval of precalculated matches from the InterPro Matches API (``--disable-precalc``)
-has been renamed in ``InterProScan`` 6 to ``--no-matches-api``.
++-------------------------+------------------------+------------------------------------------------------------+
+| InterProScan 5          | InterProScan 6         | Description                                                |
++=========================+========================+============================================================+
+| ``--disable-precalc``   | ``--no-matches-api``   | Skip retrieving precalculated matches                      |
++-------------------------+------------------------+------------------------------------------------------------+
+| ``--output-dir``        | ``--outdir``           | Output directory                                           |
++-------------------------+------------------------+------------------------------------------------------------+
+| ``--output-file-base``  | ``--outprefix``        | Specify the base name for output files                     |
++-------------------------+------------------------+------------------------------------------------------------+
+| ``--excl-applications`` | ``--skip-annotations`` | Comma-separated list of analyses to exclude                |
++-------------------------+------------------------+------------------------------------------------------------+
 
-**``--output-dir`` >> ``--outdir``**
-Specify the output directory using the ``--outdir`` flag. Additionally, unlike ``InterProScan`` 5, ``InterProScan`` 6 will build (including all necessary parent directories) if the
-output directory does not already exist.
-
-**``--output-file-base`` >> ``--outprefix``**
-Specify the base name for output files, without a directory. The file extension will be added automatically. Whereas in
-``InterProScan`` 5 ``--output-file-base`` could be a relative or absolute path, in ``InterProScan`` 6 ``--outprefix``
-will only affect the file name, not its location and must not contain slashes, spaces or path components.
-
-**``--excl-applications`` >> ``--skip-annotations``**
-Comma separated list of analyses to exclude.
+Note, ``InterProScan`` 6 will build the directory (including parents) if it does not already exist.
 
 Flags that are no longer supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,8 +156,7 @@ Output files
 For improved parsing of large output files containing many sequences and matches, ``InterProScan`` 6 can produce
 a JSON line output file, see the `Output Formats page <OutputFormats.rst>`__ for more information.
 
-The content and structure of the TSV, JSON and GFF3 files are the same between versions 5 and 6, except for two exceptions
-in all output files:
+The content and structure of the TSV, JSON and GFF3 files are the same between versions 5 and 6, except for:
 
 * Gene3D and FunFam have been renamed to ``Cath-Gene3D`` and ``Cath-FunFam``.
 * The InterPro version and ``InterProScan`` version have been separated.
