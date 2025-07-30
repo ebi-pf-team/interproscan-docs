@@ -140,8 +140,8 @@ GPU acceleration
 For significantly reduced compute times, SignalP and DeepTMHMM can be run with GPU acceleration. See the
 `Installing Licensed Applications page <InstallingLicensedApps.rst>`__ for more information.
 
-Running on a cluster
-^^^^^^^^^^^^^^^^^^^^
+Running on a cluster or cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Unlike ``InterProScan`` 5, ``InterProScan`` 6 does not need to be reconfigured to run on a cluster or a cloud. The same
 code base can be used out of the box for running locally, on a cluster, or a cloud.
@@ -166,22 +166,23 @@ in all output files:
 
 ``InterProScan`` 5:
 
-```json
-{
-    "interproscan-version": "5.75-106.0",
-    "results": []
-}
-```
+.. code-block:: json
+
+    }
+        "interproscan-version": "5.75-106.0",
+        "results": []
+    }
 
 ``InterProScan`` 6:
 
-```json
-{
-    "interproscan-version": "6.0.0-beta",
-    "interpro-version": "106.0",
-    "results": []
-}
-```
+.. code-block:: json
+
+    {
+        "interproscan-version": "6.0.0-beta",
+        "interpro-version": "106.0",
+        "results": []
+    }
+
 
 XML Schema changes
 ^^^^^^^^^^^^^^^^^^
