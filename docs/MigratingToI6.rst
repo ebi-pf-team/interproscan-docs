@@ -66,7 +66,7 @@ Renamed flags
 +-------------------------+------------------------+------------------------------------------------------------+
 | ``--output-file-base``  | ``--outprefix``        | Specify the base name for output files                     |
 +-------------------------+------------------------+------------------------------------------------------------+
-| ``--excl-applications`` | ``--skip-annotations`` | Comma-separated list of analyses to exclude                |
+| ``--excl-applications`` | ``--skip-annotations`` | Comma-separated list of analyses to skip                   |
 +-------------------------+------------------------+------------------------------------------------------------+
 | ``--seqtype``           | ``--nucleic``          | Analyse nucleotide sequences                               |
 +-------------------------+------------------------+------------------------------------------------------------+
