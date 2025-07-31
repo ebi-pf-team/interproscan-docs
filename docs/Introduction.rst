@@ -51,9 +51,9 @@ After completion, you’ll find three output files in your working directory:
 * ``test.faa.xml``: full annotations (XML)
 
 .. NOTE::
-    The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
-    This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
-    licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
+    The ``--datadir`` flag is not needed when only running member databases that do not require additional data files.
+    This only applies to ``mobidblite`` and ``coils`` (which do not require additional datafiles) and the
+    licensed software (``SignalP``, ``Phobius``, and ``TMHMM``).
 
 For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
 see the `profiles page <Profiles.html>`__, and for setting up a local installation ``InterProScan`` please see the
@@ -83,10 +83,10 @@ This distribution of InterProScan includes:
 - `SMART <http://smart.embl-heidelberg.de/>`__ (unlicensed components only)
 - `SUPERFAMILY <http://supfam.cs.bris.ac.uk/SUPERFAMILY/>`__
 
-A number of other analyses are available in ``InterProScan```. These
+A number of other analyses are available in ``InterProScan``. These
 analyses use licensed components provided by third parties. If you
 wish to run these analyses it will be necessary for you to obtain a
-license from the vendor and configure your local ``InterProScan```
+license from the vendor and configure your local ``InterProScan``
 installation to use these:
 
 - `Phobius <http://phobius.sbc.su.se/>`__

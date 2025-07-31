@@ -301,7 +301,7 @@ with a set of conserved domains, Hidden Markov Models (HMMs), or pre-algined pro
 rspbproc
 ^^^^^^^^
 
-A wrapper for ``RPS-BLAST``` which aims to provide results that match those computed by NCBI's on-line
+A wrapper for ``RPS-BLAST`` which aims to provide results that match those computed by NCBI's on-line
 search services, including site annotation and the location of conserved domain superfamily 
 footprints. It is downloaded from the `CDD ftp server <https://ftp.ncbi.nih.gov/pub/mmdb/cdd/rpsbproc/>`_ 
 within the IPS6-CDD docker image.

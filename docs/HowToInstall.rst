@@ -121,7 +121,7 @@ To test ``InterProScan``, run the following command:
 Explanation of parameters:
 
 
-* ``profile test,docker```:
+* ``profile test,docker``:
     * ``test``: use an included example FASTA file
     * ``docker``: execute tasks in Docker containers
 * ``--datadir`` data: use data as the directory for storing all required databases; created automatically if needed

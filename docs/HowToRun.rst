@@ -11,7 +11,7 @@ Running InterProScan
           --input <FASTA> \
           --datadir <DATADIR>
 
-If ``InterProScan`` was `installed from source <<HowToInstall.html>`__, please use the following 
+If ``InterProScan`` was `installed from source <HowToInstall.html>`__, please use the following 
 command:
 
 .. code-block:: bash
@@ -97,9 +97,9 @@ To analyse nucleic acid sequences please see the
 `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
 
 .. NOTE::
-    The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
-    This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
-    licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
+    The ``--datadir`` flag is not needed when only running member databases that do not require additional data files.
+    This only applies to ``mobidblite`` and ``coils`` (which do not require additional datafiles) and the
+    licensed software (``SignalP``, ``Phobius``, and ``TMHMM``).
 
 Optional arguments
 ------------------
@@ -307,7 +307,7 @@ for the process can be found (useful for trouble shooting).
 
 The second column (e.g. ``process > SCAN_SEQUENCES:RUN_ANTIFAM``) identifies the type of
 task (e.g. ``process``), and the name
-of the task (e.g. ``SCAN_SEQUENCES:RUN_ANTIFAM```).  The number
+of the task (e.g. ``SCAN_SEQUENCES:RUN_ANTIFAM``).  The number
 in parenthesises identifies the total number of spawned instances of that process.
 
 The third column (e.g. ``[100%] 1 of 1 ✔``) indicates the percentage of the currently spawned instances

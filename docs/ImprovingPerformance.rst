@@ -20,7 +20,7 @@ Consider chunking large input files
 If your FASTA input files contains a large number of sequences say over 160,0000 protein sequences,
 then you may consider splitting your input into smaller chunks (thus depends on resources, but batches of
 100,000 protein sequences is a suggested starting point). You can then submit the smaller input files to
-``InterProScan``` and process the results afterwards.
+``InterProScan`` and process the results afterwards.
 
 For DNA/RNA sequences a much smaller number is suggested (e.g. 12,000 sequences).
 However for improved performance you could translate these using an external tool
