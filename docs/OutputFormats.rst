@@ -17,15 +17,15 @@ Continuous and discontinuous (dc-)status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``dc-status`` refers to continuous nature of a domain 
-hit in some member databases. At the present only Cath-Gene3D, Cath-FunFam and Pfam are able to detect discontinious domains.
+hit in some member databases. At the present only Cath-Gene3D, Cath-FunFam and Pfam are able to detect discontinuous domains.
 
 If a domain is not continuous (i.e. it is broken up into fragments) each
 of the fragments are represented under the ``location-fragments`` key and are labelled
 (where "DISC" is short for "discontinuous") as:
 
-* "C_TERMINAL_DISC" - the fragment is discontinious in its C-terminal
-* "N_TERMINAL_DISC" - the fragment is discontinious in its N-terminal
-* "NC_TERMINAL_DISC" - all other fragments, these fragments are discontinious in their N- and C-terminal
+* "C_TERMINAL_DISC" - the fragment is discontinuous in its C-terminal
+* "N_TERMINAL_DISC" - the fragment is discontinuous in its N-terminal
+* "NC_TERMINAL_DISC" - all other fragments, these fragments are discontinuous in their N- and C-terminal
 
 For example:
 

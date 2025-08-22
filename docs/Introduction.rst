@@ -82,6 +82,7 @@ This distribution of InterProScan includes:
 - `SFLD <http://sfld.rbvi.ucsf.edu/django/>`__
 - `SMART <http://smart.embl-heidelberg.de/>`__ (unlicensed components only)
 - `SUPERFAMILY <http://supfam.cs.bris.ac.uk/SUPERFAMILY/>`__
+- `TMbed <https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-022-04873-x>`__
 
 A number of other analyses are available in ``InterProScan```. These
 analyses use licensed components provided by third parties. If you

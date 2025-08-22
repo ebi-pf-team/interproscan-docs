@@ -24,8 +24,7 @@ For each of these member databases:
     # signalp
     tar -xzf signalp-6.0h.fast.tar.gz -C <SIGNALP-DIR>
 
-3. Update the relevant member's ``dir`` path in ``conf/applications.con`` or provide your own configuration containing
-just the following information:
+3. Update the relevant member's ``dir`` path in ``conf/applications.conf``, or create a configuration file that contains the following and pass it to ``InterProScan`` using the ``-c`` flag:
 
 .. code-block:: groovy
 
@@ -104,7 +103,7 @@ To change the mode of ``SignalP6``:
     The slow mode can take 6x longer to compute. Use when accurate region borders are needed.
 
 Run SignalP and DeepTMHMM with GPU acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The model weights that come with the ``SignalP`` installation by default run on your CPU.
 If you have a GPU available, you can convert your installation to use the GPU instead. 

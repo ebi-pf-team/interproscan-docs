@@ -26,7 +26,7 @@ command:
     All ``InterProScan`` flags, such as ``--input``, use **double** dashes.
     All Nextflow flags, such as ``-profile``, use a **single** dash.
 
-For the rest of this page we will use the command ``nextflow run ebi-pf-team/interproscan6...``.
+For the rest of this page we will use the command ``nextflow run ebi-pf-team/interproscan6``.
 
 The Help Message
 ~~~~~~~~~~~~~~~~
@@ -56,16 +56,13 @@ You can find a complete list of all ``InterProScan`` flags in the `Command-line 
 Default Operation
 ~~~~~~~~~~~~~~~~~
 
-By default, ``InterProScan`` runs locally using the latest InterPro release in the data dir and compares
-the **protein sequences** provided in an input FASTA file against all member databases.
+By default ``InterProScan``:
 
-``InterProScan`` uses the InterPro Match Lookup Service (MLS) to retrieve
-pre-calculated matches that are already present in InterPro (which constitutes more
-than 500 million protein sequences, including all sequences in UniProtKB). The sequence 
-analyses are only run for those sequences where a precalculated match is not available, thus
-reducing the total run time and computational demand.
-
-The default output file formats for ``InterProScan`` are ``JSON``, ``TSV`` and ``XML``.
+* Runs **locally** on **bare metal**
+* Uses the **latest InterPro** release in the data dir
+* Retrieves pre-calculated matches from the `InterPro Matches API <https://www.ebi.ac.uk/interpro/matches/api>`__
+* Analyses **protein sequences** that are not in the InterPro Matches API against **all** activated applications
+* Produces the output files: ``GFF3``, ``JSON``, ``JSON-line``, ``TSV`` and ``XML``
 
 Command-line arguments
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +79,7 @@ The only **required** arguments to run ``InterProScan`` are:
 The built-in executor profiles are ``slurm`` and ``lsf``.
 The built-in container runtime profiles are ``docker``, ``singularity``, and ``apptainer``.  
 
-For example, to run ``InterProScan`` to analyse the protein sequences using Docker locally:
+For example, to run ``InterProScan`` to analyse the protein sequences using Docker locally (the default executor):
 
 .. code-block:: bash
 
@@ -91,33 +88,36 @@ For example, to run ``InterProScan`` to analyse the protein sequences using Dock
         --input tests/data/test_prot.fa \
         --datadir data
 
-``InterProScan`` runs locally be default, therefore, we do not need to specify a local executor profile.
-
 To analyse nucleic acid sequences please see the
 `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`_
 
 .. NOTE::
-    The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
-    This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
-    licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
+    The ``--datadir``` flag is not needed when only running applications that do not require additional data files, this includes:
+    ``mobidblite``, ``coils``, ``TMbed`` and the licensed software ``DeepTMHMM``, ``Phobius``, ``SignalP``.
 
 Optional arguments
 ------------------
+
+Configuring resources
+^^^^^^^^^^^^^^^^^^^^^
+
+``--maxWorkers`` - [Integer] The maximum number of jobs running in parallel at any given moment. Default equal to the number of available CPUs minus one.
+
+``--cpus`` - [Integer] Number of CPUs assigned to each analysis job (e.g. HMMER). Default 1.
 
 Configuring the data
 ^^^^^^^^^^^^^^^^^^^^
 
 ``--interpro`` - [String] Specify the InterPro data version at run time. Defaults to the latest.
 
-To run the built-in ``InterProScan`` test using the InterPro release 105.0 (which will also automate the download
-of missing data files), use the following command:
+To run the built-in ``InterProScan`` test using the InterPro release 105.0, use the following command:
 
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
       -profile test,docker \
       --datadir data \
-      --interpro latest
+      --interpro 105.0
 
 Configuring the analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -142,9 +142,7 @@ from InterPro, and using Docker as the container runtime on your local system, y
         --applications panther,sfld \
         --no-matches-api
 
-``--nucleic`` - [Boolean] Indicates to ``InterProScan`` that the input file contains nucleic acid
-sequences, triggering ``InterProScan`` to predict potential open reading frames (ORFs) and analyse the
-ORFs' protein sequence products. You can find out more in the
+``--nucleic`` - [Boolean] Analyse and input FASTA file of nucleic acid sequences. You can find out more in the
 `"How to Analyse Nucleic Sequences" documentation <HowToNucleic.html>`__.
 
 Configuring the output data
@@ -152,8 +150,10 @@ Configuring the output data
 
 ``--outdir`` - [String] Define the path to the output directory. By default ``InterProScan`` 
 writes to the current working directory. This can be an absolute or relative path. The output
-filenames are always prefixed with the input FASTA filename. ``InterProScan`` will build the
+filenames are prefixed with the input FASTA filename. ``InterProScan`` will build the
 output directory and all necessary parent directories.
+
+``--outprefix`` - [String] Base name for output files, without directory. The extension is automatically added to the file. This only affects the filename, not its location. It must not contain slashes, path components or spaces. Default: input fasta filename.
 
 .. WARNING::
 
@@ -252,6 +252,37 @@ to ensure they met requirements and expected practices of your system.
 If you are unsure how to deploy Nextflow on your system contact the sysadmin.
 You can find out more information on the ``InterProScan`` profiles `here <Profiles.html>`__. Please
 refer to this documentation before creating your own profiles.
+
+GPU acceleration
+~~~~~~~~~~~~~~~~~
+
+``DeepTMHMM``, ``SignalP`` and ``TMbed`` support GPU acceleration. To enable GPU acceleration
+modify the ``conf/applications.conf`` configuraiton, or create a configuration file that contains the following a
+nd pass it to ``InterProScan`` using the ``-c`` flag:
+
+.. code-block:: groovy
+
+    deeptmhmm {
+        use_gpu=true
+    }
+    signalp_euk {
+        use_gpu=true
+    }
+    signalp_prok {
+        use_gpu=true
+    }
+    tmbed {
+        use_gpu=true
+    }
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile slurm,singularity \
+        --input tests/data/test_prot.fa \
+        --datadir data \
+        --applications signalp-prok,signalp-euk,deeptmhmm,tmbed \
+        -c gpu.conf
 
 Moving the work (temporary) directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
