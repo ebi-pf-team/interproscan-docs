@@ -5,10 +5,7 @@ How InterProScan operates under the hood
 Each member database or application in ``InterProScan`` has its own unique method of analysis. 
 Below we outline the method of analysis for each member database.
 
-Applications and member databases
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-We divide the member databases into two groups: those that use HMMER and those that don't and instead
+The member databases can be divided into two groups: those that use HMMER and those that don't and instead
 use a member-database-specific tool.
 
 * `HMMER <UnderTheHood.html#member-databases-that-use-hmmer>`_

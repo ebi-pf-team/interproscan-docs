@@ -4,22 +4,38 @@ Improving performance
 If InterProScan is taking a long time to run, or you just want to improve on the
 run time you are getting, then consider some of the following:
 
+The bulk profile for large data sets
+------------------------------------
+
+For large datasets, you may be able to improve performance by increasing the batch size 
+(``--batch-size``) and sub-batch size (``--sub-batch-size``).
+However, this will also increase the memory requirements of the analysis. We recommend using the 
+provided ``bulk`` profile which increases the batch size, sub-batch size and resource allocations.
+
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile bulk,singularity,slurm,test \
+        --datadir data
+
 Review your CPU and memory command options
 ------------------------------------------
 
-By default ``InterProScan`` uses 1 cpu core per job, and 2 cpu for PRINTS. Additionally, 
-most jobs are assigned 6GB, except SignalP and PRINTS which are assigned 16 and 32GB, respectively. 
+By default ``InterProScan`` uses 1 cpu per process or task. For applications that support multithreading
+you can increase the number of cpus assigned to each process using the ``--cpus`` flag to enable
+multithreading.
 
-These values are defined in the executor profiles (located in ``utilities/profiles``): local and slurm.
-
-You could try assigning more memory to the slower running processes. 
+To increase the memory allocations for each process you will need to update the process configurations in 
+``conf/profiles/base.config`` or ``conf/profiles/bulk.config`` depending on which profile you are using 
+(the ``base`` profile is used by default).
 
 Consider chunking large input files
 -----------------------------------
 
 If your FASTA input files contains a large number of sequences say over 160,0000 protein sequences,
-then you may consider splitting your input into smaller chunks (thus depends on resources, but batches of
-100,000 protein sequences is a suggested starting point). You can then submit the smaller input files to
+then you may consider splitting your input into smaller chunks - this depends on resources, but batches of
+32,000 protein sequences is a suggested starting point. You can then submit the smaller input files to
 ``InterProScan``` and process the results afterwards.
 
 For DNA/RNA sequences a much smaller number is suggested (e.g. 12,000 sequences).
@@ -29,21 +45,12 @@ and then submit the necessary protein sequences instead, see running nucleic aci
 Increase the queue size
 -----------------------
 
-When running ``InterProScan`` on the cluster the Nextflow parameter ``QueueSize`` tests the total number 
+When running ``InterProScan`` on the cluster the Nextflow parameter ``QueueSize`` sets the total number 
 of parallel jobs than ``InterProScan`` can handle. Increasing this value can allow ``InterProScan`` 
 to run more jobs in parallel, thus reducing the total run time. 
 
-The ``QueueSize`` is set in each of the executor profiles in ``utilities/profiles/``.
-
-Reassess the batch size
------------------------
-
-We selected a batch size we found to be optimal when running an analysis will all member (licensed and 
-built-in). However, the total runtime may be reduced by using an alternative batch size when 
-running analyses with a subset of databases.
-
-The batch size is defined in ``InterProScan`` ``nextflow.config`` file (found within the root 
-of the project directory).
+The ``QueueSize`` is set in each of the executor profiles in ``utilities/profiles/``, e.g. 
+``utiltities/profiles/slurm.config``.
 
 Review your command line input options
 --------------------------------------

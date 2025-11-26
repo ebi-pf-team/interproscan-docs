@@ -1,7 +1,7 @@
-Release notes: InterProScan 6.0.0 [beta]
-=========================================
+Release notes: InterProScan 6.0.0
+=================================
 
-Released on 8th July 2025.
+Released on 16th November 2025
 
 What’s new
 ~~~~~~~~~~
@@ -14,10 +14,11 @@ Software updates
 * Containerised deployment, supporting Docker, Apptainer and Singularity.
 * Decoupled software and data release.
 * Automated downloading of missing metadata and database files.
+* TMHMM replaced with DeepTMHMM for transmembrane domain prediction.
+* Addition of TMbed for faster transmembrane domain prediction.
+* Addition of InterPro-N for InterPro matches predicted using machine learning.
 * Addition of the ``--interpro`` flag to specify the InterPro data version at run time. Defaults to the latest.
-* New output file formats:
-    * GFF3
-    * JSON Lines - unlike the standard JSON containing a single JSON string, this file format contains one JSON string per line, which is advantages when processing many sequences
+* New output file format JSON Lines - unlike the standard JSON containing a single JSON string, this file format contains one JSON string per line, which is advantages when processing many sequences
 * Added option to download database data from Globus (can be used when the EBI ftp is down)
 * Small internal changes to the post-processing of results to reduce discrepencies with InterProScan version 5
 

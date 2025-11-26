@@ -13,7 +13,7 @@ System requirements:
 
 **Minimum (for the analysis of a small number of sequences):**
 
-* 3 cores
+* 2 cores
 * 8 GB RAM
 
 ``InterProScan`` is processor and memory intensive.
@@ -23,10 +23,10 @@ sequences that can be analysed at a time.
 Software requirements:
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Nextflow (version >=24.10.4)
+* Nextflow (version 25.04.6 or later)
 * A container runtime:
-    * Docker (version >= 24.0.5)
-    * Singularity (version >= 4.2.0)
-    * Apptainer (version >= 1.3.4)
+    * Docker (version 25.4.0 or later)
+    * Singularity (version 4.2.0 or later)
+    * Apptainer (version 1.3.4 or later)
 
-Licenses and additional data from their respective authors are required to run ``Phobius``, ``SignalP`` and ``DeepTMHMM``.
+Licenses and additional data from their respective authors are required to run ``DeepTMHMM``, ``Phobius``, and ``SignalP``.

@@ -4,17 +4,16 @@ Introduction
 What is InterProScan?
 ~~~~~~~~~~~~~~~~~~~~~
 
-`InterPro <http://www.ebi.ac.uk/interpro/>`__ is a database that
-integrates predictive information about proteins' functions from
+The `InterPro <http://www.ebi.ac.uk/interpro/>`__  database
+integrates predictive information about protein functions from
 a number of partner resources, providing an overview of the families that a
 protein belongs to and the domains and sites it contains.
 
-Users that have nucleotide or protein sequences that they wish to
-functionally characterise can use the software package ``InterProScan``. This
-software runs the scanning algorithms from the InterPro databases against
-all sequences submitted in FASTA format. Matches are calculated
-against all required member database signatures, and the results
-are then outputted in a variety of formats.
+Nucleotide and protein sequences can be functionally characterised using
+the software package ``InterProScan``, which runs scanning algorithms
+to calculate matches between submitted sequences in FASTA format and 
+InterPro member database signatures. The results
+are then outputted in a variety of formats, including GFF3, JSON, JSONL, TSV and XML.
 
 Supported platforms
 ~~~~~~~~~~~~~~~~~~~
@@ -37,23 +36,33 @@ To install and run InterProScan
       --input <path to input FASTA> \
       --datadir interproscan-data
 
+For example, to run the prepared tests locally using Docker:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+      -profile docker,test \
+      --datadir interproscan-data
+
 Explanation of parameters:
 
-* ``profile <executor, containerRuntime>``:
-    * ``executor``: execute tasks using the specified executor. Defaults to local, or specify ``slurm`` or ``lsf``.
-    * ``containerRuntime``: execute tasks in specified container - chose from ``docker``, ``signulatiry``, or ``apptainer``
-* ``--datadir`` data: use data as the directory for storing all required databases; created automatically if needed
-* ``--interpro`` latest: use the most recent InterPro release
+* ``profile``:
+    * ``executor``: used the specified executor (default: local). Options include ``slurm`` and ``lsf``.
+    * ``containerRuntime``: use container runtime (default: runs on baremetal). Options include ``docker``, ``singularity``, or ``apptainer``.
+* ``--datadir`` path to data directory; created automatically if needed
+* ``--interpro`` specify InterPro release (default: latest)
 
-After completion, you’ll find three output files in your working directory:
+After completion, you’ll find five output files in your working directory:
+* ``test.faa.gff3``: full annotations (GFF3)
 * ``test.faa.json``: full annotations (JSON)
+* ``test.faa.jsonl``: full annotations (JSONL)
 * ``test.faa.tsv``: tabular summary (TSV)
 * ``test.faa.xml``: full annotations (XML)
 
 .. NOTE::
     The ``--datadir``` flag is not needed when only running member databases that do not require additional data files.
     This only applies to ``mobidblite`` and ``coils``` (which do not require additional datafiles) and the
-    licensed software (``SignalP``, ``Phobius``, and ``TMHMM```).
+    licensed software (``DeepTMHMM``, ``Phobius``, ``SignalP``, and ``TMbed``).
 
 For using alternative executors (e.g. Azure and AWS Batch) and container runtimes (e.g. Podman) please
 see the `profiles page <Profiles.html>`__, and for setting up a local installation ``InterProScan`` please see the
@@ -70,6 +79,7 @@ This distribution of InterProScan includes:
 - `FunFam <https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2988-x>`__
 - `Gene3D <http://gene3d.biochem.ucl.ac.uk/Gene3D/>`__
 - `HAMAP <http://hamap.expasy.org/>`__
+- `InterPro-N <https://interpro-documentation.readthedocs.io/en/latest/protein_viewer.html#interpro-n>`__
 - `MOBIDB <http://mobidb.bio.unipd.it/>`__
 - `NCBIFAM <https://www.ncbi.nlm.nih.gov/genome/annotation_prok/evidence/>`__
   (including the previous `TIGRFAM <http://www.jcvi.org/cgi-bin/tigrfams/index.cgi>`__ analysis)
@@ -90,9 +100,9 @@ wish to run these analyses it will be necessary for you to obtain a
 license from the vendor and configure your local ``InterProScan```
 installation to use these:
 
+- `DeepTMHMM <https://www.biorxiv.org/content/10.1101/2022.04.08.487609v1>`__
 - `Phobius <http://phobius.sbc.su.se/>`__
 - `SignalP <http://www.cbs.dtu.dk/services/SignalP/>`__
-- `DeepTMHMM <https://www.biorxiv.org/content/10.1101/2022.04.08.487609v1>`__
 
 The InterPro team would like to thank the developers and maintainers of
 all of these analyses for their valued and on-going support!

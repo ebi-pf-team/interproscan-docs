@@ -2,10 +2,8 @@
 Input formats
 =============
 
-``InterProScan`` only accepts a single FASTA file as its input. The input 
-FASTA file can contain multiple sequences.
-
-For example, here is an extract of a simple FASTA format file containing unaligned sequences:
+``InterProScan`` only accepts a single FASTA file as its input, although this input 
+FASTA file can contain multiple sequences. For example:
 
 ::
 
@@ -26,69 +24,20 @@ For example, here is an extract of a simple FASTA format file containing unalign
 Illegal characters
 ------------------
 
-Some analysis methods do not support specific characters within the input sequences. The table
-below lists all the illegal characters for each of the member databases whom (as far as we 
-are aware) haven non-tolerated characters. If ``InterProScan`` detects any of these characters 
-in the input to the respective member database it should produce warnings and exit immediately.
+The following characters are not allowed in sumitted sequences: 
 
-.. WARNING::
-    We cannot guarantee that this is an exhaustive list.
+* ``-``
+* ``.`` - Note this gap character is allowed in nucleic acid sequences
+* ``_``
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
+In addition, Phobius does not allow the following characters in sequences:
 
-   * - Member DB
-     - Illegal characters
-   * - AntiFam
-     - \-
-   * - FunFam
-     - \- _ .
-   * - Gene3D
-     - \- _ .
-   * - HAMAP
-     - \- _ .
-   * - NCBIFAM
-     - \-
-   * - Panther
-     - \-
-   * - Pfam
-     - \-
-   * - Phobius
-     - \- _ . * o x u z j
-   * - PIRSR
-     - \-
-   * - PIRSF
-     - \-
-   * - PROSITE Profiles
-     - \- _ .
-   * - SFLD
-     - \- _ .
-   * - SUPERFAMILY
-     - \-
+* ``*``
+* ``o``
+* ``x``
+* ``u``
+* ``z``
+* ``j``
 
-Here is an example of a supported protein sequence...
-
-::
-
-    MPIGSKERPTFFEIFKTRCNKADLGPISLNWFEELSSEAPPYNSEPAEESEHKNNNYEPN
-
-and a supported nucleic acid sequence...
-
-::
-
-    atgaaatataaacgcattgtgtttaaagtgggcaccagcagcctgaccaacg
-
-and examples of unsupported sequences:
-
-::
-
-    -RFLLLSLARFSNNRFGVQLLQIANVNLKVRRYG (illegal gap character at the start)
-
-    RFLLLSL--ARFSNNRFGVQLLQIANVNLKVRRYG (illegal gap character in the middle)
-
-    RFLLLSLARFSNNRFGVQLLQIANVNLKVRRYG* (illegal asterix character at the end)
-
-    RFLLLSL_ARFSNNRFGVQLLQIANVNLKVRRYG (illegal underscore character)
-
-    RFLLLSL.ARFSNNRFGVQLLQIANVNLKVRRYG (illegal period character)
+If any of these characters are found in the input sequences, ``InterProScan`` will raise
+an error and terminate.

@@ -31,4 +31,21 @@ command:
 Using a local precalculated match lookup service
 ------------------------------------------------
 
-This feature will become available in the beta release.
+The InterPro Matches API provides programmatic access to pre-computed InterProScan 6 
+results for every sequence in UniParc. Each UniParc sequence is identified by its 
+MD5 hash, which serves as a unique key for fast lookups of its associated InterPro matches.
+
+Follow the latest documentation for setting up a local instance of the InterPro Matches API
+from the `Matches API repository <https://github.com/ProteinsWebTeam/interpro-matches-api>`__.
+
+Once you have your local instance of the Matches API running, you can configure ``InterProScan``
+to use it by including the ``--matches-api-url`` flag in your ``InterProScan`` command,
+followed by the URL of your local Matches API instance. For example:
+
+.. code-block:: bash
+
+    nextflow run interproscan.nf \
+        -profile <executor,containerRuntime> \
+        --input <path to input fasta file> \
+        --datadir <interpro data dir> \
+        --matches-api-url http://localhost:5000 

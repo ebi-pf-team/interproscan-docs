@@ -1,17 +1,14 @@
 How to Analyse Nucleic Sequences
 ================================
 
-``InterProScan`` can take take advantage of Open Reading Frame (ORF) prediction 
-in order to analyse nucleic acid sequences.
-
-Specifically, ``InterProScan`` uses the ORF prediction tool 
+``InterProScan`` can take take advantage of Open Reading Frame (ORF) prediction tool
 ``esl-translate`` from the `easel tool suite <https://github.com/EddyRivasLab/easel>`_ 
 to generate predicted ORFs from an input nucleic acid FASTA file. These predicted ORFs are 
-then used to generate hits. The predicted ORFs and their 
+then used to generate hits, and the predicted ORFs and their 
 InterPro signature matches are associated with the respective input nucleic acid
 sequence in the final output. 
 
-The ``easel`` application itself and all its dependencies are integrated into ``InterProScan``.
+The ``easel`` application itself and all its dependencies are already integrated into ``InterProScan``.
 Therefore, no additional configuration or installation is required.
 
 How to scan nucleic acid sequences
@@ -23,7 +20,7 @@ include the ``--nucleic`` flag in your ``InterProScan`` command:
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        -profile <slurm,lsf,local....docker,singularity,apptainer> \
+        -profile <slurm,lsf....docker,singularity,apptainer> \
         --input <path to input FASTA> \
         --datadir <interpro data dir> \
         --nucleic
@@ -40,7 +37,7 @@ using Docker locally, you could run the following command:
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        -profile docker,local \
+        -profile docker \
         --input tests/data/test_nt.fna \
         --applications cdd,sfld,panther,pfam,signalp,phobius \
         --disablePrecalc \

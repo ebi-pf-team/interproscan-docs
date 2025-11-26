@@ -4,27 +4,20 @@ Installing InterProScan
 
 Before installing ``InterProScan``, please check you system satisfies the :ref:`Installation requirements`.
 
-To install the ``InterProScan6`` software you need to complete the following steps:
+To install the ``InterProScan6`` in brief:
 
-1. (Optional) Retrieve a InterPro release data set
-2. Set up ``InterProScan``
-3. (Optional) Install licensed software (SignalP, DeepTMHMM and Phobius)
-4. (Optional) Setup a local InterPro Match Lookup Service (MLS)
-5. Run the built-in test
+1. Set up ``InterProScan`` and run the built-in test
+2. (Optional) Install licensed software (SignalP, DeepTMHMM and Phobius)
+3. (Optional) Setup a local InterPro Match Lookup Service (MLS)
 
-If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise an issue at our 
-`GitHub repository <https://github.com/ebi-pf-team/interproscan6/issues>`_, or 
+``InterProScan6`` automatically pulls down all necessary containers using the specified container runtime,
+otherwise it will run on bare metal.
+
+If the installation is unsuccessful please check the `FAQs <FAQ.html>`_, raise an issue at our
+`GitHub repository <https://github.com/ebi-pf-team/interproscan6/issues>`_, or
 `raise a ticket <https://www.ebi.ac.uk/about/contact/support/interpro>`_ via InterPro.
 
-[1] Retrieve an InterPro release dataset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``InterProScan`` relies on the models that are incorporated into each of the InterPro
-member databases. ``InterProScan`` automates the retrieval of missing metadata and database files.
-
-Alternatively, you can download these data from `https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/105.0 <https://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/6/105.0>`__.
-
-[2] Set up InterProScan
+[1] Set up InterProScan
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Option A: No set up
@@ -46,42 +39,37 @@ to set up a local installation.
 Option B: Install from source
 -----------------------------
 
-1. Download the ``InterProScan`` software
+Download the ``InterProScan`` software
 
 .. code-block:: bash
 
+    # using git
     git clone https://github.com/ebi-pf-team/interproscan6.git
-    cd interproscan6
-
-Or if you do not have ``git``:
-
-.. code-block:: bash
-
+    # alternatively using wget
     wget -o https://github.com/ebi-pf-team/interproscan6/archive/refs/heads/main.zip
 
-2. Pull down the docker image or build the docker image.
 
-To build the docker image:
-
-.. code-block:: bash
-
-    docker build -t interproscan6 .
-
-Alternatively to pull the image from DockerHub, using Docker:
+Run ``InterProScan6`` using:
 
 .. code-block:: bash
 
-    docker pull ebi-pf-team/interproscan6:latest
+    nextflow run ebi-pf-team/interproscan6 \
+      -profile <executor, containerRuntime> \
+      --input <path to input FASTA> \
+      --datadir <path to the downloaded InterPro data dir>
 
-Using Singularity:
+Test the installation
+---------------------
+
+Test the installation using the provided test profile. For example, to run the test locally using Docker:
 
 .. code-block:: bash
 
-    singularity pull interproscan6.sif docker://ebi-pf-team/interproscan6:latest
+    nextflow run ebi-pf-team/interproscan6 \
+      -profile docker,test \
+      --datadir data
 
-To use alternative container runtimes please see the `profiles page <Profiles.html>`__.
-
-[3] (Optional) Install licensed software
+[2] (Optional) Install licensed software
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Due to licensing ``Phobius``, ``SignalP``, and ``DeepTMHMM`` member database analyses 
@@ -89,11 +77,11 @@ are deactivated in ``InterProScan`` by default. To activate these analyses you w
 the relevant licenses and files from the respective providers. Please see 
 :ref:`Installing Licensed Applications` for more information.
 
-[4] (Optional) Setup a local InterPro Match Lookup Service (MLS)
+[3] (Optional) Setup a local InterPro Match Lookup Service (MLS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``InterProScan``  uses the InterPro Match Lookup Service (MLS) to retrieve pre-calculated matches,
-reducing the total runtime. By default, ``InterProScan``  is configured to
+thus reducing the total runtime. By default, ``InterProScan``  is configured to
 use the web service hosted at the EBI, therefore, your servers will need to have external 
 access to http://www.ebi.ac.uk to use it.
 
@@ -105,31 +93,3 @@ The uncompressed MLS disk usage comes to more that 1TB, so it is
 recommended just to use the default setup.
 
 Please see `Local Precalculated Match Lookup Service <PrecalculatedMatchLookup.html>`__ documentation for more information.
-
-[5] Run the built-in test
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To test ``InterProScan``, run the following command:
-
-.. code-block:: bash
-
-    nextflow run ebi-pf-team/interproscan6 \
-      -profile test,docker \
-      --datadir data \
-      --interpro latest
-
-Explanation of parameters:
-
-
-* ``profile test,docker```:
-    * ``test``: use an included example FASTA file
-    * ``docker``: execute tasks in Docker containers
-* ``--datadir`` data: use data as the directory for storing all required databases; created automatically if needed
-* ``--interpro`` latest: fetch the most recent InterPro release
-
-After completion, you’ll find three output files in your working directory:
-* ``test.faa.json``: full annotations (JSON)
-* ``test.faa.tsv``: tabular summary (TSV)
-* ``test.faa.xml``: full annotations (XML)
-
-The JSON and XML outputs are more comprehensive; the TSV is a concise summary.

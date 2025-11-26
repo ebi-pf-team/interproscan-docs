@@ -4,8 +4,8 @@ Migrating from InterProScan Version 5 to Version 6
 New system requirements
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* Nextflow (version >=24.10.4)
-* A container runtime
+* Nextflow (version 25.04.6 or later)
+* A container runtime (unless running on baremetal)
 * Linux, MacOS or Windows
 
 Downloading and using the databases
@@ -27,16 +27,15 @@ Unlike version 5 which presumes the database data is located at ``./data``, ``In
 Specify the InterPro version (best practise)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``InterProScan`` 6 will automatically download the latest version of InterPro. For reproducibility and reproducion
-of analyses, use the ``--interpro`` flag to specify InterPro release to use [Default: ``latest``].
+``InterProScan`` 6 will automatically download the latest version of InterPro. For reproducibility
+use the ``--interpro`` flag to specify InterPro release to use [Default: ``latest``].
 
 .. code-block:: bash
 
     nextflow run ebi-pf-team/interproscan6 \
-        -profile docker\
-        --input tests/data/test_prot.fa \
-        --datadir <path-to-the-data-dir> \
-        --interpro 104.0
+        -profile docker,test \
+        --datadir data \
+        --interpro 107.0
 
 Running InterProScan: Flag changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,14 +44,18 @@ Support only for long-name (double dashed) flags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``InterProScan`` 6 only supports long-name (double dashed) flags, therefore, all flags from InterProScan
-5 that are supported in ``InterProScan`` 6 must be convereted to their long name.
+5 that are supported in ``InterProScan`` 6 must be converted to their long name.
 
 New flags
 ^^^^^^^^^
 
 * ``-profile`` - Specify the run time profiles. Typically the container runtime (e.g. ``docker``), and when not running locally the executor (e.g. ``slurm``). Note this option uses a single dash.
-* ``--nucleic`` - ``InterProScan`` 6 defaults to analysing protein sequences. To analyse an input FASTA file of nucleotide sequences use the ``--nucleic`` flag.
-* ``--interpro`` - Specify the InterPro version to use.
+* ``--nucleic`` - [Boolean] Analyse an input FASTA of nucleic acid sequences.
+* ``--interpro`` - [String] Specify the InterPro version to use.
+* ``--run-ml`` - [Boolean] Include all activated machine learning based analyses (e.g. InterPro-N) in the analysis.
+* ``--datadir`` - [String] The path to the InterProScan data directory.
+* ``--maxWorkers`` - [Int] The maximum number of jobs that can run in parallel at any given moment.
+* ``--cpus`` - [Int] The number of CPUs to use for applications that support multithreading (e.g. HMMER3).
 
 Renamed flags
 ^^^^^^^^^^^^^
@@ -71,7 +74,7 @@ Renamed flags
 | ``--seqtype``           | ``--nucleic``           | Analyse nucleotide sequences                               |
 +-------------------------+-------------------------+------------------------------------------------------------+
 
-Note, ``InterProScan`` 6 will build the directory (including parents) if it does not already exist.
+Note, ``InterProScan`` 6 will build the data and output directories (including parents) if they do not already exist.
 
 Deprecated flags
 ^^^^^^^^^^^^^^^^
@@ -95,6 +98,13 @@ Application/Member db name aliases
 
 The formating of all application names from InterProScan 5 are accepted in ``InterProScan`` 6.
 
+New applications
+^^^^^^^^^^^^^^^^
+
+* ``DeepTMHMM`` - Transmembrane domain prediction using deep learning.
+* ``TMbed`` - Fast transmembrane domain prediction using protein language models.
+* ``InterPro-N`` - InterPro matches predicted using machine learning.
+
 SignalP and TMHMM update
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -112,7 +122,7 @@ Running on a cluster or cloud
 
 Unlike InterProScan 5, ``InterProScan`` 6 does not require reconfiguration to run on a cluster or a cloud.
 
-By default ``InterProScan`` 6 runs in local mode, to run on a cluster or cloud use the ``--profile`` flag to specify
+By default ``InterProScan`` 6 runs in local mode, to run on a cluster or cloud use the ``-profile`` flag to specify
 the executor.
 
 At the moment, ``InterProScan`` provides only built-in support for the SLURM and LSF schedulers.
@@ -137,7 +147,6 @@ The content and structure of the TSV, JSON and GFF3 files are the same between v
         "interpro-version": "106.0",
         "results": []
     }
-
 
 XML Schema changes
 ^^^^^^^^^^^^^^^^^^

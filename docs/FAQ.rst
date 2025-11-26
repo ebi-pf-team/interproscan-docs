@@ -5,74 +5,7 @@ Trouble shooting and FAQs
 How is InterProScan 6 different from InterProScan versions 4 and 5? How do I migrate?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``InterProScan`` 4 is way, way obsolete! But if you are still using ``InterProScan`` 4
-then we recommend you `send us a support request <Feedback.html>`__ as soon as possible.
-
-``InterProScan`` 5 is soon to be obsolete (estimated retirement Q1/Q2 2026).
-
-``InterProScan`` 6 uses an entirely new, streamlined code base, and uses the 
-`Nextflow <https://www.nextflow.io/>`_ workflow system for 
-deployment. This means ``InterProScan`` 6 can be deployed on a system running Linux, Windows 
-or MacOS. Additionally, Nextflow provides automatic scaling and out of the box support for various 
-cluster systems (including SLURM, LSF, Amazon AWS, Google Cloud and Microsoft Azure platforms). 
-Therefore, ``InterProScan`` 6 allows relatively easier integration into HPC schedulers and cloud 
-providers.
-
-**Configuration to run on a cluster:**
-
-Unlike previous version of ``InterProScan``, version 6 does not need to be reconfigured in 
-order to run on a local machine, on the cloud or on a server or cluster.
-
-**Command line arguments:**  
-
-The flag ``--disable_precalc`` from ``InterProScan`` version 5 was changed to ``disable_precalc`` 
-(with an underscore) in ``InterProScan`` version 6.
-
-When running ``InterProScan6`` you will need to include an additional ``-profile`` flag 
-to define the executor (``slurm``, ``lsf``, or ``local``) and 
-the container runtime that is being used (``docker``, ``singularity``, or ``apptainer``).
-
-The flag ``-dra,--disable-residue-annot`` from version 5 has not been included version 6. This means
-sites are always included in the output files. If you which for this feature to be implemented in 
-version 6 please `contact us <Feedback.html>`__. 
-
-The flag ``-etra,--enable-tsv-residue-annot`` from version 5 has not been included version 6. 
-Therefore, site annotations are not included in the TSV output file. 
-If you which for this feature to be implemented in 
-version 6 please `contact us <Feedback.html>`__.  
-
-The flag ``-ms,--minsize <MINIMUM-SIZE>`` from version 5 has also not been included in version 6.
-Configuring the prediction of ORFS in nucleic acid sequences is configured by changing the 
-parameters in the ``nextflow.config`` file. Please see the `nucleic acid sequence page <ScanNucleicAcidSeqs.html>`__ 
-for details.
-
-**Output files:**  
-
-The structure of the output files from ``InterProScan`` 6 should match those that were generated 
-by the last release of ``InterProScan`` version 5. 
-
-``InterProScan`` version 6 does not support generating the GFF3 file format. If you would 
-like this feature to be implemented please `contact us <Feedback.html>`__.
-
-**Licensed software:**
-
-MobiDB-Lite is deactivate by default in ``InterProScan6``, due to licensed. See the 
-`installating licensed software page <InstallingLicensedApps.html>`__ for details on how to 
-install MobiDB-Lite for ``InterProScan6``.
-
-We have migrated from using SignalP version 4 in ``InterProScan`` version 5 to using 
-SignalP version 6 in ``InterProScan`` version 6. Additionally, to run SignalP with 
-all models enabled in ``InterProScan`` version 6 using the application name 'signalp'. To 
-run using only the eukaryotic models and SignalP post-processing to minimise spurious huts using 
-the application name 'signalp_euk'. For example:
-
-.. code-block:: bash
-
-   nextflow run interproscan.nf \
-      -profile docker,local \
-      --input utilities/test_files/mini_test.fasta \
-      --applications signalp_euk \
-      --disable_precalc
+See the `Migrating to InterProScan 6 page <MigratingToI6.html>`__ for more information.
 
 I keep running out of memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,10 +99,9 @@ If you a recieve an error such as the following:
    .command.sh: line 2:     7 Segmentation fault      (core dumped) /opt/hmmer3/bin/hmmsearch --cut_ga --cpu 1 -o 7.0._.antifam._.out AntiFam.hmm mini_test.1.fasta
 
 This is generally due to HMMER being unable to find a necessary data file.
-Make sure the data directory is correctly structured and populated and `InterProScan` is 
-pointed to the correct data directory using the `--data` flag if not using the default data
+Make sure the data directory is correctly structured and populated and ``InterProScan`` is 
+pointed to the correct data directory using the ``--data`` flag if not using the default data
 directory location in the project dir.
-
 
 Where can I find the XSD of the XML output?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -212,19 +144,23 @@ see the `Profiles documentation <Profiles>`__ for more information.
 Do I need to run InterProScan in cluster mode?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When running ``InterProScan`` you always need to define the executor (``slurm`` or ``local``) and 
-the container runtime that is being used (``docker``, ``singularity``, or ``apptainer``) using 
-the ``-profile`` option. If these built in profiles (stored in ``utilities/profiles``) are not 
-suitable for you system you will need to create and add your own profile.
+To run ``InterProScan`` on a cluster you will need to specify the executor using the
+``-profile`` option. For example, to run using SLURM and Singularity:
 
-Please 
-see the `Profiles documentation <Profiles>`__ for more information.
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile singularity,slurm \
+        --input <FASTA> \
+        --datadir <DATADIR>
+
+If the options in the built in profiles (stored in ``utilities/profiles``) are not
+suitable for you system you will need to create and add your own profile. See the `Profiles documentation <Profiles>`__ for more information.
 
 Is there a Galaxy wrapper for InterProScan?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can find the wrapper for ``InterProScan`` 6 on
-`GitHub <https://github.com/peterjc/bgruening_galaxytools/tree/master/iprscan6>`__.
+There is not one currently.
 
 Documentation and contact details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -247,14 +183,18 @@ I get Java errors on running InterProScan
 If a simple test of ``InterProScan``  fails please check your installed
 version of Java is suitable, see `installation
 requirements <InstallationRequirements.html>`__ for more details. 
-The latest version runs with Java 11 and later.
+The latest version runs with Java 17 and later.
 
 How to analyse a huge amount of protein sequences (>30000)?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Whereas ``InterProScan`` 5 could require the user to manually chunk their 
 large input dataset, batching, unified parallelism, and scaling is automatically handled by 
-``InterProScan`` version 6. 
+``InterProScan`` version 6. To improve performance for very large datasets, it is recommended
+to use a high-performance computing (HPC) environment and the ``bulk`` profile.
+
+See the `Improving Performance page <ImprovingPerformance.html>`__ for more information.
+
 
 Should I filter by e-value?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

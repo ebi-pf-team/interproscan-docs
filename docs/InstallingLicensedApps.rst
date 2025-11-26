@@ -111,7 +111,7 @@ If you have a GPU available, you can convert your installation to use the GPU in
 You will need to install ``SignalP`` in order to convert to GPU models.
 
 1. Convert the ``SignalP`` installation to GPU by following the `SignalP documentation <https://github.com/fteufel/signalp-6.0/blob/main/installation_instructions.md#converting-to-gpu>`_.
-2. Update the configuration file, setting ``use_gpu=true``
+2. Update the configuration file, setting ``use_gpu=true`` or use the InteProScan ``--use-gpu`` flag
 
 .. code-block:: groovy
 
@@ -137,3 +137,12 @@ You will need to install ``SignalP`` in order to convert to GPU models.
         has_data=false
         use_gpu=true               <---- set to true
     }
+
+For example, to run the provided test set using Singularity and SLURM with GPU acceleration:
+
+.. code-block:: bash
+
+    nextflow run ebi-pf-team/interproscan6 \
+        -profile singularity,slurm,test \
+        --applications deeptmhmm,signalp_euk,signalp_prok \
+        --use-gpu
