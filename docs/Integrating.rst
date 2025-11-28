@@ -98,3 +98,28 @@ For example using Git ``submodules``:
 
         output_files.view { "Generated output file: ${it}" }
     }
+
+This will run ``InterProScan`` as part of your Nextflow pipeline, producing the specified output files.
+
+Running specific subworkflows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also include and run specific subworkflows from the ``InterProScan``.
+
+To run preparing the InterPro data, you can include the `PREPARE_DATABASES workflow <https://github.com/ebi-pf-team/interproscan6/blob/main/subworkflows/prepare/databases/main.nf>`_:
+
+.. code-block:: groovy
+
+    include { PREPARE_DATABASES } from './subworkflows/interproscan6/subworkflows/prepare/databases/main.nf'
+
+To run the retrieval of InterPro matches from the API, you can include the `LOOKUP workflow <https://github.com/ebi-pf-team/interproscan6/blob/main/subworkflows/lookup/main.nf>`_:
+
+.. code-block:: groovy
+
+    include { LOOKUP } from './subworkflows/interproscan6/subworkflows/lookup/main.nf'
+
+To run the scanning of the input protein sequences with the selected analysis applications, you can include the `SCAN_SEQUENCES workflow <https://github.com/ebi-pf-team/interproscan6/blob/main/subworkflows/scan/main.nf>`_:
+
+.. code-block:: groovy
+
+    include { SCAN_SEQUENCES } from './subworkflows/interproscan6/subworkflows/scan/main.nf'
