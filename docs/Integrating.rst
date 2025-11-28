@@ -6,25 +6,39 @@ You can integrate ``InterProScan`` directly into you own Nextflow pipelines.
 
 For example using Git ``submodules``:
 
-1. Set up the submodule
+1. Add the submodule to a 'subworkflows' directory:
 
 .. code-block:: bash
 
-    # Add the submodule to a 'subworkflows' directory
-    git submodule add https://github.com/ebi-pf-team/interproscan6.git subworkflows/interproscan6
+    git submodule add \
+        --depth 1 https://github.com/ebi-pf-team/interproscan6.git \
+        subworkflows/interproscan6
 
-    # Initialise and update the submodule
-    git submodule update --init --recursive
+2. Checkout the 6.0.0-beta release inside the submodule:
 
-2. Copy the ``InterProScan`` library into your own projects library
+.. code-block:: bash
+
+    cd subworkflows/interproscan6
+    git fetch --depth 1 origin tag 6.0.0-beta
+    git checkout 6.0.0-beta
+    cd ../..
+
+3. Record the checked-out commit
+
+.. code-block:: bash
+
+    git add subworkflows/interproscan6
+    git commit -m "Added interproscan6 6.0.0-beta submodule"
+
+4. Copy the ``InterProScan`` library into your own projects library
 
 .. code-block:: bash
 
     cp -r subworkflows/interproscan6/lib* lib
 
-3. If you are running on baremetal skip to step 4, otherwise, add the containers definitions from the corresponding ``InterProScan`` profile (e.g. ``conf/profiles/docker.config``) to your Nextflow config file (``nextflow.config``).
+5. If you are running on baremetal skip to step 4, otherwise, add the containers definitions from the corresponding ``InterProScan`` profile (e.g. ``conf/profiles/docker.config``) to your Nextflow config file (``nextflow.config``).
 
-4. Include the ``PREPARE_INTERPROSCAN`` and ``RUN_INTERPROSCAN`` processes in your own Nextflow pipeline script.
+6. Include the ``PREPARE_INTERPROSCAN`` and ``RUN_INTERPROSCAN`` processes in your own Nextflow pipeline script.
 
 .. code-block:: groovy
 
