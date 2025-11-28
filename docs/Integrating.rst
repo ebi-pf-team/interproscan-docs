@@ -47,7 +47,7 @@ For example using Git ``submodules``:
     import java.nio.file.*
 
     workflow {
-        fasta_files = Channel.fromPath("input-fasta.faa")              // channel for the  input FASTA file
+        fasta_file = Channel.fromPath("input-fasta.faa")               // channel for the input FASTA file
         applications = ["cdd", "coils", "mobidblite", "pfam", "smart"] // list of InterProScan analyses to run
         apps_config = "subworkflows/interproscan6/conf/applications.config" // path to applications configuration file
         data_dir = Paths.get("data").toRealPath()                      // [path] InterProScan data directory
@@ -74,7 +74,7 @@ For example using Git ``submodules``:
         apps_config = PREPARE_INTERPROSCAN.out.apps_config.val  // make sure to extract the value
         
         output_files = INTERPROSCAN(
-            fasta_files,
+            fasta_file,
             applications,
             apps_config,
             data_dir,
