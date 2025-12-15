@@ -36,7 +36,7 @@ For example using Git ``submodules``:
 
     cp -r subworkflows/interproscan6/lib* lib
 
-5. If you are running on baremetal skip to step 4, otherwise, add the containers definitions from the corresponding ``InterProScan`` profile (e.g. ``conf/profiles/docker.config``) to your Nextflow config file (``nextflow.config``).
+5. If you are running on baremetal skip to step 6, otherwise, add the containers definitions from the corresponding ``InterProScan`` profile (e.g. ``conf/profiles/docker.config``) to your Nextflow config file (``nextflow.config``).
 
 6. Include the ``PREPARE_INTERPROSCAN`` and ``RUN_INTERPROSCAN`` processes in your own Nextflow pipeline script.
 
