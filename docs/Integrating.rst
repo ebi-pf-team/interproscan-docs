@@ -2,7 +2,7 @@
 Integrating InterProScan into a Nextflow pipeline
 =================================================
 
-You can integrate ``InterProScan`` directly into you own Nextflow pipelines.
+You can integrate ``InterProScan`` directly into your own Nextflow pipelines.
 
 For example using Git ``submodules``:
 
