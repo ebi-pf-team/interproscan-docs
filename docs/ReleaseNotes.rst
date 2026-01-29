@@ -1,7 +1,7 @@
-Release notes: InterProScan 5.76-107.0
+Release notes: InterProScan 5.77-108.0
 =====================================
 
-Released on 16 October 2025
+Released on 29 January 2026
 
 What’s new
 ~~~~~~~~~~
@@ -9,10 +9,10 @@ What’s new
 Data update
 ^^^^^^^^^^^
 
--  Synchronized with `InterPro version 107.0 <http://www.ebi.ac.uk/interpro/release_notes/107.0/>`__.
--  The addition of 1068 InterPro entries.
--  An update to Pfam (38.0).
--  Integration of 1134 new methods from the CDD (48), NCBIFAM (147), PANTHER (11), Pfam (926), SFLD (1), SUPERFAMILY (1) databases.
+-  Synchronized with `InterPro version 108.0 <http://www.ebi.ac.uk/interpro/release_notes/108.0/>`__.
+-  The addition of 1911 InterPro entries.
+-  An update to NCBIFAM (18.0), Pfam (38.1).
+-  Integration of 2891 new methods from the CATH-Gene3D (3), CDD (47), HAMAP (1), NCBIFAM (927), PANTHER (29), Pfam (1878), SMART (2), SUPERFAMILY (4) databases.
 
 Software updates
 ^^^^^^^^^^^^^^^^
