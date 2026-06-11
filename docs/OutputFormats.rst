@@ -158,7 +158,9 @@ The XML Schema Definition (XSD) is available
 
 Listed below are the XSD files for the InterProScan 5 XML output format (with the InterProScan release versions they apply to noted in brackets afterwards).
 
-- `interproscan-model-4.6.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.6.xsd>`__ (as produced by InterProScan 5 from version 5.63-95.0 onwards)
+- `interproscan-model-4.8.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.8.xsd>`__ (as produced by InterProScan 5 in version 5.78-109.0 only)
+- `interproscan-model-4.7.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.7.xsd>`__ (as produced by InterProScan 5 from version 5.66-98.0 to 5.77-108.0)
+- `interproscan-model-4.6.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.6.xsd>`__ (as produced by InterProScan 5 from version 5.63-95.0 to 5.65-97.0)
 - `interproscan-model-4.5.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-4.5.xsd>`__ (as produced by InterProScan 5 from version 5.51-85.0 to 5.62-94.0)
 - `interproscan-model-3.0.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-3.0.xsd>`__ (as produced by InterProScan 5 from version 5.31-70.0 to 5.50-84.0)
 - `interproscan-model-2.2.xsd <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/interproscan-model-2.2.xsd>`__ (as produced by InterProScan 5 from version 5.28-67.0 to 5.30-69.0)
@@ -177,6 +179,9 @@ JavaScript Object Notation (JSON)
 JSON representation of the matches - an alternative to XML format. As
 new releases are made public, the changes to the expected JSON format
 are documented in :ref:`Change log for InterProScan JSON output format`.
+
+A JSON schema for InterProScan can be found at the FTP 
+`here <http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas/schema.json>`__.
 
 Example output
 ~~~~~~~~~~~~~~
