@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 The InterProScan Lookup Match Service
-==========================================
+=====================================
+.. include:: notice.inc
 
 The InterProScan match lookup service stores pre-calculated InterProScan
 results for the sequences in the InterPro database. When InterProScan is

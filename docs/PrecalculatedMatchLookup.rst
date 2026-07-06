@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Precalculated match lookup
 ==========================
+.. include:: notice.inc
 
 InterProScan uses a lookup service to check whether or not a protein
 submitted to it has been encountered before and, therefore, if matches

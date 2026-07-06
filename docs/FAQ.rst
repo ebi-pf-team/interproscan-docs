@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 FAQ
 ===
+.. include:: notice.inc
 
 What should I do if one of the binaries included with InterProScan doesn't work on my system?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,7 +74,7 @@ applications in molecular plant pathology. PeerJ 1:e167
 (http://dx.doi.org/10.7717/peerj.167)
 
 I get Java errors on running InterProScan
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a simple test of InterProScan  fails please check your installed
 version of Java is suitable, see `installation

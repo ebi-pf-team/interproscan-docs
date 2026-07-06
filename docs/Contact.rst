@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Contact us
 ==========
+.. include:: notice.inc
 
 For further assistance with installing and using InterProScan, please
 reach out to us through our `help desk <http://www.ebi.ac.uk/support/interproscan>`__

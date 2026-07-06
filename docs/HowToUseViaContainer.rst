@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 How to Use InterProScan via Container
 =====================================
+.. include:: notice.inc
 
 InterProScan can be used via Docker or Singularity to simplify the installation and execution process in different computing environments.
 

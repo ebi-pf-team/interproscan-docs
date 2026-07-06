@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Running InterProScan
 ====================
+.. include:: notice.inc
 
 Once you have uncompressed your :ref:`Obtaining a copy of InterProScan`, you can
 run InterProScan directly from the command line.

@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Known issues
 ============
+.. include:: notice.inc
 
 Open issues in InterProScan
 ---------------------------
@@ -12,7 +11,7 @@ as soon as possible. For assistance with other InterProScan problems,
 
 
 1. CDD/RPSBlast errors
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 On some linux systems, you may get rpsblast errors like
 ::
@@ -25,7 +24,7 @@ The missing library is libgomp1. On Ubuntu you might install it as follows:
 On other systems, you have similar installation commands
 
 2. Coils errors
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 If you see an error concerning **Coils**, for example the error below, it means the binary
 we provide is not compatible with your system.
 ::
@@ -43,7 +42,7 @@ In this case, you may need to compile the **Coils** binary and it is straight fo
 These steps should update the Coils binary.
 
 3. Prosite/pfsearchV3 errors
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On some linux systems, you may get pfsearchV3 errors like
 

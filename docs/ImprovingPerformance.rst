@@ -1,13 +1,12 @@
-.. include:: notice.inc
-
 Improving performance
 =====================
+.. include:: notice.inc
 
 If InterProScan is taking a long time to run, or you just want to improve on the
 run time you are getting, then consider some of the following:
 
 Review your CPU (and memory) command options
-------------------------------------------
+--------------------------------------------
 By default InterProScan uses 8 cpu cores on your machine. Most of the times this
 configuration is sufficient. However, if you have more cores available
 and you have more memory to support more threads, then you can change the number  of
@@ -86,7 +85,7 @@ consider options such as:
 
 
 Running InterProScan in CLUSTER mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This mode is still experimental, so I would not run in this mode in production.
 

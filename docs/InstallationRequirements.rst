@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Installation requirements
 =========================
+.. include:: notice.inc
 
 InterProScan is developed to run on Linux. There are no versions planned
 for Windows or Apple (MAC OS X) operating systems. This is due to

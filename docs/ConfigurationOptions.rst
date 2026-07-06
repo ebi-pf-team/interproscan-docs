@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Configuration Options
 =====================
+.. include:: notice.inc
 
 This page will give you an overview and a detailed description about
 some of the available configuration options in your InterProScan 5

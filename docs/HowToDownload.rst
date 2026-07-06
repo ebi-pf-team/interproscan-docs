@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Obtaining a copy of InterProScan
-==================================
+================================
+.. include:: notice.inc
 
 Firstly check your system satisfies the :ref:`Installation requirements`.
 To install the InterProScan 5 software you then need to complete the following steps:

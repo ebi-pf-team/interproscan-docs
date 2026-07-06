@@ -1,32 +1,30 @@
-
+###################
+Citing InterProScan
+###################
 .. include:: notice.inc
 
-########
-Citing InterProScan
-########
-
-****
+*******************
 Latest publications
-****
+*******************
 
 If you find InterPro useful for your research, please cite the following publications:
 
 InterPro
-====
+========
 `The InterPro protein families and domains database: 20 years on <https://doi.org/10.1093/nar/gkaa977>`_
 Matthias Blum, Hsin-Yu Chang, Sara Chuguransky, Tiago Grego, Swaathi Kandasaamy, Alex Mitchell, Gift Nuka, Typhaine Paysan-Lafosse, Matloob Qureshi, Shriya Raj, Lorna Richardson, Gustavo A Salazar, Lowri Williams, Peer Bork, Alan Bridge, Julian Gough, Daniel H Haft, Ivica Letunic, Aron Marchler-Bauer, Huaiyu Mi, Darren A Natale, Marco Necci, Christine A Orengo, Arun P Pandurangan, Catherine Rivoire, Christian J A Sigrist, Ian Sillitoe, Narmada Thanki, Paul D Thomas, Silvio C E Tosatto, Cathy H Wu, Alex Bateman, Robert D Finn
 Nucleic Acids Research (2020), gkaa977, PMID: `33156333 <https://europepmc.org/article/MED/33156333>`_
 
 InterProScan
-====
+============
 `InterProScan 5: genome-scale protein function classification <https://doi.org/10.1093/bioinformatics/btu031>`_
 Philip Jones, David Binns, Hsin-Yu Chang, Matthew Fraser, Weizhong Li, Craig McAnulla, Hamish McWilliam, John Maslen, Alex Mitchell, Gift Nuka, Sebastien Pesseat, Antony F. Quinn, Amaia Sangrador-Vegas, Maxim Scheremetjew, Siew-Yit Yong, Rodrigo Lopez, Sarah Hunter
 Bioinformatics (2014), PMID: `24451626 <https://europepmc.org/article/MED/24451626>`_
 
 
-****
+*************************
 All previous publications
-****
+*************************
 
 `InterPro in 2019: improving coverage, classification and access to protein sequence annotations <https://doi.org/10.1093/nar/gky1100>`_
 Alex L Mitchell, Teresa K Attwood, Patricia C Babbitt, Matthias Blum, Peer Bork, Alan Bridge, Shoshana D Brown, Hsin-Yu Chang, Sara El-Gebali, Matthew I Fraser, Julian Gough, David R Haft, Hongzhan Huang, Ivica Letunic, Rodrigo Lopez, Aurélien Luciani, Fabio Madeira, Aron Marchler-Bauer, Huaiyu Mi, Darren A Natale, Marco Necci, Gift Nuka, Christine Orengo, Arun P Pandurangan, Typhaine Paysan-Lafosse, Sebastien Pesseat, Simon C Potter, Matloob A Qureshi, Neil D Rawlings, Nicole Redaschi, Lorna J Richardson, Catherine Rivoire, Gustavo A Salazar, Amaia Sangrador-Vegas, Christian J A Sigrist, Ian Sillitoe, Granger G Sutton, Narmada Thanki, Paul D Thomas, Silvio C E Tosatto, Siew-Yit Yong, Robert D Finn

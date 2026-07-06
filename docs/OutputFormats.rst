@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Output formats
 ==============
+.. include:: notice.inc
 
 In this version of InterProScan, you can retrieve output in any of the
 following five formats:

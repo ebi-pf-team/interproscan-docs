@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Installing and compiling binaries used in Interproscan
 ======================================================
+.. include:: notice.inc
 
 The binaries that we distribute with InterProScan should work on most
 linux systems. However, in some cases they may not work on a particular

@@ -1,10 +1,9 @@
-.. include:: notice.inc
-
 Nucleic acid sequences scan
 ===========================
+.. include:: notice.inc
 
 Translation into Open Reading Frames (ORFs)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 InterProScan 5 translates nucleotide sequences in six frames into individual ORFs using **esl-translate**
 from the `Easel library <http://emboss.sourceforge.net/apps/cvs/emboss/apps/getorf.html>`__.

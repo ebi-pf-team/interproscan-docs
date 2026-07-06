@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Running InterProScan 5 in CONVERT mode
 ======================================
+.. include:: notice.inc
 
 InterProScan 5's CONVERT mode allows you to reformat an existing
 InterProScan XML result file into any other possible output format (TSV,

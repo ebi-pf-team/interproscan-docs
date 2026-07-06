@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Change log for InterProScan JSON output format
 ==============================================
+.. include:: notice.inc
 
 InterProScan 5.31-70.0
 ~~~~~~~~~~~~~~~~~~~~~~

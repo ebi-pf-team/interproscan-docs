@@ -1,7 +1,6 @@
-.. include:: notice.inc
-testing
 Activating Phobius/SignalP/TMHMM analyses
 -----------------------------------------
+.. include:: notice.inc
 
 By default the Phobius, SignalP and TMHMM member database analyses are
 deactivated because they contain licensed components. In order to

@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Introduction
 ============
+.. include:: notice.inc
 
 What is InterProScan?
 ~~~~~~~~~~~~~~~~~~~~~

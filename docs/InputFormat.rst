@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Input formats
 =============
+.. include:: notice.inc
 
 Supported input file format
 ---------------------------

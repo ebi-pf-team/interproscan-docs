@@ -1,6 +1,3 @@
-.. include:: notice.inc
-
-
 Running InterProScan 5 in Cluster Mode
 ======================================
 .. include:: notice.inc

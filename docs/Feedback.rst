@@ -1,7 +1,6 @@
-.. include:: notice.inc
-
 Providing your feedback
 =======================
+.. include:: notice.inc
 
 Support requests
 ~~~~~~~~~~~~~~~~
