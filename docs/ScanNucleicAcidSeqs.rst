@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Nucleic acid sequences scan
 ===========================
 

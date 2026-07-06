@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 ########
 Citing InterProScan
 ########

@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 The InterProScan Lookup Match Service
 ==========================================
 

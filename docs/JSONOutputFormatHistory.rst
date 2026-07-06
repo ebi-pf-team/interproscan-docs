@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Change log for InterProScan JSON output format
 ==============================================
 

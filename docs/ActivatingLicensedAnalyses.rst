@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Activating Phobius/SignalP/TMHMM analyses
 -----------------------------------------
 

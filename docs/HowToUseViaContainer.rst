@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 How to Use InterProScan via Container
 =====================================
 

@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Installing and compiling binaries used in Interproscan
 ======================================================
 

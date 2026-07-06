@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Obtaining a copy of InterProScan
 ==================================
 

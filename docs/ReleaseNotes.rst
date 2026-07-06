@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Release notes: InterProScan 5.78-109.0
 =====================================
 

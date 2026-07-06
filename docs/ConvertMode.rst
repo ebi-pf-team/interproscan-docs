@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Running InterProScan 5 in CONVERT mode
 ======================================
 

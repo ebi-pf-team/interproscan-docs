@@ -1,3 +1,5 @@
+.. include:: notice.inc
+
 Providing your feedback
 =======================
 
