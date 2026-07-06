@@ -1,8 +1,6 @@
 Introduction
 ============
 
-.. include:: support_notice.inc
-
 What is InterProScan?
 ~~~~~~~~~~~~~~~~~~~~~
 

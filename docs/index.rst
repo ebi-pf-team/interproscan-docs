@@ -8,7 +8,6 @@
 InterProScan documentation
 ===========================
 
-.. include:: support_notice.inc
 
 .. toctree::
    :maxdepth: 3

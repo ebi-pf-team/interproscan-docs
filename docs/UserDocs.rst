@@ -1,4 +1,4 @@
-.. include:: Interproscan5_31_70_ReleaseNotes.rst
+.. include:: ReleaseNotes.rst
 .. include:: InstallationRequirements.rst
 .. include:: HowToDownload.rst
 .. include:: HowToRun.rst
