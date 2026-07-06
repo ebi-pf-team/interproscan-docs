@@ -1,7 +1,9 @@
 .. include:: notice.inc
 
+
 Running InterProScan 5 in Cluster Mode
 ======================================
+.. include:: notice.inc
 
 In the "cluster" mode, InterProScan 5 activates a master/worker
 parallelisation mode which takes advantage of your cluster capabilities
