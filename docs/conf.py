@@ -81,9 +81,8 @@ pygments_style = 'sphinx'
 todo_include_todos = False
 
 rst_prolog = """
-.. include:: /support_notice.inc
+.. include:: support_notice.inc
 """
-
 
 # -- Options for HTML output ----------------------------------------------
 
