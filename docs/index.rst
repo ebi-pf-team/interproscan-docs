@@ -7,7 +7,7 @@
 
 InterProScan documentation
 ===========================
-
+.. include:: notice.inc
 
 .. toctree::
    :maxdepth: 3
